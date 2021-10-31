@@ -8,23 +8,8 @@ using System.Linq;
 namespace PandemicTDDTests.Materiel
 {
     [TestClass()]
-    public class BoardTests
+    public class BoardTests : TestsBase
     {
-
-        string[][] expectedTowns;
-
-        [TestInitialize]
-        public void Init()
-        {
-            string[] rawtowns = File.ReadAllLines("Materiel\\Expected.txt");
-            expectedTowns = new string[rawtowns.Length][];
-
-            for (int i = 0; i < rawtowns.Length; i++)
-            {
-                expectedTowns[i] = rawtowns[i].Split(";");
-            }
-        }
-
         [TestMethod()]
         public void GetRolesCardsTest()
         {
