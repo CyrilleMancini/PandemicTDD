@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD.Materiel;
+using PandemicTDD.Materiel.PlayerCards;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -35,6 +36,11 @@ namespace PandemicTDDTests.Materiel
             List<PlayerCard> AllCards = GameBox.GetPlayersCard();
             Assert.AreEqual(6, AllCards.Count(it => it is EpidemicPlayerCard), "Les cartes joueurs doivent comporter 6 cartes Epidemie");
         }
-
+        [TestMethod()]
+        public void Expected5EvetnsCardsTest()
+        {
+            List<PlayerCard> AllCards = GameBox.GetPlayersCard();
+            Assert.AreEqual(5, AllCards.Count(it => it is EventPlayerCard), "Les cartes joueurs doivent comporter 5 cartes évenements");
+        }
     }
 }
