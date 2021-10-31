@@ -1,6 +1,6 @@
-﻿namespace PandemicTDDTests.Materiel
+﻿namespace PandemicTDD.Materiel
 {
-    internal class RoleCard
+    public class RoleCard
     {
 
         public string Name { get; set; }

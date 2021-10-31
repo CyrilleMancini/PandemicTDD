@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PandemicTDDTests.Materiel
+namespace PandemicTDD.Materiel
 {
-    internal class GameBox
+    public class GameBox
     {
-        internal static List<RoleCard> GetRoles()
+        public static List<RoleCard> GetRoles()
         {
             return new List<RoleCard>() {
             new RoleCard("Chercheuse"),
