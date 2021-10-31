@@ -23,7 +23,12 @@ namespace PandemicTDDTests.Materiel
             Assert.AreEqual(59, AllCards.Count, "Le jeux devrait contenir 59 cartes Joueurs");
         }
 
-    
+        [TestMethod()]
+        public void Expected48TownCardsTest()
+        {
+            List<PlayerCard> AllCards = GameBox.GetPlayersCard();
+            Assert.AreEqual(48, AllCards.Count(it => it is PlayerTownCard), "Les cartes joueurs doivent comporter 48 cartes Villes");
+        }
 
     }
 }
