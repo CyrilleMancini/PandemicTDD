@@ -17,5 +17,10 @@ namespace PandemicTDD.Materiel
             new RoleCard("Spécialiste en mise en quarantaine"),
             };
         }
+
+        public static Board GetBoard()
+        {
+            return new Board();
+        }
     }
 }
