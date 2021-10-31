@@ -1,20 +1,20 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PandemicTDD;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PandemicTDD.Tests
+namespace PandemicTDDTests.Materiel
 {
     [TestClass()]
-    public class Class1Tests
+    public class RolesCardsTests
     {
         [TestMethod()]
-        public void Class1Test()
+        public void GetRolesCardsTest()
         {
-            Assert.Fail();
+            List<RoleCard> AllCards = GameBox.GetRoles();
+            Assert.IsNotNull(AllCards);
         }
     }
 }
