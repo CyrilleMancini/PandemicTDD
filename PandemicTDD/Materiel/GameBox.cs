@@ -1,91 +1,48 @@
-﻿using PandemicTDD.Materiel.PlayerCards;
-using System;
+﻿using PandemicTDD.Materiel.Initializer;
+using PandemicTDD.Materiel.PlayerCards;
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace PandemicTDD.Materiel
 {
     public class GameBox
     {
-        static List<RoleCard> SingleRoleCards = null;
-        public static List<RoleCard> GetRoles()
+        private static RoleCardInitializer RoleCardInitializer;
+        private static DiseaseBagsInitializer DiseaseBagsInitializer;
+        private static TownsInitializer TownsInitializer;
+        private static SpreadCardInitializer SpreadCardsInitializer;
+        private static PlayerCardInitializer PlayerCardsInitializer;
+
+        public GameBox(RoleCardInitializer roleCardInitializer,
+            DiseaseBagsInitializer diseaseBagsInitializer,
+            TownsInitializer TownsInitializer,
+            SpreadCardInitializer SpreadCardInitializer,
+            PlayerCardInitializer playerCardInitializer)
         {
-            if (SingleRoleCards == null)
-            {
-                SingleRoleCards = new List<RoleCard>() {
-                        new RoleCard("Chercheuse"),
-                        new RoleCard("Planificateur d'urgence"),
-                        new RoleCard("Répartiteur"),
-                        new RoleCard("Expert aux opérations"),
-                        new RoleCard("Médecin"),
-                        new RoleCard("Scientifique"),
-                        new RoleCard("Spécialiste en mise en quarantaine"),
-                };
-            }
-            return SingleRoleCards;
+            RoleCardInitializer = roleCardInitializer;
+            DiseaseBagsInitializer = diseaseBagsInitializer;
+            GameBox.TownsInitializer = TownsInitializer;
+            SpreadCardsInitializer = SpreadCardInitializer;
+            PlayerCardsInitializer = playerCardInitializer;
         }
 
-        public static DiseaseBags GetDiseaseBags()
-        {
-
-            var bags = new DiseaseBags();
-            for (int i = 0; i < 24; i++)
-            {
-                bags.Blacks.Add(new Disease(Color.Black));
-                bags.Reds.Add(new Disease(Color.Red));
-                bags.Yellows.Add(new Disease(Color.Yellow));
-                bags.Blues.Add(new Disease(Color.Blue));
-            }
-            return bags;
-        }
-
-        static List<SpreadCard> SingleSpreadCards = null;
-        public static List<SpreadCard> GetSpeadCards()
-        {
-            if (SingleSpreadCards == null)
-            {
-                SingleSpreadCards = new List<SpreadCard>();
-
-                foreach (Town town in GetBoard().Towns)
-                    SingleSpreadCards.Add(new SpreadCard(town));
-            }
-            return SingleSpreadCards;
-        }
-
-        static List<PlayerCard> SinglePlayerCards = null;
-        public static List<PlayerCard> GetPlayersCard()
-        {
-            if (SinglePlayerCards == null)
-            {
-                SinglePlayerCards = new List<PlayerCard>();
-
-                foreach (Town town in GetBoard().Towns)
-                    SinglePlayerCards.Add(new PlayerTownCard(town));
-
-                for (int i = 0; i < 6; i++)
-                    SinglePlayerCards.Add(new EpidemicPlayerCard());
-
-                // Add Event Card
-                SinglePlayerCards.Add(new AirLiftEventCard());
-                SinglePlayerCards.Add(new CalmNigthEventCard());
-                SinglePlayerCards.Add(new ResilientPopulationEventCard());
-                SinglePlayerCards.Add(new ForcastEventCard());
-                SinglePlayerCards.Add(new PublicSubventionEventCard());
-            }
-            return SinglePlayerCards;
-        }
 
         static Board SingleBoard = null;
-        public static Board GetBoard()
+
+        public Board GetBoard()
         {
             if (SingleBoard == null)
-                SingleBoard = new Board();
+                SingleBoard = new Board(TownsInitializer);
 
             return SingleBoard;
         }
 
+        public List<RoleCard> GetRoles() => RoleCardInitializer.InitCards();
 
+        public DiseaseBags GetDiseaseBags() => DiseaseBagsInitializer.InitBags();
 
+        public List<SpreadCard> GetSpeadCards() => SpreadCardsInitializer.InitCards(GetBoard());
+
+        public List<PlayerCard> GetPlayersCard() => PlayerCardsInitializer.InitCards(GetBoard());
 
     }
 }

@@ -5,13 +5,13 @@ namespace PandemicTDD.Materiel
     public class DiseaseBags
     {
 
-        public List<Disease> Blacks = new List<Disease>();
+        public List<DiseaseCube> Blacks = new List<DiseaseCube>();
 
-        public List<Disease> Reds = new List<Disease>();
+        public List<DiseaseCube> Reds = new List<DiseaseCube>();
 
-        public List<Disease> Yellows = new List<Disease>();
+        public List<DiseaseCube> Yellows = new List<DiseaseCube>();
 
-        public List<Disease> Blues= new List<Disease>();
+        public List<DiseaseCube> Blues = new List<DiseaseCube>();
 
     }
 }

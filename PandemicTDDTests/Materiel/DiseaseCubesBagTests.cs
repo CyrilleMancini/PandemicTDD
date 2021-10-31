@@ -1,8 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDDTests.Materiel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace PandemicTDD.Materiel.Tests
 {
@@ -36,7 +33,7 @@ namespace PandemicTDD.Materiel.Tests
             DiseaseBags bags = GameBox.GetDiseaseBags();
             Assert.AreEqual(24, bags.Yellows.Count, "24 Maladies Jaunes attendues");
         }
-        
+
         [TestMethod()]
         public void CheckBluesColorsCubeTest()
         {

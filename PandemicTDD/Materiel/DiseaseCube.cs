@@ -2,11 +2,11 @@
 
 namespace PandemicTDD.Materiel
 {
-    public class Disease
+    public class DiseaseCube
     {
         public Color Color { get; private set; }
 
-        public Disease(Color color)
+        public DiseaseCube(Color color)
         {
             Color = color;
         }

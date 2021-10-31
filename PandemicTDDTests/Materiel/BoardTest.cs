@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD.Materiel;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace PandemicTDDTests.Materiel

@@ -1,4 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PandemicTDD.Materiel;
+using PandemicTDD.Materiel.Initializer;
 using System.IO;
 
 namespace PandemicTDDTests.Materiel
@@ -19,6 +21,24 @@ namespace PandemicTDDTests.Materiel
             {
                 expectedTowns[i] = rawtowns[i].Split(";");
             }
+        }
+
+        protected DiseaseBagsInitializer diseaseBagsInitializer;
+        protected RoleCardInitializer roleCardInitializer;
+        protected SpreadCardInitializer spreadCardInitializer;
+        protected TownsInitializer townsInitializer;
+        protected PlayerCardInitializer playerCardInitializer;
+        protected GameBox GameBox;
+
+        [TestInitialize]
+        public void InitInitializer()
+        {
+            diseaseBagsInitializer = new DiseaseBagsInitializer();
+            roleCardInitializer = new RoleCardInitializer();
+            spreadCardInitializer = new SpreadCardInitializer();
+            townsInitializer = new TownsInitializer();
+            playerCardInitializer = new PlayerCardInitializer();
+            GameBox = new GameBox(roleCardInitializer, diseaseBagsInitializer, townsInitializer, spreadCardInitializer, playerCardInitializer);
         }
     }
 }

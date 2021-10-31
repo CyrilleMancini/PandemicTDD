@@ -6,7 +6,7 @@ using System.Linq;
 namespace PandemicTDDTests.Materiel
 {
     [TestClass()]
-    public class RolesCardsTests
+    public class RolesCardsTests : TestsBase
     {
         [TestMethod()]
         public void GetRolesCardsTest()
@@ -19,7 +19,7 @@ namespace PandemicTDDTests.Materiel
         public void RolesCardAre7Test()
         {
             List<RoleCard> AllCards = GameBox.GetRoles();
-            Assert.AreEqual(7,AllCards.Count,"Le jeux devrait contenir 7 cartes roles");
+            Assert.AreEqual(7, AllCards.Count, "Le jeux devrait contenir 7 cartes roles");
         }
 
         [TestMethod()]
