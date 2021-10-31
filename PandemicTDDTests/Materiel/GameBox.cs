@@ -7,7 +7,15 @@ namespace PandemicTDDTests.Materiel
     {
         internal static List<RoleCard> GetRoles()
         {
-            return new List<RoleCard>();
+            return new List<RoleCard>() {
+            new RoleCard(),
+            new RoleCard(),
+            new RoleCard(),
+            new RoleCard(),
+            new RoleCard(),
+            new RoleCard(),
+            new RoleCard(),
+            };
         }
     }
 }
