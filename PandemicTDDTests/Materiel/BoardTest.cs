@@ -44,7 +44,7 @@ namespace PandemicTDDTests.Materiel
         public void CheckExpectedTownsTest()
         {
             Board Board = GameBox.GetBoard();
-            foreach(string[] town in expectedTowns)
+            foreach (string[] town in expectedTowns)
             {
                 try
                 {
@@ -59,6 +59,32 @@ namespace PandemicTDDTests.Materiel
             }
         }
 
+        [TestMethod()]
+        public void GetTownByNameFailOnUnkown()
+        {
+            Assert.ThrowsException<UnkownTownException>(() =>
+            {
+                Board Board = GameBox.GetBoard();
+                Town Paris = Board.GetTown("Plop");
+            });
+        }
+
+        [TestMethod()]
+        public void GetTownByNameSuccessUnkown()
+        {
+            Board Board = GameBox.GetBoard();
+            Town Paris = Board.GetTown("Paris");
+            Assert.IsNotNull(Paris);
+        }
+
+        [TestMethod()]
+        public void GetTownByObjectUnkown()
+        {
+            Board Board = GameBox.GetBoard();
+            Town Paris = new Town("Bleu", "Paris", "France");
+            Board.GetTown(Paris);
+            Assert.IsNotNull(Paris);
+        }
 
     }
 }
