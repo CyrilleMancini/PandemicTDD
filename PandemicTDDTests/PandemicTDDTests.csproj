@@ -17,4 +17,12 @@
     <ProjectReference Include="..\PandemicTDD\PandemicTDD.csproj" />
   </ItemGroup>
 
+ 
+
+  <ItemGroup>
+    <None Update="Materiel\Expected.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

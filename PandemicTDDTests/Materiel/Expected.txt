@@ -1,0 +1,48 @@
+﻿Noir;Mumbai;Inde
+Noir;Delhi;Inde
+Noir;Chennai;Inde
+Noir;Calcutta;Inde
+Noir;Alger;Algérie
+Noir;Karachi;Pakistan
+Noir;Bagdad;Irak
+Noir;Téhéran;Iran
+Noir;Riyad;Arabie Saoudite
+Noir;Moscou;Russie
+Noir;Istanbul;Turquie
+Bleu;San Francisco;Etats-Unis
+Bleu;New York;Etats-Unis
+Bleu;Washington;Etats-Unis
+Bleu;Londres;Angleterre
+Bleu;Essen;Allemagne
+Bleu;Paris;France
+Bleu;Atlanta;Etats-Unis
+Bleu;Madrid;Espagne
+Bleu;Saint-Pétersbourg;Russie
+Bleu;Chicago;Etats-Unis
+Bleu;Montréal;Canada
+Bleu;Milan;Italie
+Rouge;Pékin;République Populaire de Chine
+Rouge;Sydney;Australie
+Rouge;Séoul;Corée du Sud
+Rouge;Shanghai;République Populaire de Chine
+Rouge;Osaka;Japon
+Rouge;Tapei;Tawain
+Rouge;Tokyo;Japon
+Rouge;Ho-Chi-Minh-Ville;Viet Nam
+Rouge;Bangkok;Thailande
+Rouge;Honk Kong;République Populaire de Chine
+Rouge;Jakarta;Indonésie
+Rouge;Manille;Philippines
+Jaune;Lagos;Nigeria
+Jaune;Kinshasa;République Démocratique du Congo
+Jaune;Le Caire;Egypte
+Jaune;Mexico;Mexique 
+Jaune;Lima;Pérou
+Jaune;Miami;Etats-Unis
+Jaune;Los Angeles;Etats-Unis
+Jaune;Santiago;Chili
+Jaune;Sao Paulo;Brésil
+Jaune;Johannesbourg;Afrique du Sud
+Jaune;Khartoum;Soudan
+Jaune;Bogota;Colombie
+Jaune;Buenos Aires;Pérou
