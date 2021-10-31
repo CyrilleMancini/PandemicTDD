@@ -29,6 +29,12 @@ namespace PandemicTDDTests.Materiel
             List<PlayerCard> AllCards = GameBox.GetPlayersCard();
             Assert.AreEqual(48, AllCards.Count(it => it is PlayerTownCard), "Les cartes joueurs doivent comporter 48 cartes Villes");
         }
+        [TestMethod()]
+        public void Expected6EpidemicCardsTest()
+        {
+            List<PlayerCard> AllCards = GameBox.GetPlayersCard();
+            Assert.AreEqual(6, AllCards.Count(it => it is EpidemicPlayerCard), "Les cartes joueurs doivent comporter 6 cartes Epidemie");
+        }
 
     }
 }

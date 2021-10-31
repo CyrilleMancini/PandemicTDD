@@ -25,7 +25,10 @@ namespace PandemicTDD.Materiel
             for (int i = 0; i < 48; i++)
                 cards.Add(new PlayerTownCard());
 
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 6; i++)
+                cards.Add(new EpidemicPlayerCard());
+
+            for (int i = 0; i < 5; i++)
                 cards.Add(new PlayerCard());
 
             return cards;
