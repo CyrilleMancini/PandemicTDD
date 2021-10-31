@@ -1,13 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.PlayerCards;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace PandemicTDDTests.Materiel
 {
     [TestClass()]
-    public class PlayersCardsTests
+    public class PlayersCardsTests : TestsBase
     {
         [TestMethod()]
         public void GetPlayersCardsTest()
@@ -30,6 +31,30 @@ namespace PandemicTDDTests.Materiel
             List<PlayerCard> AllCards = GameBox.GetPlayersCard();
             Assert.AreEqual(48, AllCards.Count(it => it is PlayerTownCard), "Les cartes joueurs doivent comporter 48 cartes Villes");
         }
+
+        [TestMethod()]
+        public void CheckPlayerTownCardsWithExpectedTownsTest()
+        {
+            List<PlayerTownCard> AllCards = new();
+            GameBox.GetPlayersCard().Where(c => c is PlayerTownCard)
+                                    .ToList()
+                                    .ForEach(it => AllCards.Add((PlayerTownCard)it));
+
+            foreach (string[] town in expectedTowns)
+            {
+                try
+                {
+                    AllCards.Single(it => it.Town.Name == town[1]);
+                }
+                catch (System.Exception)
+                {
+                    Console.WriteLine($"Manquant : {town[1]}");
+                    throw;
+                }
+
+            }
+        }
+
         [TestMethod()]
         public void Expected6EpidemicCardsTest()
         {

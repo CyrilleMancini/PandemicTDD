@@ -62,8 +62,6 @@ namespace PandemicTDD.Materiel
                 new Town("Jaune", "Khartoum", "Soudan"),
                 new Town("Jaune", "Bogota", "Colombie"),
                 new Town("Jaune", "Buenos Aires", "Pérou"),
-
-
             };
         }
 
