@@ -18,6 +18,16 @@ namespace PandemicTDD.Materiel
             };
         }
 
+        public static List<PlayerCard> GetPlayersCard()
+        {
+            var cards = new List<PlayerCard>();
+
+            for (int i = 0; i < 59; i++)
+                cards.Add(new PlayerCard());
+
+            return cards;
+        }
+
         public static Board GetBoard()
         {
             return new Board();

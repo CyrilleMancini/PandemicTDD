@@ -16,6 +16,11 @@
             Pays = pays;
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         public static bool operator ==(Town t1, Town t2)
         {
             if (t1 is null && t2 is null) return true;
