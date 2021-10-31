@@ -1,6 +1,7 @@
 ﻿using PandemicTDD.Materiel.PlayerCards;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace PandemicTDD.Materiel
 {
@@ -22,6 +23,20 @@ namespace PandemicTDD.Materiel
                 };
             }
             return SingleRoleCards;
+        }
+
+        public static DiseaseBags GetDiseaseBags()
+        {
+
+            var bags = new DiseaseBags();
+            for (int i = 0; i < 24; i++)
+            {
+                bags.Blacks.Add(new Disease(Color.Black));
+                bags.Reds.Add(new Disease(Color.Red));
+                bags.Yellows.Add(new Disease(Color.Yellow));
+                bags.Blues.Add(new Disease(Color.Blue));
+            }
+            return bags;
         }
 
         static List<SpreadCard> SingleSpreadCards = null;
