@@ -24,6 +24,18 @@ namespace PandemicTDD.Materiel
             return SingleRoleCards;
         }
 
+        static List<SpreadCard> SingleSpreadCards = null;
+        public static List<SpreadCard> GetSpeadCards()
+        {
+            if (SingleSpreadCards == null)
+            {
+                SingleSpreadCards = new List<SpreadCard>();
+
+                foreach (Town town in GetBoard().Towns)
+                    SingleSpreadCards.Add(new SpreadCard(town));
+            }
+            return SingleSpreadCards;
+        }
 
         static List<PlayerCard> SinglePlayerCards = null;
         public static List<PlayerCard> GetPlayersCard()
@@ -56,5 +68,9 @@ namespace PandemicTDD.Materiel
 
             return SingleBoard;
         }
+
+
+
+
     }
 }
