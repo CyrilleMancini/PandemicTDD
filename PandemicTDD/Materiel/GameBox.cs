@@ -26,7 +26,7 @@ namespace PandemicTDD.Materiel
         }
 
 
-        static Board SingleBoard = null;
+        Board SingleBoard = null;
 
         public Board GetBoard()
         {

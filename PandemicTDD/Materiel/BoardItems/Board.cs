@@ -1,4 +1,5 @@
-﻿using PandemicTDD.Materiel.Initializer;
+﻿using PandemicTDD.Materiel.BoardItems;
+using PandemicTDD.Materiel.Initializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,24 +14,27 @@ namespace PandemicTDD.Materiel
         {
             this.initializer = initializer;
             InitTowns();
+            InitTownSlots();
         }
 
-        CureSlots SinglelCureSlots;
 
-        public List<TownSlot> TownSlots { get; private set; }
+
+
         public List<TownSlot> GetTownSlots()
         {
-            if (TownSlots == null)
-            {
-                TownSlots = new List<TownSlot>();
-                foreach (Town town in Towns)
-                {
-                    TownSlots.Add(new TownSlot(town));
-                }
-            }
             return TownSlots;
         }
 
+        public void Link2Towns(TownsLink link)
+        {
+            TownSlot t1 = GetTownSlot(link.Town1);
+            TownSlot t2 = GetTownSlot(link.Town2);
+            t1.Links.Add(t2);
+            t2.Links.Add(t1);
+        }
+
+
+        CureSlots SinglelCureSlots;
         public CureSlots GetCureSlots()
         {
             if (SinglelCureSlots == null)
@@ -48,6 +52,32 @@ namespace PandemicTDD.Materiel
 
             return HatchingIndicator;
 
+        }
+
+        public TownSlot GetTownSlot(string townName)
+        {
+            try
+            {
+                TownSlot town = TownSlots.Single(it => it.Town.Name == townName);
+                return town;
+            }
+            catch (InvalidOperationException Ex)
+            {
+                throw new UnkownTownException($"{townName} is unknown");
+            }
+        }
+
+        public List<TownSlot> TownSlots { get; private set; }
+        private void InitTownSlots()
+        {
+            if (TownSlots == null)
+            {
+                TownSlots = new List<TownSlot>();
+                foreach (Town town in Towns)
+                {
+                    TownSlots.Add(new TownSlot(town));
+                }
+            }
         }
 
         private void InitTowns()
