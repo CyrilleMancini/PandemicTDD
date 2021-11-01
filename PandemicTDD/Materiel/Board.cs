@@ -20,6 +20,14 @@ namespace PandemicTDD.Materiel
             Towns = initializer.InitTowns();
         }
 
+        SpreadIndicator SingleSpreadIndicator { get; set; }
+        public SpreadIndicator GetSpreadIndicator()
+        {
+            if (SingleSpreadIndicator == null)
+                SingleSpreadIndicator = new SpreadIndicator(); ;
+            return SingleSpreadIndicator;   
+        }
+
         public Town GetTown(Town search)
         {
             try
