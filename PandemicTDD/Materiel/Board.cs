@@ -28,6 +28,8 @@ namespace PandemicTDD.Materiel
             return SingleSpreadIndicator;   
         }
 
+
+
         public Town GetTown(Town search)
         {
             try

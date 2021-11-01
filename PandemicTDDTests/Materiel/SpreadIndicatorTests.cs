@@ -64,7 +64,7 @@ namespace PandemicTDDTests.Materiel
 
             for (int i = 0; i < 6; i++)
                 si.Next();
-                        
+
             Assert.AreEqual(7, si.CurrentLevel);
         }
 
@@ -77,7 +77,7 @@ namespace PandemicTDDTests.Materiel
 
             for (int i = 0; i < 6; i++)
                 si.Next();
-            
+
             Assert.AreEqual(4, si.SpreadSpeed);
         }
 
@@ -95,5 +95,23 @@ namespace PandemicTDDTests.Materiel
             });
 
         }
+
+        [TestMethod()]
+        public void CheckLevelsTest()
+        {
+            int[] ExpectedSpeeds = new int[] { 2, 2, 2, 3, 3, 4, 4 };
+            Board Board = GameBox.GetBoard();
+            SpreadIndicator si = Board.GetSpreadIndicator();
+            si.Reset();
+
+            Assert.AreEqual(ExpectedSpeeds[0], si.SpreadSpeed);
+            for (int i = 0; i < 6; i++)
+            {
+                si.Next();
+                Assert.AreEqual(ExpectedSpeeds[i+1], si.SpreadSpeed, $"Expected {ExpectedSpeeds[i]} for Level {si.CurrentLevel}");
+            }
+
+        }
+
     }
 }
