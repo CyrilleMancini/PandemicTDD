@@ -14,6 +14,8 @@ namespace PandemicTDD.Materiel
         public void Next()
         {
             Level++;
+            if (Level == 8)
+                throw new YouLooseException("You Loose, The Maximum Hatching has been reached!!!");
         }
     }
 }

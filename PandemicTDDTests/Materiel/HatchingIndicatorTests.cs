@@ -34,5 +34,20 @@ namespace PandemicTDDTests.Materiel
             Assert.AreEqual(1, hi.Level);
         }
 
+        [TestMethod]
+        public void EndOfGameAtLevel8Test()
+        {
+            Board board = GameBox.GetBoard();
+            HatchingIndicator hi = board.GetHatchingIndicator();
+            hi.Reset();
+
+            Assert.ThrowsException<YouLooseException>(() =>
+            {
+                for (int i = 0; i < 8; i++)
+                    hi.Next();
+            });
+
+        }
+
     }
 }
