@@ -108,7 +108,7 @@ namespace PandemicTDDTests.Materiel
             for (int i = 0; i < 6; i++)
             {
                 si.Next();
-                Assert.AreEqual(ExpectedSpeeds[i+1], si.SpreadSpeed, $"Expected {ExpectedSpeeds[i]} for Level {si.CurrentLevel}");
+                Assert.AreEqual(ExpectedSpeeds[i + 1], si.SpreadSpeed, $"Expected {ExpectedSpeeds[i]} for Level {si.CurrentLevel}");
             }
 
         }

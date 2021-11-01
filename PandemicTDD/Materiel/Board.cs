@@ -15,6 +15,16 @@ namespace PandemicTDD.Materiel
             InitTowns();
         }
 
+        HatchingIndicator HatchingIndicator;
+        public HatchingIndicator GetHatchingIndicator()
+        {
+            if (HatchingIndicator == null)
+                HatchingIndicator = new HatchingIndicator();
+
+            return HatchingIndicator;
+
+        }
+
         private void InitTowns()
         {
             Towns = initializer.InitTowns();
@@ -25,7 +35,7 @@ namespace PandemicTDD.Materiel
         {
             if (SingleSpreadIndicator == null)
                 SingleSpreadIndicator = new SpreadIndicator(); ;
-            return SingleSpreadIndicator;   
+            return SingleSpreadIndicator;
         }
 
 
