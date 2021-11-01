@@ -15,6 +15,15 @@ namespace PandemicTDD.Materiel
             InitTowns();
         }
 
+        CureSlots SinglelCureSlots;
+        public CureSlots GetCureSlots()
+        {
+            if (SinglelCureSlots == null)
+                SinglelCureSlots = new CureSlots();
+
+            return SinglelCureSlots;
+        }
+
         HatchingIndicator HatchingIndicator;
         public HatchingIndicator GetHatchingIndicator()
         {
