@@ -19,10 +19,10 @@ namespace PandemicTDDTests.Materiel
             Board Board = GameBox.GetBoard();
             var cure = Board.GetCureSlots();
             cure.Reset();
-            Assert.AreEqual(cure.BlackSlot, DiseaseStatus.None);
-            Assert.AreEqual(cure.BlueSlot, DiseaseStatus.None);
-            Assert.AreEqual(cure.RedSlot, DiseaseStatus.None);
-            Assert.AreEqual(cure.YellowSlot, DiseaseStatus.None);
+            Assert.AreEqual(cure.BlackSlot.Status, DiseaseStatus.None);
+            Assert.AreEqual(cure.BlueSlot.Status, DiseaseStatus.None);
+            Assert.AreEqual(cure.RedSlot.Status, DiseaseStatus.None);
+            Assert.AreEqual(cure.YellowSlot.Status, DiseaseStatus.None);
         }
 
         [TestMethod()]
