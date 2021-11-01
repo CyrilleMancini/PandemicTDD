@@ -26,11 +26,11 @@ Rouge;Sydney;Australie
 Rouge;Séoul;Corée du Sud
 Rouge;Shanghai;République Populaire de Chine
 Rouge;Osaka;Japon
-Rouge;Tapei;Tawain
+Rouge;Taipei;Tawain
 Rouge;Tokyo;Japon
 Rouge;Ho-Chi-Minh-Ville;Viet Nam
 Rouge;Bangkok;Thailande
-Rouge;Honk Kong;République Populaire de Chine
+Rouge;Hong Kong;République Populaire de Chine
 Rouge;Jakarta;Indonésie
 Rouge;Manille;Philippines
 Jaune;Lagos;Nigeria

@@ -7,13 +7,13 @@
 
         public string Name { get; }
 
-        public string Pays { get; }
+        public string Country { get; }
 
         public Town(string color, string name, string pays)
         {
             Color = color;
             Name = name;
-            Pays = pays;
+            Country = pays;
         }
 
         public override int GetHashCode()
@@ -36,9 +36,14 @@
         public override bool Equals(object obj)
         {
             if (obj is Town t)
-                return t.Name == Name && t.Color == Color && t.Pays == Pays;
+                return t.Name == Name && t.Color == Color && t.Country == Country;
 
             return false;
+        }
+
+        public override string ToString()
+        {
+            return $"{Color} {Name} {Country} liens";
         }
     }
 }

@@ -13,5 +13,9 @@ namespace PandemicTDD.Materiel
             Town = town;
         }
 
+        public override string ToString()
+        {
+            return $"{Town.Name} {Links.Count} liens";
+        }
     }
 }

@@ -31,10 +31,15 @@ namespace PandemicTDDTests.Materiel
         {
             
             TownsLink link = new TownsLink("Paris", "Londres");
+
+            TownSlot paris = townSlotsInitializer.GetTownSlot("Paris");
+            TownSlot londres = townSlotsInitializer.GetTownSlot("Londres");
+
+            paris.Links.Clear();
+            londres.Links.Clear();
+
             townSlotsInitializer.Link2Towns(link);
             
-            TownSlot paris = townSlotsInitializer.GetTownSlot("Paris");
-            TownSlot londres= townSlotsInitializer.GetTownSlot("Londres");
 
             TownSlot dest = paris.Links.Single(l => l.Town == londres.Town);
 
@@ -46,13 +51,14 @@ namespace PandemicTDDTests.Materiel
         public void TestTown2LinkedToTown1Test()
         {
             TownsLink link = new TownsLink("Paris", "Londres");
-            townSlotsInitializer.Link2Towns(link);
-
             TownSlot paris = townSlotsInitializer.GetTownSlot("Paris");
             TownSlot londres = townSlotsInitializer.GetTownSlot("Londres");
+            paris.Links.Clear();
+            londres.Links.Clear();
 
+            townSlotsInitializer.Link2Towns(link);
+                    
             TownSlot dest = londres.Links.Single(l => l.Town == paris.Town);
-
             Assert.IsNotNull(dest);
         }
     }
