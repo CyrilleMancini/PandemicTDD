@@ -24,9 +24,7 @@ namespace PandemicTDDTests.Materiel
             Assert.AreEqual(cure.RedSlot, DiseaseStatus.None);
             Assert.AreEqual(cure.YellowSlot, DiseaseStatus.None);
 
-        }
-
-
+        }     
 
     }
 }
