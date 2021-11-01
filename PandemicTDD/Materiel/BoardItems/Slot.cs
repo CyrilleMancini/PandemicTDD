@@ -25,5 +25,22 @@ namespace PandemicTDD.Materiel
         {
             Status = DiseaseStatus.None;
         }
+
+        public void Next()
+        {
+            switch (Status)
+            {
+                case DiseaseStatus.None:
+                    Status = DiseaseStatus.Treated;
+                    break;
+                case DiseaseStatus.Treated:
+                    Status = DiseaseStatus.Eradicated;
+                    break;
+                case DiseaseStatus.Eradicated:
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

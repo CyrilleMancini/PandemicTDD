@@ -6,7 +6,6 @@ namespace PandemicTDD.Materiel
    
     public class CureSlots
     {
-
         public Slot BlackSlot { get; private set; } = new Slot(DiseaseStatus.None);
 
         public Slot BlueSlot { get; private set; } = new Slot(DiseaseStatus.None);
@@ -15,7 +14,6 @@ namespace PandemicTDD.Materiel
 
         public Slot YellowSlot { get; private set; } = new Slot(DiseaseStatus.None);
 
-
         public void Reset()
         {
             BlackSlot.Reset();
@@ -23,8 +21,6 @@ namespace PandemicTDD.Materiel
             RedSlot.Reset();
             YellowSlot.Reset();
         }
-
-
 
     }
 }

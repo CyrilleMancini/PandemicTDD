@@ -16,6 +16,7 @@ namespace PandemicTDD.Materiel
         }
 
         CureSlots SinglelCureSlots;
+        
         public CureSlots GetCureSlots()
         {
             if (SinglelCureSlots == null)
@@ -25,6 +26,7 @@ namespace PandemicTDD.Materiel
         }
 
         HatchingIndicator HatchingIndicator;
+        
         public HatchingIndicator GetHatchingIndicator()
         {
             if (HatchingIndicator == null)
@@ -40,14 +42,13 @@ namespace PandemicTDD.Materiel
         }
 
         SpreadIndicator SingleSpreadIndicator { get; set; }
+        
         public SpreadIndicator GetSpreadIndicator()
         {
             if (SingleSpreadIndicator == null)
                 SingleSpreadIndicator = new SpreadIndicator(); ;
             return SingleSpreadIndicator;
         }
-
-
 
         public Town GetTown(Town search)
         {
@@ -76,6 +77,7 @@ namespace PandemicTDD.Materiel
         }
 
         public List<Town> Towns { get; private set; }
+
 
 
     }

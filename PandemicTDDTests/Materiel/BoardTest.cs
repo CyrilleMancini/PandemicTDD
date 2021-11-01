@@ -5,7 +5,6 @@ using System.Linq;
 
 namespace PandemicTDDTests.Materiel
 {
-
     [TestClass()]
     public class BoardTests : TestsBase
     {
