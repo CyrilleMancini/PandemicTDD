@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD.Materiel;
+using System;
 
 namespace PandemicTDDTests.Materiel
 {
@@ -19,6 +20,7 @@ namespace PandemicTDDTests.Materiel
         {
             Board Board = GameBox.GetBoard();
             SpreadIndicator si = Board.GetSpreadIndicator();
+            si.Reset();
             Assert.AreEqual(1, si.CurrentLevel);
         }
 
@@ -27,6 +29,7 @@ namespace PandemicTDDTests.Materiel
         {
             Board Board = GameBox.GetBoard();
             SpreadIndicator si = Board.GetSpreadIndicator();
+            si.Reset();
             Assert.AreEqual(2, si.SpreadSpeed);
         }
 
@@ -76,6 +79,21 @@ namespace PandemicTDDTests.Materiel
                 si.Next();
             
             Assert.AreEqual(4, si.SpreadSpeed);
+        }
+
+        [TestMethod()]
+        public void CantGoHigherThanSpreadLevel7Test()
+        {
+            Board Board = GameBox.GetBoard();
+            SpreadIndicator si = Board.GetSpreadIndicator();
+            si.Reset();
+
+            Assert.ThrowsException<ApplicationException>(() =>
+            {
+                for (int i = 0; i < 7; i++)
+                    si.Next();
+            });
+
         }
     }
 }

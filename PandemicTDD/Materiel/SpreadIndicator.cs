@@ -23,6 +23,7 @@ namespace PandemicTDD.Materiel
 
         public void Next()
         {
+            if (CurrentLevel == 7) throw new ApplicationException("Can't go higher than Level 7");
             CurrentLevel++;
         }
 
