@@ -27,6 +27,7 @@ namespace PandemicTDDTests.Materiel
         protected RoleCardInitializer roleCardInitializer;
         protected SpreadCardInitializer spreadCardInitializer;
         protected TownsInitializer townsInitializer;
+        protected TownSlotsInitializer townSlotsInitializer;
         protected PlayerCardInitializer playerCardInitializer;
         protected GameBox GameBox;
 
@@ -38,7 +39,8 @@ namespace PandemicTDDTests.Materiel
             spreadCardInitializer = new SpreadCardInitializer();
             townsInitializer = new TownsInitializer();
             playerCardInitializer = new PlayerCardInitializer();
-            GameBox = new GameBox(roleCardInitializer, diseaseBagsInitializer, townsInitializer, spreadCardInitializer, playerCardInitializer);
+            townSlotsInitializer = new TownSlotsInitializer(townsInitializer);
+            GameBox = new GameBox(roleCardInitializer, diseaseBagsInitializer, townsInitializer, spreadCardInitializer, playerCardInitializer, townSlotsInitializer);
         }
     }
 }

@@ -2,11 +2,12 @@
 
 namespace PandemicTDD.Materiel.Initializer
 {
+
     public class TownsInitializer
     {
         static List<Town> Towns = null;
 
-        internal List<Town> InitTowns()
+        internal List<Town> GetTowns()
         {
             if (Towns == null)
                 Towns = new List<Town>() {

@@ -6,23 +6,31 @@ namespace PandemicTDD.Materiel
 {
     public class GameBox
     {
-        private static RoleCardInitializer RoleCardInitializer;
-        private static DiseaseBagsInitializer DiseaseBagsInitializer;
-        private static TownsInitializer TownsInitializer;
-        private static SpreadCardInitializer SpreadCardsInitializer;
-        private static PlayerCardInitializer PlayerCardsInitializer;
+        private readonly RoleCardInitializer RoleCardInitializer;
+
+        private readonly DiseaseBagsInitializer DiseaseBagsInitializer;
+
+        private readonly TownsInitializer TownsInitializer;
+
+        private readonly SpreadCardInitializer SpreadCardsInitializer;
+
+        private readonly PlayerCardInitializer PlayerCardsInitializer;
+
+        private readonly TownSlotsInitializer TownSlotsInitializer;
 
         public GameBox(RoleCardInitializer roleCardInitializer,
             DiseaseBagsInitializer diseaseBagsInitializer,
             TownsInitializer TownsInitializer,
             SpreadCardInitializer SpreadCardInitializer,
-            PlayerCardInitializer playerCardInitializer)
+            PlayerCardInitializer playerCardInitializer,
+            TownSlotsInitializer townSlotsInitializer)
         {
             RoleCardInitializer = roleCardInitializer;
             DiseaseBagsInitializer = diseaseBagsInitializer;
-            GameBox.TownsInitializer = TownsInitializer;
+            this.TownsInitializer = TownsInitializer;
             SpreadCardsInitializer = SpreadCardInitializer;
             PlayerCardsInitializer = playerCardInitializer;
+            TownSlotsInitializer = townSlotsInitializer;
         }
 
 
@@ -31,7 +39,7 @@ namespace PandemicTDD.Materiel
         public Board GetBoard()
         {
             if (SingleBoard == null)
-                SingleBoard = new Board(TownsInitializer);
+                SingleBoard = new Board(TownsInitializer, TownSlotsInitializer);
 
             return SingleBoard;
         }

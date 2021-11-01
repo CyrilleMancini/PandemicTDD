@@ -8,33 +8,29 @@ namespace PandemicTDD.Materiel
 {
     public class Board
     {
-        private readonly TownsInitializer initializer;
+        public List<Town> Towns { get; private set; }
 
-        public Board(TownsInitializer initializer)
+        private readonly TownsInitializer TownInitializer;
+
+        private CureSlots SinglelCureSlots;
+
+        private HatchingIndicator HatchingIndicator;
+
+        private SpreadIndicator SingleSpreadIndicator;
+
+        private readonly TownSlotsInitializer TownSlotsInitializer;
+
+        public Board(TownsInitializer initializer, TownSlotsInitializer townSlotsInitializer)
         {
-            this.initializer = initializer;
-            InitTowns();
-            InitTownSlots();
+            this.TownInitializer = initializer;
+            TownSlotsInitializer = townSlotsInitializer;
+            Towns = TownInitializer.GetTowns();
         }
 
+        public List<TownSlot> GetTownSlots() => TownSlotsInitializer.TownSlots;
 
+        public void Link2Towns(TownsLink link) => TownSlotsInitializer.Link2Towns(link);
 
-
-        public List<TownSlot> GetTownSlots()
-        {
-            return TownSlots;
-        }
-
-        public void Link2Towns(TownsLink link)
-        {
-            TownSlot t1 = GetTownSlot(link.Town1);
-            TownSlot t2 = GetTownSlot(link.Town2);
-            t1.Links.Add(t2);
-            t2.Links.Add(t1);
-        }
-
-
-        CureSlots SinglelCureSlots;
         public CureSlots GetCureSlots()
         {
             if (SinglelCureSlots == null)
@@ -42,8 +38,6 @@ namespace PandemicTDD.Materiel
 
             return SinglelCureSlots;
         }
-
-        HatchingIndicator HatchingIndicator;
 
         public HatchingIndicator GetHatchingIndicator()
         {
@@ -54,38 +48,7 @@ namespace PandemicTDD.Materiel
 
         }
 
-        public TownSlot GetTownSlot(string townName)
-        {
-            try
-            {
-                TownSlot town = TownSlots.Single(it => it.Town.Name == townName);
-                return town;
-            }
-            catch (InvalidOperationException Ex)
-            {
-                throw new UnkownTownException($"{townName} is unknown");
-            }
-        }
-
-        public List<TownSlot> TownSlots { get; private set; }
-        private void InitTownSlots()
-        {
-            if (TownSlots == null)
-            {
-                TownSlots = new List<TownSlot>();
-                foreach (Town town in Towns)
-                {
-                    TownSlots.Add(new TownSlot(town));
-                }
-            }
-        }
-
-        private void InitTowns()
-        {
-            Towns = initializer.InitTowns();
-        }
-
-        SpreadIndicator SingleSpreadIndicator { get; set; }
+        public TownSlot GetTownSlot(string townName) => TownSlotsInitializer.GetTownSlot(townName);
 
         public SpreadIndicator GetSpreadIndicator()
         {
@@ -119,10 +82,6 @@ namespace PandemicTDD.Materiel
                 throw new UnkownTownException($"{townName} is unknown");
             }
         }
-
-        public List<Town> Towns { get; private set; }
-
-
 
     }
 }

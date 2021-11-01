@@ -22,21 +22,19 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void _48TownOnBoardTest()
         {
-            Board board = GameBox.GetBoard();
-            List<TownSlot> slots = board.GetTownSlots();
+            List<TownSlot> slots = townSlotsInitializer.TownSlots;
             Assert.AreEqual(48, slots.Count, "48 villes attendues sur la plateau.");
         }
 
         [TestMethod]
         public void TestTown1LinkedToTown2Test()
         {
-            Board board = GameBox.GetBoard();
-
+            
             TownsLink link = new TownsLink("Paris", "Londres");
-            board.Link2Towns(link);
-
-            TownSlot paris = board.GetTownSlot("Paris");
-            TownSlot londres= board.GetTownSlot("Londres");
+            townSlotsInitializer.Link2Towns(link);
+            
+            TownSlot paris = townSlotsInitializer.GetTownSlot("Paris");
+            TownSlot londres= townSlotsInitializer.GetTownSlot("Londres");
 
             TownSlot dest = paris.Links.Single(l => l.Town == londres.Town);
 
@@ -47,19 +45,15 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void TestTown2LinkedToTown1Test()
         {
-            Board board = GameBox.GetBoard();
             TownsLink link = new TownsLink("Paris", "Londres");
-            board.Link2Towns(link);
+            townSlotsInitializer.Link2Towns(link);
 
-            TownSlot paris = board.GetTownSlot("Paris");
-            TownSlot londres = board.GetTownSlot("Londres");
+            TownSlot paris = townSlotsInitializer.GetTownSlot("Paris");
+            TownSlot londres = townSlotsInitializer.GetTownSlot("Londres");
 
             TownSlot dest = londres.Links.Single(l => l.Town == paris.Town);
 
             Assert.IsNotNull(dest);
-
         }
-
-
     }
 }
