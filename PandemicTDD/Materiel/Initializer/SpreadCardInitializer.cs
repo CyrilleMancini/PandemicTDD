@@ -11,6 +11,7 @@ namespace PandemicTDD.Materiel.Initializer
         }
 
         static List<SpreadCard> SingleSpreadCards = null;
+
         internal List<SpreadCard> InitCards(Board board)
         {
             {
@@ -24,5 +25,8 @@ namespace PandemicTDD.Materiel.Initializer
                 return SingleSpreadCards;
             }
         }
+
+
+
     }
 }

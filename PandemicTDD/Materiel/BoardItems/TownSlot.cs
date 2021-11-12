@@ -7,6 +7,7 @@ namespace PandemicTDD.Materiel
         public Town Town { get; private set; }
 
         public List<TownSlot> Links { get; set; } = new List<TownSlot>();
+        public ControlDiseaseCenter ControlDiseaseCenter { get; internal set; } = null;
 
         public TownSlot(Town town)
         {
@@ -17,5 +18,9 @@ namespace PandemicTDD.Materiel
         {
             return $"{Town.Name} {Links.Count} liens";
         }
+    }
+
+    public class ControlDiseaseCenter
+    {
     }
 }

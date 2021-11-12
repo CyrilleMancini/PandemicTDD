@@ -39,7 +39,10 @@ namespace PandemicTDD.Materiel
         public Board GetBoard()
         {
             if (SingleBoard == null)
+            {
                 SingleBoard = new Board(TownsInitializer, TownSlotsInitializer);
+                SingleBoard.GetTownSlot(TownsInitializer.Atlanta).ControlDiseaseCenter = new();
+            }
 
             return SingleBoard;
         }
