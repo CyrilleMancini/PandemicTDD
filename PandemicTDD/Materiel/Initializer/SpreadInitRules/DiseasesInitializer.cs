@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializer.SpreadInitRules
 {
-    internal class DrawNSpreadCardsAndAddNDiseasesOnIt
+    internal class DiseasesInitializer
     {
-        public DrawNSpreadCardsAndAddNDiseasesOnIt()
+        public DiseasesInitializer()
         {
         }
 

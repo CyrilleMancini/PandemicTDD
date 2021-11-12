@@ -6,14 +6,11 @@ namespace PandemicTDD.Materiel.Initializer
 {
     public class SpreadCardInitializer
     {
-
         ListShuffler listShuffler;
-        private DrawNSpreadCardsAndAddNDiseasesOnIt Draw3SpreadCard;
 
         public SpreadCardInitializer()
         {
             listShuffler = new ListShuffler();
-            Draw3SpreadCard = new DrawNSpreadCardsAndAddNDiseasesOnIt();
         }
 
         static List<SpreadCard> SingleSpreadCards = null;
@@ -29,7 +26,7 @@ namespace PandemicTDD.Materiel.Initializer
                         SingleSpreadCards.Add(new SpreadCard(town));
                 }
 
-                SingleSpreadCards = listShuffler.Shuffle(SingleSpreadCards);                
+                SingleSpreadCards = listShuffler.Shuffle(SingleSpreadCards);
 
                 return SingleSpreadCards;
             }
