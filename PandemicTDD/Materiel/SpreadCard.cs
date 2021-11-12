@@ -9,5 +9,9 @@
             Town = town;
         }
 
+        public override string ToString()
+        {
+            return Town.ToString();
+        }
     }
 }

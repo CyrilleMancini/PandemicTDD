@@ -18,6 +18,7 @@ namespace PandemicTDD.Materiel
         private readonly PlayerCardInitializer PlayerCardsInitializer;
 
         private readonly TownSlotsInitializer TownSlotsInitializer;
+        private readonly TownLinksInitializer TownLinksInitializer;
         private readonly GameInitializer GameInitializer;
 
         public GameBox(RoleCardInitializer roleCardInitializer,
@@ -26,6 +27,7 @@ namespace PandemicTDD.Materiel
             SpreadCardInitializer SpreadCardInitializer,
             PlayerCardInitializer playerCardInitializer,
             TownSlotsInitializer townSlotsInitializer,
+            TownLinksInitializer TownLinksInitializer,
             GameInitializer Initializer)
         {
             RoleCardInitializer = roleCardInitializer;
@@ -34,6 +36,7 @@ namespace PandemicTDD.Materiel
             SpreadCardsInitializer = SpreadCardInitializer;
             PlayerCardsInitializer = playerCardInitializer;
             TownSlotsInitializer = townSlotsInitializer;
+            this.TownLinksInitializer = TownLinksInitializer;
             this.GameInitializer = Initializer;
         }
 
@@ -44,8 +47,9 @@ namespace PandemicTDD.Materiel
         {
             if (SingleBoard == null)
             {
-                SingleBoard = new Board(TownsInitializer, TownSlotsInitializer);
+                SingleBoard = new Board(TownsInitializer, TownSlotsInitializer,TownLinksInitializer);
                 SingleBoard.GetTownSlot(TownsInitializer.Atlanta).ControlDiseaseCenter = new();
+                
             }
 
             return SingleBoard;

@@ -21,6 +21,11 @@ namespace PandemicTDD.Materiel
             Country = pays;
         }
 
+        internal void ResetDiseases()
+        {
+            DiseaseCubes.Clear();
+        }
+
         public override int GetHashCode()
         {
             return base.GetHashCode();
@@ -60,7 +65,7 @@ namespace PandemicTDD.Materiel
 
         public override string ToString()
         {
-            return $"{Color} {Name} {Country} liens";
+            return $"{Color} {Name} {Country} {DiseaseCubes.Count} ";
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace PandemicTDD.Materiel.Initializer
+﻿using PandemicTDD.Materiel.BoardItems;
+
+namespace PandemicTDD.Materiel.Initializer
 {
     public class TownLinksInitializer
     {
@@ -97,5 +99,14 @@
             new string[]{TownsInitializer.Bogota, TownsInitializer.Buenos_Aires},
             new string[]{TownsInitializer.Lima, TownsInitializer.Santiago},
         };
+
+        public void InitTownsLinks(Board board)
+        {
+            foreach (string[] link in links)
+            {
+                TownsLink tlink = new TownsLink(link[0], link[1]);
+                board.Link2Towns(tlink);
+            }
+        }
     }
 }

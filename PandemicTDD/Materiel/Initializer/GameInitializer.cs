@@ -10,6 +10,8 @@ namespace PandemicTDD.Materiel.Initializer
             FillSpreadCardsStack fillSpreadCardsStack = new FillSpreadCardsStack();
             fillSpreadCardsStack.ExecuteRule(gameBox);
 
+            gameBox.GetBoard().GetTownSlots().ForEach(t => t.Town.ResetDiseases());
+
             DiseasesInitializer diseasesInit = new DiseasesInitializer();
             diseasesInit.ExecuteRule(3, gameBox);
             diseasesInit.ExecuteRule(2, gameBox);

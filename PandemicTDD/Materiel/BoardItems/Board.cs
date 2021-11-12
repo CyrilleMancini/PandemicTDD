@@ -23,12 +23,17 @@ namespace PandemicTDD.Materiel
         private SpreadIndicator SingleSpreadIndicator;
 
         private readonly TownSlotsInitializer TownSlotsInitializer;
+        private readonly TownLinksInitializer TownLinksInitializer;
 
-        public Board(TownsInitializer initializer, TownSlotsInitializer townSlotsInitializer)
+        public Board(TownsInitializer townInitializer,
+            TownSlotsInitializer townSlotsInitializer,
+            TownLinksInitializer townLinksInitializer)
         {
-            this.TownInitializer = initializer;
+            TownInitializer = townInitializer;
             TownSlotsInitializer = townSlotsInitializer;
+            TownLinksInitializer = townLinksInitializer;
             Towns = TownInitializer.GetTowns();
+            TownLinksInitializer.InitTownsLinks(this);
         }
 
         public List<TownSlot> GetTownSlots() => TownSlotsInitializer.TownSlots;
