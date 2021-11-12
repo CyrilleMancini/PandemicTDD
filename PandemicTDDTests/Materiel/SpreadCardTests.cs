@@ -43,5 +43,24 @@ namespace PandemicTDD.Materiel.Tests
 
             }
         }
+
+
+        [TestMethod]
+        public void ListShufflerCard()
+        {
+            List<SpreadCard> AllCards = GameBox.GetSpeadCards();
+
+            bool NotShuffled = true;
+
+            for (int i = 0; i < expectedTowns.Length; i++)
+            {
+                string Expected = expectedTowns[i][1];
+                NotShuffled = NotShuffled && (Expected == AllCards[i].Town.Name);
+            }
+
+            Assert.IsFalse(NotShuffled);
+        }
+
+
     }
 }

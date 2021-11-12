@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using PandemicTDD.Tools;
+using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializer
 {
     public class SpreadCardInitializer
     {
 
+        ListShuffler listShuffler;
         public SpreadCardInitializer()
         {
-
+            listShuffler = new ListShuffler();
         }
 
         static List<SpreadCard> SingleSpreadCards = null;
@@ -22,6 +24,9 @@ namespace PandemicTDD.Materiel.Initializer
                     foreach (Town town in board.Towns)
                         SingleSpreadCards.Add(new SpreadCard(town));
                 }
+
+                SingleSpreadCards = listShuffler.Shuffle(SingleSpreadCards);
+
                 return SingleSpreadCards;
             }
         }
