@@ -10,6 +10,10 @@ namespace PandemicTDD.Materiel
     {
         public List<Town> Towns { get; private set; }
 
+        public Stack<SpreadCard> SpreadStack { get; internal set; } = new Stack<SpreadCard>();
+
+        public Stack<SpreadCard> SpreadDiscardStack { get; internal set; } = new Stack<SpreadCard>();
+
         private readonly TownsInitializer TownInitializer;
 
         private CureSlots SinglelCureSlots;

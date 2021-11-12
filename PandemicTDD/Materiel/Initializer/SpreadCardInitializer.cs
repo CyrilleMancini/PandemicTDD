@@ -1,4 +1,5 @@
-﻿using PandemicTDD.Tools;
+﻿using PandemicTDD.Materiel.Initializer.SpreadInitRules;
+using PandemicTDD.Tools;
 using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializer
@@ -7,9 +8,12 @@ namespace PandemicTDD.Materiel.Initializer
     {
 
         ListShuffler listShuffler;
+        private Draw3SpreadCardAndAdd3DiseasesOnIt Draw3SpreadCard;
+
         public SpreadCardInitializer()
         {
             listShuffler = new ListShuffler();
+            Draw3SpreadCard = new Draw3SpreadCardAndAdd3DiseasesOnIt();
         }
 
         static List<SpreadCard> SingleSpreadCards = null;
@@ -25,13 +29,10 @@ namespace PandemicTDD.Materiel.Initializer
                         SingleSpreadCards.Add(new SpreadCard(town));
                 }
 
-                SingleSpreadCards = listShuffler.Shuffle(SingleSpreadCards);
+                SingleSpreadCards = listShuffler.Shuffle(SingleSpreadCards);                
 
                 return SingleSpreadCards;
             }
         }
-
-
-
     }
 }

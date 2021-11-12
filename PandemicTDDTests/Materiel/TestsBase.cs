@@ -40,7 +40,14 @@ namespace PandemicTDDTests.Materiel
             townsInitializer = new TownsInitializer();
             playerCardInitializer = new PlayerCardInitializer();
             townSlotsInitializer = new TownSlotsInitializer(townsInitializer);
-            GameBox = new GameBox(roleCardInitializer, diseaseBagsInitializer, townsInitializer, spreadCardInitializer, playerCardInitializer, townSlotsInitializer);
+            GameInitializer gameInitializer = new GameInitializer();
+            GameBox = new GameBox(roleCardInitializer,
+                diseaseBagsInitializer,
+                townsInitializer,
+                spreadCardInitializer,
+                playerCardInitializer,
+                townSlotsInitializer,
+                gameInitializer);
         }
     }
 }

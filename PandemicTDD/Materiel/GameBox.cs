@@ -1,5 +1,6 @@
 ﻿using PandemicTDD.Materiel.Initializer;
 using PandemicTDD.Materiel.PlayerCards;
+using System;
 using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel
@@ -17,13 +18,15 @@ namespace PandemicTDD.Materiel
         private readonly PlayerCardInitializer PlayerCardsInitializer;
 
         private readonly TownSlotsInitializer TownSlotsInitializer;
+        private readonly GameInitializer GameInitializer;
 
         public GameBox(RoleCardInitializer roleCardInitializer,
             DiseaseBagsInitializer diseaseBagsInitializer,
             TownsInitializer TownsInitializer,
             SpreadCardInitializer SpreadCardInitializer,
             PlayerCardInitializer playerCardInitializer,
-            TownSlotsInitializer townSlotsInitializer)
+            TownSlotsInitializer townSlotsInitializer,
+            GameInitializer Initializer)
         {
             RoleCardInitializer = roleCardInitializer;
             DiseaseBagsInitializer = diseaseBagsInitializer;
@@ -31,6 +34,7 @@ namespace PandemicTDD.Materiel
             SpreadCardsInitializer = SpreadCardInitializer;
             PlayerCardsInitializer = playerCardInitializer;
             TownSlotsInitializer = townSlotsInitializer;
+            this.GameInitializer = Initializer;
         }
 
 
@@ -46,6 +50,20 @@ namespace PandemicTDD.Materiel
 
             return SingleBoard;
         }
+
+
+        bool Initialized = false;
+        public Board GetInitializedBoard()
+        {
+            GetBoard();
+            if (!Initialized)
+                GameInitializer.InitGame(this);
+
+            Initialized = true;
+            return SingleBoard;
+        }
+
+
 
         public List<RoleCard> GetRoles() => RoleCardInitializer.InitCards();
 

@@ -13,21 +13,21 @@ namespace PandemicTDD.Materiel.Tests
         [TestMethod()]
         public void SpreadCardsTest()
         {
-            List<SpreadCard> AllCards = GameBox.GetSpeadCards();
-            Assert.IsNotNull(AllCards.Count, "Les cartes de propagation doivent etre au nombre de 48.");
+            IEnumerable<SpreadCard> AllCards = GameBox.GetSpeadCards();
+            Assert.IsNotNull(AllCards.Count(), "Les cartes de propagation doivent etre au nombre de 48.");
         }
 
         [TestMethod()]
         public void Expected48SpreadCardsTest()
         {
-            List<SpreadCard> AllCards = GameBox.GetSpeadCards();
-            Assert.AreEqual(48, AllCards.Count, "Les cartes de propagation doivent etre au nombre de 48.");
+            IEnumerable<SpreadCard> AllCards = GameBox.GetSpeadCards();
+            Assert.AreEqual(48, AllCards.Count(), "Les cartes de propagation doivent etre au nombre de 48.");
         }
 
         [TestMethod()]
         public void Expected48TownInSpreadCardsTest()
         {
-            List<SpreadCard> AllCards = GameBox.GetSpeadCards();
+            IEnumerable<SpreadCard> AllCards = GameBox.GetSpeadCards();
 
             foreach (string[] town in expectedTowns)
             {
@@ -42,20 +42,21 @@ namespace PandemicTDD.Materiel.Tests
                 }
 
             }
-        }
+        }    
 
 
         [TestMethod]
         public void ListShufflerCard()
         {
             List<SpreadCard> AllCards = GameBox.GetSpeadCards();
+            
 
             bool NotShuffled = true;
 
             for (int i = 0; i < expectedTowns.Length; i++)
             {
                 string Expected = expectedTowns[i][1];
-                NotShuffled = NotShuffled && (Expected == AllCards[i].Town.Name);
+                NotShuffled = NotShuffled && (Expected == AllCards.ElementAt(i).Town.Name);
             }
 
             Assert.IsFalse(NotShuffled);
