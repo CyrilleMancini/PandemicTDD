@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializer.SpreadInitRules
 {
-    internal class Draw3SpreadCardAndAdd3DiseasesOnIt
+    internal class DrawNSpreadCardsAndAddNDiseasesOnIt
     {
-        public Draw3SpreadCardAndAdd3DiseasesOnIt()
+        public DrawNSpreadCardsAndAddNDiseasesOnIt()
         {
         }
 
-        internal void ExecuteRule(GameBox gamebox)
+        internal void ExecuteRule(int nbDiseases, GameBox gamebox)
         {
             for (int i = 0; i < 3; i++)
             {
                 SpreadCard card = gamebox.GetBoard().SpreadStack.Pop();
-                List<DiseaseCube> cubes = gamebox.GetDiseaseBags().GetCubes(card.Town.Color, 3);
+                List<DiseaseCube> cubes = gamebox.GetDiseaseBags().GetCubes(card.Town.Color, nbDiseases);
                 card.Town.AddDisease(cubes);
                 gamebox.GetBoard().SpreadDiscardStack.Push(card);
             }

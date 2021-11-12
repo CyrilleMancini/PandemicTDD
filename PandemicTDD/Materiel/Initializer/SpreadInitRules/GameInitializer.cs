@@ -11,8 +11,12 @@ namespace PandemicTDD.Materiel
             fillSpreadCardsStack.ExecuteRule(gameBox);
 
 
-            Draw3SpreadCardAndAdd3DiseasesOnIt draw3SpreadCardAndAdd3DiseasesOnIt = new Draw3SpreadCardAndAdd3DiseasesOnIt();
-            draw3SpreadCardAndAdd3DiseasesOnIt.ExecuteRule(gameBox);
+            DrawNSpreadCardsAndAddNDiseasesOnIt drawSpreadCardssAndAddDiseasesOnIt = new DrawNSpreadCardsAndAddNDiseasesOnIt();
+            drawSpreadCardssAndAddDiseasesOnIt.ExecuteRule(3, gameBox);
+            
+            drawSpreadCardssAndAddDiseasesOnIt.ExecuteRule(2, gameBox);
+
+            drawSpreadCardssAndAddDiseasesOnIt.ExecuteRule(1, gameBox);
         }
     }
 }

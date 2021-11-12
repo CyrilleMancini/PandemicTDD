@@ -8,12 +8,12 @@ namespace PandemicTDD.Materiel.Initializer
     {
 
         ListShuffler listShuffler;
-        private Draw3SpreadCardAndAdd3DiseasesOnIt Draw3SpreadCard;
+        private DrawNSpreadCardsAndAddNDiseasesOnIt Draw3SpreadCard;
 
         public SpreadCardInitializer()
         {
             listShuffler = new ListShuffler();
-            Draw3SpreadCard = new Draw3SpreadCardAndAdd3DiseasesOnIt();
+            Draw3SpreadCard = new DrawNSpreadCardsAndAddNDiseasesOnIt();
         }
 
         static List<SpreadCard> SingleSpreadCards = null;
