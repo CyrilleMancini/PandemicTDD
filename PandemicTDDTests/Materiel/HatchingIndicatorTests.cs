@@ -14,6 +14,17 @@ namespace PandemicTDDTests.Materiel
             HatchingIndicator hi = board.GetHatchingIndicator();
         }
 
+
+        [TestMethod]
+        public void GetIndicatorInitialized()
+        {
+            Board board = GameBox.GetInitializedBoard();
+            HatchingIndicator hi = board.GetHatchingIndicator();
+            Assert.AreEqual(0, hi.Level);
+        }
+
+
+
         [TestMethod]
         public void ResetHatchingIndicator()
         {
