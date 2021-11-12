@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializer.SpreadInitRules
 {
@@ -8,12 +9,14 @@ namespace PandemicTDD.Materiel.Initializer.SpreadInitRules
         {
         }
 
-        internal void ExecuteRule(GameBox board)
+        internal void ExecuteRule(GameBox gamebox)
         {
             for (int i = 0; i < 3; i++)
             {
-                SpreadCard card = board.GetBoard().SpreadStack.Pop();
-                board.GetBoard().SpreadDiscardStack.Push(card);
+                SpreadCard card = gamebox.GetBoard().SpreadStack.Pop();
+                List<DiseaseCube> cubes = gamebox.GetDiseaseBags().GetCubes(card.Town.Color, 3);
+                card.Town.AddDisease(cubes);
+                gamebox.GetBoard().SpreadDiscardStack.Push(card);
             }
         }
     }

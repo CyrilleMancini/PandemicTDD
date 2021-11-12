@@ -65,7 +65,7 @@ namespace PandemicTDDTests.Materiel
         public void GetTownByObjectUnkown()
         {
             Board Board = GameBox.GetBoard();
-            Town Paris = new Town("Bleu", "Paris", "France");
+            Town Paris = new Town(DiseaseColor.Blue, "Paris", "France");
             Board.GetTown(Paris);
             Assert.IsNotNull(Paris);
         }

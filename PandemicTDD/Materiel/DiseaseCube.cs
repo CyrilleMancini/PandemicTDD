@@ -4,9 +4,9 @@ namespace PandemicTDD.Materiel
 {
     public class DiseaseCube
     {
-        public Color Color { get; private set; }
+        public DiseaseColor Color { get; private set; }
 
-        public DiseaseCube(Color color)
+        public DiseaseCube(DiseaseColor color)
         {
             Color = color;
         }
