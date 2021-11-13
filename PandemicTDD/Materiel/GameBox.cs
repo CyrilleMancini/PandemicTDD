@@ -1,4 +1,4 @@
-﻿using PandemicTDD.Materiel.Initializer;
+﻿using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
 using System;
 using System.Collections.Generic;

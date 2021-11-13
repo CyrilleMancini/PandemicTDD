@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace PandemicTDD.Materiel.Initializer
+namespace PandemicTDD.Materiel.Initializers
 {
     public class DiseaseBagsInitializer
     {

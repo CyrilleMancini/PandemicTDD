@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("PandemicTDDTests")]
-namespace PandemicTDD.Materiel.Initializer
+namespace PandemicTDD.Materiel.Initializers
 {
     public class TownSlotsInitializer
     {

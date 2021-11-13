@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PandemicTDD.Materiel
+namespace PandemicTDD.Materiel.Initializers
 {
     internal class DistributeRolesRule
     {

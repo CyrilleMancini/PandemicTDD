@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD.Materiel;
-using PandemicTDD.Materiel.Initializer;
+using PandemicTDD.Materiel.Initializers;
 using System.IO;
 
 namespace PandemicTDDTests.Materiel

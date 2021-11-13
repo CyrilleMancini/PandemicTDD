@@ -1,8 +1,8 @@
-﻿using PandemicTDD.Materiel.Initializer.SpreadInitRules;
+﻿using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Tools;
 using System.Collections.Generic;
 
-namespace PandemicTDD.Materiel.Initializer
+namespace PandemicTDD.Materiel.Initializers
 {
     public class SpreadCardInitializer
     {

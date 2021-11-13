@@ -1,7 +1,7 @@
 ﻿using PandemicTDD.Materiel.PlayerCards;
 using System.Collections.Generic;
 
-namespace PandemicTDD.Materiel.Initializer
+namespace PandemicTDD.Materiel.Initializers
 {
     public class PlayerCardInitializer
     {

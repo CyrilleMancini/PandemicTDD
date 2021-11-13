@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace PandemicTDD.Materiel.Initializer
+namespace PandemicTDD.Materiel.Initializers
 {
     public class RoleCardInitializer
     {

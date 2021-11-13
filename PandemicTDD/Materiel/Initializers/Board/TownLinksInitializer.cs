@@ -1,6 +1,6 @@
 ﻿using PandemicTDD.Materiel.BoardItems;
 
-namespace PandemicTDD.Materiel.Initializer
+namespace PandemicTDD.Materiel.Initializers
 {
     public class TownLinksInitializer
     {

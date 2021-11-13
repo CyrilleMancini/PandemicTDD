@@ -1,5 +1,5 @@
 ﻿using PandemicTDD.Materiel.BoardItems;
-using PandemicTDD.Materiel.Initializer;
+using PandemicTDD.Materiel.Initializers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

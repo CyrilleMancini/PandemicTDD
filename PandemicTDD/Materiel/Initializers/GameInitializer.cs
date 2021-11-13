@@ -1,7 +1,4 @@
-﻿using PandemicTDD.Materiel.Initializer.SpreadInitRules;
-using System;
-
-namespace PandemicTDD.Materiel.Initializer
+﻿namespace PandemicTDD.Materiel.Initializers
 {
     public class GameInitializer
     {
