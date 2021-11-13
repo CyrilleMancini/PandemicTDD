@@ -12,6 +12,7 @@ namespace PandemicTDDTests.Materiel
         public void SpreadStackPopulated()
         {
             Board board = GameBox.GetInitializedBoard();
+         
             Assert.AreEqual(39, board.SpreadStack.Count);
 
         }

@@ -24,8 +24,11 @@ namespace PandemicTDD.Materiel
             if (players.Count < 2) throw new NotEnoughPlayersException("Minimum 2 players");
             if (players.Count > 4) throw new TooManyPlayersException("No more than 4 players");
 
-           var distribute =  new DistributeRolesRule();
+            var distribute = new DistributeRolesRule();
             distribute.ExecuteRule(this, players);
+
+            var distributePlayerCards = new DistributePlayerCards();
+            distributePlayerCards.ExecuteRule(this, players);
         }
 
         private readonly TownLinksInitializer TownLinksInitializer;
@@ -57,14 +60,18 @@ namespace PandemicTDD.Materiel
         {
             if (SingleBoard == null)
             {
-                SingleBoard = new Board(TownsInitializer, TownSlotsInitializer,TownLinksInitializer);
-                SingleBoard.GetTownSlot(TownsInitializer.Atlanta).ControlDiseaseCenter = new();
-                
+                SingleBoard = new Board(TownsInitializer, TownSlotsInitializer, TownLinksInitializer);
+                InitFirstCDCInAtlanta();
             }
 
             return SingleBoard;
         }
 
+        private void InitFirstCDCInAtlanta()
+        {
+            TownSlot Atlanta = SingleBoard.GetTownSlot(TownsInitializer.Atlanta);
+            Atlanta.ControlDiseaseCenter = new();
+        }
 
         bool Initialized = false;
         public Board GetInitializedBoard()
@@ -73,7 +80,7 @@ namespace PandemicTDD.Materiel
             if (!Initialized)
                 GameInitializer.InitGame(this);
 
-            Initialized = true;
+                Initialized = true;
             return SingleBoard;
         }
 

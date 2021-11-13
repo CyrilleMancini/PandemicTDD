@@ -2,6 +2,7 @@
 {
     public class PlayerTownCard : PlayerCard
     {
+        public override string Type => "Town";
 
         public Town Town { get; set; }
 

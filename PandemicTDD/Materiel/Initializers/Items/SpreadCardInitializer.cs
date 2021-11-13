@@ -1,5 +1,6 @@
 ﻿using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Tools;
+using System;
 using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializers
@@ -17,19 +18,20 @@ namespace PandemicTDD.Materiel.Initializers
 
         internal List<SpreadCard> InitCards(Board board)
         {
-            {
-                if (SingleSpreadCards == null)
-                {
-                    SingleSpreadCards = new List<SpreadCard>();
 
-                    foreach (Town town in board.Towns)
-                        SingleSpreadCards.Add(new SpreadCard(town));
-                }
+            if (SingleSpreadCards == null)
+            {
+                SingleSpreadCards = new List<SpreadCard>();
+
+                foreach (Town town in board.Towns)
+                    SingleSpreadCards.Add(new SpreadCard(town));
 
                 SingleSpreadCards = listShuffler.Shuffle(SingleSpreadCards);
 
-                return SingleSpreadCards;
             }
+            return SingleSpreadCards;
+
         }
+
     }
 }

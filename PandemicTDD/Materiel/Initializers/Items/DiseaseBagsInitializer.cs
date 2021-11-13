@@ -1,20 +1,27 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace PandemicTDD.Materiel.Initializers
 {
     public class DiseaseBagsInitializer
     {
+        static DiseaseBags SingleBags;
+
         internal DiseaseBags InitBags()
         {
-            var bags = new DiseaseBags();
-            for (int i = 0; i < 24; i++)
+            if (SingleBags == null)
             {
-                bags.Blacks.Add(new DiseaseCube(DiseaseColor.Black));
-                bags.Reds.Add(new DiseaseCube(DiseaseColor.Red));
-                bags.Yellows.Add(new DiseaseCube(DiseaseColor.Yellow));
-                bags.Blues.Add(new DiseaseCube(DiseaseColor.Blue));
+                SingleBags = new DiseaseBags();
+                for (int i = 0; i < 24; i++)
+                {
+                    SingleBags.Blacks.Add(new DiseaseCube(DiseaseColor.Black));
+                    SingleBags.Reds.Add(new DiseaseCube(DiseaseColor.Red));
+                    SingleBags.Yellows.Add(new DiseaseCube(DiseaseColor.Yellow));
+                    SingleBags.Blues.Add(new DiseaseCube(DiseaseColor.Blue));
+                }
             }
-            return bags;
+            return SingleBags;
         }
+
     }
 }

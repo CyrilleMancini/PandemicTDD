@@ -32,6 +32,11 @@ namespace PandemicTDD.Materiel
             TownInitializer = townInitializer;
             TownSlotsInitializer = townSlotsInitializer;
             TownLinksInitializer = townLinksInitializer;
+            InitTowns();
+        }
+
+        private void InitTowns()
+        {
             Towns = TownInitializer.GetTowns();
             TownLinksInitializer.InitTownsLinks(this);
         }

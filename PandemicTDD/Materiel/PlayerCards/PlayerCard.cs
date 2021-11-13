@@ -3,5 +3,7 @@
     public abstract class PlayerCard
     {
 
+        abstract public string Type { get; }
+
     }
 }
