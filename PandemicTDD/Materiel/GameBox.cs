@@ -18,6 +18,16 @@ namespace PandemicTDD.Materiel
         private readonly PlayerCardInitializer PlayerCardsInitializer;
 
         private readonly TownSlotsInitializer TownSlotsInitializer;
+
+        internal void StartGame(List<Player> players)
+        {
+            if (players.Count < 2) throw new NotEnoughPlayersException("Minimum 2 players");
+            if (players.Count > 4) throw new TooManyPlayersException("No more than 4 players");
+
+           var distribute =  new DistributeRolesRule();
+            distribute.ExecuteRule(this, players);
+        }
+
         private readonly TownLinksInitializer TownLinksInitializer;
         private readonly GameInitializer GameInitializer;
 
