@@ -30,5 +30,12 @@ namespace PandemicTDD.Materiel.Initializers
             return SinglePlayerCards;
         }
 
+        public void Reset()
+        {
+            if (SinglePlayerCards == null) return;
+            SinglePlayerCards.Clear();
+            SinglePlayerCards = null;
+        }
+
     }
 }

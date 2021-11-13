@@ -2,10 +2,11 @@
 using PandemicTDD.Materiel.PlayerCards;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PandemicTDD.Materiel
 {
-    public class GameBox
+    public class GameBox : IChooseLevel
     {
         private readonly RoleCardInitializer RoleCardInitializer;
 
@@ -19,18 +20,25 @@ namespace PandemicTDD.Materiel
 
         private readonly TownSlotsInitializer TownSlotsInitializer;
 
-        internal void StartGame(List<Player> players)
+        internal IChooseLevel StartGame(List<Player> players)
         {
             if (players.Count < 2) throw new NotEnoughPlayersException("Minimum 2 players");
             if (players.Count > 4) throw new TooManyPlayersException("No more than 4 players");
 
             RoleCardInitializer.Reset();
-           
+
             var distribute = new DistributeRolesRule();
             distribute.ExecuteRule(this, players);
 
             var distributePlayerCards = new DistributePlayerCards();
             distributePlayerCards.ExecuteRule(this, players);
+            return this;
+        }
+
+        public void ChooseLevel(Difficulty Level)
+        {
+            PlayerCardsInitializer.Reset();
+            new EpidemicCardsInitRule().ExecuteRule(this, Level);
         }
 
         private readonly TownLinksInitializer TownLinksInitializer;
@@ -83,7 +91,7 @@ namespace PandemicTDD.Materiel
             if (!Initialized)
                 GameInitializer.InitGame(this);
 
-                Initialized = true;
+            Initialized = true;
             return SingleBoard;
         }
 
@@ -97,5 +105,17 @@ namespace PandemicTDD.Materiel
 
         public List<PlayerCard> GetPlayersCard() => PlayerCardsInitializer.InitCards(GetBoard());
 
+    }
+
+    internal interface IChooseLevel
+    {
+        void ChooseLevel(Difficulty difficulty);
+    }
+
+    public enum Difficulty
+    {
+        Discovery,
+        Normal,
+        Heroic
     }
 }

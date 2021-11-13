@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD;
 using PandemicTDD.Materiel;
+using PandemicTDD.Materiel.PlayerCards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,6 +99,7 @@ namespace PandemicTDDTests.Materiel
             });
 
         }
+
         [TestMethod]
         public void DistibutesPlayerCard4Players()
         {
@@ -120,7 +122,45 @@ namespace PandemicTDDTests.Materiel
 
         }
 
+        [TestMethod]
+        public void DifficultyDiscovery4EpidemicCards()
+        {
+            List<Player> Players = new List<Player>() {
+                new() { Name ="PlOne" },
+                new() { Name ="PlTwo" },
+               };
+            GameBox.StartGame(Players)
+                .ChooseLevel(Difficulty.Discovery);
 
+            Assert.AreEqual(4, GameBox.GetPlayersCard().Count(c => c is EpidemicPlayerCard));
+
+        }
+
+        [TestMethod]
+        public void DifficultyNormal4EpidemicCards()
+        {
+            List<Player> Players = new List<Player>() {
+                new() { Name ="PlOne" },
+                new() { Name ="PlTwo" },
+               };
+            GameBox.StartGame(Players)
+                .ChooseLevel(Difficulty.Normal);
+
+            Assert.AreEqual(5, GameBox.GetPlayersCard().Count(c => c is EpidemicPlayerCard));
+
+        }
+        [TestMethod]
+        public void DifficultyHeroic6EpidemicCards()
+        {
+            List<Player> Players = new List<Player>() {
+                new() { Name ="PlOne" },
+                new() { Name ="PlTwo" },
+               };
+            GameBox.StartGame(Players)
+                .ChooseLevel(Difficulty.Heroic);
+
+            Assert.AreEqual(6, GameBox.GetPlayersCard().Count(c => c is EpidemicPlayerCard));
+
+        }
     }
-
 }
