@@ -144,7 +144,7 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlTwo" },
                };
             GameBox.StartGame(Players)
-                .ChooseLevel(Difficulty.Normal);
+                .ChooseLevel(Difficulty.Standard);
 
             Assert.AreEqual(5, GameBox.GetPlayersCard().Count(c => c is EpidemicPlayerCard));
 
@@ -162,5 +162,61 @@ namespace PandemicTDDTests.Materiel
             Assert.AreEqual(6, GameBox.GetPlayersCard().Count(c => c is EpidemicPlayerCard));
 
         }
+
+        [TestMethod]
+        public void HeroicInitialisedStackOnBoard()
+        {
+
+            // Heroic    6 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 51 Cartes
+            // Standard  5 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 50 Cartes
+            // Discovery 4 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 49 Cartes
+            List<Player> Players = new List<Player>() {
+                new() { Name ="PlOne" },
+                new() { Name ="PlTwo" },
+               };
+            GameBox.StartGame(Players)
+                .ChooseLevel(Difficulty.Heroic);
+
+            Assert.AreEqual(51, GameBox.GetBoard().PlayerCardStack.Count);        
+
+        }
+
+        [TestMethod]
+        public void DiscoveryInitialisedStackOnBoard()
+        {
+
+            // Heroic    6 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 51 Cartes
+            // Standard  5 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 50 Cartes
+            // Discovery 4 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 49 Cartes
+            List<Player> Players = new List<Player>() {
+                new() { Name ="PlOne" },
+                new() { Name ="PlTwo" },
+               };
+
+            GameBox.StartGame(Players)
+                .ChooseLevel(Difficulty.Discovery);
+
+            Assert.AreEqual(49, GameBox.GetBoard().PlayerCardStack.Count);
+
+        }
+
+        [TestMethod]
+        public void StandardInitialisedStackOnBoard()
+        {
+
+            // Heroic    6 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 51 Cartes
+            // Standard  5 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 50 Cartes
+            // Discovery 4 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 49 Cartes
+            List<Player> Players = new List<Player>() {
+                new() { Name ="PlOne" },
+                new() { Name ="PlTwo" },
+               };
+            GameBox.StartGame(Players)
+                .ChooseLevel(Difficulty.Standard);
+
+            Assert.AreEqual(50, GameBox.GetBoard().PlayerCardStack.Count);
+
+        }
+
     }
 }

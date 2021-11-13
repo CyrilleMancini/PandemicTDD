@@ -1,5 +1,6 @@
 ﻿using PandemicTDD.Materiel.BoardItems;
 using PandemicTDD.Materiel.Initializers;
+using PandemicTDD.Materiel.PlayerCards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,10 @@ namespace PandemicTDD.Materiel
         public Stack<SpreadCard> SpreadStack { get; internal set; } = new Stack<SpreadCard>();
 
         public Stack<SpreadCard> SpreadDiscardStack { get; internal set; } = new Stack<SpreadCard>();
+
+        public Stack<PlayerCard> PlayerCardStack { get; internal set; } = new Stack<PlayerCard>();
+
+        public Stack<PlayerCard> PlayerDiscardCardStack { get; internal set; } = new Stack<PlayerCard>();
 
         private readonly TownsInitializer TownInitializer;
 

@@ -23,7 +23,7 @@ namespace PandemicTDD.Materiel
                     gameBox.GetPlayersCard().Remove(epidemics[0]);
                     gameBox.GetPlayersCard().Remove(epidemics[1]);
                     break;
-                case Difficulty.Normal:
+                case Difficulty.Standard:
                     gameBox.GetPlayersCard().Remove(epidemics[0]);
                     break;
                 case Difficulty.Heroic:

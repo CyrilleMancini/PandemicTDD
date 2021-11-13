@@ -26,6 +26,7 @@ namespace PandemicTDD.Materiel
             if (players.Count > 4) throw new TooManyPlayersException("No more than 4 players");
 
             RoleCardInitializer.Reset();
+            PlayerCardsInitializer.Reset();
 
             var distribute = new DistributeRolesRule();
             distribute.ExecuteRule(this, players);
@@ -37,8 +38,9 @@ namespace PandemicTDD.Materiel
 
         public void ChooseLevel(Difficulty Level)
         {
-            PlayerCardsInitializer.Reset();
             new EpidemicCardsInitRule().ExecuteRule(this, Level);
+            new PreparePlayerCardsStack().ExecuteRule(this);
+
         }
 
         private readonly TownLinksInitializer TownLinksInitializer;
@@ -115,7 +117,7 @@ namespace PandemicTDD.Materiel
     public enum Difficulty
     {
         Discovery,
-        Normal,
+        Standard,
         Heroic
     }
 }

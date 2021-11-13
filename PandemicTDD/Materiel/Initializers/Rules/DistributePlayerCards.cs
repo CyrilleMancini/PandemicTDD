@@ -1,4 +1,5 @@
 ﻿using PandemicTDD.Materiel.PlayerCards;
+using PandemicTDD.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,13 @@ namespace PandemicTDD.Materiel
     {
         public DistributePlayerCards()
         {
+            ListShuffler = new ListShuffler();
         }
 
         Random r = new Random(Guid.NewGuid().GetHashCode());
+
+        private ListShuffler ListShuffler;
+
         internal void ExecuteRule(GameBox gameBox, List<Player> players)
         {
             int nbCards = 0;
@@ -40,6 +45,7 @@ namespace PandemicTDD.Materiel
                 {
                     int pCardIndex = r.Next(0, PlayerCardsWithoutEpidemic.Count);
                     PlayerCard card = PlayerCardsWithoutEpidemic[pCardIndex];
+                    PlayerCardsWithoutEpidemic.Remove(card);
                     gameBox.GetPlayersCard().Remove(card);
                     p.PlayerCards.Add(card);
                 }
