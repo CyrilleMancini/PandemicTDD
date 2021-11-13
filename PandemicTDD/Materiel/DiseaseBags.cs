@@ -23,6 +23,7 @@ namespace PandemicTDD.Materiel
 
         public List<DiseaseCube> Yellows = new List<DiseaseCube>();
 
+
         public List<DiseaseCube> Blues = new List<DiseaseCube>();
 
         public List<DiseaseCube> GetCubes(DiseaseColor color, int number)

@@ -22,5 +22,13 @@ namespace PandemicTDD.Materiel.Initializers
             }
             return SingleRoleCards;
         }
+
+        public void Reset()
+        {
+            if (SingleRoleCards == null) return;
+            SingleRoleCards.Clear();
+            SingleRoleCards = null;
+        }
+
     }
 }

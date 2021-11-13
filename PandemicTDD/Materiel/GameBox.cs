@@ -24,6 +24,8 @@ namespace PandemicTDD.Materiel
             if (players.Count < 2) throw new NotEnoughPlayersException("Minimum 2 players");
             if (players.Count > 4) throw new TooManyPlayersException("No more than 4 players");
 
+            RoleCardInitializer.Reset();
+           
             var distribute = new DistributeRolesRule();
             distribute.ExecuteRule(this, players);
 
@@ -77,6 +79,7 @@ namespace PandemicTDD.Materiel
         public Board GetInitializedBoard()
         {
             GetBoard();
+            DiseaseBagsInitializer.Reset();
             if (!Initialized)
                 GameInitializer.InitGame(this);
 

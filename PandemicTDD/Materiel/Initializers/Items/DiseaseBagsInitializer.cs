@@ -23,5 +23,14 @@ namespace PandemicTDD.Materiel.Initializers
             return SingleBags;
         }
 
+        internal void Reset()
+        {
+            if (SingleBags == null) return;
+            SingleBags.Blacks.Clear();
+            SingleBags.Reds.Clear();
+            SingleBags.Yellows.Clear();
+            SingleBags.Blues.Clear();
+            SingleBags = null;
+        }
     }
 }
