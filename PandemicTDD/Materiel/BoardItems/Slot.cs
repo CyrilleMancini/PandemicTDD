@@ -26,7 +26,7 @@ namespace PandemicTDD.Materiel
             Status = DiseaseStatus.None;
         }
 
-        public void Next()
+        internal void Next()
         {
             switch (Status)
             {
@@ -40,7 +40,7 @@ namespace PandemicTDD.Materiel
                     break;
                 default:
                     break;
-            }
+            } 
         }
     }
 }
