@@ -25,6 +25,8 @@ namespace PandemicTDD.Materiel
             if (players.Count < 2) throw new NotEnoughPlayersException("Minimum 2 players");
             if (players.Count > 4) throw new TooManyPlayersException("No more than 4 players");
 
+            players.ForEach(p => p.Town = GetBoard().GetTown(TownsInitializer.Atlanta));
+            
             RoleCardInitializer.Reset();
             PlayerCardsInitializer.Reset();
 
@@ -33,6 +35,9 @@ namespace PandemicTDD.Materiel
 
             var distributePlayerCards = new DistributePlayerCards();
             distributePlayerCards.ExecuteRule(this, players);
+            
+            
+
             return this;
         }
 

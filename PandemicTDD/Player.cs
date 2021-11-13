@@ -12,5 +12,6 @@ namespace PandemicTDD
 
         public List<PlayerCard> PlayerCards { get; internal set; } = new List<PlayerCard>();
 
+        public Town Town { get; internal set; }
     }
 }

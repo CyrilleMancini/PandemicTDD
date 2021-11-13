@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD;
 using PandemicTDD.Materiel;
+using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
 using System;
 using System.Collections.Generic;
@@ -79,6 +80,7 @@ namespace PandemicTDDTests.Materiel
             });
 
         }
+       
         [TestMethod]
         public void DistibutesPlayerCard3Players()
         {
@@ -201,22 +203,24 @@ namespace PandemicTDDTests.Materiel
         }
 
         [TestMethod]
-        public void StandardInitialisedStackOnBoard()
+        public void AllPLayerInAtlanta()
         {
 
-            // Heroic    6 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 51 Cartes
-            // Standard  5 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 50 Cartes
-            // Discovery 4 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 49 Cartes
             List<Player> Players = new List<Player>() {
                 new() { Name ="PlOne" },
                 new() { Name ="PlTwo" },
+                new() { Name ="PlThree" },
+                new() { Name ="PlFour" },
                };
             GameBox.StartGame(Players)
                 .ChooseLevel(Difficulty.Standard);
 
-            Assert.AreEqual(50, GameBox.GetBoard().PlayerCardStack.Count);
+
+            Players.ForEach(p => Assert.AreEqual(TownsInitializer.Atlanta, p.Town.Name,"Should be in Atlanta"));
 
         }
+
+
 
     }
 }
