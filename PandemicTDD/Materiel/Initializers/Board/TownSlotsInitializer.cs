@@ -29,7 +29,7 @@ namespace PandemicTDD.Materiel.Initializers
                     TownSlots.Add(new TownSlot(town));
                 }
 
-                foreach(TownsLink link in Links)
+                foreach (TownsLink link in Links)
                 {
                     Link2Towns(link);
                 }

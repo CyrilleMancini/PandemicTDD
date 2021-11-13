@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PandemicTDD.Materiel
+﻿namespace PandemicTDD.Materiel
 {
     public class OutBreakIndicator
     {

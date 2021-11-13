@@ -2,7 +2,6 @@
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.BoardItems;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 
 namespace PandemicTDDTests.Materiel
@@ -29,7 +28,7 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void TestTown1LinkedToTown2Test()
         {
-            
+
             TownsLink link = new TownsLink("Paris", "Londres");
 
             TownSlot paris = townSlotsInitializer.GetTownSlot("Paris");
@@ -39,7 +38,7 @@ namespace PandemicTDDTests.Materiel
             londres.Links.Clear();
 
             townSlotsInitializer.Link2Towns(link);
-            
+
 
             TownSlot dest = paris.Links.Single(l => l.Town == londres.Town);
 
@@ -57,7 +56,7 @@ namespace PandemicTDDTests.Materiel
             londres.Links.Clear();
 
             townSlotsInitializer.Link2Towns(link);
-                    
+
             TownSlot dest = londres.Links.Single(l => l.Town == paris.Town);
             Assert.IsNotNull(dest);
         }

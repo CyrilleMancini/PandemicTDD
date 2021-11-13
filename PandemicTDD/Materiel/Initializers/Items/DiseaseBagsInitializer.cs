@@ -1,7 +1,4 @@
-﻿using System;
-using System.Drawing;
-
-namespace PandemicTDD.Materiel.Initializers
+﻿namespace PandemicTDD.Materiel.Initializers
 {
     public class DiseaseBagsInitializer
     {

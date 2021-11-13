@@ -11,5 +11,5 @@
             this.Town2 = Town2;
         }
 
-   }
+    }
 }

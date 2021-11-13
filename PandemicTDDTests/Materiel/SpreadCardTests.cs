@@ -42,14 +42,14 @@ namespace PandemicTDD.Materiel.Tests
                 }
 
             }
-        }    
+        }
 
 
         [TestMethod]
         public void ListShufflerCard()
         {
             List<SpreadCard> AllCards = GameBox.GetSpeadCards();
-            
+
 
             bool NotShuffled = true;
 

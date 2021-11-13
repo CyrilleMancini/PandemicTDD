@@ -49,8 +49,8 @@ namespace PandemicTDD.Materiel
             TmpStack.SelectMany(it => it)
                         .ToList()
                         .ForEach(card => gameBox.GetBoard().PlayerCardStack.Push(card));
-            
 
-         }
+
+        }
     }
 }

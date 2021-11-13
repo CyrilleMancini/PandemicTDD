@@ -1,12 +1,10 @@
 ﻿using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PandemicTDD.Materiel
 {
-    public class GameBox : IChooseLevel
+    public class GameBox
     {
         private readonly RoleCardInitializer RoleCardInitializer;
 
@@ -20,35 +18,8 @@ namespace PandemicTDD.Materiel
 
         private readonly TownSlotsInitializer TownSlotsInitializer;
 
-        internal IChooseLevel StartGame(List<Player> players)
-        {
-            if (players.Count < 2) throw new NotEnoughPlayersException("Minimum 2 players");
-            if (players.Count > 4) throw new TooManyPlayersException("No more than 4 players");
-
-            players.ForEach(p => p.Town = GetBoard().GetTown(TownsInitializer.Atlanta));
-            
-            RoleCardInitializer.Reset();
-            PlayerCardsInitializer.Reset();
-
-            var distribute = new DistributeRolesRule();
-            distribute.ExecuteRule(this, players);
-
-            var distributePlayerCards = new DistributePlayerCards();
-            distributePlayerCards.ExecuteRule(this, players);
-            
-            
-
-            return this;
-        }
-
-        public void ChooseLevel(Difficulty Level)
-        {
-            new EpidemicCardsInitRule().ExecuteRule(this, Level);
-            new PreparePlayerCardsStack().ExecuteRule(this);
-
-        }
-
         private readonly TownLinksInitializer TownLinksInitializer;
+
         private readonly GameInitializer GameInitializer;
 
         public GameBox(RoleCardInitializer roleCardInitializer,
@@ -70,6 +41,11 @@ namespace PandemicTDD.Materiel
             this.GameInitializer = Initializer;
         }
 
+        internal void Reset()
+        {
+            RoleCardInitializer.Reset();
+            PlayerCardsInitializer.Reset();
+        }
 
         Board SingleBoard = null;
 
@@ -114,15 +90,5 @@ namespace PandemicTDD.Materiel
 
     }
 
-    internal interface IChooseLevel
-    {
-        void ChooseLevel(Difficulty difficulty);
-    }
 
-    public enum Difficulty
-    {
-        Discovery,
-        Standard,
-        Heroic
-    }
 }

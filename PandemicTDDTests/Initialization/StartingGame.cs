@@ -24,22 +24,25 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlFour" },
                 new() { Name ="PlFive" },
             };
+
             Assert.ThrowsException<TooManyPlayersException>(() =>
             {
-                GameBox.StartGame(Players);
+                GameState gameState = new GameState(Players, GameBox);
+                gameState.StartGame();
             });
         }
 
         [TestMethod]
         public void InitPlayersMin2Players()
         {
-
             List<Player> Players = new List<Player>() {
                 new() { Name ="PlOne" },
             };
+
             Assert.ThrowsException<NotEnoughPlayersException>(() =>
             {
-                GameBox.StartGame(Players);
+                GameState gameState = new GameState(Players, GameBox);
+                gameState.StartGame();
             });
         }
 
@@ -53,7 +56,9 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlThree" },
                 new() { Name ="PlFour" },
                };
-            GameBox.StartGame(Players);
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame();
+
             Players.ForEach(p => Console.WriteLine(p.Role.Name));
             Assert.IsNotNull(Players[0].Role);
             Assert.IsNotNull(Players[1].Role);
@@ -70,7 +75,10 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlOne" },
                 new() { Name ="PlTwo" },
                };
-            GameBox.StartGame(Players);
+
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame();
+
             Assert.AreEqual(4, Players[0].PlayerCards.Count);
             Assert.AreEqual(4, Players[1].PlayerCards.Count);
             Players.ForEach(p =>
@@ -80,7 +88,7 @@ namespace PandemicTDDTests.Materiel
             });
 
         }
-       
+
         [TestMethod]
         public void DistibutesPlayerCard3Players()
         {
@@ -90,7 +98,9 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlTwo" },
                 new() { Name ="PlThree" },
                };
-            GameBox.StartGame(Players);
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame();
+
             Assert.AreEqual(3, Players[0].PlayerCards.Count);
             Assert.AreEqual(3, Players[1].PlayerCards.Count);
             Assert.AreEqual(3, Players[2].PlayerCards.Count);
@@ -111,7 +121,8 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlThree" },
                 new() { Name ="PlFour" },
                };
-            GameBox.StartGame(Players);
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame();
             Assert.AreEqual(2, Players[0].PlayerCards.Count);
             Assert.AreEqual(2, Players[1].PlayerCards.Count);
             Assert.AreEqual(2, Players[2].PlayerCards.Count);
@@ -131,7 +142,8 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlOne" },
                 new() { Name ="PlTwo" },
                };
-            GameBox.StartGame(Players)
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame()
                 .ChooseLevel(Difficulty.Discovery);
 
             Assert.AreEqual(4, GameBox.GetPlayersCard().Count(c => c is EpidemicPlayerCard));
@@ -145,8 +157,9 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlOne" },
                 new() { Name ="PlTwo" },
                };
-            GameBox.StartGame(Players)
-                .ChooseLevel(Difficulty.Standard);
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame()
+                    .ChooseLevel(Difficulty.Standard);
 
             Assert.AreEqual(5, GameBox.GetPlayersCard().Count(c => c is EpidemicPlayerCard));
 
@@ -158,8 +171,9 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlOne" },
                 new() { Name ="PlTwo" },
                };
-            GameBox.StartGame(Players)
-                .ChooseLevel(Difficulty.Heroic);
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame()
+                       .ChooseLevel(Difficulty.Heroic);
 
             Assert.AreEqual(6, GameBox.GetPlayersCard().Count(c => c is EpidemicPlayerCard));
 
@@ -168,37 +182,51 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void HeroicInitialisedStackOnBoard()
         {
-
             // Heroic    6 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 51 Cartes
-            // Standard  5 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 50 Cartes
-            // Discovery 4 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 49 Cartes
             List<Player> Players = new List<Player>() {
                 new() { Name ="PlOne" },
                 new() { Name ="PlTwo" },
                };
-            GameBox.StartGame(Players)
+
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame()
                 .ChooseLevel(Difficulty.Heroic);
 
-            Assert.AreEqual(51, GameBox.GetBoard().PlayerCardStack.Count);        
+            Assert.AreEqual(51, GameBox.GetBoard().PlayerCardStack.Count);
 
         }
 
         [TestMethod]
         public void DiscoveryInitialisedStackOnBoard()
         {
-
-            // Heroic    6 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 51 Cartes
-            // Standard  5 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 50 Cartes
             // Discovery 4 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 49 Cartes
             List<Player> Players = new List<Player>() {
                 new() { Name ="PlOne" },
                 new() { Name ="PlTwo" },
                };
 
-            GameBox.StartGame(Players)
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame()
                 .ChooseLevel(Difficulty.Discovery);
 
             Assert.AreEqual(49, GameBox.GetBoard().PlayerCardStack.Count);
+
+        }
+
+        [TestMethod]
+        public void StandardInitialisedStackOnBoard()
+        {
+            // Standard 5 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 50 Cartes
+            List<Player> Players = new List<Player>() {
+                new() { Name ="PlOne" },
+                new() { Name ="PlTwo" },
+               };
+
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame()
+                .ChooseLevel(Difficulty.Standard);
+
+            Assert.AreEqual(50, GameBox.GetBoard().PlayerCardStack.Count);
 
         }
 
@@ -212,15 +240,11 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlThree" },
                 new() { Name ="PlFour" },
                };
-            GameBox.StartGame(Players)
-                .ChooseLevel(Difficulty.Standard);
+            GameState gameState = new GameState(Players, GameBox);
+            gameState.StartGame()
+                    .ChooseLevel(Difficulty.Standard);
 
-
-            Players.ForEach(p => Assert.AreEqual(TownsInitializer.Atlanta, p.Town.Name,"Should be in Atlanta"));
-
+            Players.ForEach(p => Assert.AreEqual(TownsInitializer.Atlanta, p.Town.Name, "Should be in Atlanta"));
         }
-
-
-
     }
 }

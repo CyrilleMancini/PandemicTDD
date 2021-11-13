@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PandemicTDD.Materiel.Initializers
+﻿namespace PandemicTDD.Materiel.Initializers
 {
     internal class FillSpreadCardsStack
     {

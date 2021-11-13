@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace PandemicTDD.Materiel
+﻿namespace PandemicTDD.Materiel
 {
     public class DiseaseCube
     {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PandemicTDD.Materiel
+﻿namespace PandemicTDD.Materiel
 {
 
     public enum DiseaseStatus
@@ -40,7 +38,7 @@ namespace PandemicTDD.Materiel
                     break;
                 default:
                     break;
-            } 
+            }
         }
     }
 }

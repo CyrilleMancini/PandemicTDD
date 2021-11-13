@@ -1,6 +1,4 @@
-﻿using PandemicTDD.Materiel.Initializers;
-using PandemicTDD.Tools;
-using System;
+﻿using PandemicTDD.Tools;
 using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializers
