@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD.Materiel;
 using PandemicTDDTests.Materiel;
+using System;
 
 namespace PandemicTDDTests.EndOfGame
 {
@@ -67,6 +68,21 @@ namespace PandemicTDDTests.EndOfGame
             });
 
         }
+
+        [TestMethod()]
+        public void BadQuantities()
+        {
+            Assert.ThrowsException<ArgumentException>(() =>
+            {
+                GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Blue, 0);
+            });
+
+            Assert.ThrowsException<ArgumentException>(() =>
+            {
+                GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Blue, -1);
+            });
+        }
+
 
     }
 }
