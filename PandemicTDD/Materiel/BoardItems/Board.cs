@@ -23,7 +23,7 @@ namespace PandemicTDD.Materiel
 
         private CureSlots SinglelCureSlots;
 
-        private HatchingIndicator HatchingIndicator;
+        private OutBreakIndicator HatchingIndicator;
 
         private SpreadIndicator SingleSpreadIndicator;
 
@@ -58,10 +58,10 @@ namespace PandemicTDD.Materiel
             return SinglelCureSlots;
         }
 
-        public HatchingIndicator GetHatchingIndicator()
+        public OutBreakIndicator GetOutbreakIndicator()
         {
             if (HatchingIndicator == null)
-                HatchingIndicator = new HatchingIndicator();
+                HatchingIndicator = new OutBreakIndicator();
 
             return HatchingIndicator;
 

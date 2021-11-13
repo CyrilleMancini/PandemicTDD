@@ -4,14 +4,14 @@ using PandemicTDD.Materiel;
 namespace PandemicTDDTests.Materiel
 {
     [TestClass()]
-    public class HatchingIndicatorTests : TestsBase
+    public class OutbreakIndicatorTests : TestsBase
     {
 
         [TestMethod]
         public void GetIndicator()
         {
             Board board = GameBox.GetBoard();
-            HatchingIndicator hi = board.GetHatchingIndicator();
+            OutBreakIndicator hi = board.GetOutbreakIndicator();
         }
 
 
@@ -19,27 +19,27 @@ namespace PandemicTDDTests.Materiel
         public void GetIndicatorInitialized()
         {
             Board board = GameBox.GetInitializedBoard();
-            HatchingIndicator hi = board.GetHatchingIndicator();
+            OutBreakIndicator hi = board.GetOutbreakIndicator();
             Assert.AreEqual(0, hi.Level);
         }
 
 
 
         [TestMethod]
-        public void ResetHatchingIndicator()
+        public void ResetOutbreakIndicator()
         {
             Board board = GameBox.GetBoard();
-            HatchingIndicator hi = board.GetHatchingIndicator();
+            OutBreakIndicator hi = board.GetOutbreakIndicator();
             hi.Reset();
             Assert.AreEqual(0, hi.Level);
         }
 
 
         [TestMethod]
-        public void GoToNextHatchingIndicator()
+        public void GoToNextOutbreakIndicator()
         {
             Board board = GameBox.GetBoard();
-            HatchingIndicator hi = board.GetHatchingIndicator();
+            OutBreakIndicator hi = board.GetOutbreakIndicator();
             hi.Reset();
             hi.Next();
             Assert.AreEqual(1, hi.Level);
@@ -49,7 +49,7 @@ namespace PandemicTDDTests.Materiel
         public void EndOfGameAtLevel8Test()
         {
             Board board = GameBox.GetBoard();
-            HatchingIndicator hi = board.GetHatchingIndicator();
+            OutBreakIndicator hi = board.GetOutbreakIndicator();
             hi.Reset();
 
             Assert.ThrowsException<YouLooseException>(() =>

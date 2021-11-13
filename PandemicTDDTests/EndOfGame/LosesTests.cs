@@ -8,15 +8,19 @@ namespace PandemicTDDTests.EndOfGame
     public class LosesTests : TestsBase
     {
         [TestMethod()]
-        public void TownEqualityTest()
+        public void HeightOutbreakOccured()
         {
-            Assert.ThrowsException<VictoryAllCuresDiscoveredException>(() =>
+            Assert.ThrowsException<YouLooseException>(() =>
             {
-
-                GameBox.GetBoard().GetCureSlots().DiscoverCure(DiseaseColor.Black);
-                GameBox.GetBoard().GetCureSlots().DiscoverCure(DiseaseColor.Blue);
-                GameBox.GetBoard().GetCureSlots().DiscoverCure(DiseaseColor.Red);
-                GameBox.GetBoard().GetCureSlots().DiscoverCure(DiseaseColor.Yellow);
+                var board = GameBox.GetBoard();
+                board.GetOutbreakIndicator().Next();
+                board.GetOutbreakIndicator().Next();
+                board.GetOutbreakIndicator().Next();
+                board.GetOutbreakIndicator().Next();
+                board.GetOutbreakIndicator().Next();
+                board.GetOutbreakIndicator().Next();
+                board.GetOutbreakIndicator().Next();
+                board.GetOutbreakIndicator().Next();
             });
 
         }

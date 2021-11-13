@@ -2,7 +2,7 @@
 
 namespace PandemicTDD.Materiel
 {
-    public class HatchingIndicator
+    public class OutBreakIndicator
     {
         public int Level { get; private set; }
 
@@ -15,7 +15,7 @@ namespace PandemicTDD.Materiel
         {
             Level++;
             if (Level == 8)
-                throw new YouLooseException("You Loose, The Maximum Hatching has been reached!!!");
+                throw new YouLooseException("You Loose, The Maximum Outbreak has been reached!!!");
         }
     }
 }
