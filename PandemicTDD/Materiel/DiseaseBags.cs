@@ -32,18 +32,22 @@ namespace PandemicTDD.Materiel
             switch (color)
             {
                 case DiseaseColor.Black:
+                    if (Blacks.Count < number) throw new YouLooseException("Not enough Black Disease, You Lose.");
                     cubes = Blacks.GetRange(0, number);
                     Blacks.RemoveRange(0, number);
                     break;
                 case DiseaseColor.Red:
+                    if (Reds.Count < number) throw new YouLooseException("Not enough Red Disease, You Lose.");
                     cubes = Reds.GetRange(0, number);
                     Reds.RemoveRange(0, number);
                     break;
                 case DiseaseColor.Yellow:
+                    if (Yellows.Count < number) throw new YouLooseException("Not enough Yellow Disease, You Lose.");
                     cubes = Yellows.GetRange(0, number);
                     Yellows.RemoveRange(0, number);
                     break;
                 case DiseaseColor.Blue:
+                    if (Blues.Count < number) throw new YouLooseException("Not enough Blue Disease, You Lose.");
                     cubes = Blues.GetRange(0, number);
                     Blues.RemoveRange(0, number);
                     break;
