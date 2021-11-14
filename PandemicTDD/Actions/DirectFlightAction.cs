@@ -1,7 +1,6 @@
 ﻿using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.PlayerCards;
 using System;
-using System.Linq;
 
 namespace PandemicTDD.Actions
 {

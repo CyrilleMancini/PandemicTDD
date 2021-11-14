@@ -1,9 +1,7 @@
-﻿using PandemicTDD;
-using PandemicTDD.Actions;
-using PandemicTDD.Materiel.PlayerCards;
+﻿using PandemicTDD.Materiel.PlayerCards;
 using System;
 
-namespace PandemicTDDTests.Running.Actions
+namespace PandemicTDD.Actions
 {
     internal class ShareKnowledgeAction : ActionBase
     {
@@ -26,7 +24,7 @@ namespace PandemicTDDTests.Running.Actions
 
         public override void Execute()
         {
-           if(Given != null)
+            if (Given != null)
             {
                 player.PlayerCards.Add(Given);
                 gameState.CurrentPlayer.PlayerCards.Remove(Given);
@@ -43,7 +41,7 @@ namespace PandemicTDDTests.Running.Actions
             if (player.Town.Name != gameState.CurrentPlayer.Town.Name)
                 throw new PlayerInDifferentTownsException();
 
-            if ( gameState.CurrentPlayer.Town.Name != PlayerTownCardToShare)
+            if (gameState.CurrentPlayer.Town.Name != PlayerTownCardToShare)
                 throw new PlayersMustBeInTheShareTownCard();
 
             try

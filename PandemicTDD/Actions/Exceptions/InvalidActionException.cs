@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PandemicTDDTests.Running.Actions
+namespace PandemicTDD.Actions.Exceptions
 {
     internal class InvalidActionException : Exception
     {

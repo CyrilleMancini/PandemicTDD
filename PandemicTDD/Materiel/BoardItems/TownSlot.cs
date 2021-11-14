@@ -28,6 +28,6 @@ namespace PandemicTDD.Materiel
             ControlDiseaseCenter = new ControlDiseaseCenter();
         }
 
-     
+
     }
 }

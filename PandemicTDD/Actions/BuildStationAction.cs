@@ -1,15 +1,10 @@
-﻿using PandemicTDD;
-using PandemicTDD.Actions;
-using PandemicTDD.Materiel.PlayerCards;
-using System.Linq;
-
-namespace PandemicTDDTests.Running.Actions
+﻿namespace PandemicTDD.Actions
 {
     internal class BuildStationAction : ActionBase
     {
         private GameState gameState;
 
-        public BuildStationAction(GameState gameState )
+        public BuildStationAction(GameState gameState)
         {
             this.gameState = gameState;
         }
@@ -23,7 +18,7 @@ namespace PandemicTDDTests.Running.Actions
         {
             gameState.CurrentPlayer.GetCityPlayerCard(gameState.CurrentPlayer.Town.Name);
 
-            
+
 
         }
     }

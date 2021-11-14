@@ -1,5 +1,4 @@
 ﻿using PandemicTDD.Actions;
-using PandemicTDDTests.Running.Actions;
 using System;
 
 namespace PandemicTDDTests.Running

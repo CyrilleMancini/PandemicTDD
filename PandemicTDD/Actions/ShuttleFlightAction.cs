@@ -1,7 +1,4 @@
-﻿using PandemicTDD;
-using PandemicTDD.Actions;
-
-namespace PandemicTDDTests.Running.Actions
+﻿namespace PandemicTDD.Actions
 {
     internal class ShuttleFlightAction : ActionBase
     {
@@ -11,7 +8,7 @@ namespace PandemicTDDTests.Running.Actions
         public ShuttleFlightAction(GameState gameState, string destination)
         {
             this.gameState = gameState;
-            this.Destination = destination;
+            Destination = destination;
         }
 
         public override void Execute()

@@ -3,10 +3,8 @@ using PandemicTDD;
 using PandemicTDD.Actions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
-using PandemicTDD.Materiel.PlayerCards;
 using PandemicTDDTests.Materiel;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace PandemicTDDTests.Running.Actions
 {

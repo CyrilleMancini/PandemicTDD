@@ -1,8 +1,6 @@
-﻿using PandemicTDD;
-using PandemicTDD.Actions;
-using PandemicTDD.Materiel;
+﻿using PandemicTDD.Materiel;
 
-namespace PandemicTDDTests.Running.Actions
+namespace PandemicTDD.Actions
 {
     internal class TreatDiseaseAction : ActionBase
     {
@@ -11,8 +9,8 @@ namespace PandemicTDDTests.Running.Actions
 
         public TreatDiseaseAction(GameState gameState, DiseaseColor disease)
         {
-            this.GameState = gameState;
-            this.Disease = disease;
+            GameState = gameState;
+            Disease = disease;
         }
 
         public override void Execute()
