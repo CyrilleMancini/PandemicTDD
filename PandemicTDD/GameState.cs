@@ -20,7 +20,8 @@ namespace PandemicTDD
 
         private int CurrentPlayerIdx = 0;
 
-        public GameState(List<Player> players, GameBox gameBox)
+        public GameState(List<Player> players,
+            GameBox gameBox)
         {
             Players = players;
             this.GameBox = gameBox;
@@ -51,16 +52,24 @@ namespace PandemicTDD
         internal void DoAction(ActionBase action)
         {
 
-            action.Try();
-            action.Execute();
-            ActionsRemaining--;
+            try
+            {
+                action.Try();
+                action.Execute();
+                ActionsRemaining--;
+                if (ActionsRemaining == 0)
+                    NextTurn();
+            }
+            catch (System.Exception ex)
+            {
 
-
+            }
         }
 
         internal void NextTurn()
         {
             CurrentPlayerIdx = (++CurrentPlayerIdx) % Players.Count;
+            ActionsRemaining = 4;
         }
 
         public void ChooseLevel(Difficulty Level)

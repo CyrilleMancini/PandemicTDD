@@ -2,7 +2,6 @@
 using PandemicTDD;
 using PandemicTDD.Actions;
 using PandemicTDDTests.Materiel;
-using System;
 
 namespace PandemicTDDTests.Running
 {
@@ -36,18 +35,42 @@ namespace PandemicTDDTests.Running
             Assert.AreEqual(3, gameState.ActionsRemaining);
         }
 
-    }
-
-    internal class FakeAction : ActionBase
-    {
-        public override void Execute()
+        [TestMethod()]
+        public void DoingImpossibleActionDoesNotChangeAnything()
         {
-            Console.WriteLine("I do an action");
+
+            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
+            gameState.StartGame()
+                     .ChooseLevel(Difficulty.Discovery);
+
+            ActionBase action = new FakeFailingAction();
+            gameState.DoAction(action);
+            Assert.AreEqual(4, gameState.ActionsRemaining);
         }
 
-        public override void Try()
+        [TestMethod()]
+        public void FourActionsDoneChangePlayer()
         {
-            Console.WriteLine("I Try to do an action");
+
+            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
+            gameState.StartGame()
+                     .ChooseLevel(Difficulty.Discovery);
+            ActionBase action = new FakeAction();
+            // PLayer 1 is the current player
+            Assert.AreEqual(Players[0], gameState.CurrentPlayer);
+
+            //DO 4 actions
+            for (int a = 0; a < 4; a++)
+                gameState.DoAction(action);
+
+            // PLayer has changed and 4 actions remaining
+            Assert.AreEqual(Players[1], gameState.CurrentPlayer);
+            Assert.AreEqual(4, gameState.ActionsRemaining);
+
         }
+
+
+
     }
+
 }
