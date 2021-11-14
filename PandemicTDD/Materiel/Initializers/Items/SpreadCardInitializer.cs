@@ -1,5 +1,4 @@
 ﻿using PandemicTDD.Tools;
-using System;
 using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializers

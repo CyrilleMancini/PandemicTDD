@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PandemicTDDTests.Materiel;
+using PandemicTDD.Materiel;
 
-namespace PandemicTDD.Materiel.Tests
+namespace PandemicTDDTests.Materiel
 {
     [TestClass()]
     public class DiseaseCubesBagTests : TestsBase

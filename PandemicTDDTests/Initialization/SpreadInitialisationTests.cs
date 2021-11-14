@@ -1,8 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD.Materiel;
+using PandemicTDDTests.Materiel;
 using System.Linq;
 
-namespace PandemicTDDTests.Materiel
+namespace PandemicTDDTests.Initialization
 {
     [TestClass()]
     public class SpreadInitialisationTests : TestsBase

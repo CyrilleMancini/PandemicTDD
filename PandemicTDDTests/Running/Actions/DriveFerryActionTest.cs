@@ -1,23 +1,23 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PandemicTDDTests.Materiel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PandemicTDDTests.Materiel;
 
 namespace PandemicTDDTests.Running.Actions
 {
+
     public class DriveFerryActionTest : TestsBase
     {
 
-        [TestMethod]
-        public void MovePlayerTest()
-        {
-            
+        //[TestMethod]
+        //public void MovePlayerTestToUnLinkedTown()
+        //{
+        //    var GameState = new GameState(Players.GetRange(0, 2), GameBox);
+        //    GameState.StartGame().ChooseLevel(Difficulty.Discovery);
+
+        //    Assert.ThrowsException<InvalidActionException>(() =>
+        //    {
+        //        new DriverFerryCommand(GameState, TownsInitializer.Chicago).Execute();
+        //    });
 
 
-
-        }
+        //}
     }
 }

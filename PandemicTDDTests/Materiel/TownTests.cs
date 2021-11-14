@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PandemicTDD.Materiel;
 
-namespace PandemicTDD.Materiel.Tests
+namespace PandemicTDDTests.Materiel
 {
     [TestClass()]
     public class TownTests

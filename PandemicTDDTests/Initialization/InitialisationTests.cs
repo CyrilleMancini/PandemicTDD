@@ -1,9 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD.Materiel;
 using PandemicTDD.Tools;
+using PandemicTDDTests.Materiel;
 using System.Collections.Generic;
 
-namespace PandemicTDDTests.Materiel
+namespace PandemicTDDTests.Initialization
 {
     [TestClass()]
     public class InitialisationTests : TestsBase
@@ -48,7 +49,7 @@ namespace PandemicTDDTests.Materiel
             bool NotShuffled = true;
             for (int i = 0; i < 10; i++)
             {
-                NotShuffled = NotShuffled && (shuffled[i] == i);
+                NotShuffled = NotShuffled && shuffled[i] == i;
             }
             Assert.IsTrue(NotShuffled);
         }
@@ -63,7 +64,7 @@ namespace PandemicTDDTests.Materiel
             bool NotShuffled = true;
             for (int i = 0; i < 10; i++)
             {
-                NotShuffled = NotShuffled && (shuffled[i] == i);
+                NotShuffled = NotShuffled && shuffled[i] == i;
             }
             Assert.IsFalse(NotShuffled);
         }

@@ -1,4 +1,5 @@
-﻿using PandemicTDD.Materiel;
+﻿using PandemicTDD.Actions;
+using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
 using System.Collections.Generic;
 
@@ -11,6 +12,13 @@ namespace PandemicTDD
         private readonly GameBox GameBox;
         private readonly Board Board;
         private readonly DiseaseBags DiseaseBags;
+
+
+        public Player CurrentPlayer { get => Players[CurrentPlayerIdx]; }
+
+        public int ActionsRemaining { get; internal set; }
+
+        private int CurrentPlayerIdx = 0;
 
         public GameState(List<Player> players, GameBox gameBox)
         {
@@ -28,13 +36,31 @@ namespace PandemicTDD
             if (Players.Count > 4) throw new TooManyPlayersException("No more than 4 players");
 
             Players.ForEach(p => p.Town = Board.GetTown(TownsInitializer.Atlanta));
-
+            CurrentPlayerIdx = 0;
+            ActionsRemaining = 4;
             GameBox.Reset();
 
             new DistributeRolesRule().ExecuteRule(GameBox, Players);
             new DistributePlayerCards().ExecuteRule(GameBox, Players);
 
+
+
             return this;
+        }
+
+        internal void DoAction(ActionBase action)
+        {
+
+            action.Try();
+            action.Execute();
+            ActionsRemaining--;
+
+
+        }
+
+        internal void NextTurn()
+        {
+            CurrentPlayerIdx = (++CurrentPlayerIdx) % Players.Count;
         }
 
         public void ChooseLevel(Difficulty Level)

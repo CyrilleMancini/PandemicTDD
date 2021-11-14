@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PandemicTDDTests.Materiel;
+using PandemicTDD.Materiel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PandemicTDD.Materiel.Tests
+namespace PandemicTDDTests.Materiel
 {
     [TestClass()]
     public class SpreadCardTests : TestsBase
@@ -35,7 +35,7 @@ namespace PandemicTDD.Materiel.Tests
                 {
                     AllCards.Single(it => it.Town.Name == town[1]);
                 }
-                catch (System.Exception)
+                catch (Exception)
                 {
                     Console.WriteLine($"Manquant : {town[1]}");
                     throw;
@@ -56,7 +56,7 @@ namespace PandemicTDD.Materiel.Tests
             for (int i = 0; i < expectedTowns.Length; i++)
             {
                 string Expected = expectedTowns[i][1];
-                NotShuffled = NotShuffled && (Expected == AllCards.ElementAt(i).Town.Name);
+                NotShuffled = NotShuffled && Expected == AllCards.ElementAt(i).Town.Name;
             }
 
             Assert.IsFalse(NotShuffled);

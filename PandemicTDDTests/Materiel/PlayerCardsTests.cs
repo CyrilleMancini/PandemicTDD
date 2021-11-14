@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD.Materiel;
-using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
 using System;
 using System.Collections.Generic;
@@ -37,7 +36,7 @@ namespace PandemicTDDTests.Materiel
         public void CheckPlayerTownCardsWithExpectedTownsTest()
         {
             List<PlayerTownCard> AllCards = new();
-        
+
             GameBox.GetPlayersCard().Where(c => c is PlayerTownCard)
                                     .ToList()
                                     .ForEach(it => AllCards.Add((PlayerTownCard)it));

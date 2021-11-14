@@ -12,7 +12,7 @@ namespace PandemicTDDTests.Materiel
     {
 
         protected string[][] expectedTowns;
-        
+
         protected List<Player> Players = new List<Player>() {
                 new() { Name ="PlOne" },
                 new() { Name ="PlTwo" },

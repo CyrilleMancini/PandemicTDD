@@ -3,11 +3,11 @@ using PandemicTDD;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
+using PandemicTDDTests.Materiel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace PandemicTDDTests.Materiel
+namespace PandemicTDDTests.Initialization
 {
     [TestClass()]
     public class StartingGame : TestsBase
@@ -105,7 +105,7 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void DifficultyDiscovery4EpidemicCards()
         {
-          
+
             GameState gameState = new GameState(Players.GetRange(0, 2), GameBox);
             gameState.StartGame()
                 .ChooseLevel(Difficulty.Discovery);
@@ -117,7 +117,7 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void DifficultyNormal4EpidemicCards()
         {
-          
+
             GameState gameState = new GameState(Players.GetRange(0, 2), GameBox);
             gameState.StartGame()
                     .ChooseLevel(Difficulty.Standard);
@@ -128,7 +128,7 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void DifficultyHeroic6EpidemicCards()
         {
-          
+
             GameState gameState = new GameState(Players.GetRange(0, 2), GameBox);
             gameState.StartGame()
                        .ChooseLevel(Difficulty.Heroic);
@@ -141,7 +141,7 @@ namespace PandemicTDDTests.Materiel
         public void HeroicInitialisedStackOnBoard()
         {
             // Heroic    6 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 51 Cartes
-        
+
             GameState gameState = new GameState(Players.GetRange(0, 2), GameBox);
             gameState.StartGame()
                 .ChooseLevel(Difficulty.Heroic);
@@ -154,7 +154,7 @@ namespace PandemicTDDTests.Materiel
         public void DiscoveryInitialisedStackOnBoard()
         {
             // Discovery 4 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 49 Cartes
-       
+
             GameState gameState = new GameState(Players.GetRange(0, 2), GameBox);
             gameState.StartGame()
                 .ChooseLevel(Difficulty.Discovery);
@@ -167,7 +167,7 @@ namespace PandemicTDDTests.Materiel
         public void StandardInitialisedStackOnBoard()
         {
             // Standard 5 : Epidmic + 5 Events + 48 Towns - 2 * 4 Town pour les joueurs => 50 Cartes
-       
+
             GameState gameState = new GameState(Players.GetRange(0, 2), GameBox);
             gameState.StartGame()
                 .ChooseLevel(Difficulty.Standard);
