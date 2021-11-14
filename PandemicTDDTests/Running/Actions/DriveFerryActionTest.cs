@@ -10,13 +10,13 @@ namespace PandemicTDDTests.Running.Actions
     [TestClass]
     public class DriveFerryActionTest : TestsBase
     {
-      
+
         [TestMethod]
         public void MovePlayerTestToUnLinkedTown()
         {
             GameState.StartGame()
                         .ChooseLevel(Difficulty.Discovery);
-        
+
             ActionBase action = new DriverFerryAction(GameState, TownsInitializer.Paris);
             GameState.DoAction(action);
             Assert.AreEqual(4, GameState.ActionsRemaining);

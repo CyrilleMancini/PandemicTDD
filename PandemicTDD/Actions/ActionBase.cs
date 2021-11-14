@@ -2,10 +2,10 @@
 {
     public abstract class ActionBase
     {
-
         public abstract void Try();
 
         public abstract void Execute();
+
 
     }
 }

@@ -27,7 +27,7 @@ namespace PandemicTDDTests.Running
         public void DoingActionDecrementRemaining()
         {
 
-            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
+            GameState gameState = new(Players.GetRange(0, 3), GameBox);
             gameState.StartGame()
                      .ChooseLevel(Difficulty.Discovery);
 
@@ -86,7 +86,7 @@ namespace PandemicTDDTests.Running
         public void FourActionsDoneChangePlayer()
         {
 
-            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
+            GameState gameState = new(Players.GetRange(0, 3), GameBox);
             gameState.StartGame()
                      .ChooseLevel(Difficulty.Discovery);
             ActionBase action = new FakeAction();

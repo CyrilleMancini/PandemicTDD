@@ -36,6 +36,19 @@ namespace PandemicTDD
             this.DiseaseBags = gameBox.GetDiseaseBags();
         }
 
+        internal void Result(string message)
+        {
+            Observers.ForEach(o => o.Result(message));
+        }
+        internal void Error(string message)
+        {
+            Observers.ForEach(o => o.Error(message));
+        }
+        internal void Action(string message)
+        {
+            Observers.ForEach(o => o.Action(message));
+        }
+
         internal IChooseLevel StartGame()
         {
             if (Players.Count < 2) throw new NotEnoughPlayersException("Minimum 2 players");
@@ -64,6 +77,8 @@ namespace PandemicTDD
                 ActionsRemaining--;
                 if (ActionsRemaining == 0)
                     NextTurn();
+                else
+                    Action($"{ActionsRemaining} actions remains.");
             }
             catch (System.Exception ex)
             {
@@ -81,6 +96,7 @@ namespace PandemicTDD
         {
             CurrentPlayerIdx = (++CurrentPlayerIdx) % Players.Count;
             ActionsRemaining = 4;
+            Action($"{CurrentPlayer.Name} can play now with {ActionsRemaining} actions");
         }
 
         public void ChooseLevel(Difficulty Level)

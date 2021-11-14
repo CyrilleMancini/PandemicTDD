@@ -5,6 +5,6 @@
         void Error(string ErrorMessage);
 
         void Action(string ActionMessage);
-
+        void Result(string message);
     }
 }
