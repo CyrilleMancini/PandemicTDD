@@ -1,4 +1,5 @@
-﻿using PandemicTDD.Materiel.PlayerCards;
+﻿using PandemicTDD.Actions.Exceptions;
+using PandemicTDD.Materiel.PlayerCards;
 using System;
 
 namespace PandemicTDD.Actions
@@ -42,7 +43,7 @@ namespace PandemicTDD.Actions
                 throw new PlayerInDifferentTownsException();
 
             if (gameState.CurrentPlayer.Town.Name != PlayerTownCardToShare)
-                throw new PlayersMustBeInTheShareTownCard();
+                throw new PlayersMustBeInTheShareTownCardException();
 
             try
             {

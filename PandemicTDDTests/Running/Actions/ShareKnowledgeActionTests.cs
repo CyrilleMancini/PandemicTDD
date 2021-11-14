@@ -43,7 +43,7 @@ namespace PandemicTDDTests.Running.Actions
             string CardToShare = TownsInitializer.Atlanta;
 
             ActionBase action = new ShareKnowledgeAction(GameState, Players[1], CardToShare);
-            Assert.ThrowsException<PlayersMustBeInTheShareTownCard>(() =>
+            Assert.ThrowsException<PlayersMustBeInTheShareTownCardException>(() =>
             {
                 action.Try();
             });

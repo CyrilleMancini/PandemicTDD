@@ -67,6 +67,8 @@ namespace PandemicTDD.Materiel
 
         }
 
+        public TownSlot GetTownSlot(Town town) => GetTownSlot(town.Name);
+
         public TownSlot GetTownSlot(string townName) => TownSlotsInitializer.GetTownSlot(townName);
 
         public SpreadIndicator GetSpreadIndicator()
