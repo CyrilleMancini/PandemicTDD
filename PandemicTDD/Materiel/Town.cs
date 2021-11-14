@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PandemicTDD.Materiel
@@ -60,6 +61,15 @@ namespace PandemicTDD.Materiel
             return DiseaseCubes
                 .Where(c => c.Color == color)
                 .ToList();
+        }
+
+        internal void TreatOneCubeDisease(DiseaseColor color)
+        {
+            var toTreat = GetDiseaseByColor(color);
+            if (toTreat.Count == 0)
+                throw new ArgumentException($"No more {color} disease to treat in that town.");
+
+            DiseaseCubes.Remove(toTreat[0]);
         }
 
         public override string ToString()
