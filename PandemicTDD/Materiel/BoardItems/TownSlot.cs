@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel
 {
@@ -17,6 +18,13 @@ namespace PandemicTDD.Materiel
         public override string ToString()
         {
             return $"{Town.Name} {Links.Count} liens";
+        }
+
+        internal void BuildStation()
+        {
+            if (ControlDiseaseCenter != null) throw new ArgumentException($"Station already build on {Town.Name}");
+
+            ControlDiseaseCenter = new ControlDiseaseCenter();
         }
     }
 
