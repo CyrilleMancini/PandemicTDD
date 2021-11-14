@@ -20,7 +20,7 @@
             return SingleBags;
         }
 
-        internal void Reset()
+        public void Reset()
         {
             if (SingleBags == null) return;
             SingleBags.Blacks.Clear();

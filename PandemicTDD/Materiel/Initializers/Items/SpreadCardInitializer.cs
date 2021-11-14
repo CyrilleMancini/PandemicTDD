@@ -1,4 +1,5 @@
 ﻿using PandemicTDD.Tools;
+using System;
 using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializers
@@ -31,5 +32,11 @@ namespace PandemicTDD.Materiel.Initializers
 
         }
 
+        internal void Reset()
+        {
+            if (SingleSpreadCards == null) return;
+            SingleSpreadCards.Clear();
+            SingleSpreadCards = null;
+        }
     }
 }

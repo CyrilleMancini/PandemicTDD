@@ -45,6 +45,9 @@ namespace PandemicTDD.Materiel
         {
             RoleCardInitializer.Reset();
             PlayerCardsInitializer.Reset();
+            DiseaseBagsInitializer.Reset();
+            SpreadCardsInitializer.Reset();
+            PlayerCardsInitializer.Reset();
         }
 
         Board SingleBoard = null;

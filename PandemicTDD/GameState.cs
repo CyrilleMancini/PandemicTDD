@@ -31,11 +31,8 @@ namespace PandemicTDD
 
             GameBox.Reset();
 
-            var distribute = new DistributeRolesRule();
-            distribute.ExecuteRule(GameBox, Players);
-
-            var distributePlayerCards = new DistributePlayerCards();
-            distributePlayerCards.ExecuteRule(GameBox, Players);
+            new DistributeRolesRule().ExecuteRule(GameBox, Players);
+            new DistributePlayerCards().ExecuteRule(GameBox, Players);
 
             return this;
         }
@@ -44,9 +41,7 @@ namespace PandemicTDD
         {
             new EpidemicCardsInitRule().ExecuteRule(GameBox, Level);
             new PreparePlayerCardsStack().ExecuteRule(GameBox);
-
         }
-
     }
 
     internal interface IChooseLevel

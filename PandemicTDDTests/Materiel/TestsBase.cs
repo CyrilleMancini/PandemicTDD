@@ -1,6 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PandemicTDD;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
+using System.Collections.Generic;
 using System.IO;
 
 namespace PandemicTDDTests.Materiel
@@ -10,7 +12,14 @@ namespace PandemicTDDTests.Materiel
     {
 
         protected string[][] expectedTowns;
-
+        
+        protected List<Player> Players = new List<Player>() {
+                new() { Name ="PlOne" },
+                new() { Name ="PlTwo" },
+                new() { Name ="PlThree" },
+                new() { Name ="PlFour" },
+                new() { Name ="PlFive" },
+            };
         [TestInitialize]
         public void InitExpectedTowns()
         {
@@ -32,6 +41,8 @@ namespace PandemicTDDTests.Materiel
         protected PlayerCardInitializer playerCardInitializer;
         protected GameBox GameBox;
 
+
+
         [TestInitialize]
         public void InitInitializer()
         {
@@ -47,6 +58,9 @@ namespace PandemicTDDTests.Materiel
                 townsInitializer, spreadCardInitializer,
                 playerCardInitializer, townSlotsInitializer, townLinksInitializer,
                 gameInitializer);
+            GameBox.Reset();
+            GameBox.GetBoard();
+
         }
     }
 }

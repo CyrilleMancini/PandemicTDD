@@ -82,7 +82,5 @@ namespace PandemicTDDTests.EndOfGame
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Blue, -1);
             });
         }
-
-
     }
 }
