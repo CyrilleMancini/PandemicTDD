@@ -1,5 +1,4 @@
-﻿using PandemicTDD;
-using PandemicTDD.Materiel;
+﻿using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.PlayerCards;
 using System;
 using System.Linq;
