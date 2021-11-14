@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace PandemicTDD.Materiel
+namespace PandemicTDD.Events
 {
     [Serializable]
     public class YouLooseException : Exception

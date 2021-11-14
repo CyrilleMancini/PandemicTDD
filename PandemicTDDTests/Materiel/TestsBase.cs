@@ -14,7 +14,7 @@ namespace PandemicTDDTests.Materiel
 
         protected string[][] expectedTowns;
 
-        protected List<Player> Players = new List<Player>() {
+        protected List<Player> Players = new() {
                 new() { Name ="PlOne" },
                 new() { Name ="PlTwo" },
                 new() { Name ="PlThree" },
@@ -42,7 +42,7 @@ namespace PandemicTDDTests.Materiel
         protected PlayerCardInitializer playerCardInitializer;
         protected GameBox GameBox;
 
-        protected GameStateConsoleObserver ConsoleObserver = new GameStateConsoleObserver();
+        protected GameStateConsoleObserver ConsoleObserver = new();
 
         protected GameState GameState;
 
@@ -56,7 +56,7 @@ namespace PandemicTDDTests.Materiel
             playerCardInitializer = new PlayerCardInitializer();
             townSlotsInitializer = new TownSlotsInitializer(townsInitializer);
             townLinksInitializer = new TownLinksInitializer();
-            GameInitializer gameInitializer = new GameInitializer();
+            GameInitializer gameInitializer = new();
             GameBox = new GameBox(roleCardInitializer, diseaseBagsInitializer,
                 townsInitializer, spreadCardInitializer,
                 playerCardInitializer, townSlotsInitializer, townLinksInitializer,

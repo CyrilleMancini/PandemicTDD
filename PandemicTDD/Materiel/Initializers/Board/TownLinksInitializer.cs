@@ -104,7 +104,7 @@ namespace PandemicTDD.Materiel.Initializers
         {
             foreach (string[] link in links)
             {
-                TownsLink tlink = new TownsLink(link[0], link[1]);
+                TownsLink tlink = new(link[0], link[1]);
                 board.Link2Towns(tlink);
             }
         }

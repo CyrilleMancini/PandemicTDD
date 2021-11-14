@@ -23,7 +23,7 @@ namespace PandemicTDD
             {
                 return PlayerCards.First(c => c is PlayerTownCard ct && ct.Town.Name == cityName);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new NotOwnedCityPlayerCardException();
             }

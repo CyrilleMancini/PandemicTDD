@@ -1,4 +1,4 @@
-﻿using PandemicTDDTests.EndOfGame;
+﻿using PandemicTDD.Events;
 
 namespace PandemicTDD.Materiel
 {

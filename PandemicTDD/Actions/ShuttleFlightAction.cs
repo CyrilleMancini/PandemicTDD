@@ -2,8 +2,8 @@
 {
     internal class ShuttleFlightAction : ActionBase
     {
-        private GameState gameState;
-        private string Destination;
+        private readonly GameState gameState;
+        private readonly string Destination;
 
         public ShuttleFlightAction(GameState gameState, string destination)
         {

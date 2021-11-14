@@ -9,8 +9,8 @@ namespace PandemicTDDTests.Materiel
         [TestMethod()]
         public void TownEqualityTest()
         {
-            Town Paris1 = new Town(DiseaseColor.Blue, "Paris", "France");
-            Town Paris2 = new Town(DiseaseColor.Blue, "Paris", "France");
+            Town Paris1 = new(DiseaseColor.Blue, "Paris", "France");
+            Town Paris2 = new(DiseaseColor.Blue, "Paris", "France");
             Assert.IsTrue(Paris1 == Paris2);
         }
     }

@@ -6,11 +6,11 @@ namespace PandemicTDD.Actions
 {
     internal class ShareKnowledgeAction : ActionBase
     {
-        private GameState gameState;
+        private readonly GameState gameState;
 
-        private Player player;
+        private readonly Player player;
 
-        private string PlayerTownCardToShare;
+        private readonly string PlayerTownCardToShare;
 
         private PlayerTownCard Given;
 

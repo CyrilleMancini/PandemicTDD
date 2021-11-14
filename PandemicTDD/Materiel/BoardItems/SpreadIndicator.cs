@@ -14,7 +14,7 @@ namespace PandemicTDD.Materiel
             }
         }
 
-        int[] Levels = new[] { 2, 2, 2, 3, 3, 4, 4 };
+        readonly int[] Levels = new[] { 2, 2, 2, 3, 3, 4, 4 };
 
         public SpreadIndicator()
         {

@@ -11,6 +11,7 @@ namespace PandemicTDDTests.Materiel
         public void DiseaseCubeBagTest()
         {
             DiseaseBags bags = GameBox.GetDiseaseBags();
+            Assert.IsNotNull(bags);
         }
 
 

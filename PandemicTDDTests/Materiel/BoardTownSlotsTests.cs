@@ -19,7 +19,7 @@ namespace PandemicTDDTests.Materiel
         }
 
         [TestMethod]
-        public void _48TownOnBoardTest()
+        public void Expect48TownsOnBoardTest()
         {
             List<TownSlot> slots = townSlotsInitializer.TownSlots;
             Assert.AreEqual(48, slots.Count, "48 villes attendues sur la plateau.");
@@ -29,7 +29,7 @@ namespace PandemicTDDTests.Materiel
         public void TestTown1LinkedToTown2Test()
         {
 
-            TownsLink link = new TownsLink("Paris", "Londres");
+            TownsLink link = new("Paris", "Londres");
 
             TownSlot paris = townSlotsInitializer.GetTownSlot("Paris");
             TownSlot londres = townSlotsInitializer.GetTownSlot("Londres");
@@ -49,7 +49,7 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void TestTown2LinkedToTown1Test()
         {
-            TownsLink link = new TownsLink("Paris", "Londres");
+            TownsLink link = new("Paris", "Londres");
             TownSlot paris = townSlotsInitializer.GetTownSlot("Paris");
             TownSlot londres = townSlotsInitializer.GetTownSlot("Londres");
             paris.Links.Clear();

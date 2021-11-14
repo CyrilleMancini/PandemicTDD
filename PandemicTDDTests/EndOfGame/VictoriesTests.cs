@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PandemicTDD.Events;
 using PandemicTDD.Materiel;
 using PandemicTDDTests.Materiel;
 

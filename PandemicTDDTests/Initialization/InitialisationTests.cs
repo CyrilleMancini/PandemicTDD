@@ -32,8 +32,8 @@ namespace PandemicTDDTests.Initialization
         [TestMethod]
         public void ListShufflerCardSameSize()
         {
-            List<int> list = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            ListShuffler shuffler = new ListShuffler();
+            List<int> list = new() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            ListShuffler shuffler = new();
 
             var shuffled = shuffler.Shuffle(list);
             Assert.AreEqual(10, shuffled.Count);
@@ -41,10 +41,9 @@ namespace PandemicTDDTests.Initialization
         }
 
         [TestMethod]
-        public void ListShufflerCardTestNonShuffled()
+        public void TestNotShuffledAlgorithme()
         {
-            List<int> list = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            List<int> shuffled = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            List<int> shuffled = new() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
             bool NotShuffled = true;
             for (int i = 0; i < 10; i++)
@@ -57,8 +56,8 @@ namespace PandemicTDDTests.Initialization
         [TestMethod]
         public void ListShufflerCard()
         {
-            List<int> list = new List<int>() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-            ListShuffler shuffler = new ListShuffler();
+            List<int> list = new() { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            ListShuffler shuffler = new();
 
             var shuffled = shuffler.Shuffle(list);
             bool NotShuffled = true;

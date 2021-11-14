@@ -51,13 +51,13 @@ namespace PandemicTDD.Materiel.Initializers
                 TownSlot town = TownSlots.Single(it => it.Town.Name == townName);
                 return town;
             }
-            catch (InvalidOperationException Ex)
+            catch (InvalidOperationException)
             {
                 throw new UnkownTownException($"{townName} is unknown");
             }
         }
 
-        private TownsLink[] Links = new TownsLink[] {
+        private readonly TownsLink[] Links = new TownsLink[] {
                     new TownsLink("Mumbai", "Chennai"),
                     new TownsLink("Mumbai", "Karachi"),
                     new TownsLink("Mumbai", "Delhi"),

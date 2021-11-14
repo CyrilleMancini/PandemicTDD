@@ -85,7 +85,7 @@ namespace PandemicTDD.Materiel
                 Town town = Towns.Single(it => it == search);
                 return town;
             }
-            catch (InvalidOperationException Ex)
+            catch (InvalidOperationException)
             {
                 throw new UnkownTownException($"{search.Name} is unknown");
             }
@@ -98,7 +98,7 @@ namespace PandemicTDD.Materiel
                 Town town = Towns.Single(it => it.Name == townName);
                 return town;
             }
-            catch (InvalidOperationException Ex)
+            catch (InvalidOperationException)
             {
                 throw new UnkownTownException($"{townName} is unknown");
             }

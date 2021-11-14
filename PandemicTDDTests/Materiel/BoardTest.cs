@@ -32,7 +32,7 @@ namespace PandemicTDDTests.Materiel
             {
                 try
                 {
-                    Board.Towns.Single(it => it.Name == town[1]);
+                    var s = Board.Towns.Single(it => it.Name == town[1]);
 
                 }
                 catch (System.Exception)
@@ -65,7 +65,7 @@ namespace PandemicTDDTests.Materiel
         public void GetTownByObjectUnkown()
         {
             Board Board = GameBox.GetBoard();
-            Town Paris = new Town(DiseaseColor.Blue, "Paris", "France");
+            Town Paris = new(DiseaseColor.Blue, "Paris", "France");
             Board.GetTown(Paris);
             Assert.IsNotNull(Paris);
         }

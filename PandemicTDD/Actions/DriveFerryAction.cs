@@ -10,9 +10,9 @@ namespace PandemicTDD.Actions
 
         public const string ErrorSameDestinationAndLocation = "Player Location and Destination are the same.";
 
-        private GameState gameState;
+        private readonly GameState gameState;
 
-        private string Destination;
+        private readonly string Destination;
 
         private TownSlot playerSlotTown;
 

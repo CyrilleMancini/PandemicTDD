@@ -14,7 +14,7 @@ namespace PandemicTDDTests.Running
         public void FourActionsOnEeachTurn()
         {
 
-            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
+            GameState gameState = new(Players.GetRange(0, 3), GameBox);
             gameState.StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
@@ -26,56 +26,45 @@ namespace PandemicTDDTests.Running
         [TestMethod()]
         public void DoingActionDecrementRemaining()
         {
-
-            GameState gameState = new(Players.GetRange(0, 3), GameBox);
-            gameState.StartGame()
-                     .ChooseLevel(Difficulty.Discovery);
-
+            StartGame();
             ActionBase action = new FakeAction();
-            gameState.DoAction(action);
-            Assert.AreEqual(3, gameState.ActionsRemaining);
+
+            GameState.DoAction(action);
+
+            Assert.AreEqual(3, GameState.ActionsRemaining);
         }
 
         [TestMethod()]
         public void DoingImpossibleActionDoesNotChangeAnything()
         {
-
-            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
-            gameState.StartGame()
-                     .ChooseLevel(Difficulty.Discovery);
-
+            StartGame();
             ActionBase action = new FakeFailingAction();
-            gameState.DoAction(action);
-            Assert.AreEqual(4, gameState.ActionsRemaining);
+
+            GameState.DoAction(action);
+
+            Assert.AreEqual(4, GameState.ActionsRemaining);
         }
 
 
         [TestMethod()]
         public void TwiceRegisterationImpossible()
         {
-            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
-            gameState.StartGame()
-                     .ChooseLevel(Difficulty.Discovery);
+            StartGame();
 
-            gameState.RegisterObserver(ConsoleObserver);
             Assert.ThrowsException<ArgumentException>(() =>
             {
-                gameState.RegisterObserver(ConsoleObserver);
+                GameState.RegisterObserver(ConsoleObserver);
             });
         }
 
         [TestMethod()]
         public void ImpossibleSendErrorToView()
         {
-            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
-            gameState.StartGame()
-                     .ChooseLevel(Difficulty.Discovery);
-
-            gameState.RegisterObserver(ConsoleObserver);
-
+            StartGame();
+                        
             ActionBase action = new FakeFailingAction();
-            gameState.DoAction(action);
-            Assert.AreEqual(4, gameState.ActionsRemaining);
+            GameState.DoAction(action);
+            Assert.AreEqual(4, GameState.ActionsRemaining);
 
             Assert.AreEqual(FakeFailingAction.CanNotBeDone, ConsoleObserver.LastErrorReceived);
 
@@ -86,20 +75,19 @@ namespace PandemicTDDTests.Running
         public void FourActionsDoneChangePlayer()
         {
 
-            GameState gameState = new(Players.GetRange(0, 3), GameBox);
-            gameState.StartGame()
-                     .ChooseLevel(Difficulty.Discovery);
+            StartGame();
             ActionBase action = new FakeAction();
+
             // PLayer 1 is the current player
-            Assert.AreEqual(Players[0], gameState.CurrentPlayer);
+            Assert.AreEqual(Players[0], GameState.CurrentPlayer);
 
             //DO 4 actions
             for (int a = 0; a < 4; a++)
-                gameState.DoAction(action);
+                GameState.DoAction(action);
 
             // PLayer has changed and 4 actions remaining
-            Assert.AreEqual(Players[1], gameState.CurrentPlayer);
-            Assert.AreEqual(4, gameState.ActionsRemaining);
+            Assert.AreEqual(Players[1], GameState.CurrentPlayer);
+            Assert.AreEqual(4, GameState.ActionsRemaining);
 
         }
 

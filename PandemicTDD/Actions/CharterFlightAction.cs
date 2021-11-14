@@ -6,8 +6,8 @@ namespace PandemicTDD.Actions
 {
     internal class CharterFlightAction : ActionBase
     {
-        private GameState gameState;
-        private string Destination;
+        private readonly GameState gameState;
+        private readonly string Destination;
         private TownSlot PlayerSlotTown;
         private TownSlot DestSlotTown;
         private PlayerTownCard OwnedCityCard;

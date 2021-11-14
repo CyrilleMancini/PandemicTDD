@@ -24,7 +24,7 @@ namespace PandemicTDD
 
         internal readonly DiseaseBags DiseaseBags;
 
-        private readonly List<IObserveGameState> Observers = new List<IObserveGameState>();
+        private readonly List<IObserveGameState> Observers = new();
 
 
         public GameState(List<Player> players,

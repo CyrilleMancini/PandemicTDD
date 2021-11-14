@@ -6,7 +6,7 @@ namespace PandemicTDD.Materiel
 {
     public class Town
     {
-        private List<DiseaseCube> DiseaseCubes = new List<DiseaseCube>();
+        private readonly List<DiseaseCube> DiseaseCubes = new();
 
         public DiseaseColor Color { get; }
 

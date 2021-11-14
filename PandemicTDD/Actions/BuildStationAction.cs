@@ -2,7 +2,7 @@
 {
     internal class BuildStationAction : ActionBase
     {
-        private GameState gameState;
+        private readonly GameState gameState;
 
         public BuildStationAction(GameState gameState)
         {

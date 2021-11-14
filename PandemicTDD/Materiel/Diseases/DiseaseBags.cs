@@ -1,34 +1,26 @@
-﻿using System;
+﻿using PandemicTDD.Events;
+using System;
 using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel
 {
-
-    public enum DiseaseColor
-    {
-        Black,
-        Red,
-        Yellow,
-        Blue
-    }
-
-
     public class DiseaseBags
     {
 
-        public List<DiseaseCube> Blacks = new List<DiseaseCube>();
+        public List<DiseaseCube> Blacks = new();
 
-        public List<DiseaseCube> Reds = new List<DiseaseCube>();
+        public List<DiseaseCube> Reds = new();
 
-        public List<DiseaseCube> Yellows = new List<DiseaseCube>();
+        public List<DiseaseCube> Yellows = new();
 
-
-        public List<DiseaseCube> Blues = new List<DiseaseCube>();
+        public List<DiseaseCube> Blues = new();
 
         public List<DiseaseCube> GetCubes(DiseaseColor color, int number)
         {
             if (number <= 0) throw new ArgumentException($"Bad Quantity {{number}}");
+            
             List<DiseaseCube> cubes;
+            
             switch (color)
             {
                 case DiseaseColor.Black:

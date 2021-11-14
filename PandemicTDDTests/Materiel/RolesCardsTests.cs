@@ -27,13 +27,15 @@ namespace PandemicTDDTests.Materiel
         public void GetExpectedRolesTest()
         {
             List<RoleCard> AllCards = GameBox.GetRoles();
-            AllCards.Any(it => it.Name == "Medecin");
-            AllCards.Any(it => it.Name == "Chercheuse");
-            AllCards.Any(it => it.Name == "Expert au opérations");
-            AllCards.Any(it => it.Name == "Répartiteur");
-            AllCards.Any(it => it.Name == "Planificateur d'urgence");
-            AllCards.Any(it => it.Name == "Scientifique");
-            AllCards.Any(it => it.Name == "Spécialiste de la mise en quanrantaine");
+            bool result = true;
+            result = result && AllCards.Any(it => it.Name == "Médecin");
+            result = result && AllCards.Any(it => it.Name == "Chercheuse");
+            result = result && AllCards.Any(it => it.Name == "Expert aux opérations");
+            result = result && AllCards.Any(it => it.Name == "Répartiteur");
+            result = result && AllCards.Any(it => it.Name == "Planificateur d'urgence");
+            result = result && AllCards.Any(it => it.Name == "Scientifique");
+            result = result && AllCards.Any(it => it.Name == "Spécialiste en mise en quarantaine");
+            Assert.IsTrue(result);
         }
 
     }

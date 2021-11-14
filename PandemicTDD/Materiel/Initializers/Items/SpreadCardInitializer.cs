@@ -5,7 +5,7 @@ namespace PandemicTDD.Materiel.Initializers
 {
     public class SpreadCardInitializer
     {
-        ListShuffler listShuffler;
+        readonly ListShuffler listShuffler;
 
         public SpreadCardInitializer()
         {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PandemicTDD.Events;
 using PandemicTDD.Materiel;
 
 namespace PandemicTDDTests.Materiel
@@ -12,6 +13,7 @@ namespace PandemicTDDTests.Materiel
         {
             Board board = GameBox.GetBoard();
             OutBreakIndicator hi = board.GetOutbreakIndicator();
+            Assert.IsNotNull(hi);
         }
 
 

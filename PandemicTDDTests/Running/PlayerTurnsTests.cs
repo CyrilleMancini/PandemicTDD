@@ -11,11 +11,8 @@ namespace PandemicTDDTests.Running
         public void FirstTurn()
         {
 
-            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
-            gameState.StartGame()
-                        .ChooseLevel(Difficulty.Discovery);
-
-            Assert.IsTrue(gameState.CurrentPlayer == Players[0]);
+            StartGame();
+            Assert.IsTrue(GameState.CurrentPlayer == Players[0]);
 
 
         }
@@ -23,28 +20,20 @@ namespace PandemicTDDTests.Running
         [TestMethod()]
         public void SecondTurn()
         {
+            StartGame();
 
-            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
-            gameState.StartGame()
-                        .ChooseLevel(Difficulty.Discovery);
-
-            gameState.NextTurn();
-            Assert.IsTrue(gameState.CurrentPlayer == Players[1]);
-
-
+            GameState.NextTurn();
+            Assert.IsTrue(GameState.CurrentPlayer == Players[1]);
         }
 
         [TestMethod()]
         public void ThirdTurn()
         {
+            StartGame();
 
-            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
-            gameState.StartGame()
-                        .ChooseLevel(Difficulty.Discovery);
-
-            gameState.NextTurn();
-            gameState.NextTurn();
-            Assert.IsTrue(gameState.CurrentPlayer == Players[2]);
+            GameState.NextTurn();
+            GameState.NextTurn();
+            Assert.IsTrue(GameState.CurrentPlayer == Players[2]);
 
 
         }
@@ -52,17 +41,13 @@ namespace PandemicTDDTests.Running
         [TestMethod()]
         public void FourthTurn()
         {
+            StartGame();
 
-            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
-            gameState.StartGame()
-                        .ChooseLevel(Difficulty.Discovery);
-
-            gameState.NextTurn();
-            gameState.NextTurn();
-            gameState.NextTurn();
-            Assert.IsTrue(gameState.CurrentPlayer == Players[0]);
-
-
+            GameState.NextTurn();
+            GameState.NextTurn();
+            GameState.NextTurn();
+            GameState.NextTurn();
+            Assert.IsTrue(GameState.CurrentPlayer == Players[0]);
         }
     }
 }

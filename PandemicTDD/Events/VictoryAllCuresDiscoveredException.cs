@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PandemicTDDTests.EndOfGame
+namespace PandemicTDD.Events
 {
     internal class VictoryAllCuresDiscoveredException : Exception
     {

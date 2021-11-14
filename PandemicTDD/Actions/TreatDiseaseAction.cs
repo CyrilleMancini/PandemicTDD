@@ -4,8 +4,8 @@ namespace PandemicTDD.Actions
 {
     internal class TreatDiseaseAction : ActionBase
     {
-        private GameState GameState;
-        private DiseaseColor Disease;
+        private readonly GameState GameState;
+        private readonly DiseaseColor Disease;
 
         public TreatDiseaseAction(GameState gameState, DiseaseColor disease)
         {
