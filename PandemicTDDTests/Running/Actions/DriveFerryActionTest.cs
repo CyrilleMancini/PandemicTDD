@@ -10,19 +10,46 @@ namespace PandemicTDDTests.Running.Actions
     [TestClass]
     public class DriveFerryActionTest : TestsBase
     {
+      
+        [TestMethod]
+        public void MovePlayerTestToUnLinkedTown()
+        {
+            GameState.StartGame()
+                        .ChooseLevel(Difficulty.Discovery);
+        
+            ActionBase action = new DriverFerryAction(GameState, TownsInitializer.Paris);
+            GameState.DoAction(action);
+            Assert.AreEqual(4, GameState.ActionsRemaining);
+            Assert.AreEqual(DriverFerryAction.ErrorDestinationNotLinked, ConsoleObserver.LastErrorReceived);
 
-        //[TestMethod]
-        //public void MovePlayerTestToUnLinkedTown()
-        //{
-        //    GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
-        //    gameState.StartGame()
-        //             .ChooseLevel(Difficulty.Discovery);
 
-        //    ActionBase action = new DriverFerryAction(gameState, TownsInitializer.Paris);
-        //    gameState.DoAction(action);
-        //    Assert.AreEqual(3, gameState.ActionsRemaining);
+        }
+
+        [TestMethod]
+        public void MovePlayerToPlayerLocationFail()
+        {
+            GameState.StartGame()
+                        .ChooseLevel(Difficulty.Discovery);
+
+            ActionBase action = new DriverFerryAction(GameState, TownsInitializer.Atlanta);
+            GameState.DoAction(action);
+            Assert.AreEqual(4, GameState.ActionsRemaining);
+            Assert.AreEqual(DriverFerryAction.ErrorSameDestinationAndLocation, ConsoleObserver.LastErrorReceived);
+        }
 
 
-        //}
+        [TestMethod]
+        public void MovePlayerToLinkedLocationSuccess()
+        {
+            GameState.StartGame()
+                        .ChooseLevel(Difficulty.Discovery);
+
+            ActionBase action = new DriverFerryAction(GameState, TownsInitializer.Chicago);
+            GameState.DoAction(action);
+            Assert.AreEqual(3, GameState.ActionsRemaining);
+            Assert.AreEqual(GameState.CurrentPlayer.Town.Name, TownsInitializer.Chicago);
+
+        }
+
     }
 }

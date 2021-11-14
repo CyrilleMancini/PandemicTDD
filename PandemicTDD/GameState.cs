@@ -10,23 +10,22 @@ namespace PandemicTDD
     public class GameState : IChooseLevel
     {
 
-        public List<Player> Players;
-
-        private readonly GameBox GameBox;
-
-        private readonly Board Board;
-
-        private readonly DiseaseBags DiseaseBags;
-
-        private readonly List<IObserveGameState> Observers = new List<IObserveGameState>();
-
-
+        internal List<Player> Players;
 
         public Player CurrentPlayer { get => Players[CurrentPlayerIdx]; }
 
         public int ActionsRemaining { get; internal set; }
 
         private int CurrentPlayerIdx = 0;
+
+        internal GameBox GameBox { get; private set; }
+
+        internal Board Board { get; private set; }
+
+        internal readonly DiseaseBags DiseaseBags;
+
+        private readonly List<IObserveGameState> Observers = new List<IObserveGameState>();
+
 
         public GameState(List<Player> players,
             GameBox gameBox)
@@ -36,8 +35,6 @@ namespace PandemicTDD
             this.Board = gameBox.GetBoard();
             this.DiseaseBags = gameBox.GetDiseaseBags();
         }
-
-
 
         internal IChooseLevel StartGame()
         {

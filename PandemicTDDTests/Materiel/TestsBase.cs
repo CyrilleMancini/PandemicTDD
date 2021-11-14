@@ -44,8 +44,7 @@ namespace PandemicTDDTests.Materiel
 
         protected GameStateConsoleObserver ConsoleObserver = new GameStateConsoleObserver();
 
-
-
+        protected GameState GameState;
 
         [TestInitialize]
         public void InitInitializer()
@@ -64,6 +63,8 @@ namespace PandemicTDDTests.Materiel
                 gameInitializer);
             GameBox.Reset();
             GameBox.GetBoard();
+            GameState = new GameState(Players.GetRange(0, 4), GameBox);
+            GameState.RegisterObserver(ConsoleObserver);
 
         }
     }
