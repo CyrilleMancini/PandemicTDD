@@ -1,17 +1,25 @@
 ﻿using PandemicTDD.Actions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
+using System;
 using System.Collections.Generic;
 
 namespace PandemicTDD
 {
+
     public class GameState : IChooseLevel
     {
 
         public List<Player> Players;
+
         private readonly GameBox GameBox;
+
         private readonly Board Board;
+
         private readonly DiseaseBags DiseaseBags;
+
+        private readonly List<IObserveGameState> Observers = new List<IObserveGameState>();
+
 
 
         public Player CurrentPlayer { get => Players[CurrentPlayerIdx]; }
@@ -27,8 +35,8 @@ namespace PandemicTDD
             this.GameBox = gameBox;
             this.Board = gameBox.GetBoard();
             this.DiseaseBags = gameBox.GetDiseaseBags();
-
         }
+
 
 
         internal IChooseLevel StartGame()
@@ -62,8 +70,14 @@ namespace PandemicTDD
             }
             catch (System.Exception ex)
             {
-
+                Observers.ForEach(o => o.Error(ex.Message));
             }
+        }
+
+        internal void RegisterObserver(IObserveGameState observer)
+        {
+            if (Observers.Contains(observer)) throw new ArgumentException("Observer already registered");
+            Observers.Add(observer);
         }
 
         internal void NextTurn()

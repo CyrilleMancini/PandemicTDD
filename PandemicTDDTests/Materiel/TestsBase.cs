@@ -2,6 +2,7 @@
 using PandemicTDD;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
+using PandemicTDDTests.Running;
 using System.Collections.Generic;
 using System.IO;
 
@@ -40,6 +41,9 @@ namespace PandemicTDDTests.Materiel
         protected TownLinksInitializer townLinksInitializer;
         protected PlayerCardInitializer playerCardInitializer;
         protected GameBox GameBox;
+
+        protected GameStateConsoleObserver ConsoleObserver = new GameStateConsoleObserver();
+
 
 
 

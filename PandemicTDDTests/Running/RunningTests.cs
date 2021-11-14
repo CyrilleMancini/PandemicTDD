@@ -2,6 +2,7 @@
 using PandemicTDD;
 using PandemicTDD.Actions;
 using PandemicTDDTests.Materiel;
+using System;
 
 namespace PandemicTDDTests.Running
 {
@@ -47,6 +48,39 @@ namespace PandemicTDDTests.Running
             gameState.DoAction(action);
             Assert.AreEqual(4, gameState.ActionsRemaining);
         }
+
+
+        [TestMethod()]
+        public void TwiceRegisterationImpossible()
+        {
+            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
+            gameState.StartGame()
+                     .ChooseLevel(Difficulty.Discovery);
+
+            gameState.RegisterObserver(ConsoleObserver);
+            Assert.ThrowsException<ArgumentException>(() =>
+            {
+                gameState.RegisterObserver(ConsoleObserver);
+            });
+        }
+
+        [TestMethod()]
+        public void ImpossibleSendErrorToView()
+        {
+            GameState gameState = new GameState(Players.GetRange(0, 3), GameBox);
+            gameState.StartGame()
+                     .ChooseLevel(Difficulty.Discovery);
+
+            gameState.RegisterObserver(ConsoleObserver);
+
+            ActionBase action = new FakeFailingAction();
+            gameState.DoAction(action);
+            Assert.AreEqual(4, gameState.ActionsRemaining);
+
+            Assert.AreEqual(FakeFailingAction.CanNotBeDone, ConsoleObserver.LastErrorReceived);
+
+        }
+
 
         [TestMethod()]
         public void FourActionsDoneChangePlayer()
