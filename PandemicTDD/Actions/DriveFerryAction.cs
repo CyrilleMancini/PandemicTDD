@@ -1,12 +1,11 @@
 ﻿using PandemicTDD;
-using PandemicTDD.Actions;
 using PandemicTDD.Materiel;
 using System;
 using System.Linq;
 
-namespace PandemicTDDTests.Running.Actions
+namespace PandemicTDD.Actions
 {
-    internal class DriverFerryAction : ActionBase
+    internal class DriveFerryAction : ActionBase
     {
         public const string ErrorDestinationNotLinked = "The Destination is not linked to Player Location.";
 
@@ -20,10 +19,10 @@ namespace PandemicTDDTests.Running.Actions
 
         private TownSlot destSlotTown;
 
-        public DriverFerryAction(GameState gameState, string destination)
+        public DriveFerryAction(GameState gameState, string destination)
         {
             this.gameState = gameState;
-            this.Destination = destination;
+            Destination = destination;
         }
 
 

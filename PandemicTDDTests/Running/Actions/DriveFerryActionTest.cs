@@ -7,6 +7,7 @@ using PandemicTDDTests.Materiel;
 namespace PandemicTDDTests.Running.Actions
 {
 
+
     [TestClass]
     public class DriveFerryActionTest : TestsBase
     {
@@ -17,10 +18,10 @@ namespace PandemicTDDTests.Running.Actions
             GameState.StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
-            ActionBase action = new DriverFerryAction(GameState, TownsInitializer.Paris);
+            ActionBase action = new DriveFerryAction(GameState, TownsInitializer.Paris);
             GameState.DoAction(action);
             Assert.AreEqual(4, GameState.ActionsRemaining);
-            Assert.AreEqual(DriverFerryAction.ErrorDestinationNotLinked, ConsoleObserver.LastErrorReceived);
+            Assert.AreEqual(DriveFerryAction.ErrorDestinationNotLinked, ConsoleObserver.LastErrorReceived);
 
 
         }
@@ -31,10 +32,10 @@ namespace PandemicTDDTests.Running.Actions
             GameState.StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
-            ActionBase action = new DriverFerryAction(GameState, TownsInitializer.Atlanta);
+            ActionBase action = new DriveFerryAction(GameState, TownsInitializer.Atlanta);
             GameState.DoAction(action);
             Assert.AreEqual(4, GameState.ActionsRemaining);
-            Assert.AreEqual(DriverFerryAction.ErrorSameDestinationAndLocation, ConsoleObserver.LastErrorReceived);
+            Assert.AreEqual(DriveFerryAction.ErrorSameDestinationAndLocation, ConsoleObserver.LastErrorReceived);
         }
 
 
@@ -44,7 +45,7 @@ namespace PandemicTDDTests.Running.Actions
             GameState.StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
-            ActionBase action = new DriverFerryAction(GameState, TownsInitializer.Chicago);
+            ActionBase action = new DriveFerryAction(GameState, TownsInitializer.Chicago);
             GameState.DoAction(action);
             Assert.AreEqual(3, GameState.ActionsRemaining);
             Assert.AreEqual(GameState.CurrentPlayer.Town.Name, TownsInitializer.Chicago);

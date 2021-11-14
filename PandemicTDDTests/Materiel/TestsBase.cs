@@ -67,5 +67,11 @@ namespace PandemicTDDTests.Materiel
             GameState.RegisterObserver(ConsoleObserver);
 
         }
+
+        protected void StartGame()
+        {
+            GameState.StartGame().ChooseLevel(Difficulty.Discovery);
+            GameBox.Reset();
+        }
     }
 }
