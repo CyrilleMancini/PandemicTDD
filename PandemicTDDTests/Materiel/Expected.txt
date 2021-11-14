@@ -9,6 +9,7 @@ Noir;Téhéran;Iran
 Noir;Riyad;Arabie Saoudite
 Noir;Moscou;Russie
 Noir;Istanbul;Turquie
+Noir;Le Caire;Egypte
 Bleu;San Francisco;Etats-Unis
 Bleu;New York;Etats-Unis
 Bleu;Washington;Etats-Unis
@@ -35,7 +36,6 @@ Rouge;Jakarta;Indonésie
 Rouge;Manille;Philippines
 Jaune;Lagos;Nigeria
 Jaune;Kinshasa;République Démocratique du Congo
-Jaune;Le Caire;Egypte
 Jaune;Mexico;Mexique 
 Jaune;Lima;Pérou
 Jaune;Miami;Etats-Unis

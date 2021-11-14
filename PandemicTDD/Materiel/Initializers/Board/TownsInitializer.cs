@@ -5,54 +5,54 @@ namespace PandemicTDD.Materiel.Initializers
 
     public class TownsInitializer
     {
-        public static string Mumbai = "Mumbai";
-        public static string Delhi = "Delhi";
-        public static string Chennai = "Chennai";
-        public static string Calcutta = "Calcutta";
-        public static string Alger = "Alger";
-        public static string Karachi = "Karachi";
-        public static string Bagdad = "Bagdad";
-        public static string Téhéran = "Téhéran";
-        public static string Riyad = "Riyad";
-        public static string Moscou = "Moscou";
-        public static string Istanbul = "Istanbul";
-        public static string San_Francisco = "San Francisco";
-        public static string New_York = "New York";
-        public static string Washington = "Washington";
-        public static string Londres = "Londres";
-        public static string Essen = "Essen";
-        public static string Paris = "Paris";
-        public static string Atlanta = "Atlanta";
-        public static string Madrid = "Madrid";
-        public static string Saint_Petersbourg = "Saint-Pétersbourg";
-        public static string Chicago = "Chicago";
-        public static string Montréal = "Montréal";
-        public static string Milan = "Milan";
-        public static string Pékin = "Pékin";
-        public static string Sydney = "Sydney";
-        public static string Séoul = "Séoul";
-        public static string Shanghai = "Shanghai";
-        public static string Osaka = "Osaka";
-        public static string Taipei = "Taipei";
-        public static string Tokyo = "Tokyo";
-        public static string Ho_Chi_Minh_Ville = "Ho-Chi-Minh-Ville";
-        public static string Bangkok = "Bangkok";
-        public static string Hong_Kong = "Hong Kong";
-        public static string Jakarta = "Jakarta";
-        public static string Manille = "Manille";
-        public static string Lagos = "Lagos";
-        public static string Kinshasa = "Kinshasa";
-        public static string Le_Caire = "Le Caire";
-        public static string Mexico = "Mexico";
-        public static string Lima = "Lima";
-        public static string Miami = "Miami";
-        public static string Los_Angeles = "Los Angeles";
-        public static string Santiago = "Santiago";
-        public static string Sao_Paulo = "Sao Paulo";
-        public static string Johannesbourg = "Johannesbourg";
-        public static string Khartoum = "Khartoum";
-        public static string Bogota = "Bogota";
-        public static string Buenos_Aires = "Buenos Aires";
+        public const string Mumbai = "Mumbai";
+        public const string Delhi = "Delhi";
+        public const string Chennai = "Chennai";
+        public const string Calcutta = "Calcutta";
+        public const string Alger = "Alger";
+        public const string Karachi = "Karachi";
+        public const string Bagdad = "Bagdad";
+        public const string Téhéran = "Téhéran";
+        public const string Riyad = "Riyad";
+        public const string Moscou = "Moscou";
+        public const string Istanbul = "Istanbul";
+        public const string San_Francisco = "San Francisco";
+        public const string New_York = "New York";
+        public const string Washington = "Washington";
+        public const string Londres = "Londres";
+        public const string Essen = "Essen";
+        public const string Paris = "Paris";
+        public const string Atlanta = "Atlanta";
+        public const string Madrid = "Madrid";
+        public const string Saint_Petersbourg = "Saint-Pétersbourg";
+        public const string Chicago = "Chicago";
+        public const string Montréal = "Montréal";
+        public const string Milan = "Milan";
+        public const string Pékin = "Pékin";
+        public const string Sydney = "Sydney";
+        public const string Séoul = "Séoul";
+        public const string Shanghai = "Shanghai";
+        public const string Osaka = "Osaka";
+        public const string Taipei = "Taipei";
+        public const string Tokyo = "Tokyo";
+        public const string Ho_Chi_Minh_Ville = "Ho-Chi-Minh-Ville";
+        public const string Bangkok = "Bangkok";
+        public const string Hong_Kong = "Hong Kong";
+        public const string Jakarta = "Jakarta";
+        public const string Manille = "Manille";
+        public const string Lagos = "Lagos";
+        public const string Kinshasa = "Kinshasa";
+        public const string Le_Caire = "Le Caire";
+        public const string Mexico = "Mexico";
+        public const string Lima = "Lima";
+        public const string Miami = "Miami";
+        public const string Los_Angeles = "Los Angeles";
+        public const string Santiago = "Santiago";
+        public const string Sao_Paulo = "Sao Paulo";
+        public const string Johannesbourg = "Johannesbourg";
+        public const string Khartoum = "Khartoum";
+        public const string Bogota = "Bogota";
+        public const string Buenos_Aires = "Buenos Aires";
 
         static List<Town> Towns = null;
 
@@ -68,6 +68,7 @@ namespace PandemicTDD.Materiel.Initializers
                 new Town(DiseaseColor.Black, Karachi, "Pakistan"),
                 new Town(DiseaseColor.Black, Bagdad, "Irak"),
                 new Town(DiseaseColor.Black, Téhéran, "Iran"),
+                new Town(DiseaseColor.Black , Le_Caire, "Egypte"),
                 new Town(DiseaseColor.Black, Riyad, "Arabie Saoudite"),
                 new Town(DiseaseColor.Black, Moscou, "Russie"),
                 new Town(DiseaseColor.Black, Istanbul, "Turquie"),
@@ -97,7 +98,6 @@ namespace PandemicTDD.Materiel.Initializers
                 new Town(DiseaseColor.Red, Manille, "Philippines"),
                 new Town(DiseaseColor.Yellow , Lagos, "Nigeria"),
                 new Town(DiseaseColor.Yellow , Kinshasa, "République Démocratique du Congo"),
-                new Town(DiseaseColor.Yellow , Le_Caire, "Egypte"),
                 new Town(DiseaseColor.Yellow , Mexico, "Mexique "),
                 new Town(DiseaseColor.Yellow , Lima, "Pérou"),
                 new Town(DiseaseColor.Yellow , Miami, "Etats-Unis"),

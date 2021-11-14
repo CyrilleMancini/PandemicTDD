@@ -13,16 +13,17 @@ namespace PandemicTDDTests.Running.Actions
         private readonly DiseaseColor diseaseColor;
         private readonly List<PlayerTownCard> cards;
 
-        public DiscoverCureAction(GameState gameState, DiseaseColor black, List<PlayerTownCard> cards)
+        public DiscoverCureAction(GameState gameState, DiseaseColor color, List<PlayerTownCard> cards)
         {
             this.gameState = gameState;
-            this.diseaseColor = black;
+            this.diseaseColor = color;
             this.cards = cards;
         }
 
         public override void Execute()
         {
-            throw new System.NotImplementedException();
+            gameState.Board.GetCureSlots().DiscoverCure(diseaseColor);
+            cards.ForEach(c => gameState.Board.PlayerDiscardCardStack.Push(c));
         }
 
         public override void Try()
@@ -32,8 +33,6 @@ namespace PandemicTDDTests.Running.Actions
 
             if (cards.Count(c => c.Town.Color == diseaseColor) != 5)
                 throw new NotEnoughCardToFindCureException($"5 {diseaseColor} cards required to discover a cure.");
-
-
 
         }
     }
