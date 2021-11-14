@@ -1,30 +1,64 @@
 ﻿using PandemicTDD;
 using PandemicTDD.Actions;
+using PandemicTDD.Materiel.PlayerCards;
+using System;
 
 namespace PandemicTDDTests.Running.Actions
 {
     internal class ShareKnowledgeAction : ActionBase
     {
         private GameState gameState;
-        private Player player;
-        private string cardToShare;
 
-        public ShareKnowledgeAction(GameState gameState, Player player, string cardToShare)
+        private Player player;
+
+        private string PlayerTownCardToShare;
+
+        private PlayerTownCard Given;
+
+        private PlayerTownCard Taken;
+
+        public ShareKnowledgeAction(GameState gameState, Player player, string PlayerTownCardToShare)
         {
             this.gameState = gameState;
             this.player = player;
-            this.cardToShare = cardToShare;
+            this.PlayerTownCardToShare = PlayerTownCardToShare;
         }
 
         public override void Execute()
         {
-            throw new System.NotImplementedException();
+           if(Given != null)
+            {
+                player.PlayerCards.Add(Given);
+                gameState.CurrentPlayer.PlayerCards.Remove(Given);
+            }
+            if (Taken != null)
+            {
+                gameState.CurrentPlayer.PlayerCards.Add(Taken);
+                player.PlayerCards.Remove(Taken);
+            }
         }
 
         public override void Try()
         {
             if (player.Town.Name != gameState.CurrentPlayer.Town.Name)
                 throw new PlayerInDifferentTownsException();
+
+            if ( gameState.CurrentPlayer.Town.Name != PlayerTownCardToShare)
+                throw new PlayersMustBeInTheShareTownCard();
+
+            try
+            {
+                Given = (PlayerTownCard)gameState.CurrentPlayer.GetCityPlayerCard(PlayerTownCardToShare);
+
+            }
+            catch (Exception)
+            {
+                Taken = (PlayerTownCard)player.GetCityPlayerCard(PlayerTownCardToShare);
+            }
+
+            if (Given == null && Taken == null)
+                throw new NotOwnedCityPlayerCardException();
+
         }
     }
 }
