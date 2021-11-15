@@ -28,5 +28,20 @@ namespace PandemicTDD
                 throw new NotOwnedCityPlayerCardException();
             }
         }
+
+        internal PlayerCard DiscardCardTown(string cityName)
+        {
+            try
+            {
+                var delete = PlayerCards.First(c => c is PlayerTownCard ct && ct.Town.Name == cityName);
+                PlayerCards.Remove(delete);
+                return delete;
+            }
+            catch (Exception)
+            {
+                throw new NotOwnedCityPlayerCardException();
+            }
+        }
+
     }
 }

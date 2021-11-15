@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializers
 {
@@ -113,5 +114,15 @@ namespace PandemicTDD.Materiel.Initializers
             return Towns;
 
         }
+
+        internal void Reset()
+        {
+            if (Towns == null) return;
+            Towns.ForEach(t => t.ControlDiseaseCenter = null);
+
+        }
+
+
+
     }
 }

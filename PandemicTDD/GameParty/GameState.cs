@@ -57,12 +57,11 @@ namespace PandemicTDD
             Players.ForEach(p => p.Town = Board.GetTown(TownsInitializer.Atlanta));
             CurrentPlayerIdx = 0;
             ActionsRemaining = 4;
+
             GameBox.Reset();
 
             new DistributeRolesRule().ExecuteRule(GameBox, Players);
             new DistributePlayerCards().ExecuteRule(GameBox, Players);
-
-
 
             return this;
         }

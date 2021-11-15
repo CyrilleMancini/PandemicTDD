@@ -19,10 +19,10 @@
 
         public override void Try()
         {
-            if (gameState.Board.GetTownSlot(gameState.CurrentPlayer.Town.Name).ControlDiseaseCenter == null)
+            if (gameState.CurrentPlayer.Town.HasSearchStation == false)
                 throw new CityWithoutControlCenterException("Origin City doesn't have CDC");
 
-            if (gameState.Board.GetTownSlot(Destination).ControlDiseaseCenter == null)
+            if (gameState.Board.GetTownSlot(Destination).HasSearchStation == false)
                 throw new CityWithoutControlCenterException("Destination City doesn't have CDC");
 
         }

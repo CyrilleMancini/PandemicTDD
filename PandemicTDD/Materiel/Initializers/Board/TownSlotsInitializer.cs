@@ -153,5 +153,13 @@ namespace PandemicTDD.Materiel.Initializers
                     new TownsLink("Lima", "Santiago"),
         };
 
+        internal void Reset()
+        {
+            if (TownSlots == null) return;
+
+            TownSlots.Clear();
+            TownSlots = null;
+            InitTownSlots();
+        }
     }
 }

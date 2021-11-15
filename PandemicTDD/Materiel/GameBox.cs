@@ -43,11 +43,19 @@ namespace PandemicTDD.Materiel
 
         internal void Reset()
         {
+            Initialized = false;
+            TownSlotsInitializer.Reset();
+            TownsInitializer.Reset();
             RoleCardInitializer.Reset();
             PlayerCardsInitializer.Reset();
             DiseaseBagsInitializer.Reset();
             SpreadCardsInitializer.Reset();
-            PlayerCardsInitializer.Reset();
+            if (SingleBoard != null)
+            {
+                SingleBoard = null;
+                GetInitializedBoard();
+            }
+
         }
 
         Board SingleBoard = null;
@@ -57,7 +65,6 @@ namespace PandemicTDD.Materiel
             if (SingleBoard == null)
             {
                 SingleBoard = new Board(TownsInitializer, TownSlotsInitializer, TownLinksInitializer);
-                InitFirstCDCInAtlanta();
             }
 
             return SingleBoard;
@@ -66,16 +73,18 @@ namespace PandemicTDD.Materiel
         private void InitFirstCDCInAtlanta()
         {
             TownSlot Atlanta = SingleBoard.GetTownSlot(TownsInitializer.Atlanta);
-            Atlanta.ControlDiseaseCenter = new();
+            Atlanta.BuildStation();
         }
 
         bool Initialized = false;
         public Board GetInitializedBoard()
         {
+            if (Initialized) return SingleBoard;
             GetBoard();
+            InitFirstCDCInAtlanta();
             DiseaseBagsInitializer.Reset();
-            if (!Initialized)
-                GameInitializer.InitGame(this);
+            
+            GameInitializer.InitGame(this);
 
             Initialized = true;
             return SingleBoard;

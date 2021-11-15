@@ -20,7 +20,7 @@ namespace PandemicTDDTests.Running.Actions
             StartGame();
             GameBox.GetBoard();
 
-            GameState.Board.GetTownSlot(TownsInitializer.Atlanta).ControlDiseaseCenter = null;
+            GameState.Board.GetTownSlot(TownsInitializer.Atlanta).Town.ControlDiseaseCenter = null;
             List<PlayerTownCard> cards = new();
 
             ActionBase action = new DiscoverCureAction(GameState, DiseaseColor.Black, cards);
@@ -35,7 +35,6 @@ namespace PandemicTDDTests.Running.Actions
         public void PlayerMustHaveFiveCardFromDiseaseColor()
         {
             StartGame();
-            GameBox.GetBoard();
 
             List<PlayerTownCard> cards = new();
 
@@ -52,19 +51,24 @@ namespace PandemicTDDTests.Running.Actions
         public void BlackCureDiscovered()
         {
             StartGame();
-            GameBox.GetBoard();
-            GameBox.Reset();
+            
             List<PlayerTownCard> cards = new();
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Alger));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Le_Caire));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Bagdad));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Riyad));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Istanbul));
+            for (int c = 0; c < 5; c++)
+                cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Color == DiseaseColor.Black));
 
             ActionBase action = new DiscoverCureAction(GameState, DiseaseColor.Black, cards);
             GameState.DoAction(action);
 
             Assert.AreEqual(DiseaseStatus.Treated, GameState.Board.GetCureSlots().BlackSlot.Status);
+
+            Assert.AreEqual(cards[4], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[3], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[2], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[1], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[0], GameState.Board.PlayerDiscardCardStack.Pop());
+
+
+
         }
 
 
@@ -72,19 +76,21 @@ namespace PandemicTDDTests.Running.Actions
         public void BlueCureDiscovered()
         {
             StartGame();
-            GameBox.GetBoard();
-            GameBox.Reset();
+
             List<PlayerTownCard> cards = new();
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Atlanta));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Washington));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Chicago));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.San_Francisco));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Londres));
+            for (int c = 0; c < 5; c++)
+                cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Color == DiseaseColor.Blue));
 
             ActionBase action = new DiscoverCureAction(GameState, DiseaseColor.Blue, cards);
             GameState.DoAction(action);
 
             Assert.AreEqual(DiseaseStatus.Treated, GameState.Board.GetCureSlots().BlueSlot.Status);
+
+            Assert.AreEqual(cards[4], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[3], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[2], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[1], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[0], GameState.Board.PlayerDiscardCardStack.Pop());
         }
 
 
@@ -92,37 +98,39 @@ namespace PandemicTDDTests.Running.Actions
         public void RedCureDiscovered()
         {
             StartGame();
-            GameBox.GetBoard();
-            GameBox.Reset();
             List<PlayerTownCard> cards = new();
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Manille));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Sydney));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Séoul));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Shanghai));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Hong_Kong));
+            for (int c = 0; c < 5; c++)
+                cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Color == DiseaseColor.Red));
 
             ActionBase action = new DiscoverCureAction(GameState, DiseaseColor.Red, cards);
             GameState.DoAction(action);
 
             Assert.AreEqual(DiseaseStatus.Treated, GameState.Board.GetCureSlots().RedSlot.Status);
+
+            Assert.AreEqual(cards[4], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[3], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[2], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[1], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[0], GameState.Board.PlayerDiscardCardStack.Pop());
         }
         [TestMethod]
         public void YellowCureDiscovered()
         {
             StartGame();
-            GameBox.GetBoard();
-            GameBox.Reset();
             List<PlayerTownCard> cards = new();
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Lima));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Santiago));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Sao_Paulo));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Miami));
-            cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Bogota));
+            for (int c = 0; c < 5; c++)
+                cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Color == DiseaseColor.Yellow));
 
             ActionBase action = new DiscoverCureAction(GameState, DiseaseColor.Yellow, cards);
             GameState.DoAction(action);
 
             Assert.AreEqual(DiseaseStatus.Treated, GameState.Board.GetCureSlots().YellowSlot.Status);
+
+            Assert.AreEqual(cards[4], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[3], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[2], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[1], GameState.Board.PlayerDiscardCardStack.Pop());
+            Assert.AreEqual(cards[0], GameState.Board.PlayerDiscardCardStack.Pop());
         }
     }
 }

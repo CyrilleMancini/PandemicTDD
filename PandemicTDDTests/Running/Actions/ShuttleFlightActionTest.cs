@@ -47,7 +47,7 @@ namespace PandemicTDDTests.Running.Actions
         {
 
             StartGame();
-            GameState.Board.GetTownSlot(TownsInitializer.Paris).ControlDiseaseCenter = new PandemicTDD.Materiel.ControlDiseaseCenter();
+            GameState.Board.GetTownSlot(TownsInitializer.Paris).BuildStation();
             ActionBase action = new ShuttleFlightAction(GameState, TownsInitializer.Paris);
 
             GameState.DoAction(action);

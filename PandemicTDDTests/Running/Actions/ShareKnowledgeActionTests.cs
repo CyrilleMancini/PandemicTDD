@@ -2,6 +2,7 @@
 using PandemicTDD;
 using PandemicTDD.Actions;
 using PandemicTDD.Actions.Exceptions;
+using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
 using PandemicTDDTests.Materiel;
@@ -75,13 +76,14 @@ namespace PandemicTDDTests.Running.Actions
         {
             StartGame();
 
-            Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Paris).Town;
-            Players[1].Town = GameState.Board.GetTownSlot(TownsInitializer.Paris).Town;
+            PlayerTownCard OrigineCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);
 
-            string CardToShare = TownsInitializer.Paris;
-            PlayerCard OrigineCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Paris);
+            Players[0].Town = GameState.Board.GetTownSlot(OrigineCard.Town.Name).Town;
+            Players[1].Town = GameState.Board.GetTownSlot(OrigineCard.Town.Name).Town;
+
+            string CardToShare = OrigineCard.Town.Name;
+
             Players[0].PlayerCards.Add(OrigineCard);
-
 
             ActionBase action = new ShareKnowledgeAction(GameState, Players[1], CardToShare);
             GameState.DoAction(action);
@@ -99,11 +101,10 @@ namespace PandemicTDDTests.Running.Actions
         {
             StartGame();
 
-            Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Paris).Town;
-            Players[1].Town = GameState.Board.GetTownSlot(TownsInitializer.Paris).Town;
-
-            string CardToShare = TownsInitializer.Paris;
-            PlayerCard OrigineCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Paris);
+            PlayerTownCard OrigineCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);
+            string CardToShare = OrigineCard.Town.Name;
+            Players[0].Town = GameState.Board.GetTownSlot(OrigineCard.Town.Name).Town;
+            Players[1].Town = GameState.Board.GetTownSlot(OrigineCard.Town.Name).Town;
             Players[1].PlayerCards.Add(OrigineCard);
 
 
@@ -116,5 +117,8 @@ namespace PandemicTDDTests.Running.Actions
                 Players[1].GetCityPlayerCard(CardToShare);
             });
         }
+
+
+
     }
 }

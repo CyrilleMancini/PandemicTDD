@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using PandemicTDDTests.Materiel;
+using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel.Initializers
 {
@@ -11,10 +12,10 @@ namespace PandemicTDD.Materiel.Initializers
             if (SingleRoleCards == null)
             {
                 SingleRoleCards = new List<RoleCard>() {
-                        new RoleCard("Chercheuse"),
+                        new ResearcherRoleCard("Chercheuse"),
                         new RoleCard("Planificateur d'urgence"),
                         new RoleCard("Répartiteur"),
-                        new RoleCard("Expert aux opérations"),
+                        new OperationExpertRoleCard("Expert aux opérations"),
                         new RoleCard("Médecin"),
                         new RoleCard("Scientifique"),
                         new RoleCard("Spécialiste en mise en quarantaine"),

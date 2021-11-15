@@ -22,8 +22,6 @@ namespace PandemicTDD.Actions
         {
 
             gameState.CurrentPlayer.Town = DestSlotTown.Town;
-
-            gameState.CurrentPlayer.PlayerCards.Remove(OwnedCityCard);
             gameState.Board.PlayerDiscardCardStack.Push(OwnedCityCard);
 
         }
@@ -38,7 +36,7 @@ namespace PandemicTDD.Actions
 
             try
             {
-                OwnedCityCard = (PlayerTownCard)gameState.CurrentPlayer.GetCityPlayerCard(PlayerSlotTown.Town.Name);
+                OwnedCityCard = (PlayerTownCard)gameState.CurrentPlayer.DiscardCardTown(PlayerSlotTown.Town.Name);
             }
             catch (NotOwnedCityPlayerCardException)
             {

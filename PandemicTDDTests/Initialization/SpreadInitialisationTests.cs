@@ -12,6 +12,7 @@ namespace PandemicTDDTests.Initialization
         [TestMethod]
         public void SpreadStackPopulated()
         {
+            StartGame();
             Board board = GameBox.GetInitializedBoard();
             Assert.AreEqual(39, board.SpreadStack.Count);
         }
@@ -20,6 +21,7 @@ namespace PandemicTDDTests.Initialization
         [TestMethod]
         public void Draw3SpreadAndDiscardCards()
         {
+            StartGame();
             Board board = GameBox.GetInitializedBoard();
             Assert.AreEqual(9, board.SpreadDiscardStack.Count);
         }

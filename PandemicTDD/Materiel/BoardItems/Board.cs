@@ -46,6 +46,11 @@ namespace PandemicTDD.Materiel
             TownLinksInitializer.InitTownsLinks(this);
         }
 
+        internal void Reset()
+        {
+            InitTowns();
+        }
+
         public List<TownSlot> GetTownSlots() => TownSlotsInitializer.TownSlots;
 
         public void Link2Towns(TownsLink link) => TownSlotsInitializer.Link2Towns(link);
@@ -70,6 +75,7 @@ namespace PandemicTDD.Materiel
         public TownSlot GetTownSlot(Town town) => GetTownSlot(town.Name);
 
         public TownSlot GetTownSlot(string townName) => TownSlotsInitializer.GetTownSlot(townName);
+
 
         public SpreadIndicator GetSpreadIndicator()
         {

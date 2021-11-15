@@ -21,6 +21,8 @@ namespace PandemicTDDTests.Materiel
                 new() { Name ="PlFour" },
                 new() { Name ="PlFive" },
             };
+
+
         [TestInitialize]
         public void InitExpectedTowns()
         {
@@ -70,8 +72,10 @@ namespace PandemicTDDTests.Materiel
 
         protected void StartGame()
         {
-            GameState.StartGame().ChooseLevel(Difficulty.Discovery);
-            GameBox.Reset();
+            GameState.StartGame()
+                .ChooseLevel(Difficulty.Discovery);
+            GameBox.GetInitializedBoard();
+
         }
     }
 }

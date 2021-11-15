@@ -13,10 +13,11 @@ namespace PandemicTDDTests.Initialization
         [TestMethod]
         public void OneCDCOnAtlantaTest()
         {
-            Board board = GameBox.GetBoard();
-            var atlanta = board.GetTownSlot("Atlanta");
+            StartGame();
+            var atlanta = GameBox.GetBoard().GetTownSlot("Atlanta");
 
-            Assert.IsNotNull(atlanta.ControlDiseaseCenter);
+            Assert.IsTrue(atlanta.HasSearchStation);
+            Assert.IsNotNull(atlanta.Town.ControlDiseaseCenter);
 
         }
 

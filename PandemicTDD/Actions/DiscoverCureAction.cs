@@ -28,7 +28,7 @@ namespace PandemicTDDTests.Running.Actions
 
         public override void Try()
         {
-            if (gameState.Board.GetTownSlot(gameState.CurrentPlayer.Town).ControlDiseaseCenter == null)
+            if (!gameState.CurrentPlayer.Town.HasSearchStation)
                 throw new CityWithoutControlCenterException(gameState.CurrentPlayer.Town.Name + " must have a search station.");
 
             if (cards.Count(c => c.Town.Color == diseaseColor) != 5)

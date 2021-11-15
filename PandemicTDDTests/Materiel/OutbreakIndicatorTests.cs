@@ -20,7 +20,8 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void GetIndicatorInitialized()
         {
-            Board board = GameBox.GetInitializedBoard();
+            StartGame();
+            Board board = GameBox.GetBoard();
             OutBreakIndicator hi = board.GetOutbreakIndicator();
             Assert.AreEqual(0, hi.Level);
         }

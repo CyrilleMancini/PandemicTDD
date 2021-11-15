@@ -16,8 +16,8 @@ namespace PandemicTDDTests.Running.Actions
         public void CharterFlightFromOwnedTownCard()
         {
             StartGame();
-
-            PlayerCard OrigineCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Atlanta);
+            PlayerTownCard OrigineCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);
+            Players[0].Town = GameState.Board.GetTownSlot(OrigineCard.Town.Name).Town;
             Players[0].PlayerCards.Add(OrigineCard);
 
             ActionBase action = new CharterFlightAction(GameState, TownsInitializer.Paris);
@@ -25,6 +25,7 @@ namespace PandemicTDDTests.Running.Actions
 
             Assert.AreEqual(TownsInitializer.Paris, GameState.CurrentPlayer.Town.Name);
             Assert.AreEqual(3, GameState.ActionsRemaining);
+            Assert.AreEqual(OrigineCard, GameState.Board.PlayerDiscardCardStack.Peek());
         }
 
         [TestMethod]
@@ -49,8 +50,9 @@ namespace PandemicTDDTests.Running.Actions
         {
             StartGame();
 
-            PlayerCard OrigineCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Atlanta);
+            PlayerTownCard OrigineCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct );
             Players[0].PlayerCards.Add(OrigineCard);
+            Players[0].Town = OrigineCard.Town;
 
             ActionBase action = new CharterFlightAction(GameState, TownsInitializer.Paris);
             GameState.DoAction(action);
@@ -59,7 +61,7 @@ namespace PandemicTDDTests.Running.Actions
             Assert.AreEqual(OrigineCard, GameState.Board.PlayerDiscardCardStack.Peek(), "Player card shoud be in Discard stack");
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
-                OrigineCard = GameState.CurrentPlayer.GetCityPlayerCard(TownsInitializer.Paris);
+                OrigineCard = (PlayerTownCard)GameState.CurrentPlayer.GetCityPlayerCard(TownsInitializer.Paris);
             }, "Player shouldn't have the used card anymore");
 
         }

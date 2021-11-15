@@ -17,14 +17,15 @@ namespace PandemicTDDTests.Running.Actions
         {
             StartGame();
 
-            PlayerCard ParisPlayerCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Paris);
-            Players[0].PlayerCards.Add(ParisPlayerCard);
+            PlayerTownCard DestiantionCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);
+            Players[0].PlayerCards.Add(DestiantionCard);
 
-            ActionBase action = new DirectFlightAction(GameState, TownsInitializer.Paris);
+            ActionBase action = new DirectFlightAction(GameState, DestiantionCard.Town.Name);
             GameState.DoAction(action);
 
-            Assert.AreEqual(TownsInitializer.Paris, GameState.CurrentPlayer.Town.Name);
+            Assert.AreEqual(DestiantionCard.Town.Name, GameState.CurrentPlayer.Town.Name);
             Assert.AreEqual(3, GameState.ActionsRemaining);
+            Assert.AreEqual(DestiantionCard, GameState.Board.PlayerDiscardCardStack.Peek());
         }
 
         [TestMethod]
@@ -49,17 +50,17 @@ namespace PandemicTDDTests.Running.Actions
         {
             StartGame();
 
-            PlayerCard ParisPlayerCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Paris);
-            Players[0].PlayerCards.Add(ParisPlayerCard);
+            PlayerTownCard DestinationCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);
+            Players[0].PlayerCards.Add(DestinationCard);
 
-            ActionBase action = new DirectFlightAction(GameState, TownsInitializer.Paris);
+            ActionBase action = new DirectFlightAction(GameState, DestinationCard.Town.Name);
             GameState.DoAction(action);
 
 
-            Assert.AreEqual(ParisPlayerCard, GameState.Board.PlayerDiscardCardStack.Peek(), "Player card shoud be in Discard stack");
+            Assert.AreEqual(DestinationCard, GameState.Board.PlayerDiscardCardStack.Peek(), "Player card shoud be in Discard stack");
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
-                ParisPlayerCard = GameState.CurrentPlayer.GetCityPlayerCard(TownsInitializer.Paris);
+                DestinationCard = (PlayerTownCard)GameState.CurrentPlayer.GetCityPlayerCard(DestinationCard.Town.Name);
             }, "Player shouldn't have the used card anymore");
 
         }

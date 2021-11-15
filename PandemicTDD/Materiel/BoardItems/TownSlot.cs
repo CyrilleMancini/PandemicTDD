@@ -9,7 +9,6 @@ namespace PandemicTDD.Materiel
 
         public List<TownSlot> Links { get; set; } = new List<TownSlot>();
 
-        public ControlDiseaseCenter ControlDiseaseCenter { get; internal set; } = null;
 
         public TownSlot(Town town)
         {
@@ -21,11 +20,14 @@ namespace PandemicTDD.Materiel
             return $"{Town.Name} {Links.Count} liens";
         }
 
+        internal bool HasSearchStation { get => Town.ControlDiseaseCenter != null; }
+
+
         internal void BuildStation()
         {
-            if (ControlDiseaseCenter != null) throw new ArgumentException($"Station already build on {Town.Name}");
+            if (Town.HasSearchStation) throw new ArgumentException($"Station already build on {Town.Name}");
 
-            ControlDiseaseCenter = new ControlDiseaseCenter();
+            Town.ControlDiseaseCenter = new ControlDiseaseCenter();
         }
 
 

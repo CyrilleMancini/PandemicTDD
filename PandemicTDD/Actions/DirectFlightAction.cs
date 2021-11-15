@@ -23,7 +23,7 @@ namespace PandemicTDD.Actions
 
             gameState.CurrentPlayer.Town = DestSlotTown.Town;
 
-            gameState.CurrentPlayer.PlayerCards.Remove(OwnedCityCard);
+            gameState.CurrentPlayer.DiscardCardTown(Destination);
             gameState.Board.PlayerDiscardCardStack.Push(OwnedCityCard);
 
         }
@@ -44,7 +44,6 @@ namespace PandemicTDD.Actions
             {
                 throw new NotOwnedCityPlayerCardException($"You must own {Destination} card to do a Direct Flight");
             }
-
         }
     }
 }

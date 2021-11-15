@@ -17,7 +17,7 @@ namespace PandemicTDDTests.Running.Actions
         {
             StartGame();
 
-            PlayerTownCard playerLocation = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Paris);
+            PlayerTownCard playerLocation = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.HasSearchStation == false);
             Players[0].PlayerCards.Add(playerLocation);
             GameState.CurrentPlayer.Town = playerLocation.Town;
 
@@ -25,16 +25,18 @@ namespace PandemicTDDTests.Running.Actions
             ActionBase action = new BuildStationAction(GameState);
             GameState.DoAction(action);
 
-            Assert.IsNotNull(GameState.Board.GetTownSlot(TownsInitializer.Paris).ControlDiseaseCenter);
+            Assert.IsNotNull(GameState.Board.GetTownSlot(playerLocation.Town.Name).Town.ControlDiseaseCenter);
+            Assert.IsTrue(GameState.Board.GetTownSlot(playerLocation.Town.Name).HasSearchStation);
             Assert.AreEqual(3, GameState.ActionsRemaining);
+            Assert.AreEqual(playerLocation, GameState.Board.PlayerDiscardCardStack.Peek());
         }
 
         [TestMethod]
-        public void BuildStationWihthoutTownCard()
+        public void BuildStationWihthoutTownCardMustFails()
         {
             StartGame();
 
-            PlayerTownCard playerLocation = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Paris);
+            PlayerTownCard playerLocation = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.HasSearchStation == false);
             Players[0].PlayerCards.Clear();
             GameState.CurrentPlayer.Town = playerLocation.Town;
 
@@ -46,8 +48,10 @@ namespace PandemicTDDTests.Running.Actions
                 action.Execute();
 
             });
-            Assert.IsNull(GameState.Board.GetTownSlot(TownsInitializer.Paris).ControlDiseaseCenter);
+            Assert.IsNull(GameState.Board.GetTownSlot(TownsInitializer.Paris).Town.ControlDiseaseCenter);
+            Assert.IsFalse(GameState.Board.GetTownSlot(TownsInitializer.Paris).Town.HasSearchStation);
         }
+
 
 
     }

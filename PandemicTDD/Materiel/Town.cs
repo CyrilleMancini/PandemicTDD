@@ -12,7 +12,10 @@ namespace PandemicTDD.Materiel
 
         public string Name { get; }
 
+        public ControlDiseaseCenter ControlDiseaseCenter { get; internal set; } = null;
+
         public string Country { get; }
+        public bool HasSearchStation { get => ControlDiseaseCenter != null; }
 
         public Town(DiseaseColor color, string name, string pays)
         {
