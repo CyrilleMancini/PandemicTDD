@@ -26,6 +26,7 @@ namespace PandemicTDD
 
         private readonly List<IObserveGameState> Observers = new();
 
+        public readonly ActionsTurnHistory ActionsTurnHistory = new ActionsTurnHistory();
 
         public GameState(List<Player> players,
             GameBox gameBox)
@@ -71,10 +72,7 @@ namespace PandemicTDD
 
             try
             {
-                action.Try();
-                action.Execute();
-                if(action.ConsumeOneAction)
-                ActionsRemaining--;
+                RunAction(action);
                 if (ActionsRemaining == 0)
                     NextTurn();
                 else
@@ -84,6 +82,15 @@ namespace PandemicTDD
             {
                 Observers.ForEach(o => o.Error(ex.Message));
             }
+        }
+
+        private void RunAction(ActionBase action)
+        {
+            action.Try();
+            action.Execute();
+            ActionsTurnHistory.AddAction(action);
+            if (action.ConsumeOneAction)
+                ActionsRemaining--;
         }
 
         internal void RegisterObserver(IObserveGameState observer)
@@ -96,6 +103,7 @@ namespace PandemicTDD
         {
             CurrentPlayerIdx = (++CurrentPlayerIdx) % Players.Count;
             ActionsRemaining = 4;
+            ActionsTurnHistory.NextTurn();
             Action($"{CurrentPlayer.Name} can play now with {ActionsRemaining} actions");
         }
 

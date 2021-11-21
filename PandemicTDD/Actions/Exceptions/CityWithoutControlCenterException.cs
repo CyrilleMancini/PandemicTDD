@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PandemicTDD.Actions
+namespace PandemicTDD.Actions.Exceptions
 {
     internal class CityWithoutControlCenterException : Exception
 

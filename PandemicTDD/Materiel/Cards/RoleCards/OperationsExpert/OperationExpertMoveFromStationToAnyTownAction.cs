@@ -1,5 +1,6 @@
 ﻿using PandemicTDD;
 using PandemicTDD.Actions;
+using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.PlayerCards;
 using System;
@@ -12,21 +13,25 @@ namespace PandemicTDDTests.Materiel
     /// </summary>
     public class OperationExpertMoveFromStationToAnyTownAction : ActionBase
     {
+        public override bool ConsumeOneAction => false;
+
         private GameState gameState;
         private Town DestinationCity;
-        private readonly string destination;
-        private readonly PlayerTownCard discarded;
+        private readonly string Destination;
+        private readonly PlayerTownCard Discarded;
 
-        public OperationExpertMoveFromStationToAnyTownAction(GameState gameState,string Destination, PlayerTownCard discarded)
+        public OperationExpertMoveFromStationToAnyTownAction(GameState gameState, string Destination, PlayerTownCard discarded)
         {
             this.gameState = gameState;
-            destination = Destination;
-            this.discarded = discarded;
+            this.Destination = Destination;
+            this.Discarded = discarded;
         }
 
         public override void Execute()
         {
             gameState.CurrentPlayer.Town = DestinationCity;
+            gameState.CurrentPlayer.DiscardCardTown(Discarded.Town.Name);
+            gameState.Board.PlayerDiscardCardStack.Push(Discarded);
         }
 
         public override void Try()
@@ -34,7 +39,10 @@ namespace PandemicTDDTests.Materiel
             if (!gameState.CurrentPlayer.Town.HasSearchStation)
                 throw new CityWithoutControlCenterException("The city must have a reseatch station to perform the action.");
 
-            DestinationCity = gameState.Board.GetTown(destination);
+            if (gameState.ActionsTurnHistory.AlreadyPlayed<OperationExpertMoveFromStationToAnyTownAction>())
+                throw new ActionCanBeDoneOnlyOncePerTurn("Moving from station to any town can only be one one per turn.");
+
+            DestinationCity = gameState.Board.GetTown(Destination);
 
         }
     }

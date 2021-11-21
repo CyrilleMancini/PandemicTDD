@@ -1,4 +1,6 @@
-﻿namespace PandemicTDD.Actions
+﻿using PandemicTDD.Actions.Exceptions;
+
+namespace PandemicTDD.Actions
 {
     internal class ShuttleFlightAction : ActionBase
     {

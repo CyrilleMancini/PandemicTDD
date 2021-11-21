@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace PandemicTDD.Actions
+namespace PandemicTDD.Actions.Exceptions
 {
     [Serializable]
     internal class PlayersMustBeInTheShareTownCardException : Exception

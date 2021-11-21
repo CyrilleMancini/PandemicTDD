@@ -80,6 +80,28 @@ namespace PandemicTDDTests.Materiel
             Assert.AreEqual(4, GameState.ActionsRemaining); // Ne consomme pas d'action a la réalisation.
             Assert.AreEqual(Discarded, GameState.Board.PlayerDiscardCardStack.Peek());
         }
+
+        [TestMethod()]
+        public void OperationExpertMoveFromStationToAnyCityOnlyOnceParTurn()
+        {
+            StartGame();
+            Players[0].Role = new OperationExpertRoleCard("Expert au Opérations");
+            Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Atlanta).Town;
+            PlayerTownCard Discarded = (PlayerTownCard)Players[0].PlayerCards.First(c => c is PlayerTownCard);
+            ActionBase action = new OperationExpertMoveFromStationToAnyTownAction(GameState, TownsInitializer.Paris, Discarded);
+
+            GameState.Board.GetTownSlot(TownsInitializer.Paris).BuildStation();
+
+            Assert.ThrowsException<ActionCanBeDoneOnlyOncePerTurn>(() =>
+            {
+                GameState.DoAction(action);
+
+                action.Try();
+                action.Execute();
+            });
+
+            Assert.AreEqual(TownsInitializer.Paris, GameState.CurrentPlayer.Town.Name);
+            Assert.AreEqual(4, GameState.ActionsRemaining);
         }
     }
 }
