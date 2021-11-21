@@ -14,7 +14,7 @@ namespace PandemicTDD.Materiel.Initializers
                 SingleRoleCards = new List<RoleCard>() {
                         new ResearcherRoleCard("Chercheuse"),
                         new ContingencyPlannerRoleCard("Planificateur d'urgence"),
-                        new UndefRoleCard("Répartiteur"),
+                        new DispatcherRoleCard("Répartiteur"),
                         new OperationExpertRoleCard("Expert aux opérations"),
                         new UndefRoleCard("Médecin"),
                         new UndefRoleCard("Scientifique"),
