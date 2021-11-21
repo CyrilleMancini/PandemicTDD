@@ -4,6 +4,8 @@ using System;
 
 namespace PandemicTDDTests.Materiel
 {
+
+
     internal class OperationsExpertBuildStationAction : ActionBase
     {
         private GameState gameState;
@@ -22,7 +24,9 @@ namespace PandemicTDDTests.Materiel
         {
             if (gameState.CurrentPlayer.Town.HasSearchStation)
             {
-                throw new ArgumentException($"Research Station already build in {gameState.CurrentPlayer.Town.Name}");
+                String Message = $"Research Station already build in {gameState.CurrentPlayer.Town.Name}";
+                gameState.Error(Message);
+                throw new ArgumentException(Message);
             }
 
         }
