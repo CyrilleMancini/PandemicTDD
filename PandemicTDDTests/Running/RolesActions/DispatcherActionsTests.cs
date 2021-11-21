@@ -20,7 +20,7 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void MoveAnotherPlayerAsHisMustBeAnotherPlayer()
         {
-            ActionBase action = new DispatcherMoveAnotherPlayerByDriverFerryAsHis(GameState, Players[0], TownsInitializer.Chicago);
+            ActionBase action = new DispatcherMoveAnotherPlayerByDriverFerryAsHisAction(GameState, Players[0], TownsInitializer.Chicago);
 
             Assert.ThrowsException<InvalidPreconditionsException>(() =>
             {
@@ -33,7 +33,7 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void MoveAnotherPlayerAsHisByDriveFerry()
         {
-            ActionBase action = new DispatcherMoveAnotherPlayerByDriverFerryAsHis(GameState, Players[1], TownsInitializer.Chicago);
+            ActionBase action = new DispatcherMoveAnotherPlayerByDriverFerryAsHisAction(GameState, Players[1], TownsInitializer.Chicago);
 
             GameState.DoAction(action);
 

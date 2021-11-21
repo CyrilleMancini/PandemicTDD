@@ -3,16 +3,16 @@ using PandemicTDD.Actions.Exceptions;
 
 namespace PandemicTDD.Materiel
 {
-    internal class DispatcherMoveAnotherPlayerByDriverFerryAsHis : ActionBase
+    internal class DispatcherMovePlayerToAnotherPlayer : ActionBase
     {
         public override bool ConsumeOneAction => true;
 
         private GameState GameState;
         private readonly Player OtherPlayer;
         private readonly string Destination;
-        private DriveFerryAction IntermediateAction;
+        private ShuttleFlightAction IntermediateAction;
 
-        public DispatcherMoveAnotherPlayerByDriverFerryAsHis(GameState gameState, Player other, string Destination)
+        public DispatcherMovePlayerToAnotherPlayer(GameState gameState, Player other, string Destination)
         {
             GameState = gameState;
             OtherPlayer = other;
@@ -29,7 +29,7 @@ namespace PandemicTDD.Materiel
             if (OtherPlayer == GameState.CurrentPlayer)
                 throw new InvalidPreconditionsException("The other must be different than Current Player");
 
-            IntermediateAction = new DriveFerryAction(GameState, OtherPlayer, Destination);
+            IntermediateAction = new ShuttleFlightAction(GameState, OtherPlayer, Destination);
 
             IntermediateAction.Try();
 
