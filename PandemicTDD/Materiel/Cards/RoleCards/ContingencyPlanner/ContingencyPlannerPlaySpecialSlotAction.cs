@@ -21,6 +21,7 @@ namespace PandemicTDD.Materiel
         public override void Execute()
         {
             Role.ExecuteSpecialSlot();
+            Role.UseSpecialSlot();
         }
 
         public override void Try()

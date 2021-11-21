@@ -17,6 +17,11 @@ namespace PandemicTDD.Materiel
 
         public EventPlayerCard SpecialSlotEventCard { get; private set; } = null;
 
+        internal void UseSpecialSlot()
+        {
+            SpecialSlotEventCard = null;
+        }
+
         public ContingencyPlannerRoleCard(string name) : base(name)
         { }
 

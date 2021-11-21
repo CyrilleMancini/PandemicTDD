@@ -2,13 +2,13 @@
 using PandemicTDD.Actions;
 using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel;
-using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
 
 namespace PandemicTDDTests.Materiel
 {
+
     [TestClass()]
-    public class ContingencyPlannerActionsTests : TestsBase
+    public partial class ContingencyPlannerActionsTests : TestsBase
     {
         [TestInitialize()]
         public void InitPlayer()
@@ -56,6 +56,15 @@ namespace PandemicTDDTests.Materiel
 
         }
 
+
+        [TestMethod()]
+        public void TestFakeEventCard()
+        {
+            FakeEventCard card = new FakeEventCard();
+            card.EventAction.Try();
+            Assert.IsTrue(((FakeEventCardAction)card.EventAction).Tried);
+        }
+
         [TestMethod()]
         public void PlaysTheRetreivedCardFromStack()
         {
@@ -68,35 +77,10 @@ namespace PandemicTDDTests.Materiel
             action2.Try();
             action2.Execute();
 
-            Assert.IsTrue(((FakeEventCardAction)action2.Role.SpecialSlotEventCard.EventAction).Tried);
+            Assert.IsTrue(((FakeEventCardAction)TakenFromDiscard.EventAction).Tried);
             Assert.IsTrue(((FakeEventCardAction)TakenFromDiscard.EventAction).Played);
-
+            Assert.IsNull(action2.Role.SpecialSlotEventCard);
         }
-
-        public class FakeEventCard : EventPlayerCard
-        {
-            public override ActionBase EventAction => new FakeEventCardAction();
-        }
-
-        public class FakeEventCardAction : ActionBase
-        {
-            public override bool ConsumeOneAction => true;
-
-            public bool Played { get; set; } = false;
-
-            public bool Tried { get; set; } = false;
-
-            public override void Execute()
-            {
-                Played = true;
-            }
-
-            public override void Try()
-            {
-                Tried = true;
-            }
-        }
-
 
     }
 }
