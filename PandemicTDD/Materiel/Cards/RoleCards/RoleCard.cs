@@ -1,12 +1,27 @@
-﻿namespace PandemicTDD.Materiel
+﻿using PandemicTDD.Actions;
+using System;
+using System.Collections.Generic;
+
+namespace PandemicTDD.Materiel
 {
-    public class RoleCard
+    public abstract class RoleCard
     {
         public string Name { get; set; }
+
+        public abstract List<Type> SpecialActions { get; }
 
         public RoleCard(string name)
         {
             Name = name;
+        }
+    }
+
+    public class UndefRoleCard : RoleCard
+    {
+        public override List<Type> SpecialActions => throw new NotImplementedException();
+
+        public UndefRoleCard(string name) : base(name)
+        {
         }
     }
 }

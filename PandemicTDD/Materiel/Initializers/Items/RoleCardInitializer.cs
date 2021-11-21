@@ -13,12 +13,12 @@ namespace PandemicTDD.Materiel.Initializers
             {
                 SingleRoleCards = new List<RoleCard>() {
                         new ResearcherRoleCard("Chercheuse"),
-                        new RoleCard("Planificateur d'urgence"),
-                        new RoleCard("Répartiteur"),
+                        new ContingencyPlannerRoleCard("Planificateur d'urgence"),
+                        new UndefRoleCard("Répartiteur"),
                         new OperationExpertRoleCard("Expert aux opérations"),
-                        new RoleCard("Médecin"),
-                        new RoleCard("Scientifique"),
-                        new RoleCard("Spécialiste en mise en quarantaine"),
+                        new UndefRoleCard("Médecin"),
+                        new UndefRoleCard("Scientifique"),
+                        new UndefRoleCard("Spécialiste en mise en quarantaine"),
                 };
             }
             return SingleRoleCards;
