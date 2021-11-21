@@ -73,6 +73,7 @@ namespace PandemicTDD
             {
                 action.Try();
                 action.Execute();
+                if(action.ConsumeOneAction)
                 ActionsRemaining--;
                 if (ActionsRemaining == 0)
                     NextTurn();

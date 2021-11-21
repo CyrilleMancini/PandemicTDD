@@ -5,6 +5,8 @@ namespace PandemicTDDTests.Running
 {
     internal class FakeAction : ActionBase
     {
+        public override bool ConsumeOneAction => true;
+
         public override void Execute()
         {
             Console.WriteLine("I do an action");

@@ -6,6 +6,8 @@ namespace PandemicTDD.Actions
 {
     internal class ShareKnowledgeAction : ActionBase
     {
+        public override bool ConsumeOneAction => true;
+
         private readonly GameState gameState;
 
         private readonly Player player;

@@ -8,6 +8,9 @@ namespace PandemicTDD.Materiel
 {
     internal class ReseacherShareKnowledgeAction : ActionBase
     {
+
+        public override bool ConsumeOneAction => true;
+
         private GameState gameState;
         private Player player;
         private string PlayerTownCardToShare;

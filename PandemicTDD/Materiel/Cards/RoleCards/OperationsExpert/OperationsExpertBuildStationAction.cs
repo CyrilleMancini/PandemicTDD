@@ -8,6 +8,8 @@ namespace PandemicTDDTests.Materiel
 
     internal class OperationsExpertBuildStationAction : ActionBase
     {
+        public override bool ConsumeOneAction => true;
+
         private GameState gameState;
 
         public OperationsExpertBuildStationAction(GameState gameState)

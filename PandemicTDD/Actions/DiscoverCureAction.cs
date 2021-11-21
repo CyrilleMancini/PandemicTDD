@@ -9,6 +9,8 @@ namespace PandemicTDDTests.Running.Actions
 {
     internal class DiscoverCureAction : ActionBase
     {
+        public override bool ConsumeOneAction => true;
+
         private readonly GameState gameState;
         private readonly DiseaseColor diseaseColor;
         private readonly List<PlayerTownCard> cards;

@@ -2,6 +2,8 @@
 {
     internal class ShuttleFlightAction : ActionBase
     {
+        public override bool ConsumeOneAction => true;
+
         private readonly GameState gameState;
         private readonly string Destination;
 

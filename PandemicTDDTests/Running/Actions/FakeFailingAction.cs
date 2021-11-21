@@ -6,6 +6,8 @@ namespace PandemicTDDTests.Running
 {
     internal class FakeFailingAction : ActionBase
     {
+        public override bool ConsumeOneAction => true;
+
         public const string CanNotBeDone = "I can not be done";
         public const string Done = "I do an action";
 

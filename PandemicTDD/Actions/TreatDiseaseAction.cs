@@ -4,6 +4,8 @@ namespace PandemicTDD.Actions
 {
     internal class TreatDiseaseAction : ActionBase
     {
+        public override bool ConsumeOneAction => true;
+        
         private readonly GameState GameState;
         private readonly DiseaseColor Disease;
 

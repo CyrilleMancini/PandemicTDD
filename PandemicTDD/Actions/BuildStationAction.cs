@@ -4,6 +4,8 @@ namespace PandemicTDD.Actions
 {
     internal class BuildStationAction : ActionBase
     {
+        public override bool ConsumeOneAction => true;
+
         private readonly GameState gameState;
         private PlayerCard UsedCard;
 

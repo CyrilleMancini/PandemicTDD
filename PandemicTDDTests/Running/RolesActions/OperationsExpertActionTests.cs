@@ -73,11 +73,13 @@ namespace PandemicTDDTests.Materiel
             Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Atlanta).Town;
             PlayerTownCard Discarded = (PlayerTownCard)Players[0].PlayerCards.First(c => c is PlayerTownCard);
             ActionBase action = new OperationExpertMoveFromStationToAnyTownAction(GameState, TownsInitializer.Paris, Discarded);
-            
+
             GameState.DoAction(action);
-            
+
             Assert.AreEqual(TownsInitializer.Paris, GameState.CurrentPlayer.Town.Name);
-            Assert.AreEqual(3, GameState.ActionsRemaining);
+            Assert.AreEqual(4, GameState.ActionsRemaining); // Ne consomme pas d'action a la réalisation.
+            Assert.AreEqual(Discarded, GameState.Board.PlayerDiscardCardStack.Peek());
+        }
         }
     }
 }

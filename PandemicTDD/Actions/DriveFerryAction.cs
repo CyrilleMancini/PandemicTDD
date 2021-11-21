@@ -6,16 +6,15 @@ namespace PandemicTDD.Actions
 {
     internal class DriveFerryAction : ActionBase
     {
+        public override bool ConsumeOneAction => true;
+
         public const string ErrorDestinationNotLinked = "The Destination is not linked to Player Location.";
 
         public const string ErrorSameDestinationAndLocation = "Player Location and Destination are the same.";
 
         private readonly GameState gameState;
-
         private readonly string Destination;
-
         private TownSlot playerSlotTown;
-
         private TownSlot destSlotTown;
 
         public DriveFerryAction(GameState gameState, string destination)

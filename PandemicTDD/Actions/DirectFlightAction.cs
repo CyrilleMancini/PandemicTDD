@@ -6,6 +6,8 @@ namespace PandemicTDD.Actions
 {
     internal class DirectFlightAction : ActionBase
     {
+        public override bool ConsumeOneAction => true;
+
         private readonly GameState gameState;
         private readonly string Destination;
         private TownSlot PlayerSlotTown;
