@@ -18,7 +18,7 @@ namespace PandemicTDDTests.Running.Actions
             GameState.StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
-            ActionBase action = new DriveFerryAction(GameState, TownsInitializer.Paris);
+            ActionBase action = new DriveFerryAction(GameState, GameState.CurrentPlayer, TownsInitializer.Paris);
             GameState.DoAction(action);
             Assert.AreEqual(4, GameState.ActionsRemaining);
             Assert.AreEqual(DriveFerryAction.ErrorDestinationNotLinked, ConsoleObserver.LastErrorReceived);
@@ -32,7 +32,7 @@ namespace PandemicTDDTests.Running.Actions
             GameState.StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
-            ActionBase action = new DriveFerryAction(GameState, TownsInitializer.Atlanta);
+            ActionBase action = new DriveFerryAction(GameState, GameState.CurrentPlayer, TownsInitializer.Atlanta);
             GameState.DoAction(action);
             Assert.AreEqual(4, GameState.ActionsRemaining);
             Assert.AreEqual(DriveFerryAction.ErrorSameDestinationAndLocation, ConsoleObserver.LastErrorReceived);
@@ -45,7 +45,7 @@ namespace PandemicTDDTests.Running.Actions
             GameState.StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
-            ActionBase action = new DriveFerryAction(GameState, TownsInitializer.Chicago);
+            ActionBase action = new DriveFerryAction(GameState, GameState.CurrentPlayer, TownsInitializer.Chicago);
             GameState.DoAction(action);
             Assert.AreEqual(3, GameState.ActionsRemaining);
             Assert.AreEqual(GameState.CurrentPlayer.Town.Name, TownsInitializer.Chicago);

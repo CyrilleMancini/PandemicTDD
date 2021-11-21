@@ -7,23 +7,25 @@ namespace PandemicTDD.Actions
         public override bool ConsumeOneAction => true;
 
         private readonly GameState gameState;
+        private readonly Player player;
         private readonly string Destination;
 
-        public ShuttleFlightAction(GameState gameState, string destination)
+        public ShuttleFlightAction(GameState gameState, Player Player, string destination)
         {
             this.gameState = gameState;
+            player = Player;
             Destination = destination;
         }
 
         public override void Execute()
         {
-            gameState.CurrentPlayer.Town = gameState.Board.GetTownSlot(Destination).Town;
+            player.Town = gameState.Board.GetTownSlot(Destination).Town;
 
         }
 
         public override void Try()
         {
-            if (gameState.CurrentPlayer.Town.HasSearchStation == false)
+            if (player.Town.HasSearchStation == false)
                 throw new CityWithoutControlCenterException("Origin City doesn't have CDC");
 
             if (gameState.Board.GetTownSlot(Destination).HasSearchStation == false)

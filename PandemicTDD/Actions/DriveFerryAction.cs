@@ -12,31 +12,33 @@ namespace PandemicTDD.Actions
 
         public const string ErrorSameDestinationAndLocation = "Player Location and Destination are the same.";
 
-        private readonly GameState gameState;
+        private readonly GameState GameState;
+        private readonly Player Player;
         private readonly string Destination;
         private TownSlot playerSlotTown;
         private TownSlot destSlotTown;
 
-        public DriveFerryAction(GameState gameState, string destination)
+        public DriveFerryAction(GameState gameState,Player player, string destination)
         {
-            this.gameState = gameState;
+            GameState = gameState;
+            Player = player;
             Destination = destination;
         }
 
-
         public override void Execute()
         {
-            gameState.CurrentPlayer.Town = destSlotTown.Town;
-            gameState.Result($@"Player '{gameState.CurrentPlayer.Name}' moved to {{destSlottown.Town.Name}}");
+            Player.Town = destSlotTown.Town;
+            GameState.Result($@"Player '{Player.Name}' moved to {{destSlottown.Town.Name}}");
         }
 
         public override void Try()
         {
-            playerSlotTown = gameState.Board.GetTownSlot(gameState.CurrentPlayer.Town.Name);
-            destSlotTown = gameState.Board.GetTownSlot(Destination);
+            playerSlotTown = GameState.Board.GetTownSlot(Player.Town.Name);
+            destSlotTown = GameState.Board.GetTownSlot(Destination);
 
             if (playerSlotTown.Town.Name == Destination)
                 throw new ArgumentException(ErrorSameDestinationAndLocation);
+            
             if (!playerSlotTown.Links.Any(t => t.Town.Name == Destination))
                 throw new ArgumentException(ErrorDestinationNotLinked);
         }
