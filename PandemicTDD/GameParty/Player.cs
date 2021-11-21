@@ -1,5 +1,4 @@
-﻿using PandemicTDD.Actions;
-using PandemicTDD.Actions.Exceptions;
+﻿using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.PlayerCards;
 using System;

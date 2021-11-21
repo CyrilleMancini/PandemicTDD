@@ -18,9 +18,9 @@ namespace PandemicTDD.Materiel
         public List<DiseaseCube> GetCubes(DiseaseColor color, int number)
         {
             if (number <= 0) throw new ArgumentException($"Bad Quantity {{number}}");
-            
+
             List<DiseaseCube> cubes;
-            
+
             switch (color)
             {
                 case DiseaseColor.Black:

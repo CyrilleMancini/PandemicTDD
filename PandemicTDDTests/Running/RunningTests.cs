@@ -61,7 +61,7 @@ namespace PandemicTDDTests.Running
         public void ImpossibleSendErrorToView()
         {
             StartGame();
-                        
+
             ActionBase action = new FakeFailingAction();
             GameState.DoAction(action);
             Assert.AreEqual(4, GameState.ActionsRemaining);

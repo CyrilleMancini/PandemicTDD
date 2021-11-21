@@ -51,7 +51,7 @@ namespace PandemicTDDTests.Running.Actions
         {
             StartGame();
 
-            PlayerTownCard OrigineCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct );
+            PlayerTownCard OrigineCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);
             Players[0].PlayerCards.Add(OrigineCard);
             Players[0].Town = OrigineCard.Town;
 

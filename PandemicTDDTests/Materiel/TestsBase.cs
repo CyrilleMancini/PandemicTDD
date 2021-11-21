@@ -14,13 +14,14 @@ namespace PandemicTDDTests.Materiel
 
         protected string[][] expectedTowns;
 
-        protected List<Player> Players = new() {
-                new() { Name ="PlOne" },
-                new() { Name ="PlTwo" },
-                new() { Name ="PlThree" },
-                new() { Name ="PlFour" },
-                new() { Name ="PlFive" },
-            };
+        protected List<Player> Players = new()
+        {
+            new() { Name = "PlOne" },
+            new() { Name = "PlTwo" },
+            new() { Name = "PlThree" },
+            new() { Name = "PlFour" },
+            new() { Name = "PlFive" },
+        };
 
 
         [TestInitialize]

@@ -1,5 +1,4 @@
-﻿using PandemicTDD.Materiel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace PandemicTDD.Materiel
@@ -10,7 +9,8 @@ namespace PandemicTDD.Materiel
         {
         }
 
-        public override List<Type> SpecialActions => new List<Type>() { 
+        public override List<Type> SpecialActions => new List<Type>()
+        {
         };
     }
 }

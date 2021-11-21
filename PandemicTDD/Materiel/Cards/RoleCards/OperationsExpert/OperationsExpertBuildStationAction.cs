@@ -26,7 +26,7 @@ namespace PandemicTDDTests.Materiel
         {
             if (gameState.CurrentPlayer.Town.HasSearchStation)
             {
-                String Message = $"Research Station already build in {gameState.CurrentPlayer.Town.Name}";
+                string Message = $"Research Station already build in {gameState.CurrentPlayer.Town.Name}";
                 gameState.Error(Message);
                 throw new ArgumentException(Message);
             }

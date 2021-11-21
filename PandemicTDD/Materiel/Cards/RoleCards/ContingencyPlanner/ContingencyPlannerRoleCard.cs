@@ -21,7 +21,7 @@ namespace PandemicTDD.Materiel
         {
             SpecialSlotEventCard = null;
         }
-         
+
         public ContingencyPlannerRoleCard(string name) : base(name)
         { }
 

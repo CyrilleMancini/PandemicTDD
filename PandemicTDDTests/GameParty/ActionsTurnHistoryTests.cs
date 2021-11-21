@@ -1,12 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PandemicTDD;
-using PandemicTDD.Actions.Exceptions;
 using PandemicTDDTests.Running;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PandemicTDD.Tests
 {
@@ -46,7 +39,7 @@ namespace PandemicTDD.Tests
 
             Assert.AreEqual(1, history.PlayedActionsCount);
         }
-              
+
 
         [TestMethod()]
         public void NextTurnTest()

@@ -18,7 +18,7 @@ namespace PandemicTDD.Actions
         private TownSlot playerSlotTown;
         private TownSlot destSlotTown;
 
-        public DriveFerryAction(GameState gameState,Player player, string destination)
+        public DriveFerryAction(GameState gameState, Player player, string destination)
         {
             GameState = gameState;
             Player = player;
@@ -38,7 +38,7 @@ namespace PandemicTDD.Actions
 
             if (playerSlotTown.Town.Name == Destination)
                 throw new ArgumentException(ErrorSameDestinationAndLocation);
-            
+
             if (!playerSlotTown.Links.Any(t => t.Town.Name == Destination))
                 throw new ArgumentException(ErrorDestinationNotLinked);
         }

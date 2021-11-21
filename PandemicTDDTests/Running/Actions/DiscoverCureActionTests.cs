@@ -52,7 +52,7 @@ namespace PandemicTDDTests.Running.Actions
         public void BlackCureDiscovered()
         {
             StartGame();
-            
+
             List<PlayerTownCard> cards = new();
             for (int c = 0; c < 5; c++)
                 cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Color == DiseaseColor.Black));

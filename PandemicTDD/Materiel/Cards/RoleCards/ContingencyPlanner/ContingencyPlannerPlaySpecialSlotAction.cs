@@ -1,6 +1,5 @@
 ﻿using PandemicTDD.Actions;
 using PandemicTDD.Actions.Exceptions;
-using System;
 
 namespace PandemicTDD.Materiel
 {
@@ -30,7 +29,7 @@ namespace PandemicTDD.Materiel
 
             if (Role is not ContingencyPlannerRoleCard)
                 throw new InvalidPreconditionsException($"This action can only be bone by a Contingency Planner");
-                    
+
             Role.TrySpecialSlot();
         }
     }

@@ -83,7 +83,7 @@ namespace PandemicTDD.Materiel
             GetBoard();
             InitFirstCDCInAtlanta();
             DiseaseBagsInitializer.Reset();
-            
+
             GameInitializer.InitGame(this);
 
             Initialized = true;

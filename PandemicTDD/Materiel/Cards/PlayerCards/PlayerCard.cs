@@ -1,6 +1,4 @@
-﻿using PandemicTDD.Actions;
-
-namespace PandemicTDD.Materiel.PlayerCards
+﻿namespace PandemicTDD.Materiel.PlayerCards
 {
     public abstract class PlayerCard
     {
