@@ -4,11 +4,11 @@ using System;
 
 namespace PandemicTDDTests.Materiel
 {
-    internal class OperationsExpertAction : ActionBase
+    internal class OperationsExpertBuildStationAction : ActionBase
     {
         private GameState gameState;
 
-        public OperationsExpertAction(GameState gameState)
+        public OperationsExpertBuildStationAction(GameState gameState)
         {
             this.gameState = gameState;
         }

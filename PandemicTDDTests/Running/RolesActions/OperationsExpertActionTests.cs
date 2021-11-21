@@ -19,7 +19,7 @@ namespace PandemicTDDTests.Materiel
             Players[0].Role = new OperationExpertRoleCard("Expert au Opérations");
             Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Londres).Town;
 
-            ActionBase action = new OperationsExpertAction(GameState);
+            ActionBase action = new OperationsExpertBuildStationAction(GameState);
             GameState.DoAction(action);
             Assert.IsTrue(GameState.CurrentPlayer.Town.HasSearchStation);
             Assert.AreEqual(null, ConsoleObserver.LastErrorReceived);
