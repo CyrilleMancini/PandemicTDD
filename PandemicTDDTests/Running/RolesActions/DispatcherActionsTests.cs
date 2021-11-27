@@ -3,7 +3,9 @@ using PandemicTDD.Actions;
 using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
+using PandemicTDD.Materiel.PlayerCards;
 using System;
+using System.Linq;
 
 namespace PandemicTDDTests.Materiel
 {
@@ -67,10 +69,76 @@ namespace PandemicTDDTests.Materiel
 
 
         [TestMethod]
+        public void MoveAnotherPlayerAsHisByDirectFlightFailsCauseNoDestinationCard()
+        {
+            ActionBase action = new DispatcherMoveAnotherPlayerByDirectFlightAsHisAction(GameState, Players[1], TownsInitializer.Paris);
+            GameState.CurrentPlayer.PlayerCards.Clear();
+
+            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            {
+                action.Try();
+            });
+
+            Assert.AreEqual(TownsInitializer.Atlanta, Players[1].Town.Name);
+            Assert.AreEqual(4, GameState.ActionsRemaining);
+        }
+
+        [TestMethod]
+        public void MoveAnotherPlayerAsHisByCharterFlightFailsCauseNoOrigineCard()
+        {
+            ActionBase action = new DispatcherMoveAnotherPlayerByCharterFlightAsHisAction(GameState, Players[1], TownsInitializer.Paris);
+
+            GameState.CurrentPlayer.PlayerCards.Clear();
+            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            {
+                action.Try();
+            });
+
+            Assert.AreEqual(TownsInitializer.Atlanta, Players[1].Town.Name);
+            Assert.AreEqual(4, GameState.ActionsRemaining);
+        }
+
+
+        [TestMethod]
+        public void MoveAnotherPlayerAsHisByDirectFlightSuccess()
+        {
+            GameState.CurrentPlayer.PlayerCards.Clear();
+            var DestCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard tc && tc.Town.Name == TownsInitializer.Paris);
+            GameState.CurrentPlayer.PlayerCards.Add(DestCard);
+
+            ActionBase action = new DispatcherMoveAnotherPlayerByDirectFlightAsHisAction(GameState, Players[1], TownsInitializer.Paris);
+            GameState.DoAction(action);
+
+            Assert.AreEqual(TownsInitializer.Paris, Players[1].Town.Name);
+            Assert.AreEqual(3, GameState.ActionsRemaining);
+        }
+
+        [TestMethod]
+        public void MoveAnotherPlayerAsHisByCharterFlightSuccess()
+        {
+
+            GameState.CurrentPlayer.PlayerCards.Clear();
+            var OrigineCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard tc && tc.Town.Name == Players[1].Town.Name);
+            GameState.CurrentPlayer.PlayerCards.Add(OrigineCard);
+
+
+            ActionBase action = new DispatcherMoveAnotherPlayerByCharterFlightAsHisAction(GameState, Players[1], TownsInitializer.Paris);
+            GameState.DoAction(action);
+
+
+
+            Assert.AreEqual(TownsInitializer.Paris, Players[1].Town.Name);
+            Assert.AreEqual(3, GameState.ActionsRemaining);
+        }
+
+
+
+
+        [TestMethod]
         public void MoveAnotherPlayerToAnAntoherPlayerTownFailsBecauseSamePlayer()
         {
             ActionBase action = new DispatcherMovePlayerToAnotherPlayer(GameState, Players[1], Players[1]);
-        
+
             Assert.ThrowsException<InvalidPreconditionsException>(() =>
             {
                 action.Try();
@@ -79,6 +147,7 @@ namespace PandemicTDDTests.Materiel
             Assert.AreEqual(TownsInitializer.Atlanta, Players[1].Town.Name);
             Assert.AreEqual(4, GameState.ActionsRemaining);
         }
+
         [TestMethod]
         public void MoveAnotherPlayerToAnAntoherPlayerTown()
         {

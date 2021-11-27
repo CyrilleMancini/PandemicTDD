@@ -22,6 +22,8 @@ namespace PandemicTDDTests.Materiel
         public void CureAllDisease_WhenNotCure()
         {
         
+//            ActionBase action = new Cure
+
         }  
 
     }

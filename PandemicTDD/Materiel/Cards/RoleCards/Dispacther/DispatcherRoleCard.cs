@@ -11,6 +11,11 @@ namespace PandemicTDD.Materiel
 
         public override List<Type> SpecialActions => new List<Type>()
         {
+            typeof(DispatcherMoveAnotherPlayerByCharterFlightAsHisAction),
+            typeof(DispatcherMoveAnotherPlayerByDirectFlightAsHisAction),
+            typeof(DispatcherMoveAnotherPlayerByDriverFerryAsHisAction),
+            typeof(DispatcherMoveAnotherPlayerByShuttleAsHis),
+            typeof(DispatcherMovePlayerToAnotherPlayer),
         };
     }
 }

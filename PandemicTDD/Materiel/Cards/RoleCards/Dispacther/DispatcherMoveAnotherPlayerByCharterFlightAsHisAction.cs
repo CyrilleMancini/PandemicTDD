@@ -1,11 +1,11 @@
-﻿using PandemicTDD.Actions.Exceptions;
-using PandemicTDD.Materiel;
+﻿using PandemicTDD.Actions;
+using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel.PlayerCards;
 using System;
 
-namespace PandemicTDD.Actions
+namespace PandemicTDD.Materiel
 {
-    internal class CharterFlightAction : ActionBase
+    internal class DispatcherMoveAnotherPlayerByCharterFlightAsHisAction : ActionBase
     {
         public override bool ConsumeOneAction => true;
 
@@ -16,11 +16,11 @@ namespace PandemicTDD.Actions
         private TownSlot DestSlotTown;
         private PlayerTownCard OwnedCityCard;
 
-        public CharterFlightAction(GameState gameState, Player MovedPlayer , string destination)
+        public DispatcherMoveAnotherPlayerByCharterFlightAsHisAction(GameState gameState, Player MovedPlayer, string destination)
         {
             this.gameState = gameState;
             this.MovedPlayer = MovedPlayer;
-            this.Destination = destination;
+            Destination = destination;
         }
 
         public override void Execute()
@@ -33,6 +33,9 @@ namespace PandemicTDD.Actions
 
         public override void Try()
         {
+            if (MovedPlayer == gameState.CurrentPlayer)
+                throw new InvalidPreconditionsException("The other player must be different than Current Player");
+
             PlayerSlotTown = gameState.Board.GetTownSlot(MovedPlayer.Town.Name);
             DestSlotTown = gameState.Board.GetTownSlot(Destination);
 
@@ -41,11 +44,11 @@ namespace PandemicTDD.Actions
 
             try
             {
-                OwnedCityCard = MovedPlayer.DiscardCardTown(PlayerSlotTown.Town.Name);
+                OwnedCityCard = gameState.CurrentPlayer.DiscardCardTown(PlayerSlotTown.Town.Name);
             }
             catch (NotOwnedCityPlayerCardException)
             {
-                throw new NotOwnedCityPlayerCardException($"You must own origine {PlayerSlotTown.Town.Name} card to do a charter Flight");
+                throw new NotOwnedCityPlayerCardException($"You must own origine {PlayerSlotTown.Town.Name} card from oother player origine to move him with a charter Flight");
             }
 
         }

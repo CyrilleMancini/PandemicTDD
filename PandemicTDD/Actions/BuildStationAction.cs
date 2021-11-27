@@ -7,23 +7,24 @@ namespace PandemicTDD.Actions
         public override bool ConsumeOneAction => true;
 
         private readonly GameState gameState;
+        private readonly Player player;
         private PlayerCard UsedCard;
 
-        public BuildStationAction(GameState gameState)
+        public BuildStationAction(GameState gameState,Player player)
         {
             this.gameState = gameState;
+            this.player = player;
         }
 
         public override void Execute()
         {
-            gameState.Board.GetTownSlot(gameState.CurrentPlayer.Town.Name).BuildStation();
+            gameState.Board.GetTownSlot(player.Town.Name).BuildStation();
             gameState.Board.PlayerDiscardCardStack.Push(UsedCard);
-
         }
 
         public override void Try()
         {
-            UsedCard = gameState.CurrentPlayer.DiscardCardTown(gameState.CurrentPlayer.Town.Name);
+            UsedCard = player.DiscardCardTown(player.Town.Name);
 
         }
     }

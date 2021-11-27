@@ -23,7 +23,7 @@ namespace PandemicTDDTests.Running.Actions
             GameState.CurrentPlayer.Town = playerLocation.Town;
 
 
-            ActionBase action = new BuildStationAction(GameState);
+            ActionBase action = new BuildStationAction(GameState, GameState.CurrentPlayer);
             GameState.DoAction(action);
 
             Assert.IsNotNull(GameState.Board.GetTownSlot(playerLocation.Town.Name).Town.ControlDiseaseCenter);
@@ -42,7 +42,7 @@ namespace PandemicTDDTests.Running.Actions
             GameState.CurrentPlayer.Town = playerLocation.Town;
 
 
-            ActionBase action = new BuildStationAction(GameState);
+            ActionBase action = new BuildStationAction(GameState, GameState.CurrentPlayer);
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
                 action.Try();

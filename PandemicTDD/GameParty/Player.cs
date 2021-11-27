@@ -29,13 +29,13 @@ namespace PandemicTDD
             }
         }
 
-        internal PlayerCard DiscardCardTown(string cityName)
+        internal PlayerTownCard DiscardCardTown(string cityName)
         {
             try
             {
                 var delete = PlayerCards.First(c => c is PlayerTownCard ct && ct.Town.Name == cityName);
                 PlayerCards.Remove(delete);
-                return delete;
+                return (PlayerTownCard)delete;
             }
             catch (Exception)
             {
