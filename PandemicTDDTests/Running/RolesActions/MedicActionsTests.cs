@@ -15,16 +15,28 @@ namespace PandemicTDDTests.Materiel
         {
             StartGame();
             Players[0].Role = new MedicRoleCard("Médecin");
-          
+
         }
 
         [TestMethod]
         public void CureAllDisease_WhenNotCure()
         {
-        
-//            ActionBase action = new Cure
 
-        }  
+            var town = GameState.Board.GetTownSlot(TownsInitializer.Atlanta);
+            var diseases = GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Black, 3);
+            town.Town.AddDisease(diseases);
+
+            ActionBase action = new MedicCureAllDiseaseAction(GameState, DiseaseColor.Black);
+            GameState.DoAction(action);
+
+            Assert.AreEqual(0, town.Town.GetDiseaseByColor(DiseaseColor.Black).Count);
+            Assert.AreEqual(3, GameState.ActionsRemaining);
+
+
+
+
+
+        }
 
     }
 }

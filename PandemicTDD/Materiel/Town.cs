@@ -65,6 +65,10 @@ namespace PandemicTDD.Materiel
                 .Where(c => c.Color == color)
                 .ToList();
         }
+        internal void CureDiseaseByColor(DiseaseColor color)
+        {
+            DiseaseCubes.RemoveAll(c => c.Color == color);
+        }
 
         internal void TreatOneCubeDisease(DiseaseColor color)
         {

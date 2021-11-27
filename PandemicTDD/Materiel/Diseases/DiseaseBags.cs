@@ -49,5 +49,30 @@ namespace PandemicTDD.Materiel
             return cubes;
         }
 
+        public void AddCubes(List<DiseaseCube> cubes)
+        {
+            if (cubes.Count <= 0) throw new ArgumentException($"Bad Quantity");
+
+            cubes.ForEach(c =>
+            {
+                switch (c.Color)
+                {
+                    case DiseaseColor.Black:
+                        Blacks.Add(c);
+                        break;
+                    case DiseaseColor.Red:
+                        Reds.Add(c);
+                        break;
+                    case DiseaseColor.Yellow:
+                        Yellows.Add(c);
+                        break;
+                    case DiseaseColor.Blue:
+                        Blues.Add(c);
+                        break;
+                    default:
+                        throw new ArgumentException("Unexpected Exception");
+                }
+            });
+        }
     }
 }

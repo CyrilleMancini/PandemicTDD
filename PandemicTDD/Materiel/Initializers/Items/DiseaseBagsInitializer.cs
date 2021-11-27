@@ -28,6 +28,7 @@
             SingleBags.Yellows.Clear();
             SingleBags.Blues.Clear();
             SingleBags = null;
+            InitBags();
         }
     }
 }
