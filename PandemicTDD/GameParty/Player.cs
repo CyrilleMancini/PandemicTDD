@@ -17,11 +17,11 @@ namespace PandemicTDD
 
         public Town Town { get; internal set; }
 
-        internal PlayerCard GetCityPlayerCard(string cityName)
+        internal T GetCityPlayerCard<T>(string cityName) where T:PlayerCard
         {
             try
             {
-                return PlayerCards.First(c => c is PlayerTownCard ct && ct.Town.Name == cityName);
+                return (T)PlayerCards.First(c => c is PlayerTownCard ct && ct.Town.Name == cityName);
             }
             catch (Exception)
             {

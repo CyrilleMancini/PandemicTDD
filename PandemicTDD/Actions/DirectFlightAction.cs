@@ -10,30 +10,32 @@ namespace PandemicTDD.Actions
         public override bool ConsumeOneAction => true;
 
         private readonly GameState gameState;
+        private readonly Player MovedPlayer;
         private readonly string Destination;
         private TownSlot PlayerSlotTown;
         private TownSlot DestSlotTown;
         private PlayerTownCard OwnedCityCard;
 
-        public DirectFlightAction(GameState gameState, string destination)
+        public DirectFlightAction(GameState gameState, Player MovedPlayer, string destination)
         {
             this.gameState = gameState;
+            this.MovedPlayer = MovedPlayer;
             this.Destination = destination;
         }
 
         public override void Execute()
         {
 
-            gameState.CurrentPlayer.Town = DestSlotTown.Town;
+            MovedPlayer.Town = DestSlotTown.Town;
 
-            gameState.CurrentPlayer.DiscardCardTown(Destination);
+            MovedPlayer.DiscardCardTown(Destination);
             gameState.Board.PlayerDiscardCardStack.Push(OwnedCityCard);
 
         }
 
         public override void Try()
         {
-            PlayerSlotTown = gameState.Board.GetTownSlot(gameState.CurrentPlayer.Town.Name);
+            PlayerSlotTown = gameState.Board.GetTownSlot(MovedPlayer.Town.Name);
             DestSlotTown = gameState.Board.GetTownSlot(Destination);
 
             if (PlayerSlotTown.Town.Name == Destination)
@@ -41,7 +43,7 @@ namespace PandemicTDD.Actions
 
             try
             {
-                OwnedCityCard = (PlayerTownCard)gameState.CurrentPlayer.GetCityPlayerCard(Destination);
+                OwnedCityCard = MovedPlayer.GetCityPlayerCard< PlayerTownCard>(Destination);
             }
             catch (NotOwnedCityPlayerCardException)
             {

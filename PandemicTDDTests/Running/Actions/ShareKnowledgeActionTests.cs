@@ -90,9 +90,9 @@ namespace PandemicTDDTests.Running.Actions
 
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
-                Players[0].GetCityPlayerCard(CardToShare);
+                Players[0].GetCityPlayerCard<PlayerTownCard>(CardToShare);
             });
-            Players[1].GetCityPlayerCard(CardToShare);
+            Players[1].GetCityPlayerCard<PlayerTownCard>(CardToShare);
         }
 
 
@@ -111,10 +111,10 @@ namespace PandemicTDDTests.Running.Actions
             ActionBase action = new ShareKnowledgeAction(GameState, Players[1], CardToShare);
             GameState.DoAction(action);
 
-            Players[0].GetCityPlayerCard(CardToShare);
+            Players[0].GetCityPlayerCard<PlayerTownCard>(CardToShare);
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
-                Players[1].GetCityPlayerCard(CardToShare);
+                Players[1].GetCityPlayerCard<PlayerTownCard>(CardToShare);
             });
         }
 

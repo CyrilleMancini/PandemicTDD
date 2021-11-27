@@ -31,9 +31,9 @@ namespace PandemicTDDTests.Materiel
             Assert.AreEqual(null, ConsoleObserver.LastErrorReceived);
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
-                Players[0].GetCityPlayerCard(CardToShare);
+                Players[0].GetCityPlayerCard<PlayerTownCard>(CardToShare);
             });
-            Players[1].GetCityPlayerCard(CardToShare);
+            Players[1].GetCityPlayerCard<PlayerTownCard>(CardToShare);
         }
 
         [TestMethod()]

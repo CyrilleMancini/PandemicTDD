@@ -21,7 +21,7 @@ namespace PandemicTDDTests.Running.Actions
             Players[0].Town = GameState.Board.GetTownSlot(OrigineCard.Town.Name).Town;
             Players[0].PlayerCards.Add(OrigineCard);
 
-            ActionBase action = new CharterFlightAction(GameState, TownsInitializer.Paris);
+            ActionBase action = new CharterFlightAction(GameState, GameState.CurrentPlayer, TownsInitializer.Paris);
             GameState.DoAction(action);
 
             Assert.AreEqual(TownsInitializer.Paris, GameState.CurrentPlayer.Town.Name);
@@ -35,7 +35,7 @@ namespace PandemicTDDTests.Running.Actions
             StartGame();
             GameState.CurrentPlayer.PlayerCards.Clear();
 
-            ActionBase action = new CharterFlightAction(GameState, TownsInitializer.Paris);
+            ActionBase action = new CharterFlightAction(GameState, GameState.CurrentPlayer, TownsInitializer.Paris);
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
                 action.Try();
@@ -55,14 +55,16 @@ namespace PandemicTDDTests.Running.Actions
             Players[0].PlayerCards.Add(OrigineCard);
             Players[0].Town = OrigineCard.Town;
 
-            ActionBase action = new CharterFlightAction(GameState, TownsInitializer.Paris);
+            ActionBase action = new CharterFlightAction(GameState, GameState.CurrentPlayer, TownsInitializer.Paris);
             GameState.DoAction(action);
 
 
             Assert.AreEqual(OrigineCard, GameState.Board.PlayerDiscardCardStack.Peek(), "Player card shoud be in Discard stack");
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
-                OrigineCard = (PlayerTownCard)GameState.CurrentPlayer.GetCityPlayerCard(TownsInitializer.Paris);
+
+                OrigineCard = GameState.CurrentPlayer.GetCityPlayerCard<PlayerTownCard>(TownsInitializer.Paris);
+            
             }, "Player shouldn't have the used card anymore");
 
         }

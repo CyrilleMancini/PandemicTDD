@@ -45,7 +45,7 @@ namespace PandemicTDD.Materiel
             try
             {
 
-                Given = (PlayerTownCard)gameState.CurrentPlayer.GetCityPlayerCard(PlayerTownCardToShare);
+                Given = gameState.CurrentPlayer.GetCityPlayerCard<PlayerTownCard>(PlayerTownCardToShare);
                 if (gameState.CurrentPlayer.Role is not ResearcherRoleCard)
                 {
                     throw new NotOwnedCityPlayerCardException("The card must come from The Researcher hands.");
@@ -53,7 +53,7 @@ namespace PandemicTDD.Materiel
             }
             catch (Exception)
             {
-                Taken = (PlayerTownCard)player.GetCityPlayerCard(PlayerTownCardToShare);
+                Taken = player.GetCityPlayerCard<PlayerTownCard>(PlayerTownCardToShare);
                 if (player.Role is not ResearcherRoleCard)
                 {
                     throw new NotOwnedCityPlayerCardException("The card must come from The Researcher hands.");

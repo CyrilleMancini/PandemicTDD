@@ -49,12 +49,12 @@ namespace PandemicTDD.Actions
 
             try
             {
-                Given = (PlayerTownCard)gameState.CurrentPlayer.GetCityPlayerCard(PlayerTownCardToShare);
+                Given = gameState.CurrentPlayer.GetCityPlayerCard<PlayerTownCard>(PlayerTownCardToShare);
 
             }
             catch (Exception)
             {
-                Taken = (PlayerTownCard)player.GetCityPlayerCard(PlayerTownCardToShare);
+                Taken = player.GetCityPlayerCard<PlayerTownCard>(PlayerTownCardToShare);
             }
 
             if (Given == null && Taken == null)

@@ -21,7 +21,7 @@ namespace PandemicTDDTests.Running.Actions
             PlayerTownCard DestiantionCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);
             Players[0].PlayerCards.Add(DestiantionCard);
 
-            ActionBase action = new DirectFlightAction(GameState, DestiantionCard.Town.Name);
+            ActionBase action = new DirectFlightAction(GameState, GameState.CurrentPlayer, DestiantionCard.Town.Name);
             GameState.DoAction(action);
 
             Assert.AreEqual(DestiantionCard.Town.Name, GameState.CurrentPlayer.Town.Name);
@@ -35,7 +35,7 @@ namespace PandemicTDDTests.Running.Actions
             StartGame();
             GameState.CurrentPlayer.PlayerCards.Clear();
 
-            ActionBase action = new DirectFlightAction(GameState, TownsInitializer.Paris);
+            ActionBase action = new DirectFlightAction(GameState, GameState.CurrentPlayer, TownsInitializer.Paris);
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
                 action.Try();
@@ -54,14 +54,14 @@ namespace PandemicTDDTests.Running.Actions
             PlayerTownCard DestinationCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);
             Players[0].PlayerCards.Add(DestinationCard);
 
-            ActionBase action = new DirectFlightAction(GameState, DestinationCard.Town.Name);
+            ActionBase action = new DirectFlightAction(GameState, GameState.CurrentPlayer, DestinationCard.Town.Name);
             GameState.DoAction(action);
 
 
             Assert.AreEqual(DestinationCard, GameState.Board.PlayerDiscardCardStack.Peek(), "Player card shoud be in Discard stack");
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
-                DestinationCard = (PlayerTownCard)GameState.CurrentPlayer.GetCityPlayerCard(DestinationCard.Town.Name);
+                DestinationCard = GameState.CurrentPlayer.GetCityPlayerCard<PlayerTownCard>(DestinationCard.Town.Name);
             }, "Player shouldn't have the used card anymore");
 
         }
