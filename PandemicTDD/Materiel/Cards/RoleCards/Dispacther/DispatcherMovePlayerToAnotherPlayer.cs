@@ -9,29 +9,28 @@ namespace PandemicTDD.Materiel
 
         private GameState GameState;
         private readonly Player OtherPlayer;
-        private readonly string Destination;
-        private ShuttleFlightAction IntermediateAction;
-
-        public DispatcherMovePlayerToAnotherPlayer(GameState gameState, Player other, string Destination)
+        private readonly Player DestinationPlayer;
+ 
+        public DispatcherMovePlayerToAnotherPlayer(GameState gameState, Player PlayerFrom, Player DestinationPlayer)
         {
             GameState = gameState;
-            OtherPlayer = other;
-            this.Destination = Destination;
+            OtherPlayer = PlayerFrom;
+            this.DestinationPlayer = DestinationPlayer;
         }
 
         public override void Execute()
         {
-            IntermediateAction.Execute();
+            OtherPlayer.Town = DestinationPlayer.Town;
+
         }
 
         public override void Try()
         {
-            if (OtherPlayer == GameState.CurrentPlayer)
-                throw new InvalidPreconditionsException("The other must be different than Current Player");
+            if (OtherPlayer == DestinationPlayer)
+                throw new InvalidPreconditionsException("Origine and destination Players must be different.");
 
-            IntermediateAction = new ShuttleFlightAction(GameState, OtherPlayer, Destination);
 
-            IntermediateAction.Try();
+
 
         }
     }

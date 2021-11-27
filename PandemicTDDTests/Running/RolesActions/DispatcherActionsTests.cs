@@ -3,6 +3,7 @@ using PandemicTDD.Actions;
 using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
+using System;
 
 namespace PandemicTDDTests.Materiel
 {
@@ -15,6 +16,7 @@ namespace PandemicTDDTests.Materiel
             StartGame();
             Players[0].Role = new DispatcherRoleCard("Répartiteur");
             Players[1].Role = new ResearcherRoleCard("Chercheur");
+            Players[2].Role = new UndefRoleCard("Undef");
         }
 
         [TestMethod]
@@ -62,5 +64,34 @@ namespace PandemicTDDTests.Materiel
             Assert.AreEqual(TownsInitializer.Paris, Players[1].Town.Name);
             Assert.AreEqual(3, GameState.ActionsRemaining);
         }
+
+
+        [TestMethod]
+        public void MoveAnotherPlayerToAnAntoherPlayerTownFailsBecauseSamePlayer()
+        {
+            ActionBase action = new DispatcherMovePlayerToAnotherPlayer(GameState, Players[1], Players[1]);
+        
+            Assert.ThrowsException<InvalidPreconditionsException>(() =>
+            {
+                action.Try();
+            });
+
+            Assert.AreEqual(TownsInitializer.Atlanta, Players[1].Town.Name);
+            Assert.AreEqual(4, GameState.ActionsRemaining);
+        }
+        [TestMethod]
+        public void MoveAnotherPlayerToAnAntoherPlayerTown()
+        {
+            Players[1].Role = new ResearcherRoleCard("Chercheur");
+            Players[2].Town = GameState.Board.GetTown(TownsInitializer.Paris);
+            ActionBase action = new DispatcherMovePlayerToAnotherPlayer(GameState, Players[1], Players[2]);
+
+            GameState.DoAction(action);
+
+            Assert.AreEqual(TownsInitializer.Paris, Players[1].Town.Name);
+            Assert.AreEqual(Players[2].Town.Name, Players[1].Town.Name);
+            Assert.AreEqual(3, GameState.ActionsRemaining);
+        }
+
     }
 }
