@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using CommonTestsTools;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD;
 using PandemicTDD.Actions;
 using PandemicTDD.Materiel.Initializers;

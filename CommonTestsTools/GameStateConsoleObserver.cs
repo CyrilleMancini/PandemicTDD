@@ -1,7 +1,7 @@
 ﻿using PandemicTDD;
 using System;
 
-namespace PandemicTDDTests.Running
+namespace CommonTestsTools
 {
     public class GameStateConsoleObserver : IObserveGameState
     {

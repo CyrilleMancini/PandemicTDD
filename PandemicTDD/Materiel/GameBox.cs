@@ -1,7 +1,11 @@
 ﻿using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
+
+[assembly: InternalsVisibleTo("PandemicTDDTests")]
+[assembly: InternalsVisibleTo("CommonTestsTools")]
 namespace PandemicTDD.Materiel
 {
     public class GameBox

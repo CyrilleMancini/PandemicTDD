@@ -1,4 +1,5 @@
 ﻿using PandemicTDD.Actions;
+using PandemicTDD.Events;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
 using System;
@@ -10,23 +11,23 @@ namespace PandemicTDD
     public class GameState : IChooseLevel
     {
 
-        internal List<Player> Players;
 
-        public Player CurrentPlayer { get => Players[CurrentPlayerIdx]; }
-
+        public readonly ActionsTurnHistory ActionsTurnHistory = new ActionsTurnHistory();
+        
         public int ActionsRemaining { get; private set; }
-
-        private int CurrentPlayerIdx = 0;
-
-        internal GameBox GameBox { get; private set; }
+        
+        public Player CurrentPlayer { get => Players[CurrentPlayerIdx]; }
 
         internal Board Board { get; private set; }
 
         internal readonly DiseaseBags DiseaseBags;
+        internal GameBox GameBox { get; private set; }
 
+        internal List<Player> Players;
+
+        private int CurrentPlayerIdx = 0;
+        
         private readonly List<IObserveGameState> Observers = new();
-
-        public readonly ActionsTurnHistory ActionsTurnHistory = new ActionsTurnHistory();
 
         public GameState(List<Player> players,
             GameBox gameBox)
@@ -80,6 +81,14 @@ namespace PandemicTDD
                     NextTurn();
                 else
                     Action($"{ActionsRemaining} actions remains.");
+            }
+            catch (YouLooseException ex)
+            {
+
+            }
+            catch (VictoryAllCuresDiscoveredException ex)
+            {
+
             }
             catch (Exception ex)
             {

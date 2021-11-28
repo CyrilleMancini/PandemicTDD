@@ -2,11 +2,10 @@
 using PandemicTDD;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
-using PandemicTDDTests.Running;
 using System.Collections.Generic;
 using System.IO;
 
-namespace PandemicTDDTests.Materiel
+namespace CommonTestsTools
 {
     [TestClass]
     public class TestsBase
