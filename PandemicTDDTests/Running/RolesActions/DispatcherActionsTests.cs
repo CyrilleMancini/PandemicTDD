@@ -102,15 +102,18 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void MoveAnotherPlayerAsHisByDirectFlightSuccess()
         {
+
             GameState.CurrentPlayer.PlayerCards.Clear();
-            var DestCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard tc && tc.Town.Name == TownsInitializer.Paris);
+            PlayerTownCard DestCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard tc && tc.Town.Name != TownsInitializer.Atlanta);
             GameState.CurrentPlayer.PlayerCards.Add(DestCard);
 
-            ActionBase action = new DispatcherMoveAnotherPlayerByDirectFlightAsHisAction(GameState, Players[1], TownsInitializer.Paris);
+            ActionBase action = new DispatcherMoveAnotherPlayerByDirectFlightAsHisAction(GameState, Players[1], DestCard.Town.Name);
             GameState.DoAction(action);
 
-            Assert.AreEqual(TownsInitializer.Paris, Players[1].Town.Name);
+            Assert.AreEqual(DestCard.Town.Name, Players[1].Town.Name);
             Assert.AreEqual(3, GameState.ActionsRemaining);
+            Assert.AreEqual(DestCard, GameState.Board.PlayerDiscardCardStack.Peek());
+
         }
 
         [TestMethod]

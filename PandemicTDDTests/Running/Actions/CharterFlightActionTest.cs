@@ -49,13 +49,15 @@ namespace PandemicTDDTests.Running.Actions
         [TestMethod]
         public void UsedCardIsOnTopOfPayerCard()
         {
-            StartGame();
 
             PlayerTownCard OrigineCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);
             Players[0].PlayerCards.Add(OrigineCard);
             Players[0].Town = OrigineCard.Town;
 
-            ActionBase action = new CharterFlightAction(GameState, GameState.CurrentPlayer, TownsInitializer.Paris);
+            PlayerTownCard DestCardCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name != OrigineCard.Town.Name);
+
+
+            ActionBase action = new CharterFlightAction(GameState, GameState.CurrentPlayer, DestCardCard.Town.Name);
             GameState.DoAction(action);
 
 
@@ -63,8 +65,8 @@ namespace PandemicTDDTests.Running.Actions
             Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
             {
 
-                OrigineCard = GameState.CurrentPlayer.GetCityPlayerCard<PlayerTownCard>(TownsInitializer.Paris);
-            
+                OrigineCard = GameState.CurrentPlayer.GetCityPlayerCard<PlayerTownCard>(DestCardCard.Town.Name);
+
             }, "Player shouldn't have the used card anymore");
 
         }

@@ -85,6 +85,7 @@ namespace PandemicTDDTests.Materiel
         public void OperationExpertMoveFromStationToAnyCityOnlyOnceParTurn()
         {
             StartGame();
+
             Players[0].Role = new OperationExpertRoleCard("Expert au Opérations");
             Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Atlanta).Town;
             PlayerTownCard Discarded = (PlayerTownCard)Players[0].PlayerCards.First(c => c is PlayerTownCard);

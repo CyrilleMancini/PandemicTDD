@@ -15,6 +15,7 @@ namespace PandemicTDDTests.Materiel
         {
             StartGame();
             Players[0].Role = new MedicRoleCard("Médecin");
+            Players[1].Role = new DispatcherRoleCard("Répartiteur");
 
         }
 
@@ -80,7 +81,7 @@ namespace PandemicTDDTests.Materiel
             GameState.DoAction(action);
 
             Assert.AreEqual(0, GameState.CurrentPlayer.Town.GetDiseaseByColor(DiseaseColor.Black).Count);
-            Assert.AreEqual(TownsInitializer.Chicago,GameState.CurrentPlayer.Town.Name);
+            Assert.AreEqual(TownsInitializer.Chicago, GameState.CurrentPlayer.Town.Name);
             Assert.AreEqual(3, GameState.ActionsRemaining);
         }
 
@@ -99,5 +100,24 @@ namespace PandemicTDDTests.Materiel
             Assert.AreEqual(TownsInitializer.Chicago, GameState.CurrentPlayer.Town.Name);
             Assert.AreEqual(3, GameState.ActionsRemaining);
         }
+
+
+        [TestMethod]
+        public void CureAllDisease_AutomaticCureDiseaseWhenMovedByAnotherPlayerAndDiseaseCured()
+        {
+            GameState.NextTurn();
+            var town = GameState.Board.GetTownSlot(TownsInitializer.Chicago);
+            var diseases = GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Black, 3);
+            town.Town.AddDisease(diseases);
+            GameState.Board.GetCureSlots().BlackSlot.Next();
+
+            ActionBase action = new DispatcherMoveAnotherPlayerByDriverFerryAsHisAction(GameState, Players[0], TownsInitializer.Chicago);
+            GameState.DoAction(action);
+
+            Assert.AreEqual(0, Players[0].Town.GetDiseaseByColor(DiseaseColor.Black).Count);
+            Assert.AreEqual(TownsInitializer.Chicago, Players[0].Town.Name);
+            Assert.AreEqual(3, GameState.ActionsRemaining);
+        }
+
     }
 }
