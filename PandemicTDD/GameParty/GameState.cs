@@ -73,15 +73,24 @@ namespace PandemicTDD
             try
             {
                 RunAction(action);
+                RunAutomaticActions();
                 if (ActionsRemaining == 0)
                     NextTurn();
                 else
                     Action($"{ActionsRemaining} actions remains.");
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 Observers.ForEach(o => o.Error(ex.Message));
             }
+        }
+
+        private void RunAutomaticActions()
+        {
+            var AutoCleanWhenDisiseaseCured = new  MedicAutomaticRemoveCuredDiseaseAction(this);
+            AutoCleanWhenDisiseaseCured.Try();
+            AutoCleanWhenDisiseaseCured.Execute();
+
         }
 
         private void RunAction(ActionBase action)

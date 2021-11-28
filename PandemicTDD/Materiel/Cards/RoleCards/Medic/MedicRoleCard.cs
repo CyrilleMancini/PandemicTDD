@@ -14,5 +14,6 @@ namespace PandemicTDDTests.Materiel
         {
 
         };
+
     }
 }
