@@ -8,6 +8,8 @@ using System.Linq;
 
 namespace PandemicTDDTests.Materiel
 {
+
+
     [TestClass()]
     public class ScientistActionsTests : TestsBase
     {
@@ -15,9 +17,9 @@ namespace PandemicTDDTests.Materiel
         public void InitPlayer()
         {
             StartGame();
-            Players[0].Role = new ScientistRoleCard("Scientifique");      
+            Players[0].Role = new ScientistRoleCard("Scientifique");
         }
-
+}
 
         [TestMethod]
         public void OnlyFourCardsNeededForScientist()
