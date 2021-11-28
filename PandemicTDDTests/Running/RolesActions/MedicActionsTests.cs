@@ -7,6 +7,7 @@ using System;
 
 namespace PandemicTDDTests.Materiel
 {
+
     [TestClass()]
     public class MedicActionsTests : TestsBase
     {
