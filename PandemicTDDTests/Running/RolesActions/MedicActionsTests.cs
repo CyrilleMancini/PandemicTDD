@@ -84,6 +84,20 @@ namespace PandemicTDDTests.Materiel
             Assert.AreEqual(3, GameState.ActionsRemaining);
         }
 
+        [TestMethod]
+        public void CureAllDisease_NoCureDiseaseWhenMoveAndDiseaseNotCured()
+        {
+            var town = GameState.Board.GetTownSlot(TownsInitializer.Chicago);
+            var diseases = GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Black, 3);
+            town.Town.AddDisease(diseases);
 
+            ActionBase action = new DriveFerryAction(GameState, GameState.CurrentPlayer, TownsInitializer.Chicago);
+
+            GameState.DoAction(action);
+
+            Assert.AreEqual(3, GameState.CurrentPlayer.Town.GetDiseaseByColor(DiseaseColor.Black).Count);
+            Assert.AreEqual(TownsInitializer.Chicago, GameState.CurrentPlayer.Town.Name);
+            Assert.AreEqual(3, GameState.ActionsRemaining);
+        }
     }
 }
