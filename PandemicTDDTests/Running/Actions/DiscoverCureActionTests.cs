@@ -52,6 +52,7 @@ namespace PandemicTDDTests.Running.Actions
         public void BlackCureDiscovered()
         {
             StartGame();
+            Players[0].Role = new DispatcherRoleCard("Dispatcher");
 
             List<PlayerTownCard> cards = new();
             for (int c = 0; c < 5; c++)
@@ -77,6 +78,7 @@ namespace PandemicTDDTests.Running.Actions
         public void BlueCureDiscovered()
         {
             StartGame();
+            Players[0].Role = new DispatcherRoleCard("Dispatcher");
 
             List<PlayerTownCard> cards = new();
             for (int c = 0; c < 5; c++)
@@ -99,6 +101,7 @@ namespace PandemicTDDTests.Running.Actions
         public void RedCureDiscovered()
         {
             StartGame();
+            Players[0].Role = new DispatcherRoleCard("Dispatcher");
             List<PlayerTownCard> cards = new();
             for (int c = 0; c < 5; c++)
                 cards.Add((PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Color == DiseaseColor.Red));
@@ -117,6 +120,7 @@ namespace PandemicTDDTests.Running.Actions
         [TestMethod]
         public void YellowCureDiscovered()
         {
+            Players[0].Role = new DispatcherRoleCard("Dispatcher");
             StartGame();
             List<PlayerTownCard> cards = new();
             for (int c = 0; c < 5; c++)

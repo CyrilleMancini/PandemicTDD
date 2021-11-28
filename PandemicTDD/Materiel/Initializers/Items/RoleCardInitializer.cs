@@ -17,7 +17,7 @@ namespace PandemicTDD.Materiel.Initializers
                         new DispatcherRoleCard("Répartiteur"),
                         new OperationExpertRoleCard("Expert aux opérations"),
                         new MedicRoleCard("Médecin"),
-                        new UndefRoleCard("Scientifique"),
+                        new ScientistRoleCard("Scientifique"),
                         new UndefRoleCard("Spécialiste en mise en quarantaine"),
                 };
             }

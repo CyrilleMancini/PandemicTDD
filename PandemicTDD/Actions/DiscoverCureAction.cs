@@ -3,6 +3,7 @@ using PandemicTDD.Actions;
 using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.PlayerCards;
+using PandemicTDDTests.Materiel;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,8 +35,13 @@ namespace PandemicTDDTests.Running.Actions
             if (!gameState.CurrentPlayer.Town.HasSearchStation)
                 throw new CityWithoutControlCenterException(gameState.CurrentPlayer.Town.Name + " must have a search station.");
 
-            if (cards.Count(c => c.Town.Color == diseaseColor) != 5)
-                throw new NotEnoughCardToFindCureException($"5 {diseaseColor} cards required to discover a cure.");
+            int requiredCardNumber = 5;
+
+            if (gameState.CurrentPlayer.Role is ScientistRoleCard)
+                requiredCardNumber = 4;
+
+            if (cards.Count(c => c.Town.Color == diseaseColor) != requiredCardNumber)
+                throw new NotEnoughCardToFindCureException($"{requiredCardNumber} {diseaseColor} cards required to discover a cure.");
 
         }
     }

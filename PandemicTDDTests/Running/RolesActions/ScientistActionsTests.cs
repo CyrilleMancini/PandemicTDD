@@ -12,7 +12,6 @@ namespace PandemicTDDTests.Materiel
             StartGame();
             Players[0].Role = new ScientistRoleCard("Scientifique");
             Players[1].Role = new DispatcherRoleCard("Répartiteur");
-
         }
     }
 }
