@@ -26,7 +26,7 @@ namespace PandemicTDD.Materiel
 
         public override void Try()
         {
-            if(GameState.CurrentPlayer.Role is not DispatcherRoleCard)
+            if (GameState.CurrentPlayer.Role is not DispatcherRoleCard)
                 throw new InvalidPreconditionsException("This Card can only be played by The Dispatcher");
 
 

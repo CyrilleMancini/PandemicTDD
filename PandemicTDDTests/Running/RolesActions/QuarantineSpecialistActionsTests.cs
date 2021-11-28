@@ -11,5 +11,5 @@ namespace PandemicTDDTests.Materiel
             StartGame();
             Players[0].Role = new QuarantineSpecialistRoleCard("Spécialiste en mise en quarantaine");
         }
-    } 
+    }
 }

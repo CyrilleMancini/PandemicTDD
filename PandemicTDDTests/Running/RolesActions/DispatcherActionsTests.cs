@@ -4,7 +4,6 @@ using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
-using System;
 using System.Linq;
 
 namespace PandemicTDDTests.Materiel

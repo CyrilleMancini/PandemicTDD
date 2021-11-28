@@ -8,7 +8,7 @@ namespace PandemicTDD.Materiel
         public string Name { get; set; }
 
         public abstract List<Type> SpecialActions { get; }
-        
+
         public virtual void PlaySpecialAutoActions()
         {
 
@@ -23,7 +23,7 @@ namespace PandemicTDD.Materiel
     public class UndefRoleCard : RoleCard
     {
         public override List<Type> SpecialActions => throw new NotImplementedException();
-             
+
         public UndefRoleCard(string name) : base(name)
         {
         }

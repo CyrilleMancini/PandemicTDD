@@ -10,7 +10,7 @@ namespace PandemicTDD.Actions
         private readonly Player player;
         private PlayerCard UsedCard;
 
-        public BuildStationAction(GameState gameState,Player player)
+        public BuildStationAction(GameState gameState, Player player)
         {
             this.gameState = gameState;
             this.player = player;

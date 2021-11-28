@@ -14,7 +14,7 @@ namespace PandemicTDD
 
         public Player CurrentPlayer { get => Players[CurrentPlayerIdx]; }
 
-        public int ActionsRemaining { get; internal set; }
+        public int ActionsRemaining { get; private set; }
 
         private int CurrentPlayerIdx = 0;
 
@@ -32,19 +32,21 @@ namespace PandemicTDD
             GameBox gameBox)
         {
             Players = players;
-            this.GameBox = gameBox;
-            this.Board = gameBox.GetBoard();
-            this.DiseaseBags = gameBox.GetDiseaseBags();
+            GameBox = gameBox;
+            Board = gameBox.GetBoard();
+            DiseaseBags = gameBox.GetDiseaseBags();
         }
 
         internal void Result(string message)
         {
             Observers.ForEach(o => o.Result(message));
         }
+
         internal void Error(string message)
         {
             Observers.ForEach(o => o.Error(message));
         }
+
         internal void Action(string message)
         {
             Observers.ForEach(o => o.Action(message));
@@ -87,7 +89,7 @@ namespace PandemicTDD
 
         private void RunAutomaticActions()
         {
-            var AutoCleanWhenDisiseaseCured = new  MedicAutomaticRemoveCuredDiseaseAction(this);
+            var AutoCleanWhenDisiseaseCured = new MedicAutomaticRemoveCuredDiseaseAction(this);
             AutoCleanWhenDisiseaseCured.Try();
             AutoCleanWhenDisiseaseCured.Execute();
 
@@ -121,11 +123,6 @@ namespace PandemicTDD
             new EpidemicCardsInitRule().ExecuteRule(GameBox, Level);
             new PreparePlayerCardsStack().ExecuteRule(GameBox);
         }
-    }
-
-    internal interface IChooseLevel
-    {
-        void ChooseLevel(Difficulty difficulty);
     }
 
     public enum Difficulty

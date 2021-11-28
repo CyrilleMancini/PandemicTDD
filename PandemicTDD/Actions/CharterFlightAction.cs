@@ -16,7 +16,7 @@ namespace PandemicTDD.Actions
         private TownSlot DestSlotTown;
         private PlayerTownCard OwnedCityCard;
 
-        public CharterFlightAction(GameState gameState, Player MovedPlayer , string destination)
+        public CharterFlightAction(GameState gameState, Player MovedPlayer, string destination)
         {
             this.gameState = gameState;
             this.MovedPlayer = MovedPlayer;

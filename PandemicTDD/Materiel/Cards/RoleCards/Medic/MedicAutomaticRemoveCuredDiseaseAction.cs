@@ -1,7 +1,5 @@
 ﻿using PandemicTDD.Actions;
-using PandemicTDD.Actions.Exceptions;
 using PandemicTDDTests.Materiel;
-using System;
 using System.Linq;
 
 namespace PandemicTDD.Materiel
@@ -50,7 +48,7 @@ namespace PandemicTDD.Materiel
         public override void Try()
         {
             MedicPlayer = gameState.Players.FirstOrDefault(p => p.Role is MedicRoleCard);
-         
+
 
         }
     }

@@ -17,7 +17,7 @@ namespace PandemicTDD
 
         public Town Town { get; internal set; }
 
-        internal T GetCityPlayerCard<T>(string cityName) where T:PlayerCard
+        internal T GetCityPlayerCard<T>(string cityName) where T : PlayerCard
         {
             try
             {

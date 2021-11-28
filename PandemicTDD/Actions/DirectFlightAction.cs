@@ -43,7 +43,7 @@ namespace PandemicTDD.Actions
 
             try
             {
-                OwnedCityCard = MovedPlayer.GetCityPlayerCard< PlayerTownCard>(Destination);
+                OwnedCityCard = MovedPlayer.GetCityPlayerCard<PlayerTownCard>(Destination);
             }
             catch (NotOwnedCityPlayerCardException)
             {

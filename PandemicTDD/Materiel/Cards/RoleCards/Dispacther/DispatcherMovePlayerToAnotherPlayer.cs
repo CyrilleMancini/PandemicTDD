@@ -10,7 +10,7 @@ namespace PandemicTDD.Materiel
         private GameState GameState;
         private readonly Player OtherPlayer;
         private readonly Player DestinationPlayer;
- 
+
         public DispatcherMovePlayerToAnotherPlayer(GameState gameState, Player PlayerFrom, Player DestinationPlayer)
         {
             GameState = gameState;

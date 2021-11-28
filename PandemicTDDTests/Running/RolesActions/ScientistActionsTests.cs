@@ -19,7 +19,7 @@ namespace PandemicTDDTests.Materiel
             StartGame();
             Players[0].Role = new ScientistRoleCard("Scientifique");
         }
-}
+
 
         [TestMethod]
         public void OnlyFourCardsNeededForScientist()
