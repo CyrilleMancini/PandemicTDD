@@ -16,7 +16,7 @@ namespace PandemicTDDApplication
         }
 
 
-        public BaseState SetNumberPlayer(int nbPlayers)
+        public override BaseState SetNumberPlayer(int nbPlayers)
         {
             if (nbPlayers < 2 || nbPlayers > 4)
                 throw new InvalidInputException(Ressources.InvalidPlayersNumber);

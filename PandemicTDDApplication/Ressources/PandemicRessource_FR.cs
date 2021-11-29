@@ -1,4 +1,6 @@
-﻿namespace PandemicTDDApplication
+﻿using PandemicTDD;
+
+namespace PandemicTDDApplication
 {
     public class PandemicRessource_FR : IPandemicRessource
     {
@@ -28,12 +30,12 @@
 
         public string ActionsRemains(int actionsRemaining)
         {
-            return $"Il vous reste {actionsRemaining} à jouer.";
+            return $"Il vous reste {actionsRemaining} actions à jouer.";
         }
 
         public string EnterPlayerName(int currentPlayer)
         {
-            return $"Entrez le nom du joueur : {{currentPlayer}}";
+            return $"Entrez le nom du joueur : {currentPlayer}";
         }
 
         public string InvalidPlayerName(string playerName)
@@ -41,9 +43,9 @@
             return $"Nom du joueur invalide :{playerName}";
         }
 
-        public string PlayerYourTurn(string PlayerRole, string PlayerName)
-        {
-            return $"{PlayerRole} {PlayerName}, à vous de jouer.";
+        public string PlayerYourTurn(Player player)
+        {            
+            return $"{player.Role.Name} {player.Name} situé à {player.Town.Name} {player.Town.Country}, à vous de jouer.";
         }
     }
 }

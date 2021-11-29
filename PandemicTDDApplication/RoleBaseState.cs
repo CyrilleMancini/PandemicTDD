@@ -4,7 +4,7 @@ using System;
 
 namespace PandemicTDDApplication
 {
-    internal abstract class RoleBaseState : BaseState
+    public abstract class RoleBaseState : BaseState
     {
         protected RoleBaseState(GameState gameState, IPandemicView view, IPandemicRessource Ressources)
             : base(gameState, view, Ressources)
@@ -15,16 +15,23 @@ namespace PandemicTDDApplication
         {
             DisplayPlayerInfos();
             AddStandardActions();
-            AddSpecialActions();
+            //AddSpecialActions();
             View.DisplayActions();
+        }
+
+        public RoleBaseState WaitAction()
+        {
+            View.AskAction();
+            return GetStateFromCurrentPlayerRole();
         }
 
         protected abstract void AddSpecialActions();
 
         protected void DisplayPlayerInfos()
         {
-            View.DisplayInstruction(Ressources.PlayerYourTurn(GameState.CurrentPlayer.Role.Name, GameState.CurrentPlayer.Name));
+            View.DisplayInstruction(Ressources.PlayerYourTurn(GameState.CurrentPlayer));
             View.DisplayInstruction(Ressources.ActionsRemains(GameState.ActionsRemaining));
+            View.DisplayLocation(GameState.CurrentPlayer.Town);
         }
 
         protected void AddStandardActions()
@@ -82,7 +89,8 @@ namespace PandemicTDDApplication
 
         private void ActionDriverFerry()
         {
-            GameState.DoAction(new DriveFerryAction(GameState, GameState.CurrentPlayer, "Atlanta"));
+            string dest = View.AskDestinationAmong(new[] { "Chicago", "New-York" });
+            GameState.DoAction(new DriveFerryAction(GameState, GameState.CurrentPlayer, dest));
         }
     }
 }
