@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PandemicTDD.Materiel;
+using System;
 
 namespace PandemicTDDApplication
 {
@@ -7,5 +8,8 @@ namespace PandemicTDDApplication
         void DisplayInstruction(string instruction);
         void AddPlayerAction(string ActionName, Action action);
         void DisplayActions();
+        void AskAction();
+        string AskDestinationAmong(string[] Destination);
+        void DisplayLocation(Town town);
     }
 }

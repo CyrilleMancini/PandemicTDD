@@ -1,4 +1,6 @@
-﻿namespace PandemicTDDApplication
+﻿using PandemicTDD;
+
+namespace PandemicTDDApplication
 {
     public class PandemicRessource_EN : IPandemicRessource
     {
@@ -47,7 +49,7 @@
             throw new System.NotImplementedException();
         }
 
-        public string PlayerYourTurn(string name1, string name2)
+        public string PlayerYourTurn(Player player)
         {
             throw new System.NotImplementedException();
         }

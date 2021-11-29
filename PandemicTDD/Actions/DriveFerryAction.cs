@@ -28,7 +28,7 @@ namespace PandemicTDD.Actions
         public override void Execute()
         {
             MovedPlayer.Town = destSlotTown.Town;
-            GameState.Result($@"Player '{MovedPlayer.Name}' moved to {{destSlottown.Town.Name}}");
+            GameState.Result($@"Player '{MovedPlayer.Name}' moved to {destSlotTown.Town.Name}");
         }
 
         public override void Try()

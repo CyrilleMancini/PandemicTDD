@@ -1,4 +1,6 @@
-﻿namespace PandemicTDDApplication
+﻿using PandemicTDD;
+
+namespace PandemicTDDApplication
 {
     public interface IPandemicRessource
     {
@@ -20,7 +22,7 @@
 
         string EnterPlayerName(int currentPlayer);
         string InvalidPlayerName(string playerName);
-        string PlayerYourTurn(string name1, string name2);
+        string PlayerYourTurn(Player player);
         string ActionsRemains(int actionsRemaining);
     }
 

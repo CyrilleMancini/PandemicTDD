@@ -18,7 +18,7 @@ namespace PandemicTDDApplication
         }
 
 
-        public override BaseState ChooseLevel(Difficulty level)
+        public override RoleBaseState ChooseLevel(Difficulty level)
         {
             GameState
                 .StartGame()

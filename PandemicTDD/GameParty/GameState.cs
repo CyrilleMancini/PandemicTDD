@@ -122,7 +122,7 @@ namespace PandemicTDD
                 ActionsRemaining--;
         }
 
-        internal void RegisterObserver(IObserveGameState observer)
+        public void RegisterObserver(IObserveGameState observer)
         {
             if (Observers.Contains(observer)) throw new ArgumentException("Observer already registered");
             Observers.Add(observer);

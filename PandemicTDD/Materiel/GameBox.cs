@@ -45,7 +45,7 @@ namespace PandemicTDD.Materiel
             this.GameInitializer = Initializer;
         }
 
-        internal void Reset()
+        public void Reset()
         {
             Initialized = false;
             TownSlotsInitializer.Reset();
