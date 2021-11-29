@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PandemicTDDTests.Materiel
 {
-    internal class OperationExpertRoleCard : RoleCard
+    public class OperationExpertRoleCard : RoleCard
     {
 
         public override List<Type> SpecialActions => specialActions;

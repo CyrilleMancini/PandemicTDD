@@ -2,6 +2,7 @@
 using PandemicTDD;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
+using PandemicTDDApplication;
 using System.Collections.Generic;
 using System.IO;
 
@@ -69,6 +70,19 @@ namespace CommonTestsTools
             GameState.RegisterObserver(ConsoleObserver);
 
         }
+
+
+        protected PandemicRessource_FR ressource;
+        protected PandemicConsole View;
+
+        [TestInitialize]
+        public void Init()
+        {
+            ressource = new PandemicRessource_FR();
+            View = new PandemicConsole();
+        }
+
+
 
         protected void StartGame()
         {

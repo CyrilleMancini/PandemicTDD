@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace PandemicTDD.Actions
 {
-    internal class DriveFerryAction : ActionBase
+    public class DriveFerryAction : ActionBase
     {
         public override bool ConsumeOneAction => true;
 

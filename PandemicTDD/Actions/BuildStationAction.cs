@@ -2,7 +2,8 @@
 
 namespace PandemicTDD.Actions
 {
-    internal class BuildStationAction : ActionBase
+
+    public class BuildStationAction : ActionBase
     {
         public override bool ConsumeOneAction => true;
 

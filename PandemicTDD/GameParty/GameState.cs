@@ -11,6 +11,10 @@ namespace PandemicTDD
     public class GameState : IChooseLevel,IStartGame
     {
 
+        public event EventHandler<string> OnVictory;
+
+        public event EventHandler<string> OnFailure;
+
 
         public readonly ActionsTurnHistory ActionsTurnHistory = new ActionsTurnHistory();
         
@@ -75,7 +79,7 @@ namespace PandemicTDD
             return this;
         }
 
-        internal void DoAction(ActionBase action)
+        public void DoAction(ActionBase action)
         {
 
             try
@@ -89,11 +93,11 @@ namespace PandemicTDD
             }
             catch (YouLooseException ex)
             {
-
+                OnFailure?.Invoke(this, ex.Message);
             }
             catch (VictoryAllCuresDiscoveredException ex)
             {
-
+                OnVictory?.Invoke(this, ex.Message);
             }
             catch (Exception ex)
             {

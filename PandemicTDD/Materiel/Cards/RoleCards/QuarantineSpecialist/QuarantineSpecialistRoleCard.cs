@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace PandemicTDDTests.Materiel
 {
-    internal class QuarantineSpecialistRoleCard : RoleCard
+    public class QuarantineSpecialistRoleCard : RoleCard
     {
         public QuarantineSpecialistRoleCard(string name) : base(name)
         {
