@@ -15,8 +15,9 @@ namespace PandemicTDDTests.Running
         public void FourActionsOnEeachTurn()
         {
 
-            GameState gameState = new(Players.GetRange(0, 3), GameBox);
-            gameState.StartGame()
+            GameState gameState = new(GameBox);
+            gameState.SetPlayers(Players.GetRange(0, 3))
+                        .StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
             Assert.AreEqual(4, gameState.ActionsRemaining);

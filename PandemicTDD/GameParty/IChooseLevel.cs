@@ -1,6 +1,6 @@
 ﻿namespace PandemicTDD
 {
-    internal interface IChooseLevel
+    public interface IChooseLevel
     {
         void ChooseLevel(Difficulty difficulty);
     }

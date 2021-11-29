@@ -12,7 +12,7 @@ namespace PandemicTDDApplication.Tests
         [TestMethod()]
         public void State001_NumberPlayersTest()
         {
-            
+            State001_NumberPlayers state = new(GameState);   
             
 
         }

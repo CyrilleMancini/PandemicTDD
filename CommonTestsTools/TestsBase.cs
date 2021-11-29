@@ -65,14 +65,15 @@ namespace CommonTestsTools
                 gameInitializer);
             GameBox.Reset();
             GameBox.GetBoard();
-            GameState = new GameState(Players.GetRange(0, 4), GameBox);
+            GameState = new GameState(GameBox);
             GameState.RegisterObserver(ConsoleObserver);
 
         }
 
         protected void StartGame()
         {
-            GameState.StartGame()
+            GameState.SetPlayers(Players.GetRange(0, 4))
+                .StartGame()
                 .ChooseLevel(Difficulty.Discovery);
             GameBox.GetInitializedBoard();
 

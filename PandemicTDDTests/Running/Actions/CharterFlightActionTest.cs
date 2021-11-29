@@ -51,9 +51,10 @@ namespace PandemicTDDTests.Running.Actions
         public void UsedCardIsOnTopOfPayerCard()
         {
 
-            PlayerTownCard OrigineCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);
+            PlayerTownCard OrigineCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct);            
             Players[0].PlayerCards.Add(OrigineCard);
             Players[0].Town = OrigineCard.Town;
+            GameState.SetPlayers(Players);
 
             PlayerTownCard DestCardCard = (PlayerTownCard)GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name != OrigineCard.Town.Name);
 

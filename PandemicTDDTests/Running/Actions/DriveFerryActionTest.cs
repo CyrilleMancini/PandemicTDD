@@ -16,7 +16,8 @@ namespace PandemicTDDTests.Running.Actions
         [TestMethod]
         public void MovePlayerTestToUnLinkedTown()
         {
-            GameState.StartGame()
+            GameState.SetPlayers(Players.GetRange(0, 4))
+                        .StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
             ActionBase action = new DriveFerryAction(GameState, GameState.CurrentPlayer, TownsInitializer.Paris);
@@ -30,7 +31,8 @@ namespace PandemicTDDTests.Running.Actions
         [TestMethod]
         public void MovePlayerToPlayerLocationFail()
         {
-            GameState.StartGame()
+            GameState.SetPlayers(Players.GetRange(0, 4))
+                        .StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
             ActionBase action = new DriveFerryAction(GameState, GameState.CurrentPlayer, TownsInitializer.Atlanta);
@@ -43,7 +45,8 @@ namespace PandemicTDDTests.Running.Actions
         [TestMethod]
         public void MovePlayerToLinkedLocationSuccess()
         {
-            GameState.StartGame()
+            GameState.SetPlayers(Players.GetRange(0,4))
+                        .StartGame()
                         .ChooseLevel(Difficulty.Discovery);
 
             ActionBase action = new DriveFerryAction(GameState, GameState.CurrentPlayer, TownsInitializer.Chicago);

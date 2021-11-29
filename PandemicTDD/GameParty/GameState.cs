@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace PandemicTDD
 {
 
-    public class GameState : IChooseLevel
+    public class GameState : IChooseLevel,IStartGame
     {
 
 
@@ -29,13 +29,18 @@ namespace PandemicTDD
         
         private readonly List<IObserveGameState> Observers = new();
 
-        public GameState(List<Player> players,
+        public GameState(
             GameBox gameBox)
         {
-            Players = players;
             GameBox = gameBox;
             Board = gameBox.GetBoard();
             DiseaseBags = gameBox.GetDiseaseBags();
+        }
+
+        public IStartGame SetPlayers(List<Player> players)
+        {
+            Players = players;
+            return this;
         }
 
         internal void Result(string message)
@@ -53,7 +58,7 @@ namespace PandemicTDD
             Observers.ForEach(o => o.Action(message));
         }
 
-        internal IChooseLevel StartGame()
+        public IChooseLevel StartGame()
         {
             if (Players.Count < 2) throw new NotEnoughPlayersException("Minimum 2 players");
             if (Players.Count > 4) throw new TooManyPlayersException("No more than 4 players");

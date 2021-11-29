@@ -11,8 +11,10 @@ namespace PandemicTDDTests.Running
         [TestMethod]
         public void MovePlayerTestToUnLinkedTown()
         {
-            var GameState = new GameState(Players.GetRange(0, 2), GameBox);
-            GameState.StartGame().ChooseLevel(Difficulty.Discovery);
+            var GameState = new GameState( GameBox);
+            GameState.SetPlayers(Players.GetRange(0, 2))
+                .StartGame()
+                .ChooseLevel(Difficulty.Discovery);
 
         }
     }

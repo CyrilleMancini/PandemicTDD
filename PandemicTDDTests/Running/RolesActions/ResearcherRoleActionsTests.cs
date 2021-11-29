@@ -21,6 +21,7 @@ namespace PandemicTDDTests.Materiel
 
             Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Londres).Town;
             Players[1].Town = GameState.Board.GetTownSlot(TownsInitializer.Londres).Town;
+            GameState.SetPlayers(Players);
 
             string CardToShare = TownsInitializer.Paris;
             PlayerCard OrigineCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name == TownsInitializer.Paris);
@@ -46,6 +47,7 @@ namespace PandemicTDDTests.Materiel
 
             Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Londres).Town;
             Players[1].Town = GameState.Board.GetTownSlot(TownsInitializer.Londres).Town;
+            GameState.SetPlayers(Players);
 
             string CardToShare = TownsInitializer.Paris;
             PlayerCard OrigineCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Name != TownsInitializer.Londres);
@@ -68,6 +70,7 @@ namespace PandemicTDDTests.Materiel
 
             Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Paris).Town;
             Players[1].Town = GameState.Board.GetTownSlot(TownsInitializer.Londres).Town;
+            GameState.SetPlayers(Players);
 
             string CardToShare = TownsInitializer.Paris;
             PlayerCard OrigineCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Color == DiseaseColor.Red);
@@ -90,6 +93,7 @@ namespace PandemicTDDTests.Materiel
 
             Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Paris).Town;
             Players[1].Town = GameState.Board.GetTownSlot(TownsInitializer.Londres).Town;
+            GameState.SetPlayers(Players);
 
             string CardToShare = TownsInitializer.Paris;
             PlayerCard OrigineCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard ct && ct.Town.Color == DiseaseColor.Red);
