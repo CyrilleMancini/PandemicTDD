@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace PandemicTDD
 {
 
-    public class GameState : IChooseLevel,IStartGame
+    public class GameState : IChooseLevel, IStartGame
     {
 
         public event EventHandler<string> OnVictory;
@@ -17,12 +17,12 @@ namespace PandemicTDD
 
 
         public readonly ActionsTurnHistory ActionsTurnHistory = new ActionsTurnHistory();
-        
+
         public int ActionsRemaining { get; private set; }
-        
+
         public Player CurrentPlayer { get => Players[CurrentPlayerIdx]; }
 
-        internal Board Board { get; private set; }
+        public Board Board { get; private set; }
 
         internal readonly DiseaseBags DiseaseBags;
         internal GameBox GameBox { get; private set; }
@@ -30,7 +30,7 @@ namespace PandemicTDD
         internal List<Player> Players;
 
         private int CurrentPlayerIdx = 0;
-        
+
         private readonly List<IObserveGameState> Observers = new();
 
         public GameState(
@@ -120,6 +120,11 @@ namespace PandemicTDD
             ActionsTurnHistory.AddAction(action);
             if (action.ConsumeOneAction)
                 ActionsRemaining--;
+        }
+
+        public TownSlot GetCurrentPlayerTownSlot()
+        {
+            return Board.GetTownSlot(CurrentPlayer.Town);
         }
 
         public void RegisterObserver(IObserveGameState observer)

@@ -2,7 +2,7 @@
 
 namespace PandemicTDD.Actions
 {
-    internal class ShuttleFlightAction : ActionBase
+    public class ShuttleFlightAction : ActionBase
     {
         public override bool ConsumeOneAction => true;
 

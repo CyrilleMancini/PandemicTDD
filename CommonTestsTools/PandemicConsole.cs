@@ -25,11 +25,15 @@ namespace CommonTestsTools
 
         public void DisplayActions()
         {
+
+            Console.WriteLine("Actions Disponibles.");
             Console.ForegroundColor = ConsoleColor.Yellow;
             foreach (string action in AvailableActions.Keys)
             {
                 Console.WriteLine($"Jouer: {action}");
             }
+            Console.ForegroundColor = ConsoleColor.White;
+
         }
 
         public void DisplayInstruction(string instruction)
@@ -38,12 +42,13 @@ namespace CommonTestsTools
             Console.WriteLine(instruction);
         }
 
-        public String AskDestinationAmong(string[] Destination)
+        public string AskDestinationAmong(Town[] Destinations)
         {
             Console.WriteLine("Quelle destination aller ?");
-            foreach (string d in Destination)
+            foreach (Town t in Destinations)
             {
-                Console.WriteLine(d);
+                DrawTownByColor(t);
+                Console.WriteLine("");
             }
             string line = Console.ReadLine();
             return line;
@@ -52,7 +57,13 @@ namespace CommonTestsTools
         public void DisplayLocation(Town town)
         {
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine($"Vous êtes situé à : ");
+            Console.Write($"Vous êtes situé à : ");
+            DrawTownByColor(town);
+            Console.WriteLine("");
+        }
+
+        private static void DrawTownByColor(Town town)
+        {
             switch (town.Color)
             {
                 case DiseaseColor.Black:
@@ -77,7 +88,7 @@ namespace CommonTestsTools
             Console.Write($"{town.Name}, {town.Country}");
             Console.ForegroundColor = ConsoleColor.White;
             Console.BackgroundColor = ConsoleColor.Black;
-            Console.WriteLine("");
         }
+
     }
 }

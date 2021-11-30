@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace PandemicTDDTests.Running.Actions
 {
-    internal class DiscoverCureAction : ActionBase
+    public class DiscoverCureAction : ActionBase
     {
         public override bool ConsumeOneAction => true;
 

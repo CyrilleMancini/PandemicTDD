@@ -5,7 +5,7 @@ using System;
 
 namespace PandemicTDD.Actions
 {
-    internal class CharterFlightAction : ActionBase
+    public class CharterFlightAction : ActionBase
     {
         public override bool ConsumeOneAction => true;
 

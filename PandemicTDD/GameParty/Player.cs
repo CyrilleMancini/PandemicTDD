@@ -43,5 +43,11 @@ namespace PandemicTDD
             }
         }
 
+        public PlayerTownCard[] GetCityCards()
+        {
+            return PlayerCards.Where(c => c is PlayerTownCard)
+                            .Select(c => c as PlayerTownCard)
+                            .ToArray();
+        }
     }
 }

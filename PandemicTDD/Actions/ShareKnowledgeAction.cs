@@ -4,7 +4,7 @@ using System;
 
 namespace PandemicTDD.Actions
 {
-    internal class ShareKnowledgeAction : ActionBase
+    public class ShareKnowledgeAction : ActionBase
     {
         public override bool ConsumeOneAction => true;
 

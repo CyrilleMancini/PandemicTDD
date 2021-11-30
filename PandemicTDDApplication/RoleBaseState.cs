@@ -1,6 +1,9 @@
 ﻿using PandemicTDD;
 using PandemicTDD.Actions;
+using PandemicTDD.Materiel;
+using PandemicTDD.Materiel.PlayerCards;
 using System;
+using System.Linq;
 
 namespace PandemicTDDApplication
 {
@@ -79,17 +82,23 @@ namespace PandemicTDDApplication
 
         private void ActionChargerFlight()
         {
-            throw new NotImplementedException();
+            string dest = View.AskDestinationAmong(GameState.Board.GetTownSlots().Select(ts => ts.Town).ToArray());
+            GameState.DoAction(new DirectFlightAction(GameState, GameState.CurrentPlayer, dest));
         }
 
         private void ActionDirectFlight()
         {
-            throw new NotImplementedException();
+            PlayerTownCard[] Cards = GameState.CurrentPlayer.GetCityCards();
+            Town[] Destinations = Cards.Select(c => c.Town).ToArray();
+            string dest = View.AskDestinationAmong(Destinations);
+            GameState.DoAction(new DirectFlightAction(GameState, GameState.CurrentPlayer, dest));
         }
 
         private void ActionDriverFerry()
         {
-            string dest = View.AskDestinationAmong(new[] { "Chicago", "New-York" });
+            TownSlot slot = GameState.GetCurrentPlayerTownSlot();
+            string dest = View.AskDestinationAmong(slot.Links.Select(ts => ts.Town).ToArray());
+
             GameState.DoAction(new DriveFerryAction(GameState, GameState.CurrentPlayer, dest));
         }
     }

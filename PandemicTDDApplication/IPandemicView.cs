@@ -9,7 +9,7 @@ namespace PandemicTDDApplication
         void AddPlayerAction(string ActionName, Action action);
         void DisplayActions();
         void AskAction();
-        string AskDestinationAmong(string[] Destination);
+        string AskDestinationAmong(Town[] Destinations);
         void DisplayLocation(Town town);
     }
 }
