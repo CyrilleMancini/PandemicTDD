@@ -1,4 +1,5 @@
-﻿using PandemicTDD.Materiel;
+﻿using PandemicTDD;
+using PandemicTDD.Materiel;
 using System;
 
 namespace PandemicTDDApplication
@@ -11,5 +12,8 @@ namespace PandemicTDDApplication
         void AskAction();
         string AskDestinationAmong(Town[] Destinations);
         void DisplayLocation(Town town);
+        void DisplayBoard(Board board);
+        void DisplayPlayer(Player current);
+        DiseaseColor AskDiseaseColor();
     }
 }
