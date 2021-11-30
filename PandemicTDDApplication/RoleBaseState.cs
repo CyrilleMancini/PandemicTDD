@@ -3,6 +3,7 @@ using PandemicTDD.Actions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.PlayerCards;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PandemicTDDApplication
@@ -32,7 +33,8 @@ namespace PandemicTDDApplication
 
         protected void DisplayPlayerInfos()
         {
-            View.DisplayInstruction(Ressources.PlayerYourTurn(GameState.CurrentPlayer));
+            View.DisplayBoard(GameState.Board);
+            View.DisplayPlayer(GameState.CurrentPlayer);
             View.DisplayInstruction(Ressources.ActionsRemains(GameState.ActionsRemaining));
             View.DisplayLocation(GameState.CurrentPlayer.Town);
         }
@@ -62,7 +64,15 @@ namespace PandemicTDDApplication
 
         private void ActionTreatDisease()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DiseaseColor color = View.AskDiseaseColor();
+                GameState.DoAction(new TreatDiseaseAction(GameState, color));
+            }
+            catch
+            {
+
+            }
         }
 
         private void ActionShareKnowledge()
@@ -72,12 +82,27 @@ namespace PandemicTDDApplication
 
         private void ActionDiscoverCure()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DiseaseColor color = View.AskDiseaseColor();
+                List<PlayerTownCard> cards = GameState.CurrentPlayer
+                    .PlayerCards
+                    .Where(c => c is PlayerTownCard tc && tc.Town.Color == color)
+                    .Select(c => (PlayerTownCard)c)
+                    .ToList();
+                GameState.DoAction(new DiscoverCureAction(GameState, color,cards));
+            }
+            catch
+            {
+
+            }
         }
 
         private void ActionShuttleFlight()
         {
-            throw new NotImplementedException();
+            Town[] towns = GameState.Board.GetTownsWithResearchCenter();
+            string dest = View.AskDestinationAmong(towns);
+            GameState.DoAction(new ShuttleFlightAction(GameState, GameState.CurrentPlayer, dest));
         }
 
         private void ActionChargerFlight()

@@ -1,5 +1,4 @@
 ﻿using PandemicTDD;
-using PandemicTDD.Actions;
 using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.PlayerCards;
@@ -7,7 +6,7 @@ using PandemicTDDTests.Materiel;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PandemicTDDTests.Running.Actions
+namespace PandemicTDD.Actions
 {
     public class DiscoverCureAction : ActionBase
     {
@@ -20,7 +19,7 @@ namespace PandemicTDDTests.Running.Actions
         public DiscoverCureAction(GameState gameState, DiseaseColor color, List<PlayerTownCard> cards)
         {
             this.gameState = gameState;
-            this.diseaseColor = color;
+            diseaseColor = color;
             this.cards = cards;
         }
 

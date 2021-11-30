@@ -79,7 +79,7 @@ namespace CommonTestsTools
         public void Init()
         {
             ressource = new PandemicRessource_FR();
-            View = new PandemicConsole();
+            View = new PandemicConsole(ressource);
         }
 
 

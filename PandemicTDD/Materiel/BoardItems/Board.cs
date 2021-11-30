@@ -97,6 +97,13 @@ namespace PandemicTDD.Materiel
             }
         }
 
+        public Town[] GetTownsWithResearchCenter()
+        {
+            return GetTownSlots()
+                .Where(i => i.Town.HasSearchStation)
+                .Select(t => t.Town).ToArray();
+        }
+
         public Town GetTown(string townName)
         {
             try

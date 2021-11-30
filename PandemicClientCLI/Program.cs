@@ -39,10 +39,13 @@ namespace PandemicClientCLI
             GameBox.Reset();
             GameBox.GetBoard();
             GameState = new GameState(GameBox);
-            GameState.RegisterObserver(ConsoleObserver);
+            //GameState.RegisterObserver(ConsoleObserver);
 
             ressource = new PandemicRessource_FR();
-            View = new PandemicConsole();
+
+            View = new PandemicConsole(ressource);
+            GameState.RegisterObserver(View);
+
 
 
         }
