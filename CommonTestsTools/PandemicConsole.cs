@@ -27,6 +27,10 @@ namespace CommonTestsTools
         CliItem AskDisease = new CliItem(30, 28, ConsoleColor.White, ConsoleColor.Green);
 
 
+        CliItem PlayerCards= new CliItem(60, 1, ConsoleColor.White, ConsoleColor.Cyan);
+        CliItem PLayerCardsDiscard= new CliItem(70, 1, ConsoleColor.White, ConsoleColor.Cyan);
+
+
         public PandemicConsole(IPandemicRessource ressources)
         {
             Ressources = ressources;
@@ -72,30 +76,12 @@ namespace CommonTestsTools
 
         private void DisplayDiscardCardStack(Board board)
         {
-            int y = Console.BufferHeight - 1;
-            int i = 0;
-            Console.SetCursorPosition(Console.BufferWidth - 10, y);
-            Console.Write("Discard");
-            while (i < board.PlayerDiscardCardStack.Count)
-            {
-                Console.SetCursorPosition(Console.BufferWidth - 5, y - i);
-                Console.Write('_');
-                i++;
-            }
+            PLayerCardsDiscard.WriteList(board.PlayerDiscardCardStack.Select(c => "====").ToArray());
         }
 
         private void DisplayCardStack(Board board)
         {
-            int y = Console.BufferHeight - 1;
-            int i = 0;
-            Console.SetCursorPosition(Console.BufferWidth - 20, y);
-            Console.Write("Player");
-            while (i < board.PlayerCardStack.Count)
-            {
-                Console.SetCursorPosition(Console.BufferWidth - 15, y - i);
-                Console.Write('_');
-                i++;
-            }
+            PlayerCards.WriteList(board.PlayerCardStack.Select(c => "====").ToArray());
         }
 
         public void DisplayInstruction(string instruction)

@@ -31,6 +31,7 @@ namespace CommonTestsTools
 
         public void WriteList(string[] values)
         {
+            if (values.Length == 0) return;
             int maxWidth = values.Max(i => i.Length); ;
             Console.SetCursorPosition(X, Y);
             Console.Write("".PadLeft(maxWidth + 2, '-'));
@@ -47,6 +48,8 @@ namespace CommonTestsTools
 
         public void WriteList(ListItem[] values)
         {
+            if (values.Length == 0) return;
+            
             int maxWidth = values.Max(i => i.Value.Length); ;
             Console.SetCursorPosition(X, Y);
             Console.Write("".PadLeft(maxWidth + 2, '-'));
