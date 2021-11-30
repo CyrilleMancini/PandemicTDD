@@ -35,8 +35,8 @@ namespace PandemicTDDTests.EndOfGame
         [TestMethod]
         public void YellowCureDiscovered()
         {
-            Players[0].Role = new DispatcherRoleCard("Dispatcher");
             StartGame();
+            Players[0].Role = new DispatcherRoleCard("Dispatcher");
 
             bool VictoryCalled = false;
 

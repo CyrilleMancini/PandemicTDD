@@ -119,7 +119,7 @@ namespace PandemicTDDTests.Materiel
         [TestMethod]
         public void MoveAnotherPlayerAsHisByCharterFlightSuccess()
         {
-
+            // Ce test échoue lorsque qu'un joueur possede la carte du départ du charter du dispatcher 
             GameState.CurrentPlayer.PlayerCards.Clear();
             var OrigineCard = GameBox.GetPlayersCard().First(c => c is PlayerTownCard tc && tc.Town.Name == Players[1].Town.Name);
             GameState.CurrentPlayer.PlayerCards.Add(OrigineCard);
