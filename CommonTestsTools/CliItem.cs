@@ -32,16 +32,20 @@ namespace CommonTestsTools
         public void WriteList(string[] values)
         {
             if (values.Length == 0) return;
+
             int maxWidth = values.Max(i => i.Length); ;
             Console.SetCursorPosition(X, Y);
-            Console.Write("".PadLeft(maxWidth + 2, '-'));
+            Console.Write("╔" + "".PadLeft(maxWidth + 2, '═') + "╗");
             Console.ForegroundColor = ForegroundColor;
             Console.BackgroundColor = BackgroundColor;
-            for (int i = 0; i < values.Length; i++)
+            int i = 0;
+            for (; i < values.Length; i++)
             {
                 Console.SetCursorPosition(X, Y + i + 1);
-                Console.Write("|" + (" " + values[i]).PadRight(maxWidth, ' ') + "|");
+                Console.Write("║" + (" " + values[i]).PadRight(maxWidth + 2, ' ') + "║");
             }
+            Console.SetCursorPosition(X, Y + i + 1);
+            Console.Write("╚" + "".PadLeft(maxWidth + 2, '═') + "╝");
 
             Console.WriteLine(" ");
         }
@@ -49,17 +53,20 @@ namespace CommonTestsTools
         public void WriteList(ListItem[] values)
         {
             if (values.Length == 0) return;
-            
+
             int maxWidth = values.Max(i => i.Value.Length); ;
             Console.SetCursorPosition(X, Y);
-            Console.Write("".PadLeft(maxWidth + 2, '-'));
-            for (int i = 0; i < values.Length; i++)
+            Console.Write("╔" + "".PadLeft(maxWidth + 2, '═') + "╗"); ;
+            int i = 0;
+            for (; i < values.Length; i++)
             {
                 Console.SetCursorPosition(X, Y + i + 1);
                 Console.ForegroundColor = values[i].ForegroundColor;
                 Console.BackgroundColor = values[i].BackgroundColor;
-                Console.Write("|" + (" " + values[i].Value).PadRight(maxWidth, ' ') + "|");
+                Console.Write("║" + (" " + values[i].Value).PadRight(maxWidth + 2, ' ') + "║");
             }
+            Console.SetCursorPosition(X, Y + i + 1);
+            Console.Write("╚" + "".PadLeft(maxWidth + 2, '═') + "╝");
             Console.WriteLine(" ");
         }
 
@@ -75,13 +82,12 @@ namespace CommonTestsTools
             Console.ForegroundColor = ForegroundColor;
             Console.BackgroundColor = BackgroundColor;
             Console.SetCursorPosition(X, Y);
-            Console.Write("".PadLeft(Value.Length + 2, '-'));
+            Console.Write("┌" + "".PadLeft(Value.Length + 2, '─') + "┐");
             Console.SetCursorPosition(X, Y + 1);
-            Console.Write($"|{Value}|");
+            Console.Write($"│{Value.PadLeft(Value.Length + 2, ' ')}│");
             Console.SetCursorPosition(X, Y + 2);
-            Console.Write("".PadLeft(Value.Length + 2, '-'));
+            Console.Write("└" + "".PadLeft(Value.Length + 2, '─')+ "┘");
             Console.SetCursorPosition(X, Y + 3);
-          
         }
     }
 }

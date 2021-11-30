@@ -27,8 +27,8 @@ namespace CommonTestsTools
         CliItem AskDisease = new CliItem(30, 28, ConsoleColor.White, ConsoleColor.Green);
 
 
-        CliItem PlayerCards= new CliItem(60, 1, ConsoleColor.White, ConsoleColor.Cyan);
-        CliItem PLayerCardsDiscard= new CliItem(70, 1, ConsoleColor.White, ConsoleColor.Cyan);
+        CliItem PlayerCards = new CliItem(60, 1, ConsoleColor.White, ConsoleColor.Cyan);
+        CliItem PLayerCardsDiscard = new CliItem(70, 1, ConsoleColor.White, ConsoleColor.Cyan);
 
 
         public PandemicConsole(IPandemicRessource ressources)
@@ -63,8 +63,6 @@ namespace CommonTestsTools
             ActionsList.WriteList(AvailableActions.Keys.ToArray());
         }
 
-
-
         public void DisplayBoard(Board board)
         {
             Console.BackgroundColor = ConsoleColor.Black;
@@ -74,15 +72,9 @@ namespace CommonTestsTools
             DisplayDiscardCardStack(board);
         }
 
-        private void DisplayDiscardCardStack(Board board)
-        {
-            PLayerCardsDiscard.WriteList(board.PlayerDiscardCardStack.Select(c => "====").ToArray());
-        }
+        private void DisplayDiscardCardStack(Board board) => PLayerCardsDiscard.WriteList(board.PlayerDiscardCardStack.Select(c => "====").ToArray());
 
-        private void DisplayCardStack(Board board)
-        {
-            PlayerCards.WriteList(board.PlayerCardStack.Select(c => "====").ToArray());
-        }
+        private void DisplayCardStack(Board board) => PlayerCards.WriteList(board.PlayerCardStack.Select(c => "====").ToArray());
 
         public void DisplayInstruction(string instruction)
         {
@@ -108,7 +100,6 @@ namespace CommonTestsTools
             Location.Write($"Vous êtes situé à : ");
             SelectTownByColor(LocationTown, town);
             LocationTown.Write($"{town.Name}, {town.Country}");
-
         }
 
         private static IColorable SelectTownByColor(IColorable item, Town town)
@@ -137,21 +128,12 @@ namespace CommonTestsTools
             return item;
         }
 
+        public void Error(string ErrorMessage) => ErrorList.WriteBlockingBox(ErrorMessage);
 
-        public void Error(string ErrorMessage)
-        {
-            ErrorList.WriteBlockingBox(ErrorMessage);
-        }
+        public void Action(string ActionMessage) => ActionList.WriteBlockingBox(ActionMessage);
 
-        public void Action(string ActionMessage)
-        {
-            ActionList.WriteBlockingBox(ActionMessage);
-        }
+        public void Result(string message) => ResultList.WriteBlockingBox(message);
 
-        public void Result(string message)
-        {
-            ResultList.WriteBlockingBox(message);
-        }
 
         public DiseaseColor AskDiseaseColor()
         {
