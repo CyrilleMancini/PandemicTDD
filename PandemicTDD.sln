@@ -7,13 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandemicTDD", "PandemicTDD\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandemicTDDTests", "PandemicTDDTests\PandemicTDDTests.csproj", "{A6CCA8FA-16FE-41A6-AF5F-C08D46AB6900}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandemicClientCLI", "PandemicClientCLI\PandemicClientCLI.csproj", "{A6F883D4-27E3-402E-978F-461B48D0AD3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandemicClientCLI", "PandemicClientCLI\PandemicClientCLI.csproj", "{A6F883D4-27E3-402E-978F-461B48D0AD3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandemicTDDApplication", "PandemicTDDApplication\PandemicTDDApplication.csproj", "{18DFF112-FE21-43CA-A4D3-FDB2FB02C1AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandemicTDDApplication", "PandemicTDDApplication\PandemicTDDApplication.csproj", "{18DFF112-FE21-43CA-A4D3-FDB2FB02C1AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandemicTDDApplicationTests", "PandemicTDDApplicationTests\PandemicTDDApplicationTests.csproj", "{DFC0513D-F042-42DA-AFDD-0D2FB4D5978B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandemicTDDApplicationTests", "PandemicTDDApplicationTests\PandemicTDDApplicationTests.csproj", "{DFC0513D-F042-42DA-AFDD-0D2FB4D5978B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonTestsTools", "CommonTestsTools\CommonTestsTools.csproj", "{EBD2F64A-0E9E-4E89-865F-08E529D08D05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonTestsTools", "CommonTestsTools\CommonTestsTools.csproj", "{EBD2F64A-0E9E-4E89-865F-08E529D08D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandemicClientBlazor", "PandemicClientBlazor\PandemicClientBlazor.csproj", "{B7937F04-9761-4FAD-A814-04E12CFA4058}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{EBD2F64A-0E9E-4E89-865F-08E529D08D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBD2F64A-0E9E-4E89-865F-08E529D08D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBD2F64A-0E9E-4E89-865F-08E529D08D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7937F04-9761-4FAD-A814-04E12CFA4058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7937F04-9761-4FAD-A814-04E12CFA4058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7937F04-9761-4FAD-A814-04E12CFA4058}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7937F04-9761-4FAD-A814-04E12CFA4058}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,11 @@
+﻿<div id="debug-panel">
+    <h3>DebugPanel</h3>
+
+    @foreach (var k in DebugActions.Keys)
+    {
+        <button @onclick="()=>DebugActions[k]()">@k</button>
+    }
+</div>
+
+
+

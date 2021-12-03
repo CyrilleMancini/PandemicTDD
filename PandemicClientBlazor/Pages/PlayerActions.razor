@@ -1,0 +1,18 @@
+﻿
+<div style="right:@(visible?"10%":"90%" );opacity:@(visible?"1":"0") " class="action-panel">
+    <span @onclick="()=>Visible=false">
+    [X]</span>
+    <h3>Liste des actions disponibles.</h3>
+
+    @foreach (string name in Actions.Keys)
+    {
+        <div class='action-item' @onclick="()=>Actions[name]()">
+            <span class="action-name">@name</span><br />
+            <span class="action-description">@Descriptions[name] </span>
+        </div>
+    }
+</div>
+<div class="buttonaction" @onclick="()=>Visible=!visible">
+    Actions
+</div>
+}

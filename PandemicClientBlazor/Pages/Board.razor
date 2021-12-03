@@ -1,0 +1,24 @@
+﻿@page "/board"
+
+<DebugPanel @ref="DebugPanel"></DebugPanel>
+@if (GameState != null)
+{
+    <CascadingValue TValue="IDebuggableUI" Value="DebugPanel">
+        <div id="board">
+        </div>
+        <PlayerActions @ref="playerActions"></PlayerActions>
+        <Instructions @ref="InstructionsPanel"></Instructions>
+        <Failure Visible="false"></Failure>
+        <Victory Visible="false"></Victory>
+        @if (CurrentPlayer != null)
+        {
+        <SelectDestination @ref="SelectDestination"></SelectDestination>
+            <CurrentPlayerInformation Player="@CurrentPlayer" />
+        }
+        <button @onclick="Play">Jouer</button>
+    </CascadingValue>
+}
+
+@code {
+
+}

@@ -1,0 +1,18 @@
+﻿<div id="instructions">
+    <h4>Instructions</h4>
+    @foreach (string message in LastMessages)
+    {
+        <span>@message</span><br />
+    }
+</div>
+@code {
+
+    List<string> LastMessages = new List<string>();
+
+    public void Add(string instruction)
+    {
+        Console.WriteLine(instruction);
+        LastMessages.Insert(0, instruction);
+        StateHasChanged();
+    }
+}

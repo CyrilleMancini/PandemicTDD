@@ -1,0 +1,17 @@
+﻿.destination-panel {
+    position: fixed;
+    display: flex;
+    flex-flow: row;
+    left: 35%;
+    right: 35%;
+    bottom: 35%;
+    top: 35%;
+    overflow: auto;
+    border-radius: 10px 0px 10px 0px;
+    color: darkgreen;
+    font-size: 16px;
+    background-color: rgb(0, 100, 255,0.81);
+    border: solid 2px rgb(0, 10, 25,0.81);
+    padding: 48px;
+    z-index: 101;
+}

@@ -1,0 +1,15 @@
+﻿div {
+    border-radius: 10px 0px 10px 0px;
+    color: red;
+    font-size: 48px;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    color: yellow;
+    background-color: rgb(0, 100, 255,0.75);
+    text-align: center;
+    vertical-align: central;
+    margin: 48px;
+}

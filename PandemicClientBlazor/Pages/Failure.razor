@@ -1,0 +1,35 @@
+﻿<div style="display:@Visibility">
+    <h3>Vous avez perdu</h3>
+</div>
+
+@code {
+
+    bool visible = false;
+
+    [CascadingParameter]
+    IDebuggableUI DebugPanel { get; set; }
+
+    void DebugSwitchPanel()
+    {
+        Visible = !visible;
+    }
+    protected override void OnParametersSet()
+    {
+        if(DebugPanel != null)
+            DebugPanel.AddDebugAction("Switch Failure", DebugSwitchPanel);
+        base.OnInitialized();
+    }
+
+    [Parameter]
+    public bool Visible
+    {
+        get => visible;
+        set
+        {
+            visible = value;
+            StateHasChanged();
+        }
+    }
+
+    string Visibility { get => (Visible ? "block" : "none"); }
+}

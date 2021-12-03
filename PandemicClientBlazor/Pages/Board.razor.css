@@ -1,0 +1,13 @@
+﻿
+#board {
+
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    background-image: url("Map.png");
+    background-size:100%;
+    opacity:1.0;
+    z-index:-15;
+}

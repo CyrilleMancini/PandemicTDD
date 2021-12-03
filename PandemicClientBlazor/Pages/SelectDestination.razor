@@ -1,0 +1,13 @@
+﻿
+<div style="display:@Visibility" class="destination-panel">
+    <h3>Destination.</h3>
+
+    @foreach (Town t in Destinations)
+    {
+        <div style="background-color:@t.Color" @onclick="@(() => Visible = false)">
+            <span style="color:white">@t.Name</span><br />
+            <span class="action-description">@t.Country </span>
+            <span class="action-description">@(t.HasSearchStation ? "Possede un CDC" : "Sans CDC")</span>
+        </div>
+    }
+</div>

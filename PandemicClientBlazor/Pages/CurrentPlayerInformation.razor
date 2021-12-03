@@ -1,0 +1,14 @@
+﻿@if (Player != null)
+{
+    <div id="player">
+        <h5>@Player.Name [@Player.Role.Name]</h5> 
+        Vous êtes actuellement dans la ville de : <span style="background-color:white;color:@Player.Town.Color" >@Player.Town.</span>
+    </div>
+}
+@code {
+
+    [Parameter]
+    public Player Player { get; set; }
+
+    
+}
