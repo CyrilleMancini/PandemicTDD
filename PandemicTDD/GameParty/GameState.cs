@@ -37,6 +37,7 @@ namespace PandemicTDD
             GameBox gameBox)
         {
             GameBox = gameBox;
+            //GameBox.Reset();
             Board = gameBox.GetBoard();
             DiseaseBags = gameBox.GetDiseaseBags();
         }
