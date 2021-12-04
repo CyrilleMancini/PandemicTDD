@@ -47,8 +47,8 @@ namespace PandemicClientBlazor.Pages
         protected override void OnParametersSet()
         {
             if (DebugPanel != null)
-                DebugPanel.AddDebugAction("Switch Actions", DebugSwitchAction);
-            base.OnInitialized();
+                DebugPanel.AddDebugAction("Switch Destinations", DebugSwitchAction);
+            //base.OnInitialized();
         }
 
         [Parameter]

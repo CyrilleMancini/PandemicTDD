@@ -12,7 +12,7 @@
         <Victory Visible="false"></Victory>
         @if (CurrentPlayer != null)
         {
-        <SelectDestination @ref="SelectDestination"></SelectDestination>
+            <SelectDestination @ref="SelectDestination"></SelectDestination>
             <CurrentPlayerInformation Player="@CurrentPlayer" />
         }
         <button @onclick="Play">Jouer</button>

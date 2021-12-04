@@ -11,7 +11,27 @@
     color: darkgreen;
     font-size: 16px;
     background-color: rgb(0, 100, 255,0.81);
-    border: solid 2px rgb(0, 10, 25,0.81);
+    border: solid 1px rgb(0, 10, 25,0.81);
     padding: 48px;
     z-index: 101;
+}
+
+.destination-item {
+    margin: 4px;
+    border: solid 2px white;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px cyan;
+    padding: 8px;
+    opacity: 0.5;
+    transition: opacity ease-in-out 0.50s;
+    animation: forwards 0.251s;
+}
+    .destination-item:hover {
+        opacity: 1.0;
+    }
+
+
+.destination-country, .destination-cdc {
+    color: cornflowerblue;
+    font-size: 16px;
 }
