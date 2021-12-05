@@ -4,7 +4,7 @@ using System;
 
 namespace PandemicTDDApplication
 {
-    internal class State020_PlayContingencyPlannerRole : RoleBaseState
+    internal class State020_PlayContingencyPlannerRole : BaseRoleState
     {
         public State020_PlayContingencyPlannerRole(GameState gameState, IPandemicView view, IPandemicRessource Ressources) : base(gameState, view, Ressources)
         {

@@ -82,7 +82,7 @@ namespace PandemicClientCLI
             baseState = baseState.EnterPlayerName("toto");
 
             baseState.Instructions();
-            RoleBaseState roleState = baseState.ChooseLevel(Difficulty.Standard);
+            BaseRoleState roleState = baseState.ChooseLevel(Difficulty.Standard);
 
             GameState.OnFailure += GameState_OnFailure;
             GameState.OnVictory += GameState_OnVictory;

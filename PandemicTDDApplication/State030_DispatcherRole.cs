@@ -3,7 +3,7 @@ using PandemicTDD.Ressources;
 
 namespace PandemicTDDApplication
 {
-    internal class State030_DispatcherRole : RoleBaseState
+    internal class State030_DispatcherRole : BaseRoleState
     {
         public State030_DispatcherRole(GameState gameState, IPandemicView view, IPandemicRessource Ressources) : base(gameState, view, Ressources)
         {

@@ -9,9 +9,9 @@ using System.Linq;
 
 namespace PandemicTDDApplication
 {
-    public abstract class RoleBaseState : BaseState
+    public abstract class BaseRoleState : BaseState
     {
-        protected RoleBaseState(GameState gameState, IPandemicView view, IPandemicRessource Ressources)
+        protected BaseRoleState(GameState gameState, IPandemicView view, IPandemicRessource Ressources)
             : base(gameState, view, Ressources)
         {
         }
@@ -24,7 +24,7 @@ namespace PandemicTDDApplication
             View.DisplayActions();
         }
 
-        public RoleBaseState WaitAction()
+        public BaseRoleState WaitAction()
         {
             View.AskAction();
             return GetStateFromCurrentPlayerRole();

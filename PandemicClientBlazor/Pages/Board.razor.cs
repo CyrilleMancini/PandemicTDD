@@ -30,7 +30,7 @@ namespace PandemicClientBlazor.Pages
 
         SelectDestination SelectDestinationComponent;
 
-        RoleBaseState roleStateComponent;
+        BaseRoleState roleStateComponent;
 
         Errors ErrorsComponent;
 

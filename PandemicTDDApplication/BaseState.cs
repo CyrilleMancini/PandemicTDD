@@ -25,13 +25,13 @@ namespace PandemicTDDApplication
 
         public virtual BaseState EnterPlayerName(string playerName) => throw new InvalidActionException(Ressources.ActionNotPermitted);
 
-        public virtual RoleBaseState ChooseLevel(Difficulty difficulty) => throw new InvalidActionException(Ressources.ActionNotPermitted);
+        public virtual BaseRoleState ChooseLevel(Difficulty difficulty) => throw new InvalidActionException(Ressources.ActionNotPermitted);
 
         public virtual BaseState DoAction() => throw new InvalidActionException(Ressources.ActionNotPermitted);
 
         public virtual BaseState SetNumberPlayer(int nbPlayers) => throw new InvalidActionException(Ressources.ActionNotPermitted);
 
-        protected RoleBaseState GetStateFromCurrentPlayerRole()
+        protected BaseRoleState GetStateFromCurrentPlayerRole()
         {
             switch (GameState.CurrentPlayer.Role)
             {
