@@ -1,5 +1,6 @@
 ﻿using PandemicTDD;
 using PandemicTDD.Materiel;
+using PandemicTDD.Ressources;
 using PandemicTDDApplication.Exceptions;
 using PandemicTDDTests.Materiel;
 

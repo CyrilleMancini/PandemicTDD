@@ -1,10 +1,22 @@
 ﻿<div id="debug-panel">
     <h3>DebugPanel</h3>
 
-    @foreach (var k in DebugActions.Keys)
-    {
-        <button @onclick="()=>DebugActions[k]()">@k</button>
-    }
+    <ul>
+        @foreach (var k in DebugActions.Keys)
+        {
+            <li>
+                <button @onclick="()=>DebugActions[k]()">@k</button>
+            </li>
+        }
+
+    <h4>Traces</h4>
+
+        @foreach (string msg in Logs)
+        {
+            <li>@msg</li>
+        }
+    </ul>
+
 </div>
 
 

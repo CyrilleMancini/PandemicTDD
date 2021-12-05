@@ -2,6 +2,7 @@
 using PandemicTDD.Actions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.PlayerCards;
+using PandemicTDD.Ressources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,15 +65,10 @@ namespace PandemicTDDApplication
 
         private void ActionTreatDisease()
         {
-            try
+            View.AskDiseaseColor((color) =>
             {
-                DiseaseColor color = View.AskDiseaseColor();
                 GameState.DoAction(new TreatDiseaseAction(GameState, color));
-            }
-            catch
-            {
-
-            }
+            });
         }
 
         private void ActionShareKnowledge()
@@ -84,13 +80,15 @@ namespace PandemicTDDApplication
         {
             try
             {
-                DiseaseColor color = View.AskDiseaseColor();
-                List<PlayerTownCard> cards = GameState.CurrentPlayer
-                    .PlayerCards
-                    .Where(c => c is PlayerTownCard tc && tc.Town.Color == color)
-                    .Select(c => (PlayerTownCard)c)
-                    .ToList();
-                GameState.DoAction(new DiscoverCureAction(GameState, color,cards));
+                View.AskDiseaseColor((color) =>
+                {
+                    List<PlayerTownCard> cards = GameState.CurrentPlayer
+                        .PlayerCards
+                        .Where(c => c is PlayerTownCard tc && tc.Town.Color == color)
+                        .Select(c => (PlayerTownCard)c)
+                        .ToList();
+                    GameState.DoAction(new DiscoverCureAction(GameState, color, cards));
+                });
             }
             catch
             {
@@ -101,30 +99,42 @@ namespace PandemicTDDApplication
         private void ActionShuttleFlight()
         {
             Town[] towns = GameState.Board.GetTownsWithResearchCenter();
-            string dest = View.AskDestinationAmong(towns);
-            GameState.DoAction(new ShuttleFlightAction(GameState, GameState.CurrentPlayer, dest));
+            View.AskDestinationAmong(towns, (dest) =>
+            {
+                GameState.DoAction(new ShuttleFlightAction(GameState, GameState.CurrentPlayer, dest));
+            });
         }
 
         private void ActionChargerFlight()
         {
-            string dest = View.AskDestinationAmong(GameState.Board.GetTownSlots().Select(ts => ts.Town).ToArray());
-            GameState.DoAction(new DirectFlightAction(GameState, GameState.CurrentPlayer, dest));
+            Town[] CharterDestinations = GameState.Board.GetTownSlots().Select(ts => ts.Town).ToArray();
+            View.AskDestinationAmong(CharterDestinations, (dest) =>
+            {
+                GameState.DoAction(new DirectFlightAction(GameState, GameState.CurrentPlayer, dest));
+            });
         }
 
         private void ActionDirectFlight()
         {
             PlayerTownCard[] Cards = GameState.CurrentPlayer.GetCityCards();
             Town[] Destinations = Cards.Select(c => c.Town).ToArray();
-            string dest = View.AskDestinationAmong(Destinations);
-            GameState.DoAction(new DirectFlightAction(GameState, GameState.CurrentPlayer, dest));
+            View.AskDestinationAmong(Destinations, (dest) =>
+            {
+                GameState.DoAction(new DirectFlightAction(GameState, GameState.CurrentPlayer, dest));
+            });
         }
 
         private void ActionDriverFerry()
         {
             TownSlot slot = GameState.GetCurrentPlayerTownSlot();
-            string dest = View.AskDestinationAmong(slot.Links.Select(ts => ts.Town).ToArray());
+            View.AskDestinationAmong(slot.Links.Select(ts => ts.Town).ToArray(), (dest) =>
+            {
+                GameState.DoAction(new DriveFerryAction(GameState, GameState.CurrentPlayer, dest));
+            });
 
-            GameState.DoAction(new DriveFerryAction(GameState, GameState.CurrentPlayer, dest));
         }
+
+
+
     }
 }

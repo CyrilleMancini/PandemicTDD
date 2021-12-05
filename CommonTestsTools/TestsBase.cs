@@ -2,7 +2,7 @@
 using PandemicTDD;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
-using PandemicTDDApplication;
+using PandemicTDD.Ressources;
 using System.Collections.Generic;
 using System.IO;
 
@@ -52,11 +52,19 @@ namespace CommonTestsTools
         [TestInitialize]
         public void InitInitializer()
         {
+            ressource = new PandemicRessource_FR();
+            View = new PandemicConsole(ressource);
+
             diseaseBagsInitializer = new DiseaseBagsInitializer();
             roleCardInitializer = new RoleCardInitializer();
             spreadCardInitializer = new SpreadCardInitializer();
             townsInitializer = new TownsInitializer();
-            playerCardInitializer = new PlayerCardInitializer();
+            playerCardInitializer = new PlayerCardInitializer(
+                AirLiftEventCard: new(ressource),
+                CalmNigthEventCard: new(ressource),
+                ResilientPopulationEventCard: new(ressource),
+                ForcastEventCard: new(ressource),
+                PublicSubventionEventCard: new(ressource));
             townSlotsInitializer = new TownSlotsInitializer(townsInitializer);
             townLinksInitializer = new TownLinksInitializer();
             GameInitializer gameInitializer = new();
@@ -75,12 +83,6 @@ namespace CommonTestsTools
         protected PandemicRessource_FR ressource;
         protected PandemicConsole View;
 
-        [TestInitialize]
-        public void Init()
-        {
-            ressource = new PandemicRessource_FR();
-            View = new PandemicConsole(ressource);
-        }
 
 
 

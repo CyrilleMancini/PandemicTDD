@@ -6,6 +6,21 @@ namespace PandemicTDD.Materiel.Initializers
     public class PlayerCardInitializer
     {
         static List<PlayerCard> SinglePlayerCards = null;
+        private readonly AirLiftEventCard airLiftEventCard;
+        private readonly CalmNigthEventCard calmNigthEventCard;
+        private readonly ResilientPopulationEventCard resilientPopulationEventCard;
+        private readonly ForcastEventCard forcastEventCard;
+        private readonly PublicSubventionEventCard publicSubventionEventCard;
+
+        public PlayerCardInitializer(AirLiftEventCard AirLiftEventCard, CalmNigthEventCard CalmNigthEventCard,
+            ResilientPopulationEventCard ResilientPopulationEventCard, ForcastEventCard ForcastEventCard, PublicSubventionEventCard PublicSubventionEventCard)
+        {
+            airLiftEventCard = AirLiftEventCard;
+            calmNigthEventCard = CalmNigthEventCard;
+            resilientPopulationEventCard = ResilientPopulationEventCard;
+            forcastEventCard = ForcastEventCard;
+            publicSubventionEventCard = PublicSubventionEventCard;
+        }
 
         internal List<PlayerCard> InitCards(Board board)
         {
@@ -20,11 +35,11 @@ namespace PandemicTDD.Materiel.Initializers
                     SinglePlayerCards.Add(new EpidemicPlayerCard());
 
                 // Add Event Card
-                SinglePlayerCards.Add(new AirLiftEventCard());
-                SinglePlayerCards.Add(new CalmNigthEventCard());
-                SinglePlayerCards.Add(new ResilientPopulationEventCard());
-                SinglePlayerCards.Add(new ForcastEventCard());
-                SinglePlayerCards.Add(new PublicSubventionEventCard());
+                SinglePlayerCards.Add(airLiftEventCard);
+                SinglePlayerCards.Add(calmNigthEventCard);
+                SinglePlayerCards.Add(resilientPopulationEventCard);
+                SinglePlayerCards.Add(forcastEventCard);
+                SinglePlayerCards.Add(publicSubventionEventCard);
             }
             return SinglePlayerCards;
         }

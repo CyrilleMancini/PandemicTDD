@@ -1,4 +1,5 @@
 ﻿using PandemicTDD;
+using PandemicTDD.Ressources;
 using PandemicTDDApplication.Exceptions;
 
 namespace PandemicTDDApplication

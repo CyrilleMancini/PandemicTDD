@@ -8,5 +8,9 @@ namespace PandemicTDDTests.Materiel
     {
         ActionBase action = new FakeEventCardAction();
         public override ActionBase EventAction => action;
+
+        public override string Name => "Fake Name";
+
+        public override string Description => "Fake Description";
     }
 }

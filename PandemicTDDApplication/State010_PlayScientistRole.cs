@@ -1,4 +1,5 @@
 ﻿using PandemicTDD;
+using PandemicTDD.Ressources;
 
 namespace PandemicTDDApplication
 {

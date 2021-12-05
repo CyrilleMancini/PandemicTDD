@@ -1,4 +1,5 @@
 ﻿using PandemicTDD;
+using PandemicTDD.Ressources;
 using System;
 using System.Collections.Generic;
 

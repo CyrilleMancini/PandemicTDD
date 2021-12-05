@@ -1,6 +1,6 @@
 ﻿using PandemicTDD;
 
-namespace PandemicTDDApplication
+namespace PandemicTDD.Ressources
 {
     public class PandemicRessource_FR : IPandemicRessource
     {
@@ -28,6 +28,26 @@ namespace PandemicTDDApplication
 
         public string Action_PlayCardFromSpecialSlot => "Jouer la carte du slot spécial";
 
+        public string AirLiftEventName => "Pont Aérien";
+
+        public string AirLiftEventDescription => "Déscription du pont aérien.";
+
+        public string PublicSubventionEventDescription => "Subventions publiques.";
+
+        public string PublicSubventionEventName => "Description subventions publiques";
+
+        public string ForcastEventName => "Prévision ";
+
+        public string ForcastEventDescription => "Prévision Description";
+
+        public string CalmNigthEventDescription => "Nuit Calme";
+
+        public string CalmNigthEventName => "Description Nuit Calme";
+
+        public string ResilientPopulationEventName => "Population résiliante";
+
+        public string ResilientPopulationEventDescription => "Description population résiliante.";
+
         public string ActionsRemains(int actionsRemaining)
         {
             return $"Il vous reste {actionsRemaining} actions à jouer.";
@@ -44,7 +64,7 @@ namespace PandemicTDDApplication
         }
 
         public string PlayerYourTurn(Player player)
-        {            
+        {
             return $"{player.Role.Name} {player.Name} situé à {player.Town.Name} {player.Town.Country}, à vous de jouer.";
         }
     }

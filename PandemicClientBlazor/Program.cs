@@ -5,7 +5,8 @@ using Microsoft.Extensions.Logging;
 using PandemicTDD;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
-using PandemicTDDApplication;
+using PandemicTDD.Materiel.PlayerCards;
+using PandemicTDD.Ressources;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -21,6 +22,13 @@ namespace PandemicClientBlazor
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+
+            builder.Services.AddScoped<ResilientPopulationEventCard>();
+            builder.Services.AddScoped<CalmNigthEventCard>();
+            builder.Services.AddScoped<ForcastEventCard>();
+            builder.Services.AddScoped<PublicSubventionEventCard>();
+            builder.Services.AddScoped<AirLiftEventCard>();
 
 
             builder.Services.AddScoped<DiseaseBagsInitializer>();

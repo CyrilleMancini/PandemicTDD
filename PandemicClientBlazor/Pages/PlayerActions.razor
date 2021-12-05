@@ -3,7 +3,7 @@
     <span @onclick="()=>Visible=false">    [X]</span>
     <img class="svgspecial" src="/save.svg" />
 
-    <div class="svgholder">
+    <div class="svgholder" style="display:none">
         <svg height='32px' width='32px' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
              version="1.1" x="0px" y="0px"
              viewBox="0 0 400 400"
@@ -21,7 +21,7 @@
         <div @onmouseover="@(()=>PlaySound($"tr_{name.Replace(' ','_')}"))" class='action-item' @onclick="()=>Actions[name]()">
             <span class="action-name">@name</span><br />
             <span class="action-description">@Descriptions[name] </span>
-            <audio id="tr_@(name.Replace(' ','_'))" autoplay><source src="/woosh.wav" /></audio>
+            <audio id="tr_@(name.Replace(' ','_'))" autoplay><source src="/transition.mp3" /></audio>
         </div>
     }
 </div>

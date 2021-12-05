@@ -1,0 +1,12 @@
+﻿<h3>@Card.Name</h3>
+
+
+<div>@Card.Description</div>
+
+<button @onclick="@(() => Card.EventAction.Execute())">Jouer cette carte</button>
+
+@code {
+
+    [Parameter]
+    public EventPlayerCard Card { get; set; }
+}

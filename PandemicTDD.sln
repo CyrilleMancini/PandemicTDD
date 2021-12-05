@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandemicTDDApplicationTests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonTestsTools", "CommonTestsTools\CommonTestsTools.csproj", "{EBD2F64A-0E9E-4E89-865F-08E529D08D05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PandemicClientBlazor", "PandemicClientBlazor\PandemicClientBlazor.csproj", "{B7937F04-9761-4FAD-A814-04E12CFA4058}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PandemicClientBlazor", "PandemicClientBlazor\PandemicClientBlazor.csproj", "{B7937F04-9761-4FAD-A814-04E12CFA4058}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

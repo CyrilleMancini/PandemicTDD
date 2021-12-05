@@ -1,6 +1,6 @@
 ﻿using PandemicTDD;
 
-namespace PandemicTDDApplication
+namespace PandemicTDD.Ressources
 {
     public interface IPandemicRessource
     {
@@ -19,6 +19,16 @@ namespace PandemicTDDApplication
         string Action_CharterFlight { get; }
         string Action_NextTurn { get; }
         string Action_PlayCardFromSpecialSlot { get; }
+        string AirLiftEventName { get; }
+        string AirLiftEventDescription { get; }
+        string PublicSubventionEventDescription { get; }
+        string PublicSubventionEventName { get; }
+        string ForcastEventDescription { get; }
+        string ForcastEventName { get; }
+        string CalmNigthEventDescription { get; }
+        string CalmNigthEventName { get; }
+        string ResilientPopulationEventName { get; }
+        string ResilientPopulationEventDescription { get; }
 
         string EnterPlayerName(int currentPlayer);
         string InvalidPlayerName(string playerName);

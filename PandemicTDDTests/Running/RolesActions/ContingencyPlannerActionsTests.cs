@@ -16,16 +16,16 @@ namespace PandemicTDDTests.Materiel
         {
             StartGame();
             Players[0].Role = new ContingencyPlannerRoleCard("Planificateur d'urgence");
-            GameState.Board.PlayerDiscardCardStack.Push(new ResilientPopulationEventCard());
-            GameState.Board.PlayerDiscardCardStack.Push(new AirLiftEventCard());
-            GameState.Board.PlayerDiscardCardStack.Push(new PublicSubventionEventCard());
-            GameState.Board.PlayerDiscardCardStack.Push(new ResilientPopulationEventCard());
+            GameState.Board.PlayerDiscardCardStack.Push(new ResilientPopulationEventCard(ressource));
+            GameState.Board.PlayerDiscardCardStack.Push(new AirLiftEventCard(ressource));
+            GameState.Board.PlayerDiscardCardStack.Push(new PublicSubventionEventCard(ressource));
+            GameState.Board.PlayerDiscardCardStack.Push(new ResilientPopulationEventCard(ressource));
         }
 
         [TestMethod()]
         public void TakenCardMustBeInTheDiscardStack()
         {
-            EventPlayerCard TakenFromDiscard = new CalmNigthEventCard();
+            EventPlayerCard TakenFromDiscard = new CalmNigthEventCard(ressource);
 
             ActionBase action = new ContingencyPlannerTakeEventCardFromDiscardAction(GameState, TakenFromDiscard);
             Assert.ThrowsException<CardNotInDiscardStackException>(() =>
@@ -37,7 +37,7 @@ namespace PandemicTDDTests.Materiel
         [TestMethod()]
         public void TakenCardIsInSpecialRoleCardSlot()
         {
-            EventPlayerCard TakenFromDiscard = new AirLiftEventCard();
+            EventPlayerCard TakenFromDiscard = new AirLiftEventCard(ressource);
             ActionBase action = new ContingencyPlannerTakeEventCardFromDiscardAction(GameState, TakenFromDiscard);
             GameState.DoAction(action);
 

@@ -6,7 +6,7 @@
     {
         @foreach (Town t in Destinations)
         {
-            <div class="destination-item" style="background-color:@t.Color" @onclick="@(() => Visible = false)">
+            <div class="destination-item" style="background-color:@t.Color" @onclick="@(() => DestinationSelected(t))">
                 <span style="color:orange">@t.Name</span><br />
                 <span class="destination-country">@t.Country </span>
                 <span class="destination-cdc">@(t.HasSearchStation ? "Possede un CDC" : "Sans CDC")</span>

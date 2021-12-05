@@ -6,16 +6,18 @@
     <CascadingValue TValue="IDebuggableUI" Value="DebugPanel">
         <div id="board">
         </div>
-        <PlayerActions @ref="playerActions"></PlayerActions>
-        <Instructions @ref="InstructionsPanel"></Instructions>
+        <PlayerActions @ref="playerActionsComponent"></PlayerActions>
+        <Instructions @ref="InstructionsPanelComponent"></Instructions>
         <Failure Visible="false"></Failure>
         <Victory Visible="false"></Victory>
         @if (CurrentPlayer != null)
         {
-            <SelectDestination @ref="SelectDestination"></SelectDestination>
+            <SelectDestination @ref="SelectDestinationComponent" OnDestinationSelected="DestinationSelected"></SelectDestination>
+            <PlayerCards Cards="@CurrentPlayer?.PlayerCards"></PlayerCards>
             <CurrentPlayerInformation Player="@CurrentPlayer" />
         }
         <button @onclick="Play">Jouer</button>
+        <Errors @ref="ErrorsComponent" />
     </CascadingValue>
 }
 

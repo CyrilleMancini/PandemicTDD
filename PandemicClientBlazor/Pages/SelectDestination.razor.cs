@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using PandemicTDD.Materiel;
-using PandemicTDDApplication;
+using PandemicTDD.Ressources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +13,8 @@ namespace PandemicClientBlazor.Pages
         [Inject]
         IPandemicRessource ressource { get; set; }
 
-        Dictionary<string, Action> Actions = new Dictionary<string, Action>();
-        Dictionary<string, string> Descriptions = new Dictionary<string, string>();
+        [Parameter]
+        public EventCallback<String> OnDestinationSelected { get; set; }
 
         protected override void OnInitialized()
         {
@@ -23,33 +23,10 @@ namespace PandemicClientBlazor.Pages
 
         internal void Clear()
         {
-            Actions.Clear();
+
         }
-
-        public void AddAction(string Name, Action action)
-        {
-            Actions.Add(Name, action);
-            StateHasChanged();
-        }
-
-
 
         bool visible = false;
-        private Town[] Destinations;
-
-        [CascadingParameter]
-        IDebuggableUI DebugPanel { get; set; }
-
-        void DebugSwitchAction()
-        {
-            Visible = !visible;
-        }
-        protected override void OnParametersSet()
-        {
-            if (DebugPanel != null)
-                DebugPanel.AddDebugAction("Switch Destinations", DebugSwitchAction);
-            //base.OnInitialized();
-        }
 
         [Parameter]
         public bool Visible
@@ -64,11 +41,34 @@ namespace PandemicClientBlazor.Pages
 
         string Visibility { get => (Visible ? "block" : "none"); }
 
-        internal string SetDestination(Town[] destinations)
+        private Town[] Destinations;
+
+        [CascadingParameter]
+        IDebuggableUI DebugPanel { get; set; }
+
+        void DebugSwitchAction()
+        {
+            Visible = !visible;
+        }
+        protected override void OnParametersSet()
+        {
+            if (DebugPanel != null)
+                DebugPanel.AddDebugAction("Switch Destinations", DebugSwitchAction);
+
+        }
+
+        internal void SetDestinations(Town[] destinations)
         {
             Destinations = destinations;
             Visible = true;
-            return destinations[0].Name;
         }
+
+        private void DestinationSelected(Town selected)
+        {
+            OnDestinationSelected.InvokeAsync(selected.Name);
+            Visible = false;
+
+        }
+
     }
 }

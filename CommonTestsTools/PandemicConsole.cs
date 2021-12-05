@@ -1,5 +1,6 @@
 ﻿using PandemicTDD;
 using PandemicTDD.Materiel;
+using PandemicTDD.Ressources;
 using PandemicTDDApplication;
 using PandemicTDDApplication.Exceptions;
 using System;
@@ -82,7 +83,7 @@ namespace CommonTestsTools
             Console.WriteLine(instruction);
         }
 
-        public string AskDestinationAmong(Town[] TownsDestinations)
+        public void AskDestinationAmong(Town[] TownsDestinations, IWaitDestinationDelegate action)
         {
             Destinations.Write("Quelle destination aller ?");
             ListItem[] towns = TownsDestinations.Select(t => (ListItem)SelectTownByColor(new ListItem()
@@ -91,8 +92,9 @@ namespace CommonTestsTools
             }, t)).ToArray();
 
             DestinationsList.WriteList(towns);
+
             string line = Console.ReadLine();
-            return line;
+            action(line);
         }
 
         public void DisplayLocation(Town town)
@@ -135,20 +137,24 @@ namespace CommonTestsTools
         public void Result(string message) => ResultList.WriteBlockingBox(message);
 
 
-        public DiseaseColor AskDiseaseColor()
+        public void AskDiseaseColor(IWaitForColor CallerAction)
         {
             AskDisease.WriteBox("Quelle maladie ? 1.Rouge, 2.Bleu, 3.Noir, 4.Jaune");
             ConsoleKey c = Console.ReadKey().Key;
             switch (c)
             {
                 case ConsoleKey.NumPad1:
-                    return DiseaseColor.Red;
+                    CallerAction(DiseaseColor.Red);
+                    break;
                 case ConsoleKey.NumPad2:
-                    return DiseaseColor.Blue;
+                    CallerAction(DiseaseColor.Blue);
+                    break;
                 case ConsoleKey.NumPad3:
-                    return DiseaseColor.Black;
+                    CallerAction(DiseaseColor.Black);
+                    break;
                 case ConsoleKey.NumPad4:
-                    return DiseaseColor.Yellow;
+                    CallerAction(DiseaseColor.Yellow);
+                    break;
             }
             throw new InvalidInputException("Maladie inconnue.");
 

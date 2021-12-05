@@ -1,0 +1,64 @@
+﻿
+.cards-panel {
+    position: fixed;
+    left: 156px;
+    bottom: 0px;
+    height: 64px;
+    width: 128px;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 10%;
+    border: 1px solid rgb(0,100,255,0.5);
+    background-color: rgb(0,100,255,0.75);
+    box-shadow: 4px 4px 4px 4px;
+    transition-property: bottom;
+    transition: all ease-in-out 0.21s;
+    animation: forwards 0.21s;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-evenly;
+    align-items: center;
+    vertical-align: text-top;
+    z-index:0;
+}
+
+    .cards-panel:hover {
+        box-shadow: 3px 3px 3px 3px;
+        bottom: 32px;
+        height: 450px;
+        width: 75%;
+        border-radius: 10px;
+        z-index: 10;
+    }
+
+    .cards-panel:active {
+        bottom: 38px;
+        box-shadow: 1px 1px 1px 1px;
+    }
+
+    .cards-panel .card {
+        display: none;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        box-shadow: 0px 2px 5px black;
+        height: 350px;
+        width: 250px;
+    }
+
+
+    .cards-panel:hover > .card {
+        display: block;
+        margin-bottom: 0px;
+    }
+
+.card {
+    margin-bottom: 0px;
+    top: 0rem;
+    transition: all ease-in-out 0.21s;
+    animation: forwards 0.21s;
+}
+
+    .card:hover {
+        top:1rem
+    }

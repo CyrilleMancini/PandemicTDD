@@ -1,15 +1,25 @@
-﻿div {
+﻿div{
+    overflow :auto
+}
+
+div, ul {
+    width: 350px;
+    height: 500px;
     color: darkorange;
     font-size: 10px;
     position: fixed;
-    
-    width:250px;
-
-    height:500px;
     top: 0px;
     right: 0px;
-    color:yellow;
-    background-color:rgb(200, 0, 0,0.75);
-    text-align:center;
-    vertical-align:central;
+    color: yellow;
+    background-color: rgb(200, 0, 0,0.75);
+    text-align: center;
+    vertical-align: central;
+    display: flex;
+    flex-flow: column;
+    align-items: start;
+}
+
+ul {
+    align-items:start;
+
 }

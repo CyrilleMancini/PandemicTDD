@@ -10,10 +10,13 @@ namespace PandemicTDDApplication
         void AddPlayerAction(string ActionName, Action action);
         void DisplayActions();
         void AskAction();
-        string AskDestinationAmong(Town[] Destinations);
+        void AskDestinationAmong(Town[] Destinations, IWaitDestinationDelegate DestinationUser);
         void DisplayLocation(Town town);
         void DisplayBoard(Board board);
         void DisplayPlayer(Player current);
-        DiseaseColor AskDiseaseColor();
+        void AskDiseaseColor(IWaitForColor ColorUser);
     }
+
+    public delegate void IWaitDestinationDelegate(String Destination);
+    public delegate void IWaitForColor(DiseaseColor Color);
 }

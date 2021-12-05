@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using PandemicTDDApplication;
+using PandemicTDD.Ressources;
 using System;
 using System.Collections.Generic;
 

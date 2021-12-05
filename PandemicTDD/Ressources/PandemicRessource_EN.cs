@@ -1,6 +1,6 @@
 ﻿using PandemicTDD;
 
-namespace PandemicTDDApplication
+namespace PandemicTDD.Ressources
 {
     public class PandemicRessource_EN : IPandemicRessource
     {
@@ -33,6 +33,26 @@ namespace PandemicTDDApplication
         public string Action_NextTurn => throw new System.NotImplementedException();
 
         public string Action_PlayCardFromSpecialSlot => throw new System.NotImplementedException();
+
+        public string AirLiftEventName => throw new System.NotImplementedException();
+
+        public string AirLiftEventDescription => throw new System.NotImplementedException();
+
+        public string PublicSubventionEventDescription => throw new System.NotImplementedException();
+
+        public string PublicSubventionEventName => throw new System.NotImplementedException();
+
+        public string ForcastEventDescription => throw new System.NotImplementedException();
+
+        public string ForcastEventName => throw new System.NotImplementedException();
+
+        public string CalmNigthEventDescription => throw new System.NotImplementedException();
+
+        public string CalmNigthEventName => throw new System.NotImplementedException();
+
+        public string ResilientPopulationEventName => throw new System.NotImplementedException();
+
+        public string ResilientPopulationEventDescription => throw new System.NotImplementedException();
 
         public string ActionsRemains(int actionsRemaining)
         {

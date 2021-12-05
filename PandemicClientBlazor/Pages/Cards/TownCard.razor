@@ -1,0 +1,12 @@
+﻿<h3 style="margin:25px;background-color:@Card.Town.Color">TownCard</h3>
+
+<div>@Card.Town.Name</div>
+<div>@Card.Town.Country</div>
+<div>@Card.Town.Color</div>
+
+@code {
+
+    [Parameter]
+    public PlayerTownCard Card { get; set; }
+}
+

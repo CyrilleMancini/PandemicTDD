@@ -6,6 +6,6 @@ namespace PandemicClientBlazor.Pages
     {
 
         void AddDebugAction(string Name, Action action);
-
+        void Log(string Message);
     }
 }

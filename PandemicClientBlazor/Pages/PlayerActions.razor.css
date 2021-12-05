@@ -1,7 +1,5 @@
 ﻿.svgspecial {
     filter: invert(0.5) sepia(1) saturate(10) hue-rotate(110deg);
-  //  color: red;
-//    fill: blue;
 }
 
 div.svgholder {
@@ -10,8 +8,8 @@ div.svgholder {
 
 .buttonaction {
     position: fixed;
-    bottom: 36px;
-    left: 36px;
+    bottom: 0px;
+    left: 46px;
     width: 64px;
     height: 64px;
     text-align: center;
@@ -27,10 +25,10 @@ div.svgholder {
 
     .buttonaction:hover {
         box-shadow: 3px 3px 3px 3px;
-        bottom: 34px;
+        bottom: 44px;
     }
     .buttonaction:active {
-        bottom: 28px;
+        bottom: 38px;
         box-shadow: 1px 1px 1px 1px;
     }
 
@@ -38,7 +36,7 @@ div.svgholder {
     position: fixed;
     right: 600px;
     bottom: 10%;
-    top: 10%;
+    top: 20%;
     left: 10%;
     overflow: auto;
     border-radius: 10px 0px 10px 0px;

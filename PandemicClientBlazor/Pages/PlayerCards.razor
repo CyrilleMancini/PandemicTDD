@@ -1,0 +1,33 @@
+﻿
+
+<div class="cards-panel">
+    
+    Cartes du joueur.
+    @foreach (PlayerCard card in Cards)
+    {
+
+
+        <div class="card">
+            @switch (card)
+            {
+                case PlayerTownCard tc:
+                    <TownCard Card="tc"></TownCard>
+                    break;
+                case EventPlayerCard ec:
+                    <EventCard Card="ec"></EventCard>
+                    break;
+            }
+
+        </div>
+    }
+</div>
+@code {
+
+
+    [Parameter]
+    public List<PlayerCard> Cards { get; set; } = new List<PlayerCard>();
+
+
+
+
+}

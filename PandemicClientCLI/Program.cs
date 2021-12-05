@@ -2,6 +2,7 @@
 using PandemicTDD;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
+using PandemicTDD.Ressources;
 using PandemicTDDApplication;
 using System;
 
@@ -24,11 +25,16 @@ namespace PandemicClientCLI
 
         public static void InitInitializer()
         {
+            ressource = new PandemicRessource_FR();
             diseaseBagsInitializer = new DiseaseBagsInitializer();
             roleCardInitializer = new RoleCardInitializer();
             spreadCardInitializer = new SpreadCardInitializer();
             townsInitializer = new TownsInitializer();
-            playerCardInitializer = new PlayerCardInitializer();
+            playerCardInitializer = new PlayerCardInitializer(AirLiftEventCard: new(ressource),
+                                                              CalmNigthEventCard: new(ressource),
+                                                              ResilientPopulationEventCard: new(ressource),
+                                                              ForcastEventCard: new(ressource),
+                                                              PublicSubventionEventCard: new(ressource));
             townSlotsInitializer = new TownSlotsInitializer(townsInitializer);
             townLinksInitializer = new TownLinksInitializer();
             GameInitializer gameInitializer = new();
@@ -41,7 +47,6 @@ namespace PandemicClientCLI
             GameState = new GameState(GameBox);
             //GameState.RegisterObserver(ConsoleObserver);
 
-            ressource = new PandemicRessource_FR();
 
             View = new PandemicConsole(ressource);
             GameState.RegisterObserver(View);
