@@ -1,5 +1,5 @@
-﻿div{
-    overflow :auto
+﻿.debug-panel{
+    overflow :hidden;
 }
 
 div, ul {
