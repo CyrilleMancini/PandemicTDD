@@ -110,7 +110,7 @@ namespace PandemicTDDApplication
             Town[] CharterDestinations = GameState.Board.GetTownSlots().Select(ts => ts.Town).ToArray();
             View.AskDestinationAmong(CharterDestinations, (dest) =>
             {
-                GameState.DoAction(new DirectFlightAction(GameState, GameState.CurrentPlayer, dest));
+                GameState.DoAction(new CharterFlightAction(GameState, GameState.CurrentPlayer, dest));
             });
         }
 
