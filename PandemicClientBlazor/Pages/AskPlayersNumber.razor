@@ -1,0 +1,27 @@
+﻿
+
+
+<div class="asknumber-panel" style="@panelclass">
+    <h3>AskPlayersNumber</h3>
+    Combien de joueurs pour la partie ?
+    <button @onclick="() => Choose(1)">1</button>
+    <button @onclick="() => Choose(2)">2</button>
+    <button @onclick="() => Choose(3)">3</button>
+    <button @onclick="() => Choose(4)">4</button>
+
+</div>
+
+
+@code {
+    [Parameter]
+    public EventCallback<int> OnPlayersNumberChoosen { get; set; }
+
+    string panelclass = "visibility:visible;display:block";
+
+    public async Task Choose(int number)
+    {
+        await OnPlayersNumberChoosen.InvokeAsync(number);
+        panelclass = "visibility:hidden;display:none";
+    }
+}
+

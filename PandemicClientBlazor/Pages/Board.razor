@@ -6,6 +6,7 @@
     <CascadingValue TValue="IDebuggableUI" Value="DebugPanel">
         <div id="board">
         </div>
+        <AskPlayersNumber OnPlayersNumberChoosen="PlayersChosen"></AskPlayersNumber>
         <PlayerActions @ref="playerActionsComponent"></PlayerActions>
         <Instructions @ref="InstructionsPanelComponent"></Instructions>
         <Failure Visible="false"></Failure>
