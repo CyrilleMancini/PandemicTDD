@@ -1,8 +1,9 @@
 ﻿.debug-panel{
     position:fixed;
     top:10px;
-
+    z-index:1500;
 }
+
 
 div, ul {
     width: 350px;
@@ -25,3 +26,5 @@ ul {
     align-items:start;
 
 }
+
+

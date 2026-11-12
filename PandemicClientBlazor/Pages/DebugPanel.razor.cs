@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace PandemicClientBlazor.Pages
 {
@@ -24,4 +25,16 @@ namespace PandemicClientBlazor.Pages
             Logs.Insert(0, Message);
         }
     }
+
+    public enum CoordinateFormat { XY, Css }
+
+    public static class MousePositionFormatter
+    {
+        public static string Format(double x, double y, CoordinateFormat format) => format switch
+        {
+            CoordinateFormat.Css => string.Create(CultureInfo.InvariantCulture, $"left:{x}px;top:{y}px;"),
+            _ => string.Create(CultureInfo.InvariantCulture, $"{x},{y}")
+        };
+    }
+
 }

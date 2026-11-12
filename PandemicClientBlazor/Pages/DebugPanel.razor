@@ -1,11 +1,20 @@
-﻿<button @onclick="() => Hidden = !Hidden">DBG</button>
+﻿@inject IJSRuntime JS
+@implements IAsyncDisposable
+
+<button @onclick="() => Hidden = !Hidden">DBG</button>
+
 <div class="debug-panel" style="visibility:@(Hidden ? "hidden" : "visibe")">
     <h4>DebugPanel</h4>
     <ul>
         <h5>Mouse</h5>
+        <span>
+            <input type="checkbox" @bind="CopyAsCss" />
+            Copier en propriétés CSS (sinon X,Y)
+        </span>
         <li id="mouse-position">
-            plop
-        </li>  @foreach (var k in DebugActions.Keys)
+            @MousePositionMessage
+        </li>
+        @foreach (var k in DebugActions.Keys)
         {
             <li>
                 <button @onclick="() => DebugActions[k]()">@k</button>
@@ -18,20 +27,84 @@
         {
             <li>@msg</li>
         }
-        
+
     </ul>
 
 </div>
 
 <script lang="Javascript">
 
-    
-    addEventListener("mousedown", (event) => {
-            console.log(event);
-        if(event.buttons == 1 ){
-            document.getElementById("mouse-position").innerHTML = "X="+event.clientX + ",Y="+event.clientY;
-            navigator.clipboard.writeText(event.clientX+","+event.clientY);
+        window.documentEvents = {
+        registerMouseDown: function (dotNetHelper) {
+            // On stocke la fonction de rappel pour pouvoir la retirer plus tard
+            window.documentEvents.handler = function (e) {
+                dotNetHelper.invokeMethodAsync('OnDocumentMouseDown', e.clientX, e.clientY, e.button,e.ctrlKey);
+            };
+            document.addEventListener('mousedown', window.documentEvents.handler);
+        },
+        unregisterMouseDown: function () {
+            if (window.documentEvents.handler) {
+                document.removeEventListener('mousedown', window.documentEvents.handler);
+                delete window.documentEvents.handler;
+            }
         }
-    });
+    };
 
 </script>
+
+@code {
+    bool CopyAsCss = false;
+    string MousePositionMessage = "";
+
+    private IJSObjectReference? module;
+    private IJSObjectReference? listener;
+    private DotNetObjectReference<DebugPanel>? objRef;
+
+    [JSInvokable]
+    public async Task OnDocumentMouseDown(double clientX, double clientY)
+    {
+        var text = MousePositionFormatter.Format(clientX, clientY,
+            CopyAsCss ? CoordinateFormat.Css : CoordinateFormat.XY);
+        try
+        {
+            await JS.InvokeVoidAsync("navigator.clipboard.writeText", text);
+            MousePositionMessage = $"Copié : {text}";
+        }
+        catch (JSException ex)
+        {
+            MousePositionMessage = $"Échec de la copie : {ex.Message}";
+        }
+        StateHasChanged();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            objRef = DotNetObjectReference.Create(this);
+            // Adapte le chemin à l'emplacement réel du composant
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./Pages/DebugPanel.razor.js");
+            listener = await module.InvokeAsync<IJSObjectReference>("registerMouseDown", objRef);
+
+        }
+    }
+    public async ValueTask DisposeAsync()
+    {
+        try
+        {
+            if (listener is not null)
+            {
+                await listener.InvokeVoidAsync("dispose");
+                await listener.DisposeAsync();
+            }
+            if (module is not null)
+                await module.DisposeAsync();
+        }
+        catch (JSDisconnectedException)
+        {
+            // Circuit perdu : le navigateur est parti, rien à nettoyer côté client.
+        }
+        objRef?.Dispose();
+    }
+
+}
