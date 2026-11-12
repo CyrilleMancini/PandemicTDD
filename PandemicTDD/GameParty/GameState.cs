@@ -65,8 +65,10 @@ namespace PandemicTDD
 
         public IChooseLevel StartGame()
         {
-            if (Players.Count < 2) throw new NotEnoughPlayersException("Minimum 2 players");
-            if (Players.Count > 4) throw new TooManyPlayersException("No more than 4 players");
+            if (Players.Count < 2)
+                throw new NotEnoughPlayersException("Minimum 2 players");
+            if (Players.Count > 4)
+                throw new TooManyPlayersException("No more than 4 players");
 
             Players.ForEach(p => p.Town = Board.GetTown(TownsInitializer.Atlanta));
             CurrentPlayerIdx = 0;
@@ -130,7 +132,8 @@ namespace PandemicTDD
 
         public void RegisterObserver(IObserveGameState observer)
         {
-            if (Observers.Contains(observer)) throw new ArgumentException("Observer already registered");
+            if (Observers.Contains(observer))
+                throw new ArgumentException("Observer already registered");
             Observers.Add(observer);
         }
 
