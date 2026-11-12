@@ -3,10 +3,8 @@ using PandemicTDD;
 using PandemicTDD.Materiel;
 using PandemicTDD.Ressources;
 using PandemicTDDApplication;
+using PandemicTDDApplication.Exceptions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PandemicClientBlazor.Pages
 {
@@ -28,12 +26,16 @@ namespace PandemicClientBlazor.Pages
 
         PlayerActions playerActionsComponent;
 
+        AskPlayerName askPlayerName;
+
+        AskLevel askLevel;
+
         SelectDestination SelectDestinationComponent;
 
         BaseRoleState roleStateComponent;
 
         Errors ErrorsComponent;
-
+        BaseState baseState;
         protected override void OnInitialized()
         {
             GameState.RegisterObserver(this);
@@ -43,20 +45,20 @@ namespace PandemicClientBlazor.Pages
         {
             if (firstRender)
             {
-                BaseState baseState = new State001_NumberPlayers(GameState, this, ressource);
-                baseState.Instructions();
-                baseState = baseState.SetNumberPlayer(2);
+                baseState = new State001_NumberPlayers(GameState, this, ressource);
 
-                baseState.Instructions();
-                baseState = baseState.EnterPlayerName("titi");
 
-                baseState.Instructions();
-                baseState = baseState.EnterPlayerName("toto");
 
-                baseState.Instructions();
-                roleStateComponent = baseState.ChooseLevel(Difficulty.Standard);
+                //baseState.Instructions();
+                //baseState = baseState.EnterPlayerName("titi");
 
-                roleStateComponent.Instructions();
+                //baseState.Instructions();
+                //baseState = baseState.EnterPlayerName("toto");
+
+                //baseState.Instructions();
+                //roleStateComponent = baseState.ChooseLevel(Difficulty.Standard);
+
+                //roleStateComponent.Instructions();
 
                 GameState.OnFailure += GameState_OnFailure;
                 GameState.OnVictory += GameState_OnVictory;
@@ -109,7 +111,8 @@ namespace PandemicClientBlazor.Pages
         void DestinationSelected(string SelectedDestination)
         {
             DebugPanel.Log($"Call:Destination Selected {SelectedDestination}");
-            if (CurrentCallerAction == null) return;
+            if (CurrentCallerAction == null)
+                return;
             CurrentCallerAction(SelectedDestination);
         }
         #endregion
@@ -167,6 +170,43 @@ namespace PandemicClientBlazor.Pages
         public void Result(string message)
         {
             InstructionsPanelComponent.Add(message);
+        }
+
+        int playerCount = 1;
+        private void PlayersChosen(int playersNumber)
+        {
+            baseState = baseState.SetNumberPlayer(2);
+            askPlayerName.EnterFor(playerCount);
+        }
+        private void PlayerNameChosen(string args)
+        {
+
+            try
+            {
+                baseState = baseState.EnterPlayerName(args);
+                baseState.Instructions();
+                StateHasChanged();
+                playerCount++;
+                if (playerCount > GameState.Players.Count)
+                {
+                    askPlayerName.Close();
+                    askLevel.Open();
+                }
+            }
+            catch (InvalidActionException ex)
+            {
+            }
+        }
+        private void LevelChosen(int level)
+        {
+            try
+            {
+                baseState = baseState.ChooseLevel((Difficulty)level);
+            }
+            catch (Exception ex)
+            {
+                DebugPanel.Log(ex.Message);
+            }
         }
     }
 }
