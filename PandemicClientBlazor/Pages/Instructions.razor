@@ -12,7 +12,7 @@
     public void Add(string instruction)
     {
         Console.WriteLine(instruction);
-        LastMessages.Insert(0, instruction);
+        LastMessages.Insert(0, DateTime.Now + ":"+instruction);
         StateHasChanged();
     }
 }
