@@ -19,6 +19,7 @@ namespace PandemicTDDApplication
             GameState = gameState;
             this.View = view;
             this.Ressources = Ressources;
+            Instructions();
         }
 
         public abstract void Instructions();

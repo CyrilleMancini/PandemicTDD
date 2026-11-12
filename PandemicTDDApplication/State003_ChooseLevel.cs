@@ -1,14 +1,12 @@
 ﻿using PandemicTDD;
 using PandemicTDD.Ressources;
-using System;
-using System.Collections.Generic;
 
 namespace PandemicTDDApplication
 {
     public class State003_ChooseLevel : BaseState
     {
 
-        public State003_ChooseLevel(GameState gameState, IPandemicView view, IPandemicRessource Ressources) : 
+        public State003_ChooseLevel(GameState gameState, IPandemicView view, IPandemicRessource Ressources) :
             base(gameState, view, Ressources)
         {
         }
