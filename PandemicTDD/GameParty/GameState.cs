@@ -151,8 +151,8 @@ namespace PandemicTDD
 
     public enum Difficulty
     {
-        Discovery,
-        Standard,
-        Heroic
+        Discovery = 1,
+        Standard = 2,
+        Heroic = 3
     }
 }
