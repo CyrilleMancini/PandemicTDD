@@ -1,0 +1,137 @@
+Matériel 
+
+v 1 Plateau
+v 7 Cartes Roles
+v 7 Pions
+v 59 Cartes Joueur
+v	48 Villes
+v	6 Cartes Edpidemie
+v	5 Evnements
+4 Aides du jeux => RF
+v 48 Cartes Propagation
+v 98 Cubes de Maladies 24 * 4 couleurs
+v 4 Marqueur Remède
+v 1 Marqueur Eclosion
+v 1 Marqueur Vitesse de Propagation
+6 Stations de recherche 
+
+
+Initialisation
+v	v 1. Un CDC sur Atlanta
+v	2. Tous les joueurs sur Atlanta
+v	3. Marqueur Propagation en case 2
+v		3.0 Trier les cartes Propagation
+v		3.1 Tirer 3 Cartes et positionner 3 cubes maladies dessus
+v		3.2 Défausser les cartes
+v		3.3 Tirer 3 Cartes et positionner 2 cubes maladies dessus
+v		3.4 Défausser les cartes
+v		3.5 Tirer 3 Cartes et positionner 1 cubes maladies dessus
+v		3.6 Défausser les cartes
+
+v	4. Marqueur Eclosion a 0	
+v	4. 4 remedes coté fiole visible
+
+	5. Distribuer les cartes
+	x	1. Une aide de jeu
+v		2. Un Role distribué au hasard
+v		3. Des cartes joueur hors cartes édpidémie
+v			2 joueurs : 4 Cartes
+v			3 Joueurs : 3 Cartes
+v			4 Joueurs : 2 Cartes
+	
+v	6. Choix du niveau de difficulté :
+v		Introduction : 4 épidémies
+v		Standard :  5 Epidémies
+v		Héroique :	6 Epidemies
+
+v	7. Préparer le paquet Joueur
+
+v		1. Autant de tas que d'épidémie seloin niveau
+v		2. Placer au une carte épidémie dans chaque paquet 
+v		3. Melanger chaque paquet
+v		4. Reconstituer la pile a partir des paquets unitaires.
+
+v Victoire 
+v	Remede a toutes les maladies
+
+Echec 
+v	. 8 Eclosions ont eux lieu 
+v	. PLus de cube maladies disponible
+	. Plus de carte Joueur au moment de piocher
+
+
+	Préparation 
+
+Regles des actions 
+v		Voiture Transbordeur :
+v				Consomme 1 action
+						Sauf pour 
+v				La destination doit être liée a la ville d'origine du joueur
+v				Une ville non liée doit provoquer une erreur.
+
+v		Vol Direct :
+v				Consomme 1 action
+						Sauf pour 
+v				Le joueur doit posséder la carde de la destination
+v				Si la carte n'est pas possédé, une erreur est lancée.
+v				Le joueur est déplacé sur la ville de destination.
+v 				La carte de la ville est défaussée
+
+v		Vol Charter :
+v				Consomme 1 action
+						Sauf pour 
+v				Le joueur doit posséder la carde d'origine
+v				Si la carte de la ville d'origine n'est pas possédée, une erreur est lancée.
+v				La destination est libre.
+v 				La carte de la ville est défaussée
+		Vol Navette
+v				Consomme 1 action 
+						Sauf pour 
+v				Le joueur doit être sur un centre de controle
+v				La destination doit posséder un CDC.
+
+		Contruire une station de recherche
+v				Consomme 1 action 
+						Sauf pour 
+v				Le joueur doit posséder la ville de la construction
+v 				La carte de la ville est défaussée
+
+		Traiter une maladie
+v				Consomme 1 action 
+						Sauf pour 
+v				Ne peut traiter une maladie non présente sur la ville.
+
+		Partager des connaissances.
+v				Consomme 1 action 
+v				Le joueur donnant doit posséder la ville à échanger
+							OU 
+v				Le joueur recevant doit posséder la ville à échanger
+v				Les deux joueurs doivent être sur la ville a échanger.
+
+		Découvrir un remède.
+v				Consomme 1 action 
+						Sauf pour 
+v				Le joueurs doit être dans une ville avec un centre de recherche.
+v				Le joueurs doir posséder 5 villes de la couleur de la maladie.
+v				La maladies passe en état Guérie
+v 				Les 5 cartes sont défaussées
+
+Chercheuse
+Action spéciale
+	Partage de connaissance 
+
+		Peut echanger n'importe quelle carte seulement si les deux joueurs sont sur la meme ville,
+		consomme une action au joueur courant, mais peut être appelé si le chercheur n'est pas le joueurs courant.
+
+Expert au opérations.
+	1. 
+	Consomme une action
+	Construit une station dans sa ville actuelle sans avoir de carte a défausser.
+
+
+
+
+
+Regles générales a chaque tour
+		Un joueur ne peut avoir plus de 7 cartes en main.
+		Si un remède est trouvé et qu'aucun cube n'est sur le plateau, la maladie est éradiquée.
