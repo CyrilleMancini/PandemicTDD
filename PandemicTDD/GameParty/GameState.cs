@@ -27,7 +27,9 @@ namespace PandemicTDD
         internal readonly DiseaseBags DiseaseBags;
         internal GameBox GameBox { get; private set; }
 
-        internal List<Player> Players;
+        public List<Player> Players { get; private set; }
+
+
 
         private int CurrentPlayerIdx = 0;
 
