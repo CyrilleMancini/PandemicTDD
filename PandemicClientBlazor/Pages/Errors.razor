@@ -1,14 +1,18 @@
-﻿<div>
-    <span>@Error</span>
+﻿@if (Error != "")
+{
+    <div>
+        <span>Erreur: @Error</span>
+    </div>
+}
 
-    @code {
 
-        public string Error { get; set; } = "";
-        public void SetError(string error)
-        {
-            Error = error;
-            StateHasChanged();
-        }
+@code {
 
+    public string Error { get; set; } = "";
+    public void SetError(string error)
+    {
+        Error = error;
+        StateHasChanged();
     }
-</div>
+
+}
