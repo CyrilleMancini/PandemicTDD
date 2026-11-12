@@ -1,8 +1,6 @@
 ﻿using CommonTestsTools;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PandemicTDD;
 using PandemicTDDApplication.Exceptions;
-using PandemicTDDTests.Materiel;
 
 namespace PandemicTDDApplication.Tests
 {
@@ -26,7 +24,7 @@ namespace PandemicTDDApplication.Tests
         {
             State001_NumberPlayers state = new State001_NumberPlayers(GameState, View, ressource);
 
-            Assert.ThrowsException<InvalidInputException>(() =>
+            Assert.Throws<InvalidInputException>(() =>
             {
                 state.SetNumberPlayer(5);
             });
@@ -38,7 +36,7 @@ namespace PandemicTDDApplication.Tests
         {
             State001_NumberPlayers state = new State001_NumberPlayers(GameState, View, ressource);
 
-            Assert.ThrowsException<InvalidInputException>(() =>
+            Assert.Throws<InvalidInputException>(() =>
             {
                 state.SetNumberPlayer(1);
             });

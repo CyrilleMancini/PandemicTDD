@@ -19,7 +19,7 @@ namespace PandemicTDDTests.EndOfGame
         {         
           
 
-            Assert.ThrowsException<VictoryAllCuresDiscoveredException>(() =>
+            Assert.Throws<VictoryAllCuresDiscoveredException>(() =>
             {
                 GameBox.GetBoard().GetCureSlots().DiscoverCure(DiseaseColor.Black);
                 GameBox.GetBoard().GetCureSlots().DiscoverCure(DiseaseColor.Blue);

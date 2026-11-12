@@ -31,7 +31,7 @@ namespace PandemicTDDTests.Materiel
             ActionBase action = new ReseacherShareKnowledgeAction(GameState, Players[1], CardToShare);
             GameState.DoAction(action);
             Assert.AreEqual(null, ConsoleObserver.LastErrorReceived);
-            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            Assert.Throws<NotOwnedCityPlayerCardException>(() =>
             {
                 Players[0].GetCityPlayerCard<PlayerTownCard>(CardToShare);
             });
@@ -55,7 +55,7 @@ namespace PandemicTDDTests.Materiel
 
 
             ActionBase action = new ReseacherShareKnowledgeAction(GameState, Players[1], CardToShare);
-            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            Assert.Throws<NotOwnedCityPlayerCardException>(() =>
             {
                 action.Try();
             });
@@ -78,7 +78,7 @@ namespace PandemicTDDTests.Materiel
 
 
             ActionBase action = new ReseacherShareKnowledgeAction(GameState, Players[1], CardToShare);
-            Assert.ThrowsException<PlayerInDifferentTownsException>(() =>
+            Assert.Throws<PlayerInDifferentTownsException>(() =>
             {
                 action.Try();
             });
@@ -101,7 +101,7 @@ namespace PandemicTDDTests.Materiel
 
 
             ActionBase action = new ReseacherShareKnowledgeAction(GameState, Players[1], CardToShare);
-            Assert.ThrowsException<PlayerInDifferentTownsException>(() =>
+            Assert.Throws<PlayerInDifferentTownsException>(() =>
             {
                 action.Try();
             });

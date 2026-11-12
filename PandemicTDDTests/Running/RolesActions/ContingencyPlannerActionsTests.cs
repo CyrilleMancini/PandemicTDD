@@ -28,7 +28,7 @@ namespace PandemicTDDTests.Materiel
             EventPlayerCard TakenFromDiscard = new CalmNigthEventCard(ressource);
 
             ActionBase action = new ContingencyPlannerTakeEventCardFromDiscardAction(GameState, TakenFromDiscard);
-            Assert.ThrowsException<CardNotInDiscardStackException>(() =>
+            Assert.Throws<CardNotInDiscardStackException>(() =>
             {
                 action.Try();
             });
@@ -50,7 +50,7 @@ namespace PandemicTDDTests.Materiel
         {
             ActionBase action = new ContingencyPlannerPlaySpecialSlotAction(GameState);
 
-            Assert.ThrowsException<InvalidPreconditionsException>(() =>
+            Assert.Throws<InvalidPreconditionsException>(() =>
             {
                 action.Try();
             });

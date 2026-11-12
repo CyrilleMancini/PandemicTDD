@@ -19,7 +19,7 @@ namespace PandemicTDDTests.Running.Actions
             GameState.CurrentPlayer.Town = GameState.Board.GetTown(TownsInitializer.Bogota);
             ActionBase action = new ShuttleFlightAction(GameState, GameState.CurrentPlayer, TownsInitializer.Paris);
 
-            Assert.ThrowsException<CityWithoutControlCenterException>(() =>
+            Assert.Throws<CityWithoutControlCenterException>(() =>
             {
                 action.Try();
                 action.Execute();
@@ -35,7 +35,7 @@ namespace PandemicTDDTests.Running.Actions
             StartGame();
             ActionBase action = new ShuttleFlightAction(GameState, GameState.CurrentPlayer, TownsInitializer.Paris);
 
-            Assert.ThrowsException<CityWithoutControlCenterException>(() =>
+            Assert.Throws<CityWithoutControlCenterException>(() =>
             {
                 action.Try();
                 action.Execute();

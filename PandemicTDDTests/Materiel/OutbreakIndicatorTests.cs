@@ -56,7 +56,7 @@ namespace PandemicTDDTests.Materiel
             OutBreakIndicator hi = board.GetOutbreakIndicator();
             hi.Reset();
 
-            Assert.ThrowsException<YouLooseException>(() =>
+            Assert.Throws<YouLooseException>(() =>
             {
                 for (int i = 0; i < 8; i++)
                     hi.Next();

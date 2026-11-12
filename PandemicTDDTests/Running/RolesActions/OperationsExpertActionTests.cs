@@ -38,7 +38,7 @@ namespace PandemicTDDTests.Materiel
             Players[0].Town = GameState.Board.GetTownSlot(TownsInitializer.Atlanta).Town;
 
             ActionBase action = new OperationsExpertBuildStationAction(GameState);
-            Assert.ThrowsException<ArgumentException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 action.Try();
             });
@@ -58,7 +58,7 @@ namespace PandemicTDDTests.Materiel
 
             PlayerTownCard Discarded = (PlayerTownCard)Players[0].PlayerCards.First(c => c is PlayerTownCard);
             ActionBase action = new OperationExpertMoveFromStationToAnyTownAction(GameState, TownsInitializer.Paris, Discarded);
-            Assert.ThrowsException<CityWithoutControlCenterException>(() =>
+            Assert.Throws<CityWithoutControlCenterException>(() =>
             {
                 action.Try();
             });
@@ -94,7 +94,7 @@ namespace PandemicTDDTests.Materiel
 
             GameState.Board.GetTownSlot(TownsInitializer.Paris).BuildStation();
 
-            Assert.ThrowsException<ActionCanBeDoneOnlyOncePerTurn>(() =>
+            Assert.Throws<ActionCanBeDoneOnlyOncePerTurn>(() =>
             {
                 GameState.DoAction(action);
 

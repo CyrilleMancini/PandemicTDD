@@ -26,7 +26,7 @@ namespace PandemicTDDTests.Materiel
         {
             ActionBase action = new DispatcherMoveAnotherPlayerByDriverFerryAsHisAction(GameState, Players[0], TownsInitializer.Chicago);
 
-            Assert.ThrowsException<InvalidPreconditionsException>(() =>
+            Assert.Throws<InvalidPreconditionsException>(() =>
             {
                 action.Try();
             });
@@ -49,7 +49,7 @@ namespace PandemicTDDTests.Materiel
         public void MoveAnotherPlayerAsHisByCDDShuttlePlayerMustBeDifferent()
         {
             ActionBase action = new DispatcherMoveAnotherPlayerByShuttleAsHis(GameState, Players[0], TownsInitializer.Chicago);
-            Assert.ThrowsException<InvalidPreconditionsException>(() =>
+            Assert.Throws<InvalidPreconditionsException>(() =>
             {
                 action.Try();
             });
@@ -74,7 +74,7 @@ namespace PandemicTDDTests.Materiel
             ActionBase action = new DispatcherMoveAnotherPlayerByDirectFlightAsHisAction(GameState, Players[1], TownsInitializer.Paris);
             GameState.CurrentPlayer.PlayerCards.Clear();
 
-            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            Assert.Throws<NotOwnedCityPlayerCardException>(() =>
             {
                 action.Try();
             });
@@ -89,7 +89,7 @@ namespace PandemicTDDTests.Materiel
             ActionBase action = new DispatcherMoveAnotherPlayerByCharterFlightAsHisAction(GameState, Players[1], TownsInitializer.Paris);
 
             GameState.CurrentPlayer.PlayerCards.Clear();
-            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            Assert.Throws<NotOwnedCityPlayerCardException>(() =>
             {
                 action.Try();
             });
@@ -142,7 +142,7 @@ namespace PandemicTDDTests.Materiel
         {
             ActionBase action = new DispatcherMovePlayerToAnotherPlayer(GameState, Players[1], Players[1]);
 
-            Assert.ThrowsException<InvalidPreconditionsException>(() =>
+            Assert.Throws<InvalidPreconditionsException>(() =>
             {
                 action.Try();
             });

@@ -61,7 +61,7 @@ namespace PandemicTDDTests.Materiel
 
             ActionBase action = new MedicCureAllDiseaseAction(GameState, DiseaseColor.Black);
 
-            Assert.ThrowsException<InvalidPreconditionsException>(() =>
+            Assert.Throws<InvalidPreconditionsException>(() =>
             {
                 action.Try();
             });

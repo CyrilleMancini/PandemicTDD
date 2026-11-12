@@ -37,7 +37,7 @@ namespace PandemicTDDTests.Running.Actions
             GameState.CurrentPlayer.PlayerCards.Clear();
 
             ActionBase action = new DirectFlightAction(GameState, GameState.CurrentPlayer, TownsInitializer.Paris);
-            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            Assert.Throws<NotOwnedCityPlayerCardException>(() =>
             {
                 action.Try();
                 action.Execute();
@@ -60,7 +60,7 @@ namespace PandemicTDDTests.Running.Actions
 
 
             Assert.AreEqual(DestinationCard, GameState.Board.PlayerDiscardCardStack.Peek(), "Player card shoud be in Discard stack");
-            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            Assert.Throws<NotOwnedCityPlayerCardException>(() =>
             {
                 DestinationCard = GameState.CurrentPlayer.GetCityPlayerCard<PlayerTownCard>(DestinationCard.Town.Name);
             }, "Player shouldn't have the used card anymore");

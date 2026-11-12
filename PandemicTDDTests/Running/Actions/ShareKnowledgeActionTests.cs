@@ -26,7 +26,7 @@ namespace PandemicTDDTests.Running.Actions
             string CardToShare = TownsInitializer.Paris;
 
             ActionBase action = new ShareKnowledgeAction(GameState, Players[1], CardToShare);
-            Assert.ThrowsException<PlayerInDifferentTownsException>(() =>
+            Assert.Throws<PlayerInDifferentTownsException>(() =>
             {
                 action.Try();
             });
@@ -45,7 +45,7 @@ namespace PandemicTDDTests.Running.Actions
             string CardToShare = TownsInitializer.Atlanta;
 
             ActionBase action = new ShareKnowledgeAction(GameState, Players[1], CardToShare);
-            Assert.ThrowsException<PlayersMustBeInTheShareTownCardException>(() =>
+            Assert.Throws<PlayersMustBeInTheShareTownCardException>(() =>
             {
                 action.Try();
             });
@@ -64,7 +64,7 @@ namespace PandemicTDDTests.Running.Actions
             Players[0].PlayerCards.Clear();
             Players[1].PlayerCards.Clear();
             ActionBase action = new ShareKnowledgeAction(GameState, Players[1], CardToShare);
-            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            Assert.Throws<NotOwnedCityPlayerCardException>(() =>
             {
                 action.Try();
                 action.Execute();
@@ -89,7 +89,7 @@ namespace PandemicTDDTests.Running.Actions
             ActionBase action = new ShareKnowledgeAction(GameState, Players[1], CardToShare);
             GameState.DoAction(action);
 
-            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            Assert.Throws<NotOwnedCityPlayerCardException>(() =>
             {
                 Players[0].GetCityPlayerCard<PlayerTownCard>(CardToShare);
             });
@@ -113,7 +113,7 @@ namespace PandemicTDDTests.Running.Actions
             GameState.DoAction(action);
 
             Players[0].GetCityPlayerCard<PlayerTownCard>(CardToShare);
-            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            Assert.Throws<NotOwnedCityPlayerCardException>(() =>
             {
                 Players[1].GetCityPlayerCard<PlayerTownCard>(CardToShare);
             });

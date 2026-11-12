@@ -2,7 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PandemicTDD.Events;
 using PandemicTDD.Materiel;
-using PandemicTDDTests.Materiel;
 using System;
 
 namespace PandemicTDDTests.EndOfGame
@@ -13,7 +12,7 @@ namespace PandemicTDDTests.EndOfGame
         [TestMethod()]
         public void HeightOutbreakOccured()
         {
-            Assert.ThrowsException<YouLooseException>(() =>
+            Assert.Throws<YouLooseException>(() =>
             {
                 var board = GameBox.GetBoard();
                 board.GetOutbreakIndicator().Next();
@@ -31,7 +30,7 @@ namespace PandemicTDDTests.EndOfGame
         [TestMethod()]
         public void NoMoreCubeDisease()
         {
-            Assert.ThrowsException<YouLooseException>(() =>
+            Assert.Throws<YouLooseException>(() =>
             {
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Black, 24);
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Black, 1);
@@ -41,7 +40,7 @@ namespace PandemicTDDTests.EndOfGame
         [TestMethod()]
         public void NoMoreCubeBlueDiseases()
         {
-            Assert.ThrowsException<YouLooseException>(() =>
+            Assert.Throws<YouLooseException>(() =>
             {
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Blue, 24);
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Blue, 1);
@@ -52,7 +51,7 @@ namespace PandemicTDDTests.EndOfGame
         [TestMethod()]
         public void NoMoreCubeYellowDiseases()
         {
-            Assert.ThrowsException<YouLooseException>(() =>
+            Assert.Throws<YouLooseException>(() =>
             {
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Yellow, 24);
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Yellow, 1);
@@ -63,7 +62,7 @@ namespace PandemicTDDTests.EndOfGame
         [TestMethod()]
         public void NoMoreCubeRedDiseases()
         {
-            Assert.ThrowsException<YouLooseException>(() =>
+            Assert.Throws<YouLooseException>(() =>
             {
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Red, 24);
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Red, 1);
@@ -74,12 +73,12 @@ namespace PandemicTDDTests.EndOfGame
         [TestMethod()]
         public void BadQuantities()
         {
-            Assert.ThrowsException<ArgumentException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Blue, 0);
             });
 
-            Assert.ThrowsException<ArgumentException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 GameBox.GetDiseaseBags().GetCubes(DiseaseColor.Blue, -1);
             });

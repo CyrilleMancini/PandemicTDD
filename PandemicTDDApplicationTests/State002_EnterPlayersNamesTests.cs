@@ -11,7 +11,7 @@ namespace PandemicTDDApplication.Tests
         [TestMethod()]
         public void State002_EnterPlayersNames()
         {
-            BaseState state = new State002_EnterPlayersNames(GameState, View, ressource,2);
+            BaseState state = new State002_EnterPlayersNames(GameState, View, ressource, 2);
 
             state = state.EnterPlayerName("Joueur1");
             Assert.IsTrue(state is State002_EnterPlayersNames);
@@ -30,11 +30,11 @@ namespace PandemicTDDApplication.Tests
             state = state.EnterPlayerName("Joueur2");
             Assert.IsTrue(state is State003_ChooseLevel);
 
-            Assert.ThrowsException<InvalidActionException>(() =>
+            Assert.Throws<InvalidActionException>(() =>
             {
                 state.EnterPlayerName("Joueurs3");
             });
-            Assert.ThrowsException<InvalidActionException>(() =>
+            Assert.Throws<InvalidActionException>(() =>
             {
                 state.DoAction();
             });

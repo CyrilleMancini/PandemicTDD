@@ -5,7 +5,6 @@ using PandemicTDD.Actions;
 using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
-using PandemicTDDTests.Materiel;
 using System.Linq;
 
 namespace PandemicTDDTests.Running.Actions
@@ -44,7 +43,7 @@ namespace PandemicTDDTests.Running.Actions
 
 
             ActionBase action = new BuildStationAction(GameState, GameState.CurrentPlayer);
-            Assert.ThrowsException<NotOwnedCityPlayerCardException>(() =>
+            Assert.Throws<NotOwnedCityPlayerCardException>(() =>
             {
                 action.Try();
                 action.Execute();

@@ -6,7 +6,6 @@ using PandemicTDD.Actions.Exceptions;
 using PandemicTDD.Materiel;
 using PandemicTDD.Materiel.Initializers;
 using PandemicTDD.Materiel.PlayerCards;
-using PandemicTDDTests.Materiel;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,7 +25,7 @@ namespace PandemicTDDTests.Running.Actions
             List<PlayerTownCard> cards = new();
 
             ActionBase action = new DiscoverCureAction(GameState, DiseaseColor.Black, cards);
-            Assert.ThrowsException<CityWithoutControlCenterException>(() =>
+            Assert.Throws<CityWithoutControlCenterException>(() =>
             {
                 action.Try();
             });
@@ -41,7 +40,7 @@ namespace PandemicTDDTests.Running.Actions
             List<PlayerTownCard> cards = new();
 
             ActionBase action = new DiscoverCureAction(GameState, DiseaseColor.Black, cards);
-            Assert.ThrowsException<NotEnoughCardToFindCureException>(() =>
+            Assert.Throws<NotEnoughCardToFindCureException>(() =>
             {
                 action.Try();
             });

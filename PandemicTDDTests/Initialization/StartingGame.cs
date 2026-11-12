@@ -18,7 +18,7 @@ namespace PandemicTDDTests.Initialization
         public void InitPlayersMax4Players()
         {
 
-            Assert.ThrowsException<TooManyPlayersException>(() =>
+            Assert.Throws<TooManyPlayersException>(() =>
             {
                 GameState gameState = new GameState(GameBox);
                 gameState.SetPlayers(Players)
@@ -30,7 +30,7 @@ namespace PandemicTDDTests.Initialization
         public void InitPlayersMin2Players()
         {
 
-            Assert.ThrowsException<NotEnoughPlayersException>(() =>
+            Assert.Throws<NotEnoughPlayersException>(() =>
             {
                 GameState gameState = new(GameBox);
                 gameState.SetPlayers(Players.GetRange(0, 1)).StartGame();

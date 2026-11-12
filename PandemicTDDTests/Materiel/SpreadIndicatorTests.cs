@@ -89,7 +89,7 @@ namespace PandemicTDDTests.Materiel
             SpreadIndicator si = Board.GetSpreadIndicator();
             si.Reset();
 
-            Assert.ThrowsException<ApplicationException>(() =>
+            Assert.Throws<ApplicationException>(() =>
             {
                 for (int i = 0; i < 7; i++)
                     si.Next();

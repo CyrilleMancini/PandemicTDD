@@ -47,7 +47,7 @@ namespace PandemicTDDTests.Materiel
         [TestMethod()]
         public void GetTownByNameFailOnUnkown()
         {
-            Assert.ThrowsException<UnkownTownException>(() =>
+            Assert.Throws<UnkownTownException>(() =>
             {
                 Board Board = GameBox.GetBoard();
                 Town Paris = Board.GetTown("Plop");

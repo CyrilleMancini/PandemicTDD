@@ -53,7 +53,7 @@ namespace PandemicTDDTests.Running
         {
             StartGame();
 
-            Assert.ThrowsException<ArgumentException>(() =>
+            Assert.Throws<ArgumentException>(() =>
             {
                 GameState.RegisterObserver(ConsoleObserver);
             });
