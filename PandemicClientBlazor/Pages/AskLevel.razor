@@ -1,0 +1,38 @@
+﻿
+
+
+<div class="asklevel-panel" style="@panelclass">
+    <h3>Difficulté</h3>
+    Niveau de difficulté ?
+    <button @onclick="() => Choose(1)">Découverte</button>
+    <button @onclick="() => Choose(2)">Standard</button>
+    <button @onclick="() => Choose(3)">Héroique</button>
+
+</div>
+
+
+@code {
+    [Parameter]
+    public EventCallback<int> OnLevelChoosen { get; set; }
+
+    const string visible = "visibility:visible;display:block";
+    const string hidden = "visibility:hidden;display:none";
+    string panelclass = hidden;
+
+    public void Open()
+    {
+        panelclass = visible;
+        StateHasChanged();
+    }
+    public void Close()
+    {
+        panelclass = hidden;
+        StateHasChanged();
+    }
+    public async Task Choose(int number)
+    {
+        await OnLevelChoosen.InvokeAsync(number);
+        panelclass = hidden;
+    }
+}
+
