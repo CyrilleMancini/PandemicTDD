@@ -1,0 +1,17 @@
+﻿@using System.Drawing
+<h3>TownsView</h3>
+
+@if (GameState != null)
+{
+    @foreach (Town town in GameState.Board.Towns)
+    {
+        Point pos = position.Positions[town.Name];
+
+        <div class="town-label" style="position:fixed;top:@(pos.Y + 20)px;left:@(pos.X - 16)px;color:@town.Color">
+            @town.Name
+        </div>
+        <div class="town-target" style="top:@(pos.Y - 16)px;left:@(pos.X - 16)px;background-color:@town.Color">
+        </div>
+
+    }
+}

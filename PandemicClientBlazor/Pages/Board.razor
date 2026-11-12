@@ -10,17 +10,14 @@
         <Instructions @ref="InstructionsPanelComponent"></Instructions>
         <Failure Visible="false"></Failure>
         <Victory Visible="false"></Victory>
+        <TownsView GameState="@GameState"></TownsView>
         @if (CurrentPlayer != null)
         {
             <SelectDestination @ref="SelectDestinationComponent" OnDestinationSelected="DestinationSelected"></SelectDestination>
             <PlayerCards Cards="@CurrentPlayer?.PlayerCards"></PlayerCards>
             <CurrentPlayerInformation Player="@CurrentPlayer" />
         }
-        <button @onclick="Play">Jouer</button>
+        <button @onclick="Play" style="position:fixed;top:25px">Jouer</button>
         <Errors @ref="ErrorsComponent" />
     </CascadingValue>
-}
-
-@code {
-
 }

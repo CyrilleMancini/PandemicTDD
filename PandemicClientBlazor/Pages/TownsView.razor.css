@@ -1,0 +1,16 @@
+﻿
+.town-target {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.town-label {
+    background-color: darkgrey;
+    padding: 0px;
+    margin:0px;
+    font-size:12px;
+    position: fixed;
+}
