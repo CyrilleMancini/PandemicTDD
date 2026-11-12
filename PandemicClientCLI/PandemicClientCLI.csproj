@@ -1,13 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\CommonTestsTools\CommonTestsTools.csproj" />
-    <ProjectReference Include="..\PandemicTDDApplication\PandemicTDDApplication.csproj" />
-  </ItemGroup>
+
+	<PropertyGroup>
+		<!-- Voir Directory.Build.props pour les <PropertyGroup>  -->
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\CommonTestsTools\CommonTestingTools.csproj" />
+		<ProjectReference Include="..\PandemicTDDApplication\PandemicTDDApplication.csproj" />
+	</ItemGroup>
 
 </Project>

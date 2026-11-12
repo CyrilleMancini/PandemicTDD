@@ -1,0 +1,30 @@
+<Project>
+	<PropertyGroup>
+		<!-- Framework et langage -->
+		<TargetFramework>net10.0</TargetFramework>
+		<LangVersion>12</LangVersion>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>disable</ImplicitUsings>
+
+		<!-- Build performance -->
+		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+		<WarningsNotAsErrors>CA1848</WarningsNotAsErrors>
+		<!-- Documentation -->
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);CS1591;NETSDK1233</NoWarn>
+	</PropertyGroup>
+
+	<!-- Configuration spécifique aux projets de tests -->
+	<Choose>
+		<When Condition="$(MSBuildProjectName.Contains('Tests'))">
+			<PropertyGroup>
+				<OutputType>Exe</OutputType>
+				<IsPackable>false</IsPackable>
+				<IsTestProject>true</IsTestProject>
+				<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+				<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+			</PropertyGroup>
+		</When>
+	</Choose>
+</Project>

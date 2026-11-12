@@ -1,7 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<!-- Voir Directory.Build.props pour les <PropertyGroup> de Test -->
 
 </Project>
