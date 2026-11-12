@@ -1,17 +1,44 @@
-﻿@using System.Drawing
-<h3>TownsView</h3>
-
-@if (GameState != null)
+﻿@if (GameState != null)
 {
-    @foreach (Town town in GameState.Board.Towns)
+    @foreach (TownSlot slot in GameState.Board.GetTownSlots())
     {
-        Point pos = position.Positions[town.Name];
+        UiTownItem pos = position.Positions[slot.Town.Name];
+        string labelclass = "town-label-" + slot.Town.Name.ToLower().Replace(" ", "_");
 
-        <div class="town-label" style="position:fixed;top:@(pos.Y + 20)px;left:@(pos.X - 16)px;color:@town.Color">
-            @town.Name
-        </div>
-        <div class="town-target" style="top:@(pos.Y - 16)px;left:@(pos.X - 16)px;background-color:@town.Color">
+        <!-- Displays town's target -->
+        <div class="town-target" style="top:@(pos.Y - 16)px;left:@(pos.X - 16)px;background-color:@slot.Town.Color">
         </div>
 
+        <!-- Displays town's labels -->
+        <div class="town-label @(labelclass)">
+            @slot.Town.Name
+            <br />
+            @if (GameState?.Players != null)
+            {
+
+                @foreach (var player in GameState.Players)
+                {
+                    if (player.Town.Name == slot.Town.Name)
+                    {
+                        string userTownClass = "town-label-" + player.Town.Name.ToLower().Replace(" ", "_");
+                        if (player == GameState.CurrentPlayer)
+                        {
+                            userTownClass += " player-active";
+                        }
+                        <div>
+                            <div class="player-svg @(userTownClass)">
+                            </div>
+                            <div class="player-name" style="font-size:small">
+                                @player.Name
+                            </div>
+                            <span class="player-info">
+                                @player.Role.Name
+                            </span>
+                        </div>
+                        <br />
+                    }
+                }
+            }
+        </div>
     }
 }

@@ -1,16 +1,315 @@
 ﻿
+.player-svg {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    /* La couleur souhaitée pour votre SVG */
+    background-color: rgb(255, 106, 0);
+    /* Chargement du fichier externe comme masque */
+    -webkit-mask: url('svg/pion.svg') no-repeat center / contain;
+    mask: url('svg/pion.svg') no-repeat center / contain;
+    transition: background-color 0.53s ease;
+}
+
+.player-active {
+    background-color: rgb(182, 255, 0);
+}
+
+
+.player-svg:hover {
+    background-color: rgb(255, 216, 0);
+}
+
+.player-name {
+    visibility: visible;
+    display: inline;
+    transition: all ease-in-out 0.31s;
+    animation: forwards 0.21s;
+}
+
+
+.player-info {
+    position: absolute;
+    display: block;
+    white-space: nowrap;
+    width: 0px;
+    overflow: hidden;
+    text-overflow: clip;
+    transition: all ease-in-out 0.31s;
+    animation: forwards 0.21s;
+    background-color: aliceblue;
+    z-index: 3000;
+}
+
+
+.player-svg:hover ~ .player-info {
+    display: block;
+    color: black;
+    white-space: wrap;
+    width: 100px;
+    height: 50px;
+    z-index: 3000;
+    transition: all ease-in-out 0.31s;
+    animation: forwards 0.21s;
+}
+
+
 .town-target {
     position: fixed;
     width: 32px;
     height: 32px;
     border-radius: 50%;
     border: 1px solid white;
+    z-index: 1;
 }
 
 .town-label {
-    background-color: darkgrey;
-    padding: 0px;
-    margin:0px;
-    font-size:12px;
+    padding: 1px;
+    margin: 0px;
+    font-family: '0xProto Nerd Font';
+    font-size: 14px;
     position: fixed;
+    font-weight: bold;
+    background-color: cornflowerblue;
+    z-index: 2;
+}
+
+.town-label-alger {
+    left: 783px;
+    top: 451px;
+}
+
+.town-label-atlanta {
+    left: 330px;
+    top: 460px;
+}
+
+.town-label-bagdad {
+    left: 959px;
+    top: 400px;
+}
+
+.town-label-bangkok {
+    left: 1216px;
+    top: 562px;
+}
+
+.town-label-bogota {
+    left: 464px;
+    top: 583px;
+}
+
+.town-label-buenos_aires {
+    left: 471px;
+    top: 815px;
+}
+
+.town-label-calcutta {
+    left: 1194px;
+    top: 460px;
+}
+
+.town-label-chennai {
+    left: 1140px;
+    top: 570px;
+}
+
+.town-label-chicago {
+    left: 312px;
+    top: 358px;
+}
+
+.town-label-delhi {
+    left: 1138px;
+    top: 434px;
+}
+
+.town-label-essen {
+    left: 801px;
+    top: 291px;
+}
+
+.town-label-ho-chi-minh-ville {
+    left: 1308px;
+    top: 582px;
+}
+
+.town-label-hong_kong {
+    left: 1269px;
+    top: 462px;
+}
+
+.town-label-istanbul {
+    left: 867px;
+    top: 419px;
+}
+
+.town-label-jakarta {
+    left: 1273px;
+    top: 668px;
+}
+
+.town-label-johannesbourg {
+    left: 875px;
+    top: 766px;
+}
+
+.town-label-karachi {
+    left: 1056px;
+    top: 509px;
+}
+
+.town-label-khartoum {
+    left: 850px;
+    top: 523px;
+}
+
+.town-label-kinshasa {
+    left: 800px;
+    top: 654px;
+}
+
+.town-label-lagos {
+    left: 790px;
+    top: 608px;
+}
+
+.town-label-le_caire {
+    left: 884px;
+    top: 481px;
+}
+
+.town-label-lima {
+    left: 386px;
+    top: 691px;
+}
+
+.town-label-londres {
+    left: 729px;
+    top: 293px;
+}
+
+.town-label-los_angeles {
+    left: 120px;
+    top: 443px;
+}
+
+.town-label-madrid {
+    left: 701px;
+    top: 401px;
+}
+
+.town-label-manille {
+    left: 1389px;
+    top: 542px;
+}
+
+.town-label-mexico {
+    left: 249px;
+    top: 543px;
+}
+
+.town-label-miami {
+    left: 441px;
+    top: 494px;
+}
+
+.town-label-milan {
+    left: 855px;
+    top: 350px;
+}
+
+.town-label-montréal {
+    left: 404px;
+    top: 330px;
+}
+
+.town-label-moscou {
+    left: 995px;
+    top: 284px;
+}
+
+.town-label-mumbai {
+    left: 1098px;
+    top: 546px;
+}
+
+.town-label-new_york {
+    left: 467px;
+    top: 399px;
+}
+
+.town-label-osaka {
+    left: 1416px;
+    top: 460px;
+}
+
+.town-label-paris {
+    left: 739px;
+    top: 349px;
+}
+
+.town-label-pékin {
+    left: 1270px;
+    top: 399px;
+}
+
+.town-label-riyad {
+    left: 988px;
+    top: 512px;
+}
+
+.town-label-saint-pétersbourg {
+    left: 881px;
+    top: 225px;
+}
+
+.town-label-san_francisco {
+    left: 71px;
+    top: 408px;
+}
+
+.town-label-santiago {
+    left: 371px;
+    top: 777px;
+}
+
+.town-label-sao_paulo {
+    left: 567px;
+    top: 750px;
+}
+
+.town-label-shanghai {
+    left: 1281px;
+    top: 437px;
+}
+
+.town-label-sydney {
+    left: 1485px;
+    top: 805px;
+}
+
+.town-label-séoul {
+    left: 1378px;
+    top: 387px;
+}
+
+.town-label-taipei {
+    left: 1389px;
+    top: 501px;
+}
+
+.town-label-tokyo {
+    left: 1480px;
+    top: 448px;
+}
+
+.town-label-téhéran {
+    left: 1056px;
+    top: 414px;
+}
+
+.town-label-washington {
+    left: 436px;
+    top: 428px;
 }
