@@ -1,10 +1,22 @@
-﻿<h3 style="margin:25px;background-color:@Card.Town.Color">TownCard</h3>
+﻿<div class="card-background" style="background-color:@Card.Town.Color">
+    <div class="card-background-sub">
 
-<div>@Card.Town.Name</div>
-<div>@Card.Town.Country</div>
-<div>@Card.Town.Color</div>
+        <div class="town-name @(TownColors[Card.Town.Color])">@Card.Town.Name</div>
+        <div class="country-name">@Card.Town.Country</div>
+        <div class="card-map">Ma p</div>
+    </div>
+</div>
+
 
 @code {
+    readonly static Dictionary<DiseaseColor, string> TownColors = new()
+    {
+        { DiseaseColor.Black,"card-black"},
+        { DiseaseColor.Red,"card-red"},
+        { DiseaseColor.Blue,"card-blue"},
+        { DiseaseColor.Yellow,"card-yellow"},
+    };
+
 
     [Parameter]
     public PlayerTownCard Card { get; set; }
