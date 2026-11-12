@@ -1,5 +1,7 @@
 ﻿.debug-panel{
-    overflow :hidden;
+    position:fixed;
+    top:10px;
+
 }
 
 div, ul {

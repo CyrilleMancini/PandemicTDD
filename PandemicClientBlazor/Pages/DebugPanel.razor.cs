@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PandemicClientBlazor.Pages
 {
     public partial class DebugPanel : IDebuggableUI
     {
+
+        bool Hidden = false;
 
         Dictionary<string, Action> DebugActions = new Dictionary<string, Action>();
 
@@ -23,6 +23,5 @@ namespace PandemicClientBlazor.Pages
         {
             Logs.Insert(0, Message);
         }
-
     }
 }
