@@ -1,0 +1,45 @@
+﻿
+<div class="askname-panel" style="@panelclass">
+    <h3>Nom du joueur @Player</h3>
+    Combien de joueurs pour la partie ?
+    <input @bind-value="Name" />
+    <button @onclick="() => Choose()">Valider</button>
+
+</div>
+
+
+@code {
+    int Player = 0;
+    string Name { get; set; } = "";
+
+
+    const string visible = "visibility:visible;display:block";
+    const string hidden = "visibility:hidden;display:none";
+
+    public void EnterFor(int player)
+    {
+        Console.WriteLine("Enterfor" + player);
+        panelclass = visible;
+        Name = "";
+        Player = player;
+        this.InvokeAsync(() => StateHasChanged());
+    }
+
+    [Parameter]
+    public EventCallback<string> OnPlayerNameChoosen { get; set; }
+
+    string panelclass { get; set; } = hidden;
+
+    public async Task Choose()
+    {
+        await OnPlayerNameChoosen.InvokeAsync(Name);
+      //  panelclass = hidden;
+        StateHasChanged();
+    }
+
+    public void Close()
+    {
+        panelclass = hidden;
+    }
+
+}
